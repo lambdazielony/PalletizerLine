@@ -4,13 +4,15 @@ VERSION : 0.1
    VAR_INPUT 
       bx_PalletSensor1 : Bool;
       bx_PalletSensor2 : Bool;
-      bx_ProductsReadyToPush : Bool;
       bx_PusherInPos : Bool;
       bx_TrapdoorInPos : Bool;
       bx_PositionerExtended : Bool;
       bx_LiftMoving : Bool;
       bx_BoxReady : Bool;
       bx_PalletReady : Bool;
+      bx_ReleasePalletAck : Bool;
+      ix_BoxCounter : Int;
+      NUMBER_OF_BOXES : Int;
       ix_CurrentState : DInt;
    END_VAR
 
@@ -20,18 +22,23 @@ VERSION : 0.1
       by_Pusher : Bool;
       by_Positioner : Bool;
       by_Trapdoor : Bool;
+      by_MoveLiftToLimit : Bool;
       by_LiftUp : Bool;
       by_LiftDown : Bool;
       by_ChainFrd : Bool;
       by_ChainRev : Bool;
       by_BoxReq : Bool;
       by_PalletReq : Bool;
+      by_ReleasePalletReq : Bool;
+      by_ResetCounter : Bool;
       ModuleSts : "CPG_typePackML_ModuleSts";
       iy_SeqStep : Int;
    END_VAR
 
    VAR 
       i_SeqStep : Int;
+      i_Columns : Int;
+      i_Layers : Int;
    END_VAR
 
 
@@ -53,9 +60,135 @@ BEGIN
 	    6://Execute
 	        #ModuleSts.sts_Starting_SC := False;
 	        CASE #i_SeqStep OF
-	            //Request a pallet     
-	            0:
-	                ;
+	           
+	            0://Check if there is a pallet on the chain conveyor   
+	                IF #bx_PalletSensor1 AND #bx_PalletSensor2 THEN
+	                    #i_SeqStep := 4;
+	                ELSE
+	                    #i_SeqStep := 1;
+	                END_IF;
+	            1://Set the lift fully down
+	                #by_MoveLiftToLimit := True;
+	                #by_LiftDown := True;
+	                #by_LiftUp := False;
+	                IF NOT #bx_LiftMoving AND #by_LiftDown AND NOT #by_LiftUp THEN
+	                    #by_MoveLiftToLimit := False;
+	                    #by_LiftDown := False;
+	                    #by_LiftUp := False;
+	                    #i_SeqStep := 2;
+	                END_IF;
+	            2://Request a new pallet
+	                #by_PalletReq := True;
+	                IF #bx_PalletReady THEN
+	                    #i_SeqStep := 3;
+	                END_IF;
+	            3://Start the chain conveyor, wait the pallet arrive
+	                #by_ChainFrd := False;
+	                #by_ChainRev := True;
+	                IF #bx_PalletSensor1 AND #bx_PalletSensor2 THEN
+	                    #by_PalletReq := False;
+	                    #by_ChainFrd := False;
+	                    #by_ChainRev := False;
+	                    #i_SeqStep := 4;
+	                END_IF;
+	            4://Set the lift fully up
+	                #by_MoveLiftToLimit := True;
+	                #by_LiftDown := False;
+	                #by_LiftUp := True;
+	                IF NOT #bx_LiftMoving AND NOT #by_LiftDown AND #by_LiftUp THEN
+	                    #by_MoveLiftToLimit := False;
+	                    #by_LiftDown := False;
+	                    #by_LiftUp := False;
+	                    #i_SeqStep := 5;
+	                END_IF;
+	            5://Request a new set of boxes
+	                #by_BoxReq := True;
+	                IF #bx_BoxReady THEN
+	                    #by_BeltFrd := True;
+	                    #by_BeltRev := False;
+	                    #i_SeqStep := 6;
+	                END_IF;
+	            6://Wait the row filled with boxes
+	                IF #ix_BoxCounter = #NUMBER_OF_BOXES THEN
+	                    #by_BoxReq := False;
+	                    #i_SeqStep := 7;
+	                END_IF;
+	            7://Push the boxes onto the trapdoor
+	                #by_BeltFrd := False;
+	                #by_BeltRev := False;
+	                #by_Pusher := True;
+	                IF #bx_PusherInPos AND #by_Pusher THEN
+	                    #i_SeqStep := 8;
+	                END_IF;
+	            8://Rectact the pusher and reset the counter
+	                #by_Pusher := False;
+	                IF #bx_PusherInPos AND NOT #by_Pusher THEN
+	                    #by_ResetCounter := True;
+	                    #i_Columns := #i_Columns + 1;
+	                    IF #i_Columns >= 3 THEN
+	                        #by_ResetCounter := FALSE;
+	                        #i_SeqStep := 9;
+	                    ELSE
+	                        #by_ResetCounter := False;
+	                        #i_SeqStep := 5;
+	                    END_IF;
+	                END_IF;
+	            9://Position the boxes on the trapdoor
+	                #by_Positioner := True;
+	                IF #bx_PositionerExtended THEN
+	                    #i_SeqStep := 10;
+	                END_IF;
+	            10://Retract the positioner
+	                #by_Positioner := False;
+	                IF NOT #bx_PositionerExtended THEN
+	                    #i_SeqStep := 11;
+	                END_IF;
+	            11://Open the trapdoor
+	                #by_Trapdoor := True;
+	                IF #bx_TrapdoorInPos AND #by_Trapdoor THEN
+	                    #i_SeqStep := 12;
+	                END_IF;
+	            12://Move the lift down one layer
+	                #by_MoveLiftToLimit := False;
+	                #by_LiftDown := True;
+	                #by_LiftUp := False;
+	                IF NOT #bx_LiftMoving AND #by_LiftDown AND NOT #by_LiftUp THEN
+	                    #i_SeqStep := 13;
+	                END_IF;
+	            13://Close the trapdoor
+	                #by_Trapdoor := False;
+	                IF #bx_TrapdoorInPos AND NOT #by_Trapdoor THEN
+	                    #i_Columns := 0;
+	                    #i_Layers := #i_Layers + 1;
+	                    IF #i_Layers >= 4 THEN
+	                        #i_SeqStep := 14;
+	                    ELSE
+	                        #i_SeqStep := 5;
+	                    END_IF;
+	                END_IF;
+	            14://Move the lift fully down 
+	                #by_MoveLiftToLimit := True;
+	                #by_LiftDown := True;
+	                #by_LiftUp := False;
+	                IF NOT #bx_LiftMoving AND #by_LiftDown AND NOT #by_LiftUp THEN
+	                    #by_MoveLiftToLimit := False;
+	                    #by_LiftDown := False;
+	                    #by_LiftUp := False;
+	                    #i_SeqStep := 15;
+	                END_IF;
+	            15://Request the release of the pallet 
+	                #by_ReleasePalletReq := True;
+	                IF #bx_ReleasePalletAck THEN
+	                    #i_SeqStep := 16;
+	                END_IF;
+	            16://Move the chain forward
+	                #by_ChainFrd := True;
+	                #by_ChainRev := False;
+	                IF NOT #bx_PalletSensor1 AND NOT #bx_PalletSensor2 THEN
+	                    #by_ChainFrd := FALSE;
+	                    #by_ChainRev := False;
+	                    #i_SeqStep := 0;
+	                END_IF;
 	        END_CASE;
 	        //#ModuleSts.sts_Execute_SC := True;
 	    7://Stopping

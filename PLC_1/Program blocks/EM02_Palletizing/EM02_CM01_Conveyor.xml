@@ -2,7 +2,7 @@
 <Document>
   <Engineering version="V17" />
   <DocumentInfo>
-    <Created>2022-03-12T16:05:24.5295682Z</Created>
+    <Created>2022-03-12T19:20:15.1708459Z</Created>
     <ExportSetting>WithDefaults</ExportSetting>
     <InstalledProducts>
       <Product>
@@ -44,6 +44,7 @@
   <Section Name="InOut" />
   <Section Name="Static">
     <Member Name="statDummyBool" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">dummy bool - placeholder</MultiLanguageText><MultiLanguageText Lang="de-DE">dummy bool - placeholder</MultiLanguageText></Comment></Member>
+    <Member Name="instBeltConveyor" Datatype="&quot;BeltConveyor&quot;" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute></AttributeList><Sections><Section Name="Input"><Member Name="bx_BoxSensor" Datatype="Bool" /><Member Name="bx_BoxReq" Datatype="Bool" /><Member Name="ix_CurrentState" Datatype="DInt" /></Section><Section Name="Output"><Member Name="by_BeltFrd" Datatype="Bool" /><Member Name="by_BoxReady" Datatype="Bool" /><Member Name="ModuleSts" Datatype="&quot;CPG_typePackML_ModuleSts&quot;"><Sections><Section Name="None"><Member Name="cmd_Reset" Datatype="Bool" /><Member Name="sts_Resetting_SC" Datatype="Bool" /><Member Name="cmd_Start" Datatype="Bool" /><Member Name="sts_Starting_SC" Datatype="Bool" /><Member Name="cmd_Stop" Datatype="Bool" /><Member Name="sts_Stopping_SC" Datatype="Bool" /><Member Name="cmd_Hold" Datatype="Bool" /><Member Name="sts_Holding_SC" Datatype="Bool" /><Member Name="cmd_UnHold" Datatype="Bool" /><Member Name="sts_UnHolding_SC" Datatype="Bool" /><Member Name="cmd_Suspend" Datatype="Bool" /><Member Name="sts_Suspending_SC" Datatype="Bool" /><Member Name="cmd_UnSuspend" Datatype="Bool" /><Member Name="sts_UnSuspending_SC" Datatype="Bool" /><Member Name="cmd_Abort" Datatype="Bool" /><Member Name="sts_Aborting_SC" Datatype="Bool" /><Member Name="cmd_Clear" Datatype="Bool" /><Member Name="sts_Clearing_SC" Datatype="Bool" /><Member Name="sts_Execute_SC" Datatype="Bool" /><Member Name="sts_Completing_SC" Datatype="Bool" /><Member Name="moduleActive" Datatype="Bool" /><Member Name="ONS" Datatype="Bool" /></Section></Sections></Member><Member Name="iy_SeqStep" Datatype="Int" /></Section><Section Name="InOut" /><Section Name="Static"><Member Name="i_SeqStep" Datatype="Int" /></Section></Sections></Member>
   </Section>
   <Section Name="Temp" />
   <Section Name="Constant" />
@@ -158,7 +159,88 @@
       </SW.Blocks.CompileUnit>
       <SW.Blocks.CompileUnit ID="12" CompositionName="CompileUnits">
         <AttributeList>
-          <NetworkSource />
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="InstEM02_00_Main" />
+        <Component Name="instCM02" />
+        <Component Name="instPalletizer" />
+        <Component Name="by_BoxReq" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="PackTags" />
+        <Component Name="Status" />
+        <Component Name="StateCurrent" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="23">
+      <Symbol>
+        <Component Name="InstEM02_00_Main" />
+        <Component Name="instCM02" />
+        <Component Name="instPalletizer" />
+        <Component Name="bx_BoxReady" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="EM02" />
+        <Component Name="PackML_Sts" />
+        <Component Name="CM01" />
+      </Symbol>
+    </Access>
+    <Call UId="25">
+      <CallInfo Name="BeltConveyor" BlockType="FB">
+        <Instance Scope="LocalVariable" UId="26">
+          <Component Name="instBeltConveyor" />
+        </Instance>
+        <Parameter Name="bx_BoxSensor" Section="Input" Type="Bool" />
+        <Parameter Name="bx_BoxReq" Section="Input" Type="Bool" />
+        <Parameter Name="ix_CurrentState" Section="Input" Type="DInt" />
+        <Parameter Name="by_BeltFrd" Section="Output" Type="Bool" />
+        <Parameter Name="by_BoxReady" Section="Output" Type="Bool" />
+        <Parameter Name="ModuleSts" Section="Output" Type="&quot;CPG_typePackML_ModuleSts&quot;" />
+        <Parameter Name="iy_SeqStep" Section="Output" Type="Int" />
+      </CallInfo>
+    </Call>
+  </Parts>
+  <Wires>
+    <Wire UId="30">
+      <Powerrail />
+      <NameCon UId="25" Name="en" />
+    </Wire>
+    <Wire UId="31">
+      <OpenCon UId="27" />
+      <NameCon UId="25" Name="bx_BoxSensor" />
+    </Wire>
+    <Wire UId="32">
+      <IdentCon UId="21" />
+      <NameCon UId="25" Name="bx_BoxReq" />
+    </Wire>
+    <Wire UId="33">
+      <IdentCon UId="22" />
+      <NameCon UId="25" Name="ix_CurrentState" />
+    </Wire>
+    <Wire UId="34">
+      <NameCon UId="25" Name="by_BeltFrd" />
+      <OpenCon UId="28" />
+    </Wire>
+    <Wire UId="35">
+      <NameCon UId="25" Name="by_BoxReady" />
+      <IdentCon UId="23" />
+    </Wire>
+    <Wire UId="36">
+      <NameCon UId="25" Name="ModuleSts" />
+      <IdentCon UId="24" />
+    </Wire>
+    <Wire UId="37">
+      <NameCon UId="25" Name="iy_SeqStep" />
+      <OpenCon UId="29" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
           <ProgrammingLanguage>LAD</ProgrammingLanguage>
         </AttributeList>
         <ObjectList>
@@ -183,13 +265,13 @@
               <MultilingualTextItem ID="17" CompositionName="Items">
                 <AttributeList>
                   <Culture>en-US</Culture>
-                  <Text>*** Begin the Event Information Section ***</Text>
+                  <Text />
                 </AttributeList>
               </MultilingualTextItem>
               <MultilingualTextItem ID="18" CompositionName="Items">
                 <AttributeList>
                   <Culture>de-DE</Culture>
-                  <Text>*** Begin the Event Information Section ***</Text>
+                  <Text>EM02_CM01_Conveyor</Text>
                 </AttributeList>
               </MultilingualTextItem>
             </ObjectList>
@@ -223,10 +305,50 @@
               <MultilingualTextItem ID="1E" CompositionName="Items">
                 <AttributeList>
                   <Culture>en-US</Culture>
-                  <Text>*** Begin the State Model Status Feedback Section ***</Text>
+                  <Text>*** Begin the Event Information Section ***</Text>
                 </AttributeList>
               </MultilingualTextItem>
               <MultilingualTextItem ID="1F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>*** Begin the Event Information Section ***</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="20" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource />
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="21" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="22" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="23" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="24" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="25" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>*** Begin the State Model Status Feedback Section ***</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="26" CompositionName="Items">
                 <AttributeList>
                   <Culture>de-DE</Culture>
                   <Text>*** Begin the State Model Status Feedback Section ***</Text>
@@ -236,7 +358,7 @@
           </MultilingualText>
         </ObjectList>
       </SW.Blocks.CompileUnit>
-      <SW.Blocks.CompileUnit ID="20" CompositionName="CompileUnits">
+      <SW.Blocks.CompileUnit ID="27" CompositionName="CompileUnits">
         <AttributeList>
           <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
   <Parts>
@@ -312,46 +434,6 @@
           <ProgrammingLanguage>LAD</ProgrammingLanguage>
         </AttributeList>
         <ObjectList>
-          <MultilingualText ID="21" CompositionName="Comment">
-            <ObjectList>
-              <MultilingualTextItem ID="22" CompositionName="Items">
-                <AttributeList>
-                  <Culture>en-US</Culture>
-                  <Text />
-                </AttributeList>
-              </MultilingualTextItem>
-              <MultilingualTextItem ID="23" CompositionName="Items">
-                <AttributeList>
-                  <Culture>de-DE</Culture>
-                  <Text />
-                </AttributeList>
-              </MultilingualTextItem>
-            </ObjectList>
-          </MultilingualText>
-          <MultilingualText ID="24" CompositionName="Title">
-            <ObjectList>
-              <MultilingualTextItem ID="25" CompositionName="Items">
-                <AttributeList>
-                  <Culture>en-US</Culture>
-                  <Text>*** Call the PackML Module Initialize Logic ***</Text>
-                </AttributeList>
-              </MultilingualTextItem>
-              <MultilingualTextItem ID="26" CompositionName="Items">
-                <AttributeList>
-                  <Culture>de-DE</Culture>
-                  <Text>*** Call the PackML Module Initialize Logic ***</Text>
-                </AttributeList>
-              </MultilingualTextItem>
-            </ObjectList>
-          </MultilingualText>
-        </ObjectList>
-      </SW.Blocks.CompileUnit>
-      <SW.Blocks.CompileUnit ID="27" CompositionName="CompileUnits">
-        <AttributeList>
-          <NetworkSource />
-          <ProgrammingLanguage>LAD</ProgrammingLanguage>
-        </AttributeList>
-        <ObjectList>
           <MultilingualText ID="28" CompositionName="Comment">
             <ObjectList>
               <MultilingualTextItem ID="29" CompositionName="Items">
@@ -373,13 +455,13 @@
               <MultilingualTextItem ID="2C" CompositionName="Items">
                 <AttributeList>
                   <Culture>en-US</Culture>
-                  <Text />
+                  <Text>*** Call the PackML Module Initialize Logic ***</Text>
                 </AttributeList>
               </MultilingualTextItem>
               <MultilingualTextItem ID="2D" CompositionName="Items">
                 <AttributeList>
                   <Culture>de-DE</Culture>
-                  <Text />
+                  <Text>*** Call the PackML Module Initialize Logic ***</Text>
                 </AttributeList>
               </MultilingualTextItem>
             </ObjectList>
@@ -388,17 +470,7 @@
       </SW.Blocks.CompileUnit>
       <SW.Blocks.CompileUnit ID="2E" CompositionName="CompileUnits">
         <AttributeList>
-          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
-  <Parts>
-    <Part Name="ReturnTrue" UId="21" />
-  </Parts>
-  <Wires>
-    <Wire UId="22">
-      <Powerrail />
-      <NameCon UId="21" Name="in" />
-    </Wire>
-  </Wires>
-</FlgNet></NetworkSource>
+          <NetworkSource />
           <ProgrammingLanguage>LAD</ProgrammingLanguage>
         </AttributeList>
         <ObjectList>
@@ -423,10 +495,60 @@
               <MultilingualTextItem ID="33" CompositionName="Items">
                 <AttributeList>
                   <Culture>en-US</Culture>
-                  <Text>Update the ENO Output value. (DO NOT REMOVE.  Must be last rung)</Text>
+                  <Text />
                 </AttributeList>
               </MultilingualTextItem>
               <MultilingualTextItem ID="34" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="35" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Part Name="ReturnTrue" UId="21" />
+  </Parts>
+  <Wires>
+    <Wire UId="22">
+      <Powerrail />
+      <NameCon UId="21" Name="in" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="36" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="37" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="38" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="39" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="3A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Update the ENO Output value. (DO NOT REMOVE.  Must be last rung)</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="3B" CompositionName="Items">
                 <AttributeList>
                   <Culture>de-DE</Culture>
                   <Text>Update the ENO Output value. (DO NOT REMOVE.  Must be last rung)</Text>
@@ -436,15 +558,15 @@
           </MultilingualText>
         </ObjectList>
       </SW.Blocks.CompileUnit>
-      <MultilingualText ID="35" CompositionName="Title">
+      <MultilingualText ID="3C" CompositionName="Title">
         <ObjectList>
-          <MultilingualTextItem ID="36" CompositionName="Items">
+          <MultilingualTextItem ID="3D" CompositionName="Items">
             <AttributeList>
               <Culture>en-US</Culture>
               <Text>EM02_CM01</Text>
             </AttributeList>
           </MultilingualTextItem>
-          <MultilingualTextItem ID="37" CompositionName="Items">
+          <MultilingualTextItem ID="3E" CompositionName="Items">
             <AttributeList>
               <Culture>de-DE</Culture>
               <Text>EM02_CM01</Text>
