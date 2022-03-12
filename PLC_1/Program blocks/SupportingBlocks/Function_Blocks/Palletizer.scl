@@ -53,6 +53,7 @@ BEGIN
 	    6://Execute
 	        #ModuleSts.sts_Starting_SC := False;
 	        CASE #i_SeqStep OF
+	            //Request a pallet     
 	            0:
 	                ;
 	        END_CASE;
