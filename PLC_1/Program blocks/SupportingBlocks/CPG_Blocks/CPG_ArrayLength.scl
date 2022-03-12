@@ -1,0 +1,50 @@
+﻿FUNCTION "CPG_ArrayLength" : Void
+TITLE = CPG_ArrayLength
+{ S7_Optimized_Access := 'TRUE' }
+AUTHOR : 'tech.team.motioncontrol@siemens.com'
+FAMILY : CPG
+VERSION : 1.0
+//Support: tech.team.motioncontrol@siemens.com
+   VAR_INPUT 
+      arrayToBeSized : Variant;   // Array to be sized
+   END_VAR
+
+   VAR_OUTPUT 
+      arraySize : Int;   // Number of elements (size) in an array
+   END_VAR
+
+
+BEGIN
+	//============================================================================================================
+	// SIEMENS AG
+	// (c)Copyright 2018 All Rights Reserved
+	//------------------------------------------------------------------------------------------------------------
+	// Project: CPG Template
+	// Tested with: S7-1500 with FW version V2.1
+	// Engineering: TIA Portal V14
+	// Restrictions: ---
+	// Requirements: S7-1x00
+	// Functionality: Function Call to determine the length of any array
+	//                using optimized S7-1x00 Data Blocks (DB).
+	//                This FC can be called from any other FC/FB using any programming
+	//                language (SCL, LAD).  Additionally it works with Firmware >= V1.8 
+	//                and can determine the size of arrays with elementary (INT,Bool, etc.)
+	//                or complex data types (structures)
+	// Support: tech.team.motioncontrol@siemens.com
+	//------------------------------------------------------------------------------------------------------------
+	// Change log table:
+	// Version       Date               Expert in charge    Changes applied
+	//  01.00.00     08.12.2014         MP                  Initial Release 
+	//  01.01.00     22.05.2018         JP                  Adopted to styleguide
+	//============================================================================================================
+	// Function : CPG_ArrayLength
+	//============================================================================================================
+	
+	
+	IF IS_ARRAY(#arrayToBeSized) THEN // Check if input is valid array
+	  #arraySize := UDINT_TO_INT(CountOfElements(#arrayToBeSized)); // Determine the length of the array
+	END_IF;
+	
+	ENO := TRUE;   // Set the ENO output
+END_FUNCTION
+

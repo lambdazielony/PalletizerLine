@@ -1,0 +1,72 @@
+﻿FUNCTION "LPMLV30_ConfigureDisabledUnitModes" : Void
+TITLE = LPMLV30_ConfigureDisabledUnitModes
+{ S7_Optimized_Access := 'TRUE' }
+AUTHOR : APC_ERLF
+FAMILY : OMAC
+//Support: tech.team.motioncontrol@siemens.com 
+//Fax: +49 (0) 9131/98-1297
+   VAR_INPUT 
+      ProductionModeDisable : Bool;   // TRUE: Disable unit mode Production
+      MaintenanceModeDisable : Bool;   // TRUE: Disable unit mode Maintenance
+      UserMode01Disable : Bool;   // TRUE: Disable user-defined unit mode 01
+      UserMode02Disable : Bool;   // TRUE: Disable user-defined unit mode 02
+      UserMode03Disable : Bool;   // TRUE: Disable user-defined unit mode 03
+      UserMode04Disable : Bool;   // TRUE: Disable user-defined unit mode 04
+      UserMode05Disable : Bool;   // TRUE: Disable user-defined unit mode 05
+      UserMode06Disable : Bool;   // TRUE: Disable user-defined unit mode 06
+      UserMode07Disable : Bool;   // TRUE: Disable user-defined unit mode 07
+      UserMode08Disable : Bool;   // TRUE: Disable user-defined unit mode 08
+   END_VAR
+
+   VAR_OUTPUT 
+      disabledUnitModes : Array[0.."LPMLV30_MAX_MODES_UPPER_LIM"] of Bool;   // Disabled unit modes configuration
+   END_VAR
+
+   VAR_TEMP 
+      tempI : Int;   // Temporary Index
+   END_VAR
+
+
+BEGIN
+	//============================================================================================================
+	// SIEMENS AG
+	// (c)Copyright 2015 All Rights Reserved
+	//------------------------------------------------------------------------------------------------------------
+	// Library: LPMLV30
+	// Tested with: S7-1200 with FW version V4.1, S7-1500 with FW version V1.7
+	// Engineering: TIA Portal V13 SP1
+	// Restrictions: ---
+	// Requirements: S7-1200 / S7-1500
+	// Functionality: The function generates the unit mode configuration as Array[] of Bool.
+	//------------------------------------------------------------------------------------------------------------
+	// Change log table:
+	// Version  Date        Expert in charge    Changes applied
+	// 03.00.01 29.05.2015  RK                  First released version 
+	//============================================================================================================
+	// Function: LPMLV30_ConfigureDisabledUnitModes
+	//============================================================================================================
+	
+	// Initialize unitMode configuration
+	FOR #tempI := 0 TO "LPMLV30_MAX_MODES_UPPER_LIM" DO
+	  #disabledUnitModes[#tempI] := TRUE;
+	END_FOR;
+	
+	// Set unitMode configuration
+	#disabledUnitModes["LPMLV30_MODE_INVALID"]     := FALSE;
+	#disabledUnitModes["LPMLV30_MODE_PRODUCTION"]  := #ProductionModeDisable;
+	#disabledUnitModes["LPMLV30_MODE_MAINTENANCE"] := #MaintenanceModeDisable;
+	#disabledUnitModes["LPMLV30_MODE_MANUAL"]      := FALSE;
+	#disabledUnitModes["LPMLV30_MODE_USER_01"]     := #UserMode01Disable;
+	#disabledUnitModes["LPMLV30_MODE_USER_02"]     := #UserMode02Disable;
+	#disabledUnitModes["LPMLV30_MODE_USER_03"]     := #UserMode03Disable;
+	#disabledUnitModes["LPMLV30_MODE_USER_04"]     := #UserMode04Disable;
+	#disabledUnitModes["LPMLV30_MODE_USER_05"]     := #UserMode05Disable;
+	#disabledUnitModes["LPMLV30_MODE_USER_06"]     := #UserMode06Disable;
+	#disabledUnitModes["LPMLV30_MODE_USER_07"]     := #UserMode07Disable;
+	#disabledUnitModes["LPMLV30_MODE_USER_08"]     := #UserMode08Disable;
+	
+	//============================================================================================================
+	// End of function: LPMLV30_ConfigureDisabledUnitModes
+	//============================================================================================================
+END_FUNCTION
+

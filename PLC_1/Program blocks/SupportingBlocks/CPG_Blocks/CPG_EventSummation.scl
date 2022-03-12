@@ -1,0 +1,297 @@
+﻿FUNCTION_BLOCK "CPG_EventSummation"
+TITLE = CPG_EventSummation
+{ S7_Optimized_Access := 'TRUE' }
+AUTHOR : 'tech.team.motioncontrol@siemens.com'
+FAMILY : CPG
+VERSION : 1.0
+//Support: tech.team.motioncontrol@siemens.com
+   VAR_OUTPUT 
+      Sts_NumEvents { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;   // Status - Number of active events
+      Sts_Category_0_Latched { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'; S7_HiddenAssignment := 'HideIfNoParamAssigned'} : Bool;   // Status - Latched Event - Cat. 0
+      Sts_Category_1_Latched { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'; S7_HiddenAssignment := 'HideIfNoParamAssigned'} : Bool;   // Status - Latched Event - Cat. 1
+      Sts_Category_2_Latched { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'; S7_HiddenAssignment := 'HideIfNoParamAssigned'} : Bool;   // Status - Latched Event - Cat. 2
+      Sts_Category_3_Latched { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'; S7_HiddenAssignment := 'HideIfNoParamAssigned'} : Bool;   // Status - Latched Event - Cat. 3
+      Sts_Category_4_Latched { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'; S7_HiddenAssignment := 'HideIfNoParamAssigned'} : Bool;   // Status - Latched Event - Cat. 4
+      Sts_Category_5_Latched { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'; S7_HiddenAssignment := 'HideIfNoParamAssigned'} : Bool;   // Status - Latched Event - Cat. 5
+      Sts_Category_6_Latched { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'; S7_HiddenAssignment := 'HideIfNoParamAssigned'} : Bool;   // Status - Latched Event - Cat. 6
+      Sts_Category_7_Latched { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'; S7_HiddenAssignment := 'HideIfNoParamAssigned'} : Bool;   // Status - Latched Event - Cat. 7
+      Sts_Category_8_Latched { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'; S7_HiddenAssignment := 'HideIfNoParamAssigned'} : Bool;   // Status - Latched Event - Cat. 8
+      Sts_Category_9_Latched { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'; S7_HiddenAssignment := 'HideIfNoParamAssigned'} : Bool;   // Status - Latched Event - Cat. 9
+      Sts_Category_0_NotLatched { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'; S7_HiddenAssignment := 'HideIfNoParamAssigned'} : Bool;   // Status - NotLatched (Active) Event - Cat. 0
+      Sts_Category_1_NotLatched { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'; S7_HiddenAssignment := 'HideIfNoParamAssigned'} : Bool;   // Status - NotLatched (Active) Event - Cat. 1
+      Sts_Category_2_NotLatched { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'; S7_HiddenAssignment := 'HideIfNoParamAssigned'} : Bool;   // Status - NotLatched (Active) Event - Cat. 2
+      Sts_Category_3_NotLatched { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'; S7_HiddenAssignment := 'HideIfNoParamAssigned'} : Bool;   // Status - NotLatched (Active) Event - Cat. 3
+      Sts_Category_4_NotLatched { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'; S7_HiddenAssignment := 'HideIfNoParamAssigned'} : Bool;   // Status - NotLatched (Active) Event - Cat. 4
+      Sts_Category_5_NotLatched { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'; S7_HiddenAssignment := 'HideIfNoParamAssigned'} : Bool;   // Status - NotLatched (Active) Event - Cat. 5
+      Sts_Category_6_NotLatched { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'; S7_HiddenAssignment := 'HideIfNoParamAssigned'} : Bool;   // Status - NotLatched (Active) Event - Cat. 6
+      Sts_Category_7_NotLatched { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'; S7_HiddenAssignment := 'HideIfNoParamAssigned'} : Bool;   // Status - NotLatched (Active) Event - Cat. 7
+      Sts_Category_8_NotLatched { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'; S7_HiddenAssignment := 'HideIfNoParamAssigned'} : Bool;   // Status - NotLatched (Active) Event - Cat. 8
+      Sts_Category_9_NotLatched { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'; S7_HiddenAssignment := 'HideIfNoParamAssigned'} : Bool;   // Status - NotLatched (Active) Event - Cat. 9
+      Sts_CurrentActiveEvent { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // Active Event Exists
+      Sts_Error { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // Error in FB
+      Sts_ErrorCode { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : DInt;   // Error Code
+   END_VAR
+
+   VAR_IN_OUT 
+      In_EventStatus : "CPG_typeEventStatus";   // UDT of EventStatus
+      Sts_EventSummation : "CPG_typeEventSummation";   // UDT of EventSummation
+   END_VAR
+
+   VAR 
+      statFirstScan { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // 0=1st scan of FB; set to 1 after 1st FB scan...
+      statCfg_MaxEvents { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;   // number of events used from In_EventStatus array.
+      statEventsRemaining { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;   // number of events remaining
+      statCompareTrue { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // Compare true?
+      statIndex { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;   // Index counter
+      statIndex1 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;   // Index counter
+      statIndex2 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;   // Index counter
+      statIndex3 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;   // Index counter
+      statIndex3a { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;   // Index counter
+      statIndex3AOffset { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;   // Index counter
+      statWriteData { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;
+   END_VAR
+
+   VAR_TEMP 
+      tempDTL1 {InstructionName := 'DTL'; LibVersion := '1.0'} : DTL;   // Temp Date & Time value as DTL format
+      tempDTL2 {InstructionName := 'DTL'; LibVersion := '1.0'} : DTL;   // Temp Date & Time value as DTL format
+      tempMoveBlkVariantRetVal : Int;   // temp return value for BlockMoveVariant
+   END_VAR
+
+
+BEGIN
+	//============================================================================================================
+	// SIEMENS AG
+	// (c)Copyright 2018 All Rights Reserved
+	//------------------------------------------------------------------------------------------------------------
+	// Project: CPG Template
+	// Tested with: S7-1500 with FW version V2.1
+	// Engineering: TIA Portal V14
+	// Restrictions: ---
+	// Requirements: S7-1500
+	// Functionality:  Summarizes the "Data" from the equipment modules (from FB_EventManager) AND will create one list OF events FOR the unit machine.
+	//                 It summarizes the data by finding the unit machine first out event and summarizes which category of events are active.
+	//                 CPG_EventSummationBegin initializes the summation, and CPG_EventSummationEnd finalizes the summation.
+	// Support: tech.team.motioncontrol@siemens.com
+	//------------------------------------------------------------------------------------------------------------
+	// Change log table:
+	// Version       Date               Expert in charge    Changes applied
+	//  01.00.00     01.01.2018         MP                  Initial Release & PackML V2.1  Renamed CPG V1.0
+	//  01.01.00     29.05.2018         JP                  Adopted to styleguide
+	//============================================================================================================
+	// Function Block : CPG_EventSummation
+	//============================================================================================================
+	
+	
+	// ===========================================================================
+	//  BEGIN THE LOGIC SECTION:
+	//  First scan section
+	IF #statFirstScan = FALSE THEN
+	    // initialize & determine max array size
+	    // input array size (i.e. Array[0.."CPG_NO_STS_ELEMENTS_EVENT_STATUS"] of "typeCPG_Event")
+	    "CPG_ArrayLength"(arrayToBeSized := #In_EventStatus.sts_Events,
+	                      arraySize => #In_EventStatus.wrk_EventArraySize);
+	    
+	    "CPG_ArrayLength"(arrayToBeSized := #In_EventStatus.sts_Events,
+	                      arraySize => #statCfg_MaxEvents);
+	    
+	    #statFirstScan := TRUE;            // set the first scan bit 
+	END_IF;
+	// End of First Scan Section
+	
+	
+	// BEGIN THE MAIN LOGIC SECTION:
+	#Sts_ErrorCode := 0;               // Set the status error code
+	#statWriteData := FALSE;                // set write data to false
+	
+	// Set First Out Event
+	#tempDTL1 := #In_EventStatus.sts_FirstOutEvent.DateTimeDTL;                  // Date & Time of Sts_FirstOutEventCat[index].TimeEvent
+	
+	IF #tempDTL1 <> DTL#1970-01-01-00:00:00.0 THEN                                  // is In_EventStatus.Sts_FirstOutEvent.TimeEvent <> 0?
+	   #tempDTL2 := #Sts_EventSummation.sts_FirstOutEvent.DateTimeDTL;           // load the current value of the Sts_Eve..
+	   #statWriteData := FALSE;                                                   // Reset the write data command.
+	      IF #tempDTL2 = DTL#1970-01-01-00:00:00.0 THEN                             // is Sts_EventSummation.Sts_FirstOutEvent.TimeEvent = 0? 
+	           #statWriteData := TRUE;
+	      ELSIF #tempDTL1 < #tempDTL2 THEN                                   // is IN_event newer than Sts_event ?
+	          #statWriteData := TRUE;
+	      END_IF;     // End "IF (EQ_DT(DT1:=Sts_"
+	END_IF;         // End "IF (NOT(EQ_DT(DT1:=In_Ev"
+	
+	IF #statWriteData THEN 
+	   #Sts_EventSummation.sts_FirstOutEvent := #In_EventStatus.sts_FirstOutEvent;  // Update the First Fault event 
+	END_IF; 
+	
+	// Set First Out Event by Category
+	FOR #statIndex:= 0 TO 9 DO
+	    
+	    #tempDTL1:=#In_EventStatus.sts_FirstOutEventCat[#statIndex].DateTimeDTL;        // Date & Time of Sts_FirstOutEventCat[index].TimeEvent
+	    
+	    IF #tempDTL1 <> DTL#1970-01-01-00:00:00.0 THEN                                // is In_EventStatus.Sts_FirstOutEvent.TimeEvent <> 0?
+	        
+	        #tempDTL2:=#Sts_EventSummation.sts_FirstOutEventCat[#statIndex].DateTimeDTL;          // load the current value of the Sts_Eve..
+	        #statWriteData:=0;                   // Reset the write data command.
+	        
+	        IF #tempDTL2 = DTL#1970-01-01-00:00:00.0 THEN                              // is Sts_EventSummation.Sts_FirstOutEvent.TimeEvent = 0? 
+	            #statWriteData := TRUE;
+	            
+	        ELSIF #tempDTL1 < #tempDTL2 THEN   // is IN_event newer than Sts_event ?
+	            
+	            #statWriteData := TRUE;
+	            
+	        END_IF;     // End "IF (EQ_DT(DT1:=Sts_"
+	    END_IF;         // End "IF (NOT(EQ_DT(DT1:=In_Ev"
+	
+	    IF #statWriteData THEN 
+	        #Sts_EventSummation.sts_FirstOutEventCat[#statIndex] := #In_EventStatus.sts_FirstOutEventCat[#statIndex];  // Update the First Fault event 
+	    END_IF; 
+	END_FOR;     
+	
+	// ---------------------------------------------------------------
+	// Set Active Events
+	IF #In_EventStatus.sts_NumEvents > 0 THEN 
+	    IF #In_EventStatus.sts_NumEvents > 0 AND #Sts_EventSummation.sts_NumEvents > 0 THEN
+	        #statIndex1 := 0;
+	        FOR #statIndex := 0 TO #In_EventStatus.sts_NumEvents - 1 DO
+	            
+	            WHILE #statIndex1 < #Sts_EventSummation.sts_NumEvents DO
+	                
+	                #statCompareTrue := FALSE;
+	                #statIndex2 := 0;
+	                
+	                REPEAT
+	                    IF #In_EventStatus.sts_Events[#statIndex].DateTimeDTL = #Sts_EventSummation.sts_Events[#statIndex1].DateTimeDTL THEN
+	                        #statIndex2 := #statIndex2 + 1;
+	                        
+	                    ELSIF #In_EventStatus.sts_Events[#statIndex].DateTimeDTL < #Sts_EventSummation.sts_Events[#statIndex1].DateTimeDTL THEN
+	                        #statCompareTrue := TRUE;
+	                        
+	                        EXIT;  // Exit the REPEAT loop
+	                    ELSE
+	                        EXIT;  // Exit the REPEAT loop
+	                    END_IF;
+	                UNTIL #statIndex2 = 7
+	                END_REPEAT;
+	                
+	                IF #statCompareTrue THEN
+	                    #statEventsRemaining := #Sts_EventSummation.sts_NumEvents - #statIndex1;
+	                    #statIndex3AOffset := #statEventsRemaining - 1 + #statIndex1;
+	                    
+	                    FOR #statIndex3 := 0 TO #statEventsRemaining - 1 DO  // Backwards copy the data to shift it down to prevent the data from overwriting itself
+	                        #statIndex3a := #statIndex3AOffset - #statIndex3;
+	                        IF #statIndex3a + 1 < #Sts_EventSummation.wrk_EventArraySize THEN
+	                            #Sts_EventSummation.sts_Events[#statIndex3a + 1] := #Sts_EventSummation.sts_Events[#statIndex3a];
+	                        END_IF;
+	                    END_FOR;
+	                    
+	                    #Sts_EventSummation.sts_Events[#statIndex1] := #In_EventStatus.sts_Events[#statIndex];
+	                    
+	                    IF #Sts_EventSummation.sts_NumEvents < #Sts_EventSummation.wrk_EventArraySize THEN
+	                        #Sts_EventSummation.sts_NumEvents := #Sts_EventSummation.sts_NumEvents + 1;
+	                        #statIndex1 := #statIndex1 + 1;
+	                    END_IF;
+	                    
+	                    EXIT;  //Exit the WHILE loop
+	                END_IF;
+	                #statIndex1 := #statIndex1 + 1;
+	            END_WHILE;
+	            
+	            // If the WHILE loop is done, then bulk copy the remaining events into the event summation array.
+	            IF #statIndex1 = #Sts_EventSummation.sts_NumEvents THEN
+	                #statEventsRemaining := #In_EventStatus.sts_NumEvents - #statIndex;
+	                IF #statEventsRemaining + #Sts_EventSummation.sts_NumEvents > #Sts_EventSummation.wrk_EventArraySize THEN
+	                    #statEventsRemaining := #Sts_EventSummation.wrk_EventArraySize - #Sts_EventSummation.sts_NumEvents;
+	                    #Sts_ErrorCode := 1;
+	                END_IF;
+	                
+	                IF #statEventsRemaining > 0 THEN
+	                    #Sts_EventSummation.sts_Events[#statIndex1] := #In_EventStatus.sts_Events[#statIndex];
+	                    #Sts_EventSummation.sts_NumEvents := #Sts_EventSummation.sts_NumEvents + #statEventsRemaining;
+	                END_IF;
+	                EXIT;  //Exit the FOR loop
+	            END_IF;
+	        END_FOR;
+	    ELSIF #In_EventStatus.sts_NumEvents > 0 THEN
+	        // The current event summation array is empty, so just bulk copy the data over.
+	        IF #In_EventStatus.sts_NumEvents < #Sts_EventSummation.wrk_EventArraySize THEN
+	            
+	            #tempMoveBlkVariantRetVal := MOVE_BLK_VARIANT(SRC := #In_EventStatus.sts_Events,
+	                                                                 COUNT := INT_TO_UDINT(#In_EventStatus.sts_NumEvents),
+	                                                                 SRC_INDEX := 0,
+	                                                                 DEST_INDEX := 0,
+	                                                                 DEST => #Sts_EventSummation.sts_Events);
+	            #Sts_EventSummation.sts_NumEvents := #In_EventStatus.sts_NumEvents;
+	        ELSE
+	            
+	            #tempMoveBlkVariantRetVal := MOVE_BLK_VARIANT(SRC := #In_EventStatus.sts_Events,
+	                                                                 COUNT := INT_TO_UDINT (#Sts_EventSummation.wrk_EventArraySize),
+	                                                                 SRC_INDEX := 0,
+	                                                                 DEST_INDEX := 0,
+	                                                                 DEST => #Sts_EventSummation.sts_Events);
+	            #Sts_EventSummation.sts_NumEvents := #Sts_EventSummation.wrk_EventArraySize;
+	            #Sts_ErrorCode := 1;
+	        END_IF;
+	    
+	   
+	    END_IF;    
+	END_IF;
+	
+	// update the output
+	#Sts_NumEvents := #Sts_EventSummation.sts_NumEvents;
+	
+	// Set Category Bits
+	#Sts_EventSummation.wrk_Category_0_Latched := (#Sts_EventSummation.wrk_Category_0_Latched OR #In_EventStatus.sts_Category_0_Latched);
+	#Sts_EventSummation.wrk_Category_1_Latched := (#Sts_EventSummation.wrk_Category_1_Latched OR #In_EventStatus.sts_Category_1_Latched);
+	#Sts_EventSummation.wrk_Category_2_Latched := (#Sts_EventSummation.wrk_Category_2_Latched OR #In_EventStatus.sts_Category_2_Latched);
+	#Sts_EventSummation.wrk_Category_3_Latched := (#Sts_EventSummation.wrk_Category_3_Latched OR #In_EventStatus.sts_Category_3_Latched);
+	#Sts_EventSummation.wrk_Category_4_Latched := (#Sts_EventSummation.wrk_Category_4_Latched OR #In_EventStatus.sts_Category_4_Latched);
+	#Sts_EventSummation.wrk_Category_5_Latched := (#Sts_EventSummation.wrk_Category_5_Latched OR #In_EventStatus.sts_Category_5_Latched);
+	#Sts_EventSummation.wrk_Category_6_Latched := (#Sts_EventSummation.wrk_Category_6_Latched OR #In_EventStatus.sts_Category_6_Latched);
+	#Sts_EventSummation.wrk_Category_7_Latched := (#Sts_EventSummation.wrk_Category_7_Latched OR #In_EventStatus.sts_Category_7_Latched);
+	#Sts_EventSummation.wrk_Category_8_Latched := (#Sts_EventSummation.wrk_Category_8_Latched OR #In_EventStatus.sts_Category_8_Latched);
+	#Sts_EventSummation.wrk_Category_9_Latched := (#Sts_EventSummation.wrk_Category_9_Latched OR #In_EventStatus.sts_Category_9_Latched);
+	
+	#Sts_Category_0_Latched := #In_EventStatus.sts_Category_0_Latched;
+	#Sts_Category_1_Latched := #In_EventStatus.sts_Category_1_Latched;
+	#Sts_Category_2_Latched := #In_EventStatus.sts_Category_2_Latched;
+	#Sts_Category_3_Latched := #In_EventStatus.sts_Category_3_Latched;
+	#Sts_Category_4_Latched := #In_EventStatus.sts_Category_4_Latched;
+	#Sts_Category_5_Latched := #In_EventStatus.sts_Category_5_Latched;
+	#Sts_Category_6_Latched := #In_EventStatus.sts_Category_6_Latched;
+	#Sts_Category_7_Latched := #In_EventStatus.sts_Category_7_Latched;
+	#Sts_Category_8_Latched := #In_EventStatus.sts_Category_8_Latched;
+	#Sts_Category_9_Latched := #In_EventStatus.sts_Category_9_Latched;
+	
+	#Sts_EventSummation.wrk_Category_0_NotLatched := #Sts_EventSummation.wrk_Category_0_NotLatched OR #In_EventStatus.sts_Category_0_NotLatched;
+	#Sts_EventSummation.wrk_Category_1_NotLatched := #Sts_EventSummation.wrk_Category_1_NotLatched OR #In_EventStatus.sts_Category_1_NotLatched;
+	#Sts_EventSummation.wrk_Category_2_NotLatched := #Sts_EventSummation.wrk_Category_2_NotLatched OR #In_EventStatus.sts_Category_2_NotLatched;
+	#Sts_EventSummation.wrk_Category_3_NotLatched := #Sts_EventSummation.wrk_Category_3_NotLatched OR #In_EventStatus.sts_Category_3_NotLatched;
+	#Sts_EventSummation.wrk_Category_4_NotLatched := #Sts_EventSummation.wrk_Category_4_NotLatched OR #In_EventStatus.sts_Category_4_NotLatched;
+	#Sts_EventSummation.wrk_Category_5_NotLatched := #Sts_EventSummation.wrk_Category_5_NotLatched OR #In_EventStatus.sts_Category_5_NotLatched;
+	#Sts_EventSummation.wrk_Category_6_NotLatched := #Sts_EventSummation.wrk_Category_6_NotLatched OR #In_EventStatus.sts_Category_6_NotLatched;
+	#Sts_EventSummation.wrk_Category_7_NotLatched := #Sts_EventSummation.wrk_Category_7_NotLatched OR #In_EventStatus.sts_Category_7_NotLatched;
+	#Sts_EventSummation.wrk_Category_8_NotLatched := #Sts_EventSummation.wrk_Category_8_NotLatched OR #In_EventStatus.sts_Category_8_NotLatched;
+	#Sts_EventSummation.wrk_Category_9_NotLatched := #Sts_EventSummation.wrk_Category_9_NotLatched OR #In_EventStatus.sts_Category_9_NotLatched;
+	
+	#Sts_Category_0_NotLatched := #In_EventStatus.sts_Category_0_NotLatched;
+	#Sts_Category_1_NotLatched := #In_EventStatus.sts_Category_1_NotLatched;
+	#Sts_Category_2_NotLatched := #In_EventStatus.sts_Category_2_NotLatched;
+	#Sts_Category_3_NotLatched := #In_EventStatus.sts_Category_3_NotLatched;
+	#Sts_Category_4_NotLatched := #In_EventStatus.sts_Category_4_NotLatched;
+	#Sts_Category_5_NotLatched := #In_EventStatus.sts_Category_5_NotLatched;
+	#Sts_Category_6_NotLatched := #In_EventStatus.sts_Category_6_NotLatched;
+	#Sts_Category_7_NotLatched := #In_EventStatus.sts_Category_7_NotLatched;
+	#Sts_Category_8_NotLatched := #In_EventStatus.sts_Category_8_NotLatched;
+	#Sts_Category_9_NotLatched := #In_EventStatus.sts_Category_9_NotLatched;
+	
+	#Sts_EventSummation.wrk_CurrentActiveEvent := #Sts_EventSummation.wrk_CurrentActiveEvent OR #In_EventStatus.sts_CurrentActiveEvent;
+	
+	#Sts_CurrentActiveEvent := #In_EventStatus.sts_CurrentActiveEvent;
+	
+	// Set Error Bit
+	#Sts_Error := (#Sts_ErrorCode <> 0);
+	
+	//  -------------- END OF LOGIC -------------------------
+	ENO := TRUE;   // Set the ENO output
+	 
+	
+END_FUNCTION_BLOCK
+

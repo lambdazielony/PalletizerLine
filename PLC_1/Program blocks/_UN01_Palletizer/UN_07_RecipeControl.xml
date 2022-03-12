@@ -1,0 +1,2777 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V17" />
+  <DocumentInfo>
+    <Created>2022-03-12T16:05:15.6191488Z</Created>
+    <ExportSetting>WithDefaults</ExportSetting>
+    <InstalledProducts>
+      <Product>
+        <DisplayName>Totally Integrated Automation Portal</DisplayName>
+        <DisplayVersion>V17</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>TIA Portal Openness</DisplayName>
+        <DisplayVersion>V17</DisplayVersion>
+      </OptionPackage>
+      <OptionPackage>
+        <DisplayName>TIA Portal Version Control Interface</DisplayName>
+        <DisplayVersion>V17</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>STEP 7 Professional</DisplayName>
+        <DisplayVersion>V17</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>STEP 7 Safety</DisplayName>
+        <DisplayVersion>V17</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>WinCC Advanced / Unified PC</DisplayName>
+        <DisplayVersion>V17</DisplayVersion>
+      </Product>
+    </InstalledProducts>
+  </DocumentInfo>
+  <SW.Blocks.FB ID="0">
+    <AttributeList>
+      <AutoNumber>true</AutoNumber>
+      <HeaderAuthor>tech.team.motioncontrol@siemens.com</HeaderAuthor>
+      <HeaderFamily>CPG</HeaderFamily>
+      <HeaderName />
+      <HeaderVersion>1.0</HeaderVersion>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input" />
+  <Section Name="Output" />
+  <Section Name="InOut" />
+  <Section Name="Static">
+    <Member Name="instRecipeControl" Datatype="&quot;CPG_RecipeControl&quot;" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute></AttributeList><Sections><Section Name="Input"><Member Name="enable" Datatype="Bool" /><Member Name="recipeChangeID" Datatype="Int" /><Member Name="recipeChangeReq" Datatype="Bool" /><Member Name="recipeSaveReq" Datatype="Bool" /><Member Name="recipeSaveAsID" Datatype="Int" /><Member Name="recipeSaveAsReq" Datatype="Bool" /><Member Name="recipeCopySourceID" Datatype="Int" /><Member Name="recipeCopyID" Datatype="Int" /><Member Name="recipeCopyReq" Datatype="Bool" /><Member Name="newRecipeName" Datatype="String[60]" /><Member Name="recipeDeleteID" Datatype="Int" /><Member Name="recipeDeleteReq" Datatype="Bool" /><Member Name="resetAllTimes" Datatype="Bool" /></Section><Section Name="Output"><Member Name="currentRecipeID" Datatype="Int" /><Member Name="currentRecipeName" Datatype="String[60]" /><Member Name="recipeChangeDisabled" Datatype="Bool" /><Member Name="recipeSetpointDiff" Datatype="Bool" /><Member Name="recipeCurrentSeconds" Datatype="Time" /><Member Name="error" Datatype="Bool" /><Member Name="errorID" Datatype="Word" /></Section><Section Name="InOut"><Member Name="recipeControl" Datatype="&quot;CPG_typeRecipeControl&quot;"><Sections><Section Name="None" /></Sections></Member><Member Name="recipeNames" Datatype="Array[0..&quot;CPG_NO_OF_RECIPE_UPPER_LIM&quot;] of String[60]" /><Member Name="recipeCumSeconds" Datatype="Array[0..&quot;CPG_NO_OF_RECIPE_UPPER_LIM&quot;] of Time" /><Member Name="recipeSaveDates" Datatype="Array[0..&quot;CPG_NO_OF_RECIPE_UPPER_LIM&quot;] of DTL" Version="1.0" /></Section><Section Name="Static"><Member Name="statSetpoinDiffTimer" Datatype="TON_TIME" Version="1.0"><Sections><Section Name="None"><Member Name="PT" Datatype="Time" /><Member Name="ET" Datatype="Time" /><Member Name="IN" Datatype="Bool" /><Member Name="Q" Datatype="Bool" /></Section></Sections></Member><Member Name="statPrevRecipe" Datatype="Int" /><Member Name="statChangeReq" Datatype="R_TRIG" Version="1.0"><Sections><Section Name="Input"><Member Name="CLK" Datatype="Bool" /></Section><Section Name="Output"><Member Name="Q" Datatype="Bool" /></Section><Section Name="InOut" /><Section Name="Static"><Member Name="Stat_Bit" Datatype="Bool" /></Section></Sections></Member><Member Name="statSaveReq" Datatype="R_TRIG" Version="1.0"><Sections><Section Name="Input"><Member Name="CLK" Datatype="Bool" /></Section><Section Name="Output"><Member Name="Q" Datatype="Bool" /></Section><Section Name="InOut" /><Section Name="Static"><Member Name="Stat_Bit" Datatype="Bool" /></Section></Sections></Member><Member Name="statSaveAsReq" Datatype="R_TRIG" Version="1.0"><Sections><Section Name="Input"><Member Name="CLK" Datatype="Bool" /></Section><Section Name="Output"><Member Name="Q" Datatype="Bool" /></Section><Section Name="InOut" /><Section Name="Static"><Member Name="Stat_Bit" Datatype="Bool" /></Section></Sections></Member><Member Name="statCopyReq" Datatype="R_TRIG" Version="1.0"><Sections><Section Name="Input"><Member Name="CLK" Datatype="Bool" /></Section><Section Name="Output"><Member Name="Q" Datatype="Bool" /></Section><Section Name="InOut" /><Section Name="Static"><Member Name="Stat_Bit" Datatype="Bool" /></Section></Sections></Member><Member Name="statDeleteReq" Datatype="R_TRIG" Version="1.0"><Sections><Section Name="Input"><Member Name="CLK" Datatype="Bool" /></Section><Section Name="Output"><Member Name="Q" Datatype="Bool" /></Section><Section Name="InOut" /><Section Name="Static"><Member Name="Stat_Bit" Datatype="Bool" /></Section></Sections></Member><Member Name="statChangeTimer" Datatype="TP_TIME" Version="1.0"><Sections><Section Name="None"><Member Name="PT" Datatype="Time" /><Member Name="ET" Datatype="Time" /><Member Name="IN" Datatype="Bool" /><Member Name="Q" Datatype="Bool" /></Section></Sections></Member><Member Name="statChangeTimerFall" Datatype="F_TRIG" Version="1.0"><Sections><Section Name="Input"><Member Name="CLK" Datatype="Bool" /></Section><Section Name="Output"><Member Name="Q" Datatype="Bool" /></Section><Section Name="InOut" /><Section Name="Static"><Member Name="Stat_Bit" Datatype="Bool" /></Section></Sections></Member><Member Name="statSaveTimer" Datatype="TP_TIME" Version="1.0"><Sections><Section Name="None"><Member Name="PT" Datatype="Time" /><Member Name="ET" Datatype="Time" /><Member Name="IN" Datatype="Bool" /><Member Name="Q" Datatype="Bool" /></Section></Sections></Member><Member Name="statSaveTimerFall" Datatype="F_TRIG" Version="1.0"><Sections><Section Name="Input"><Member Name="CLK" Datatype="Bool" /></Section><Section Name="Output"><Member Name="Q" Datatype="Bool" /></Section><Section Name="InOut" /><Section Name="Static"><Member Name="Stat_Bit" Datatype="Bool" /></Section></Sections></Member><Member Name="statSaveAsTimer" Datatype="TP_TIME" Version="1.0"><Sections><Section Name="None"><Member Name="PT" Datatype="Time" /><Member Name="ET" Datatype="Time" /><Member Name="IN" Datatype="Bool" /><Member Name="Q" Datatype="Bool" /></Section></Sections></Member><Member Name="statSaveAsTimerFall" Datatype="F_TRIG" Version="1.0"><Sections><Section Name="Input"><Member Name="CLK" Datatype="Bool" /></Section><Section Name="Output"><Member Name="Q" Datatype="Bool" /></Section><Section Name="InOut" /><Section Name="Static"><Member Name="Stat_Bit" Datatype="Bool" /></Section></Sections></Member><Member Name="statCopyTimer" Datatype="TP_TIME" Version="1.0"><Sections><Section Name="None"><Member Name="PT" Datatype="Time" /><Member Name="ET" Datatype="Time" /><Member Name="IN" Datatype="Bool" /><Member Name="Q" Datatype="Bool" /></Section></Sections></Member><Member Name="statCopyTimerFall" Datatype="F_TRIG" Version="1.0"><Sections><Section Name="Input"><Member Name="CLK" Datatype="Bool" /></Section><Section Name="Output"><Member Name="Q" Datatype="Bool" /></Section><Section Name="InOut" /><Section Name="Static"><Member Name="Stat_Bit" Datatype="Bool" /></Section></Sections></Member><Member Name="statDeleteTimer" Datatype="TP_TIME" Version="1.0"><Sections><Section Name="None"><Member Name="PT" Datatype="Time" /><Member Name="ET" Datatype="Time" /><Member Name="IN" Datatype="Bool" /><Member Name="Q" Datatype="Bool" /></Section></Sections></Member><Member Name="statDeleteTimerFall" Datatype="F_TRIG" Version="1.0"><Sections><Section Name="Input"><Member Name="CLK" Datatype="Bool" /></Section><Section Name="Output"><Member Name="Q" Datatype="Bool" /></Section><Section Name="InOut" /><Section Name="Static"><Member Name="Stat_Bit" Datatype="Bool" /></Section></Sections></Member><Member Name="statPrevCumSeconds" Datatype="Array[0..&quot;CPG_NO_OF_RECIPE_UPPER_LIM&quot;] of Time" /><Member Name="statChangeTimeStamp" Datatype="DTL" Version="1.0" /></Section></Sections></Member>
+    <Member Name="instRecipeManager" Datatype="&quot;CPG_RecipeHMIManager&quot;" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute></AttributeList><Sections><Section Name="Input"><Member Name="recipePopupTrackers" Datatype="Array[0..3] of Int" /></Section><Section Name="Output"><Member Name="setpointsArray_REAL" Datatype="Array[0..11] of &quot;CPG_typeRecipeSetpoint_REAL&quot;"><Sections><Section Name="None"><Member Name="IN" Datatype="Real" /><Member Name="SaveSetpoint" Datatype="Bool" /><Member Name="RevertSetpoint" Datatype="Bool" /><Member Name="RecipeValues" Datatype="Array[0..&quot;CPG_NO_OF_RECIPE_UPPER_LIM&quot;] of Real" /><Member Name="SetpointName" Datatype="Array[0..&quot;LPMLV30_LANGUAGES_UPPER_LIM&quot;] of String[60]" /><Member Name="CurrentName" Datatype="String[60]" /><Member Name="minLimit" Datatype="Real" /><Member Name="maxLimit" Datatype="Real" /><Member Name="unit" Datatype="String[60]" /><Member Name="DisableRecipeControl" Datatype="Bool" /><Member Name="SetpointChangeEnabled" Datatype="Bool" /><Member Name="SetpointChangeDisabled" Datatype="Bool" /><Member Name="RecipeSetpointDiff" Datatype="Bool" /><Member Name="minLimitReached" Datatype="Bool" /><Member Name="maxLimitReached" Datatype="Bool" /><Member Name="OUT" Datatype="Real" /><Member Name="CurrentRecipeValue" Datatype="Real" /><Member Name="RecipeValueA" Datatype="Real" /><Member Name="RecipeValueB" Datatype="Real" /><Member Name="RecipeValueC" Datatype="Real" /></Section></Sections></Member><Member Name="setpointsArray_DINT" Datatype="Array[0..11] of &quot;CPG_typeRecipeSetpoint_DINT&quot;"><Sections><Section Name="None"><Member Name="IN" Datatype="DInt" /><Member Name="SaveSetpoint" Datatype="Bool" /><Member Name="RevertSetpoint" Datatype="Bool" /><Member Name="RecipeValues" Datatype="Array[0..&quot;CPG_NO_OF_RECIPE_UPPER_LIM&quot;] of DInt" /><Member Name="SetpointName" Datatype="Array[0..&quot;LPMLV30_LANGUAGES_UPPER_LIM&quot;] of String[60]" /><Member Name="CurrentName" Datatype="String[60]" /><Member Name="minLimit" Datatype="DInt" /><Member Name="maxLimit" Datatype="DInt" /><Member Name="unit" Datatype="String[60]" /><Member Name="DisableRecipeControl" Datatype="Bool" /><Member Name="SetpointChangeEnabled" Datatype="Bool" /><Member Name="SetpointChangeDisabled" Datatype="Bool" /><Member Name="RecipeSetpointDiff" Datatype="Bool" /><Member Name="minLimitReached" Datatype="Bool" /><Member Name="maxLimitReached" Datatype="Bool" /><Member Name="OUT" Datatype="DInt" /><Member Name="CurrentRecipeValue" Datatype="DInt" /><Member Name="RecipeValueA" Datatype="DInt" /><Member Name="RecipeValueB" Datatype="DInt" /><Member Name="RecipeValueC" Datatype="DInt" /></Section></Sections></Member><Member Name="setpointsArray_BOOL" Datatype="Array[0..11] of &quot;CPG_typeRecipeSetpoint_BOOL&quot;"><Sections><Section Name="None"><Member Name="IN" Datatype="Bool" /><Member Name="SaveSetpoint" Datatype="Bool" /><Member Name="RevertSetpoint" Datatype="Bool" /><Member Name="RecipeValues" Datatype="Array[0..&quot;CPG_NO_OF_RECIPE_UPPER_LIM&quot;] of Bool" /><Member Name="SetpointName" Datatype="Array[0..&quot;LPMLV30_LANGUAGES_UPPER_LIM&quot;] of String[60]" /><Member Name="Text_True" Datatype="Array[0..&quot;LPMLV30_LANGUAGES_UPPER_LIM&quot;] of String[60]" /><Member Name="Text_False" Datatype="Array[0..&quot;LPMLV30_LANGUAGES_UPPER_LIM&quot;] of String[60]" /><Member Name="CurrentName" Datatype="String[60]" /><Member Name="CurrentTextTrue" Datatype="String[60]" /><Member Name="CurrentTextFalse" Datatype="String[60]" /><Member Name="DisableRecipeControl" Datatype="Bool" /><Member Name="SetpointChangeEnabled" Datatype="Bool" /><Member Name="SetpointChangeDisabled" Datatype="Bool" /><Member Name="RecipeSetpointDiff" Datatype="Bool" /><Member Name="OUT" Datatype="Bool" /><Member Name="Out_Text" Datatype="String[60]" /><Member Name="CurrentRecipeValue" Datatype="Bool" /><Member Name="CurrentRecipeValue_Text" Datatype="String[60]" /><Member Name="RecipeValueA" Datatype="Bool" /><Member Name="RecipeA_Text" Datatype="String[60]" /><Member Name="RecipeValueB" Datatype="Bool" /><Member Name="RecipeB_Text" Datatype="String[60]" /><Member Name="RecipeValueC" Datatype="Bool" /><Member Name="RecipeC_Text" Datatype="String[60]" /></Section></Sections></Member><Member Name="setpointsArray_STRING" Datatype="Array[0..11] of &quot;CPG_typeRecipeSetpoint_STRING&quot;"><Sections><Section Name="None"><Member Name="IN" Datatype="String[60]" /><Member Name="SaveSetpoint" Datatype="Bool" /><Member Name="RevertSetpoint" Datatype="Bool" /><Member Name="RecipeValues" Datatype="Array[0..&quot;CPG_NO_OF_RECIPE_UPPER_LIM&quot;] of String[60]" /><Member Name="SetpointName" Datatype="Array[0..&quot;LPMLV30_LANGUAGES_UPPER_LIM&quot;] of String[60]" /><Member Name="CurrentSetpointName" Datatype="String[60]" /><Member Name="DisableRecipeControl" Datatype="Bool" /><Member Name="SetpointChangeEnabled" Datatype="Bool" /><Member Name="SetpointChangeDisabled" Datatype="Bool" /><Member Name="RecipeSetpointDiff" Datatype="Bool" /><Member Name="OUT" Datatype="String[60]" /><Member Name="CurrentRecipeValue" Datatype="String[60]" /><Member Name="RecipeValueA" Datatype="String[60]" /><Member Name="RecipeValueB" Datatype="String[60]" /><Member Name="RecipeValueC" Datatype="String[60]" /></Section></Sections></Member><Member Name="recipeMaxPages" Datatype="Array[0..4] of Int" /><Member Name="setpointFaceplatesDisable_REAL" Datatype="Array[0..11] of Bool" /><Member Name="setpoint FaceplatesDisable_DINT" Datatype="Array[0..11] of Bool" /><Member Name="setpoint FaceplatesDisable_BOOL" Datatype="Array[0..11] of Bool" /><Member Name="setpoint FaceplatesDisable_STRING" Datatype="Array[0..11] of Bool" /><Member Name="recipeArrayNames" Datatype="Array[0..19] of String[60]" /><Member Name="recipeArraySaves" Datatype="Array[0..19] of DTL" Version="1.0" /><Member Name="recipeArrayTimes" Datatype="Array[0..19] of Time" /><Member Name="recipeArrayDisables" Datatype="Array[0..19] of Bool" /><Member Name="recipeArrayNums" Datatype="Array[0..19] of Int" /></Section><Section Name="InOut"><Member Name="setpoints_REAL" Datatype="Array[*] of &quot;CPG_typeRecipeSetpoint_REAL&quot;"><Sections><Section Name="None" /></Sections></Member><Member Name="setpoints_DINT" Datatype="Array[*] of &quot;CPG_typeRecipeSetpoint_DINT&quot;"><Sections><Section Name="None" /></Sections></Member><Member Name="setpoints_BOOL" Datatype="Array[*] of &quot;CPG_typeRecipeSetpoint_BOOL&quot;"><Sections><Section Name="None" /></Sections></Member><Member Name="setpoints_STRING" Datatype="Array[*] of &quot;CPG_typeRecipeSetpoint_STRING&quot;"><Sections><Section Name="None" /></Sections></Member><Member Name="recipePopup_REAL" Datatype="&quot;CPG_typeRecipeSetpoint_REAL&quot;"><Sections><Section Name="None" /></Sections></Member><Member Name="recipePopup_DINT" Datatype="&quot;CPG_typeRecipeSetpoint_DINT&quot;"><Sections><Section Name="None" /></Sections></Member><Member Name="recipePopup_BOOL" Datatype="&quot;CPG_typeRecipeSetpoint_BOOL&quot;"><Sections><Section Name="None" /></Sections></Member><Member Name="recipePopup_STRING" Datatype="&quot;CPG_typeRecipeSetpoint_STRING&quot;"><Sections><Section Name="None" /></Sections></Member><Member Name="recipeCurrentPages" Datatype="Array[0..4] of Int" /><Member Name="recipeNamesArray" Datatype="Array[*] of String[60]" /><Member Name="recipeSavesArray" Datatype="Array[*] of DTL" Version="1.0" /><Member Name="recipeTimesArray" Datatype="Array[*] of Time" /></Section><Section Name="Static"><Member Name="statPrevCurrentPages" Datatype="Array[0..4] of Int" /><Member Name="statPrevPopupTrackers" Datatype="Array[0..3] of Int" /><Member Name="statPrevPopupsSave" Datatype="Array[0..3] of Bool" /><Member Name="statPrevPopupsRevert" Datatype="Array[0..3] of Bool" /><Member Name="statPrevPopupIN_REAL" Datatype="Real" /><Member Name="statPrevSetpointIN_REAL" Datatype="Real" /><Member Name="statPrevPopupIN_DINT" Datatype="DInt" /><Member Name="statPrevSetpointIN_DINT" Datatype="DInt" /><Member Name="statPrevPopupIn_BOOL" Datatype="Bool" /><Member Name="statPrevSetpointIn_BOOL" Datatype="Bool" /><Member Name="statPrevPopupIn_STRING" Datatype="String[60]" /><Member Name="statPrevSetpointIn_STRING" Datatype="String[60]" /></Section></Sections></Member>
+    <Member Name="ONS_RecipeChange" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="ONS_SaveAsChange" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="ONS_DeleteChange" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="ONS_CopyChange" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+  </Section>
+  <Section Name="Temp">
+    <Member Name="tempEnablechange" Datatype="Bool" />
+    <Member Name="tempRecipenewname" Datatype="String[60]" />
+    <Member Name="tempErrorID" Datatype="Word" />
+    <Member Name="tempError" Datatype="Word" />
+    <Member Name="tempSeconds" Datatype="Time" />
+  </Section>
+  <Section Name="Constant">
+    <Member Name="ERR_CHANGE" Datatype="Word" Accessibility="Public">
+      <StartValue>16#8001</StartValue>
+    </Member>
+    <Member Name="ERR_SAVE" Datatype="Word" Accessibility="Public">
+      <StartValue>16#8002</StartValue>
+    </Member>
+    <Member Name="ERR_COPY" Datatype="Word" Accessibility="Public">
+      <StartValue>16#8004</StartValue>
+    </Member>
+    <Member Name="ERR_DELETE" Datatype="Word" Accessibility="Public">
+      <StartValue>16#8008</StartValue>
+    </Member>
+  </Section>
+</Sections></Interface>
+      <IsIECCheckEnabled>false</IsIECCheckEnabled>
+      <IsRetainMemResEnabled>false</IsRetainMemResEnabled>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <MemoryReserve>100</MemoryReserve>
+      <Name>UN_07_RecipeControl</Name>
+      <Number>31627</Number>
+      <ProgrammingLanguage>LAD</ProgrammingLanguage>
+      <SetENOAutomatically>false</SetENOAutomatically>
+      <UDABlockProperties />
+      <UDAEnableTagReadback>false</UDAEnableTagReadback>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text>Support: tech.team.motioncontrol@siemens.com</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="3" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text>Support: tech.team.motioncontrol@siemens.com</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="4" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="State" />
+        <Component Name="Idle" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="State" />
+        <Component Name="Complete" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="23">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="State" />
+        <Component Name="Resetting" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="State" />
+        <Component Name="Clearing" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="25">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="State" />
+        <Component Name="Stopped" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="26">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="State" />
+        <Component Name="Aborted" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="27">
+      <Symbol>
+        <Component Name="tempEnablechange" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="28" />
+    <Part Name="Contact" UId="29" />
+    <Part Name="Contact" UId="30" />
+    <Part Name="Contact" UId="31" />
+    <Part Name="Contact" UId="32" />
+    <Part Name="Contact" UId="33" />
+    <Part Name="O" UId="34">
+      <TemplateValue Name="Card" Type="Cardinality">6</TemplateValue>
+    </Part>
+    <Part Name="Coil" UId="35" />
+  </Parts>
+  <Wires>
+    <Wire UId="36">
+      <Powerrail />
+      <NameCon UId="28" Name="in" />
+      <NameCon UId="29" Name="in" />
+      <NameCon UId="30" Name="in" />
+      <NameCon UId="31" Name="in" />
+      <NameCon UId="32" Name="in" />
+      <NameCon UId="33" Name="in" />
+    </Wire>
+    <Wire UId="37">
+      <IdentCon UId="21" />
+      <NameCon UId="28" Name="operand" />
+    </Wire>
+    <Wire UId="38">
+      <NameCon UId="28" Name="out" />
+      <NameCon UId="34" Name="in1" />
+    </Wire>
+    <Wire UId="39">
+      <IdentCon UId="22" />
+      <NameCon UId="29" Name="operand" />
+    </Wire>
+    <Wire UId="40">
+      <NameCon UId="29" Name="out" />
+      <NameCon UId="34" Name="in2" />
+    </Wire>
+    <Wire UId="41">
+      <IdentCon UId="23" />
+      <NameCon UId="30" Name="operand" />
+    </Wire>
+    <Wire UId="42">
+      <NameCon UId="30" Name="out" />
+      <NameCon UId="34" Name="in3" />
+    </Wire>
+    <Wire UId="43">
+      <IdentCon UId="24" />
+      <NameCon UId="31" Name="operand" />
+    </Wire>
+    <Wire UId="44">
+      <NameCon UId="31" Name="out" />
+      <NameCon UId="34" Name="in4" />
+    </Wire>
+    <Wire UId="45">
+      <IdentCon UId="25" />
+      <NameCon UId="32" Name="operand" />
+    </Wire>
+    <Wire UId="46">
+      <NameCon UId="32" Name="out" />
+      <NameCon UId="34" Name="in5" />
+    </Wire>
+    <Wire UId="47">
+      <IdentCon UId="26" />
+      <NameCon UId="33" Name="operand" />
+    </Wire>
+    <Wire UId="48">
+      <NameCon UId="33" Name="out" />
+      <NameCon UId="34" Name="in6" />
+    </Wire>
+    <Wire UId="49">
+      <NameCon UId="34" Name="out" />
+      <NameCon UId="35" Name="in" />
+    </Wire>
+    <Wire UId="50">
+      <IdentCon UId="27" />
+      <NameCon UId="35" Name="operand" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="5" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="6" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="7" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="8" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="9" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Determine if recipe change is permitted based on machine state</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Determine if recipe change is permitted based on machine state</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="B" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="LocalVariable" UId="21">
+      <Symbol>
+        <Component Name="tempEnablechange" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Indicator" />
+        <Component Name="saveAsConfirm" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="23">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Indicator" />
+        <Component Name="copyConfirm" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Indicator" />
+        <Component Name="deleteConfirm" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="25">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Command" />
+        <Component Name="Change" />
+        <Component Name="changeCmd" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="26">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Indicator" />
+        <Component Name="changeConfirm" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="27">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Command" />
+        <Component Name="Change" />
+        <Component Name="cancel" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="28">
+      <Symbol>
+        <Component Name="RecipeCfg" />
+        <Component Name="recipeControl" />
+        <Component Name="RecipeChange" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="29">
+      <Symbol>
+        <Component Name="ONS_RecipeChange" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="30">
+      <Symbol>
+        <Component Name="tempEnablechange" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="31">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Indicator" />
+        <Component Name="changeConfirm" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="32" />
+    <Part Name="Contact" UId="33">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="34">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="35">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="36" />
+    <Part Name="SCoil" UId="37" />
+    <Part Name="Contact" UId="38" />
+    <Part Name="NContact" UId="39" />
+    <Part Name="Contact" UId="40">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="O" UId="41">
+      <TemplateValue Name="Card" Type="Cardinality">3</TemplateValue>
+    </Part>
+    <Part Name="RCoil" UId="42" />
+  </Parts>
+  <Wires>
+    <Wire UId="43">
+      <Powerrail />
+      <NameCon UId="32" Name="in" />
+      <NameCon UId="38" Name="in" />
+      <NameCon UId="39" Name="pre" />
+      <NameCon UId="40" Name="in" />
+    </Wire>
+    <Wire UId="44">
+      <IdentCon UId="21" />
+      <NameCon UId="32" Name="operand" />
+    </Wire>
+    <Wire UId="45">
+      <NameCon UId="32" Name="out" />
+      <NameCon UId="33" Name="in" />
+    </Wire>
+    <Wire UId="46">
+      <IdentCon UId="22" />
+      <NameCon UId="33" Name="operand" />
+    </Wire>
+    <Wire UId="47">
+      <NameCon UId="33" Name="out" />
+      <NameCon UId="34" Name="in" />
+    </Wire>
+    <Wire UId="48">
+      <IdentCon UId="23" />
+      <NameCon UId="34" Name="operand" />
+    </Wire>
+    <Wire UId="49">
+      <NameCon UId="34" Name="out" />
+      <NameCon UId="35" Name="in" />
+    </Wire>
+    <Wire UId="50">
+      <IdentCon UId="24" />
+      <NameCon UId="35" Name="operand" />
+    </Wire>
+    <Wire UId="51">
+      <NameCon UId="35" Name="out" />
+      <NameCon UId="36" Name="in" />
+    </Wire>
+    <Wire UId="52">
+      <IdentCon UId="25" />
+      <NameCon UId="36" Name="operand" />
+    </Wire>
+    <Wire UId="53">
+      <NameCon UId="36" Name="out" />
+      <NameCon UId="37" Name="in" />
+    </Wire>
+    <Wire UId="54">
+      <IdentCon UId="26" />
+      <NameCon UId="37" Name="operand" />
+    </Wire>
+    <Wire UId="55">
+      <IdentCon UId="27" />
+      <NameCon UId="38" Name="operand" />
+    </Wire>
+    <Wire UId="56">
+      <NameCon UId="38" Name="out" />
+      <NameCon UId="41" Name="in1" />
+    </Wire>
+    <Wire UId="57">
+      <IdentCon UId="29" />
+      <NameCon UId="39" Name="bit" />
+    </Wire>
+    <Wire UId="58">
+      <IdentCon UId="28" />
+      <NameCon UId="39" Name="operand" />
+    </Wire>
+    <Wire UId="59">
+      <NameCon UId="39" Name="out" />
+      <NameCon UId="41" Name="in2" />
+    </Wire>
+    <Wire UId="60">
+      <IdentCon UId="30" />
+      <NameCon UId="40" Name="operand" />
+    </Wire>
+    <Wire UId="61">
+      <NameCon UId="40" Name="out" />
+      <NameCon UId="41" Name="in3" />
+    </Wire>
+    <Wire UId="62">
+      <NameCon UId="41" Name="out" />
+      <NameCon UId="42" Name="in" />
+    </Wire>
+    <Wire UId="63">
+      <IdentCon UId="31" />
+      <NameCon UId="42" Name="operand" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="C" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="D" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="F" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="10" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Canceling Recipe interlocks</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="11" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Canceling Recipe interlocks</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="12" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Indicator" />
+        <Component Name="changeConfirm" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Indicator" />
+        <Component Name="copyConfirm" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="23">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Indicator" />
+        <Component Name="deleteConfirm" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Command" />
+        <Component Name="Save" />
+        <Component Name="saveAsCmd" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="25">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Indicator" />
+        <Component Name="saveAsConfirm" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="26">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Command" />
+        <Component Name="Save" />
+        <Component Name="cancel" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="27">
+      <Symbol>
+        <Component Name="RecipeCfg" />
+        <Component Name="recipeControl" />
+        <Component Name="RecipeSave" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="28">
+      <Symbol>
+        <Component Name="ONS_SaveAsChange" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="29">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Indicator" />
+        <Component Name="saveAsConfirm" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="30">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="31">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="32">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="33" />
+    <Part Name="SCoil" UId="34" />
+    <Part Name="Contact" UId="35" />
+    <Part Name="NContact" UId="36" />
+    <Part Name="O" UId="37">
+      <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+    </Part>
+    <Part Name="RCoil" UId="38" />
+  </Parts>
+  <Wires>
+    <Wire UId="39">
+      <Powerrail />
+      <NameCon UId="30" Name="in" />
+    </Wire>
+    <Wire UId="40">
+      <IdentCon UId="21" />
+      <NameCon UId="30" Name="operand" />
+    </Wire>
+    <Wire UId="41">
+      <NameCon UId="30" Name="out" />
+      <NameCon UId="31" Name="in" />
+    </Wire>
+    <Wire UId="42">
+      <IdentCon UId="22" />
+      <NameCon UId="31" Name="operand" />
+    </Wire>
+    <Wire UId="43">
+      <NameCon UId="31" Name="out" />
+      <NameCon UId="32" Name="in" />
+    </Wire>
+    <Wire UId="44">
+      <IdentCon UId="23" />
+      <NameCon UId="32" Name="operand" />
+    </Wire>
+    <Wire UId="45">
+      <NameCon UId="32" Name="out" />
+      <NameCon UId="33" Name="in" />
+      <NameCon UId="35" Name="in" />
+      <NameCon UId="36" Name="pre" />
+    </Wire>
+    <Wire UId="46">
+      <IdentCon UId="24" />
+      <NameCon UId="33" Name="operand" />
+    </Wire>
+    <Wire UId="47">
+      <NameCon UId="33" Name="out" />
+      <NameCon UId="34" Name="in" />
+    </Wire>
+    <Wire UId="48">
+      <IdentCon UId="25" />
+      <NameCon UId="34" Name="operand" />
+    </Wire>
+    <Wire UId="49">
+      <IdentCon UId="26" />
+      <NameCon UId="35" Name="operand" />
+    </Wire>
+    <Wire UId="50">
+      <NameCon UId="35" Name="out" />
+      <NameCon UId="37" Name="in1" />
+    </Wire>
+    <Wire UId="51">
+      <IdentCon UId="28" />
+      <NameCon UId="36" Name="bit" />
+    </Wire>
+    <Wire UId="52">
+      <IdentCon UId="27" />
+      <NameCon UId="36" Name="operand" />
+    </Wire>
+    <Wire UId="53">
+      <NameCon UId="36" Name="out" />
+      <NameCon UId="37" Name="in2" />
+    </Wire>
+    <Wire UId="54">
+      <NameCon UId="37" Name="out" />
+      <NameCon UId="38" Name="in" />
+    </Wire>
+    <Wire UId="55">
+      <IdentCon UId="29" />
+      <NameCon UId="38" Name="operand" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="13" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="14" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="15" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="16" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="17" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Save As Recipe interlocks</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="18" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Save As Recipe interlocks</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="19" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Indicator" />
+        <Component Name="changeConfirm" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Indicator" />
+        <Component Name="saveAsConfirm" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="23">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Indicator" />
+        <Component Name="deleteConfirm" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Command" />
+        <Component Name="Copy" />
+        <Component Name="copyCmd" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="25">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Indicator" />
+        <Component Name="copyConfirm" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="26">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Command" />
+        <Component Name="Copy" />
+        <Component Name="cancel" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="27">
+      <Symbol>
+        <Component Name="RecipeCfg" />
+        <Component Name="recipeControl" />
+        <Component Name="RecipeCopy" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="28">
+      <Symbol>
+        <Component Name="ONS_CopyChange" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="29">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Indicator" />
+        <Component Name="copyConfirm" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="30">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="31">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="32">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="33" />
+    <Part Name="SCoil" UId="34" />
+    <Part Name="Contact" UId="35" />
+    <Part Name="NContact" UId="36" />
+    <Part Name="O" UId="37">
+      <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+    </Part>
+    <Part Name="RCoil" UId="38" />
+  </Parts>
+  <Wires>
+    <Wire UId="39">
+      <Powerrail />
+      <NameCon UId="30" Name="in" />
+    </Wire>
+    <Wire UId="40">
+      <IdentCon UId="21" />
+      <NameCon UId="30" Name="operand" />
+    </Wire>
+    <Wire UId="41">
+      <NameCon UId="30" Name="out" />
+      <NameCon UId="31" Name="in" />
+    </Wire>
+    <Wire UId="42">
+      <IdentCon UId="22" />
+      <NameCon UId="31" Name="operand" />
+    </Wire>
+    <Wire UId="43">
+      <NameCon UId="31" Name="out" />
+      <NameCon UId="32" Name="in" />
+    </Wire>
+    <Wire UId="44">
+      <IdentCon UId="23" />
+      <NameCon UId="32" Name="operand" />
+    </Wire>
+    <Wire UId="45">
+      <NameCon UId="32" Name="out" />
+      <NameCon UId="33" Name="in" />
+      <NameCon UId="35" Name="in" />
+      <NameCon UId="36" Name="pre" />
+    </Wire>
+    <Wire UId="46">
+      <IdentCon UId="24" />
+      <NameCon UId="33" Name="operand" />
+    </Wire>
+    <Wire UId="47">
+      <NameCon UId="33" Name="out" />
+      <NameCon UId="34" Name="in" />
+    </Wire>
+    <Wire UId="48">
+      <IdentCon UId="25" />
+      <NameCon UId="34" Name="operand" />
+    </Wire>
+    <Wire UId="49">
+      <IdentCon UId="26" />
+      <NameCon UId="35" Name="operand" />
+    </Wire>
+    <Wire UId="50">
+      <NameCon UId="35" Name="out" />
+      <NameCon UId="37" Name="in1" />
+    </Wire>
+    <Wire UId="51">
+      <IdentCon UId="28" />
+      <NameCon UId="36" Name="bit" />
+    </Wire>
+    <Wire UId="52">
+      <IdentCon UId="27" />
+      <NameCon UId="36" Name="operand" />
+    </Wire>
+    <Wire UId="53">
+      <NameCon UId="36" Name="out" />
+      <NameCon UId="37" Name="in2" />
+    </Wire>
+    <Wire UId="54">
+      <NameCon UId="37" Name="out" />
+      <NameCon UId="38" Name="in" />
+    </Wire>
+    <Wire UId="55">
+      <IdentCon UId="29" />
+      <NameCon UId="38" Name="operand" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="1A" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="1B" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="1C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="1D" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="1E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Copy Recipe interlocks</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="1F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Copy Recipe interlocks</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="20" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Indicator" />
+        <Component Name="changeConfirm" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Indicator" />
+        <Component Name="saveAsConfirm" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="23">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Indicator" />
+        <Component Name="copyConfirm" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Command" />
+        <Component Name="Delete" />
+        <Component Name="deleteCmd" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="25">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Indicator" />
+        <Component Name="deleteConfirm" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="26">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Command" />
+        <Component Name="Delete" />
+        <Component Name="cancel" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="27">
+      <Symbol>
+        <Component Name="RecipeCfg" />
+        <Component Name="recipeControl" />
+        <Component Name="RecipeDelete" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="28">
+      <Symbol>
+        <Component Name="ONS_DeleteChange" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="29">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Indicator" />
+        <Component Name="deleteConfirm" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="30">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="31">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="32">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="33" />
+    <Part Name="SCoil" UId="34" />
+    <Part Name="Contact" UId="35" />
+    <Part Name="NContact" UId="36" />
+    <Part Name="O" UId="37">
+      <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+    </Part>
+    <Part Name="RCoil" UId="38" />
+  </Parts>
+  <Wires>
+    <Wire UId="39">
+      <Powerrail />
+      <NameCon UId="30" Name="in" />
+      <NameCon UId="35" Name="in" />
+      <NameCon UId="36" Name="pre" />
+    </Wire>
+    <Wire UId="40">
+      <IdentCon UId="21" />
+      <NameCon UId="30" Name="operand" />
+    </Wire>
+    <Wire UId="41">
+      <NameCon UId="30" Name="out" />
+      <NameCon UId="31" Name="in" />
+    </Wire>
+    <Wire UId="42">
+      <IdentCon UId="22" />
+      <NameCon UId="31" Name="operand" />
+    </Wire>
+    <Wire UId="43">
+      <NameCon UId="31" Name="out" />
+      <NameCon UId="32" Name="in" />
+    </Wire>
+    <Wire UId="44">
+      <IdentCon UId="23" />
+      <NameCon UId="32" Name="operand" />
+    </Wire>
+    <Wire UId="45">
+      <NameCon UId="32" Name="out" />
+      <NameCon UId="33" Name="in" />
+    </Wire>
+    <Wire UId="46">
+      <IdentCon UId="24" />
+      <NameCon UId="33" Name="operand" />
+    </Wire>
+    <Wire UId="47">
+      <NameCon UId="33" Name="out" />
+      <NameCon UId="34" Name="in" />
+    </Wire>
+    <Wire UId="48">
+      <IdentCon UId="25" />
+      <NameCon UId="34" Name="operand" />
+    </Wire>
+    <Wire UId="49">
+      <IdentCon UId="26" />
+      <NameCon UId="35" Name="operand" />
+    </Wire>
+    <Wire UId="50">
+      <NameCon UId="35" Name="out" />
+      <NameCon UId="37" Name="in1" />
+    </Wire>
+    <Wire UId="51">
+      <IdentCon UId="28" />
+      <NameCon UId="36" Name="bit" />
+    </Wire>
+    <Wire UId="52">
+      <IdentCon UId="27" />
+      <NameCon UId="36" Name="operand" />
+    </Wire>
+    <Wire UId="53">
+      <NameCon UId="36" Name="out" />
+      <NameCon UId="37" Name="in2" />
+    </Wire>
+    <Wire UId="54">
+      <NameCon UId="37" Name="out" />
+      <NameCon UId="38" Name="in" />
+    </Wire>
+    <Wire UId="55">
+      <IdentCon UId="29" />
+      <NameCon UId="38" Name="operand" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="21" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="22" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="23" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="24" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="25" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Delete Recipe interlocks</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="26" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Delete Recipe interlocks</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="27" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Indicator" />
+        <Component Name="saveAsConfirm" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Command" />
+        <Component Name="Save" />
+        <Component Name="saveAsNewName" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="23">
+      <Symbol>
+        <Component Name="tempRecipenewname" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Indicator" />
+        <Component Name="copyConfirm" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="25">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Command" />
+        <Component Name="Copy" />
+        <Component Name="copyNewName" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="26">
+      <Symbol>
+        <Component Name="tempRecipenewname" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="27" />
+    <Part Name="S_Move" UId="28" DisabledENO="true" />
+    <Part Name="Contact" UId="29" />
+    <Part Name="S_Move" UId="30" DisabledENO="true" />
+  </Parts>
+  <Wires>
+    <Wire UId="31">
+      <Powerrail />
+      <NameCon UId="27" Name="in" />
+      <NameCon UId="29" Name="in" />
+    </Wire>
+    <Wire UId="32">
+      <IdentCon UId="21" />
+      <NameCon UId="27" Name="operand" />
+    </Wire>
+    <Wire UId="33">
+      <NameCon UId="27" Name="out" />
+      <NameCon UId="28" Name="en" />
+    </Wire>
+    <Wire UId="34">
+      <IdentCon UId="22" />
+      <NameCon UId="28" Name="in" />
+    </Wire>
+    <Wire UId="35">
+      <NameCon UId="28" Name="out" />
+      <IdentCon UId="23" />
+    </Wire>
+    <Wire UId="36">
+      <IdentCon UId="24" />
+      <NameCon UId="29" Name="operand" />
+    </Wire>
+    <Wire UId="37">
+      <NameCon UId="29" Name="out" />
+      <NameCon UId="30" Name="en" />
+    </Wire>
+    <Wire UId="38">
+      <IdentCon UId="25" />
+      <NameCon UId="30" Name="in" />
+    </Wire>
+    <Wire UId="39">
+      <NameCon UId="30" Name="out" />
+      <IdentCon UId="26" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="28" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="29" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="2A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="2B" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="2C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Save As and Copy string handling</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="2D" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Save As and Copy string handling</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="2E" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="RecipeCfg" />
+        <Component Name="recipeNames" AccessModifier="Array">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="RecipeCfg" />
+              <Component Name="recipeControl" />
+              <Component Name="RecipeID_A" />
+            </Symbol>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="RecipeCfg" />
+        <Component Name="recipeControl" />
+        <Component Name="RecipeName_A" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="23">
+      <Symbol>
+        <Component Name="RecipeCfg" />
+        <Component Name="recipeNames" AccessModifier="Array">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="RecipeCfg" />
+              <Component Name="recipeControl" />
+              <Component Name="RecipeID_B" />
+            </Symbol>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="RecipeCfg" />
+        <Component Name="recipeControl" />
+        <Component Name="RecipeName_B" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="25">
+      <Symbol>
+        <Component Name="RecipeCfg" />
+        <Component Name="recipeNames" AccessModifier="Array">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="RecipeCfg" />
+              <Component Name="recipeControl" />
+              <Component Name="RecipeID_C" />
+            </Symbol>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="26">
+      <Symbol>
+        <Component Name="RecipeCfg" />
+        <Component Name="recipeControl" />
+        <Component Name="RecipeName_C" />
+      </Symbol>
+    </Access>
+    <Part Name="S_Move" UId="27" DisabledENO="true" />
+    <Part Name="S_Move" UId="28" DisabledENO="true" />
+    <Part Name="S_Move" UId="29" DisabledENO="true" />
+  </Parts>
+  <Wires>
+    <Wire UId="30">
+      <Powerrail />
+      <NameCon UId="27" Name="en" />
+      <NameCon UId="28" Name="en" />
+      <NameCon UId="29" Name="en" />
+    </Wire>
+    <Wire UId="31">
+      <IdentCon UId="21" />
+      <NameCon UId="27" Name="in" />
+    </Wire>
+    <Wire UId="32">
+      <NameCon UId="27" Name="out" />
+      <IdentCon UId="22" />
+    </Wire>
+    <Wire UId="33">
+      <IdentCon UId="23" />
+      <NameCon UId="28" Name="in" />
+    </Wire>
+    <Wire UId="34">
+      <NameCon UId="28" Name="out" />
+      <IdentCon UId="24" />
+    </Wire>
+    <Wire UId="35">
+      <IdentCon UId="25" />
+      <NameCon UId="29" Name="in" />
+    </Wire>
+    <Wire UId="36">
+      <NameCon UId="29" Name="out" />
+      <IdentCon UId="26" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="2F" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="30" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="31" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="32" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="33" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Fill in supplementary recipe fields with the selected recipe numbers</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="34" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Fill in supplementary recipe fields with the selected recipe numbers</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="35" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="LocalVariable" UId="21">
+      <Symbol>
+        <Component Name="tempEnablechange" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Command" />
+        <Component Name="Change" />
+        <Component Name="changeID" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="23">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Command" />
+        <Component Name="Change" />
+        <Component Name="request" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Command" />
+        <Component Name="Save" />
+        <Component Name="saveCmd" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="25">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Command" />
+        <Component Name="Save" />
+        <Component Name="saveAsDestinationID" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="26">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Command" />
+        <Component Name="Save" />
+        <Component Name="request" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="27">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Command" />
+        <Component Name="Copy" />
+        <Component Name="copySourceID" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="28">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Command" />
+        <Component Name="Copy" />
+        <Component Name="copyDestinationID" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="29">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Command" />
+        <Component Name="Copy" />
+        <Component Name="request" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="30">
+      <Symbol>
+        <Component Name="tempRecipenewname" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="31">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Command" />
+        <Component Name="Delete" />
+        <Component Name="deleteID" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="32">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Command" />
+        <Component Name="Delete" />
+        <Component Name="request" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="33">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Command" />
+        <Component Name="resetAllTimes" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="34">
+      <Symbol>
+        <Component Name="RecipeCfg" />
+        <Component Name="recipeControl" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="35">
+      <Symbol>
+        <Component Name="RecipeCfg" />
+        <Component Name="recipeNames" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="36">
+      <Symbol>
+        <Component Name="RecipeCfg" />
+        <Component Name="recipeCumTimes" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="37">
+      <Symbol>
+        <Component Name="RecipeCfg" />
+        <Component Name="recipeLastSaveTimes" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="38">
+      <Symbol>
+        <Component Name="tempSeconds" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="39">
+      <Symbol>
+        <Component Name="tempErrorID" />
+      </Symbol>
+    </Access>
+    <Call UId="40">
+      <CallInfo Name="CPG_RecipeControl" BlockType="FB">
+        <Instance Scope="LocalVariable" UId="41">
+          <Component Name="instRecipeControl" />
+        </Instance>
+        <Parameter Name="enable" Section="Input" Type="Bool" />
+        <Parameter Name="recipeChangeID" Section="Input" Type="Int" />
+        <Parameter Name="recipeChangeReq" Section="Input" Type="Bool" />
+        <Parameter Name="recipeSaveReq" Section="Input" Type="Bool" />
+        <Parameter Name="recipeSaveAsID" Section="Input" Type="Int" />
+        <Parameter Name="recipeSaveAsReq" Section="Input" Type="Bool" />
+        <Parameter Name="recipeCopySourceID" Section="Input" Type="Int" />
+        <Parameter Name="recipeCopyID" Section="Input" Type="Int" />
+        <Parameter Name="recipeCopyReq" Section="Input" Type="Bool" />
+        <Parameter Name="newRecipeName" Section="Input" Type="String[60]" />
+        <Parameter Name="recipeDeleteID" Section="Input" Type="Int" />
+        <Parameter Name="recipeDeleteReq" Section="Input" Type="Bool" />
+        <Parameter Name="resetAllTimes" Section="Input" Type="Bool" />
+        <Parameter Name="currentRecipeID" Section="Output" Type="Int" />
+        <Parameter Name="currentRecipeName" Section="Output" Type="String[60]" />
+        <Parameter Name="recipeChangeDisabled" Section="Output" Type="Bool" />
+        <Parameter Name="recipeSetpointDiff" Section="Output" Type="Bool" />
+        <Parameter Name="recipeCurrentSeconds" Section="Output" Type="Time" />
+        <Parameter Name="error" Section="Output" Type="Bool" />
+        <Parameter Name="errorID" Section="Output" Type="Word" />
+        <Parameter Name="recipeControl" Section="InOut" Type="&quot;CPG_typeRecipeControl&quot;" />
+        <Parameter Name="recipeNames" Section="InOut" Type="Array[0..&quot;CPG_NO_OF_RECIPE_UPPER_LIM&quot;] of String[60]" />
+        <Parameter Name="recipeCumSeconds" Section="InOut" Type="Array[0..&quot;CPG_NO_OF_RECIPE_UPPER_LIM&quot;] of Time" />
+        <Parameter Name="recipeSaveDates" Section="InOut" Type="Array[0..&quot;CPG_NO_OF_RECIPE_UPPER_LIM&quot;] of DTL" />
+      </CallInfo>
+    </Call>
+  </Parts>
+  <Wires>
+    <Wire UId="47">
+      <Powerrail />
+      <NameCon UId="40" Name="en" />
+    </Wire>
+    <Wire UId="48">
+      <IdentCon UId="21" />
+      <NameCon UId="40" Name="enable" />
+    </Wire>
+    <Wire UId="49">
+      <IdentCon UId="22" />
+      <NameCon UId="40" Name="recipeChangeID" />
+    </Wire>
+    <Wire UId="50">
+      <IdentCon UId="23" />
+      <NameCon UId="40" Name="recipeChangeReq" />
+    </Wire>
+    <Wire UId="51">
+      <IdentCon UId="24" />
+      <NameCon UId="40" Name="recipeSaveReq" />
+    </Wire>
+    <Wire UId="52">
+      <IdentCon UId="25" />
+      <NameCon UId="40" Name="recipeSaveAsID" />
+    </Wire>
+    <Wire UId="53">
+      <IdentCon UId="26" />
+      <NameCon UId="40" Name="recipeSaveAsReq" />
+    </Wire>
+    <Wire UId="54">
+      <IdentCon UId="27" />
+      <NameCon UId="40" Name="recipeCopySourceID" />
+    </Wire>
+    <Wire UId="55">
+      <IdentCon UId="28" />
+      <NameCon UId="40" Name="recipeCopyID" />
+    </Wire>
+    <Wire UId="56">
+      <IdentCon UId="29" />
+      <NameCon UId="40" Name="recipeCopyReq" />
+    </Wire>
+    <Wire UId="57">
+      <IdentCon UId="30" />
+      <NameCon UId="40" Name="newRecipeName" />
+    </Wire>
+    <Wire UId="58">
+      <IdentCon UId="31" />
+      <NameCon UId="40" Name="recipeDeleteID" />
+    </Wire>
+    <Wire UId="59">
+      <IdentCon UId="32" />
+      <NameCon UId="40" Name="recipeDeleteReq" />
+    </Wire>
+    <Wire UId="60">
+      <IdentCon UId="33" />
+      <NameCon UId="40" Name="resetAllTimes" />
+    </Wire>
+    <Wire UId="61">
+      <IdentCon UId="34" />
+      <NameCon UId="40" Name="recipeControl" />
+    </Wire>
+    <Wire UId="62">
+      <IdentCon UId="35" />
+      <NameCon UId="40" Name="recipeNames" />
+    </Wire>
+    <Wire UId="63">
+      <IdentCon UId="36" />
+      <NameCon UId="40" Name="recipeCumSeconds" />
+    </Wire>
+    <Wire UId="64">
+      <IdentCon UId="37" />
+      <NameCon UId="40" Name="recipeSaveDates" />
+    </Wire>
+    <Wire UId="65">
+      <NameCon UId="40" Name="currentRecipeID" />
+      <OpenCon UId="42" />
+    </Wire>
+    <Wire UId="66">
+      <NameCon UId="40" Name="currentRecipeName" />
+      <OpenCon UId="43" />
+    </Wire>
+    <Wire UId="67">
+      <NameCon UId="40" Name="recipeChangeDisabled" />
+      <OpenCon UId="44" />
+    </Wire>
+    <Wire UId="68">
+      <NameCon UId="40" Name="recipeSetpointDiff" />
+      <OpenCon UId="45" />
+    </Wire>
+    <Wire UId="69">
+      <NameCon UId="40" Name="recipeCurrentSeconds" />
+      <IdentCon UId="38" />
+    </Wire>
+    <Wire UId="70">
+      <NameCon UId="40" Name="error" />
+      <OpenCon UId="46" />
+    </Wire>
+    <Wire UId="71">
+      <NameCon UId="40" Name="errorID" />
+      <IdentCon UId="39" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="36" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="37" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="38" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="39" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="3A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Call Recipe Control</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="3B" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Call Recipe Control</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="3C" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Indicator" />
+        <Component Name="changeConfirm" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="22">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="23">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Command" />
+        <Component Name="Change" />
+        <Component Name="changeID" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Indicator" />
+        <Component Name="saveAsConfirm" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="25">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="26">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Command" />
+        <Component Name="Save" />
+        <Component Name="saveAsDestinationID" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="27">
+      <Constant>
+        <ConstantType>String</ConstantType>
+        <ConstantValue>''</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="28">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Command" />
+        <Component Name="Save" />
+        <Component Name="saveAsNewName" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="29">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Indicator" />
+        <Component Name="copyConfirm" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="30">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="31">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Command" />
+        <Component Name="Copy" />
+        <Component Name="copySourceID" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="32">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="33">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Command" />
+        <Component Name="Copy" />
+        <Component Name="copyDestinationID" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="34">
+      <Constant>
+        <ConstantType>String</ConstantType>
+        <ConstantValue>''</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="35">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Command" />
+        <Component Name="Copy" />
+        <Component Name="copyNewName" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="36">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Indicator" />
+        <Component Name="deleteConfirm" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="37">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="38">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Command" />
+        <Component Name="Delete" />
+        <Component Name="deleteID" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="39">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Move" UId="40" DisabledENO="true">
+      <TemplateValue Name="Card" Type="Cardinality">1</TemplateValue>
+    </Part>
+    <Part Name="Contact" UId="41">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Move" UId="42" DisabledENO="true">
+      <TemplateValue Name="Card" Type="Cardinality">1</TemplateValue>
+    </Part>
+    <Part Name="S_Move" UId="43" DisabledENO="true" />
+    <Part Name="Contact" UId="44">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Move" UId="45" DisabledENO="true">
+      <TemplateValue Name="Card" Type="Cardinality">1</TemplateValue>
+    </Part>
+    <Part Name="Move" UId="46" DisabledENO="true">
+      <TemplateValue Name="Card" Type="Cardinality">1</TemplateValue>
+    </Part>
+    <Part Name="S_Move" UId="47" DisabledENO="true" />
+    <Part Name="Contact" UId="48">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Move" UId="49" DisabledENO="true">
+      <TemplateValue Name="Card" Type="Cardinality">1</TemplateValue>
+    </Part>
+  </Parts>
+  <Wires>
+    <Wire UId="50">
+      <Powerrail />
+      <NameCon UId="39" Name="in" />
+      <NameCon UId="41" Name="in" />
+      <NameCon UId="44" Name="in" />
+      <NameCon UId="48" Name="in" />
+    </Wire>
+    <Wire UId="51">
+      <IdentCon UId="21" />
+      <NameCon UId="39" Name="operand" />
+    </Wire>
+    <Wire UId="52">
+      <NameCon UId="39" Name="out" />
+      <NameCon UId="40" Name="en" />
+    </Wire>
+    <Wire UId="53">
+      <IdentCon UId="22" />
+      <NameCon UId="40" Name="in" />
+    </Wire>
+    <Wire UId="54">
+      <NameCon UId="40" Name="out1" />
+      <IdentCon UId="23" />
+    </Wire>
+    <Wire UId="55">
+      <IdentCon UId="24" />
+      <NameCon UId="41" Name="operand" />
+    </Wire>
+    <Wire UId="56">
+      <NameCon UId="41" Name="out" />
+      <NameCon UId="42" Name="en" />
+    </Wire>
+    <Wire UId="57">
+      <IdentCon UId="25" />
+      <NameCon UId="42" Name="in" />
+    </Wire>
+    <Wire UId="58">
+      <NameCon UId="42" Name="eno" />
+      <NameCon UId="43" Name="en" />
+    </Wire>
+    <Wire UId="59">
+      <NameCon UId="42" Name="out1" />
+      <IdentCon UId="26" />
+    </Wire>
+    <Wire UId="60">
+      <IdentCon UId="27" />
+      <NameCon UId="43" Name="in" />
+    </Wire>
+    <Wire UId="61">
+      <NameCon UId="43" Name="out" />
+      <IdentCon UId="28" />
+    </Wire>
+    <Wire UId="62">
+      <IdentCon UId="29" />
+      <NameCon UId="44" Name="operand" />
+    </Wire>
+    <Wire UId="63">
+      <NameCon UId="44" Name="out" />
+      <NameCon UId="45" Name="en" />
+    </Wire>
+    <Wire UId="64">
+      <IdentCon UId="30" />
+      <NameCon UId="45" Name="in" />
+    </Wire>
+    <Wire UId="65">
+      <NameCon UId="45" Name="eno" />
+      <NameCon UId="46" Name="en" />
+    </Wire>
+    <Wire UId="66">
+      <NameCon UId="45" Name="out1" />
+      <IdentCon UId="31" />
+    </Wire>
+    <Wire UId="67">
+      <IdentCon UId="32" />
+      <NameCon UId="46" Name="in" />
+    </Wire>
+    <Wire UId="68">
+      <NameCon UId="46" Name="eno" />
+      <NameCon UId="47" Name="en" />
+    </Wire>
+    <Wire UId="69">
+      <NameCon UId="46" Name="out1" />
+      <IdentCon UId="33" />
+    </Wire>
+    <Wire UId="70">
+      <IdentCon UId="34" />
+      <NameCon UId="47" Name="in" />
+    </Wire>
+    <Wire UId="71">
+      <NameCon UId="47" Name="out" />
+      <IdentCon UId="35" />
+    </Wire>
+    <Wire UId="72">
+      <IdentCon UId="36" />
+      <NameCon UId="48" Name="operand" />
+    </Wire>
+    <Wire UId="73">
+      <NameCon UId="48" Name="out" />
+      <NameCon UId="49" Name="en" />
+    </Wire>
+    <Wire UId="74">
+      <IdentCon UId="37" />
+      <NameCon UId="49" Name="in" />
+    </Wire>
+    <Wire UId="75">
+      <NameCon UId="49" Name="out1" />
+      <IdentCon UId="38" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="3D" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="3E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="3F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="40" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="41" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Clear IDs from HMI if not on that screen</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="42" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Clear IDs from HMI if not on that screen</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="43" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Indicator" />
+        <Component Name="changeConfirm" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="22">
+      <Symbol>
+        <Component Name="tempErrorID" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalConstant" UId="23">
+      <Constant Name="ERR_CHANGE" />
+    </Access>
+    <Access Scope="LocalVariable" UId="24">
+      <Symbol>
+        <Component Name="tempError" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="25">
+      <Symbol>
+        <Component Name="tempError" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalConstant" UId="26">
+      <Constant Name="ERR_CHANGE" />
+    </Access>
+    <Access Scope="GlobalVariable" UId="27">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Indicator" />
+        <Component Name="changeErr" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="28">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Indicator" />
+        <Component Name="saveAsConfirm" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="29">
+      <Symbol>
+        <Component Name="tempErrorID" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalConstant" UId="30">
+      <Constant Name="ERR_SAVE" />
+    </Access>
+    <Access Scope="LocalVariable" UId="31">
+      <Symbol>
+        <Component Name="tempError" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="32">
+      <Symbol>
+        <Component Name="tempError" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalConstant" UId="33">
+      <Constant Name="ERR_SAVE" />
+    </Access>
+    <Access Scope="GlobalVariable" UId="34">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Indicator" />
+        <Component Name="saveAsErr" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="35">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Indicator" />
+        <Component Name="copyConfirm" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="36">
+      <Symbol>
+        <Component Name="tempErrorID" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalConstant" UId="37">
+      <Constant Name="ERR_COPY" />
+    </Access>
+    <Access Scope="LocalVariable" UId="38">
+      <Symbol>
+        <Component Name="tempError" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="39">
+      <Symbol>
+        <Component Name="tempError" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalConstant" UId="40">
+      <Constant Name="ERR_COPY" />
+    </Access>
+    <Access Scope="GlobalVariable" UId="41">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Indicator" />
+        <Component Name="copyErr" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="42">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Indicator" />
+        <Component Name="deleteConfirm" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="43">
+      <Symbol>
+        <Component Name="tempErrorID" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalConstant" UId="44">
+      <Constant Name="ERR_DELETE" />
+    </Access>
+    <Access Scope="LocalVariable" UId="45">
+      <Symbol>
+        <Component Name="tempError" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="46">
+      <Symbol>
+        <Component Name="tempError" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalConstant" UId="47">
+      <Constant Name="ERR_DELETE" />
+    </Access>
+    <Access Scope="GlobalVariable" UId="48">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="HMI_Indicator" />
+        <Component Name="deleteErr" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="49" />
+    <Part Name="And" UId="50" DisabledENO="true">
+      <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+      <TemplateValue Name="SrcType" Type="Type">Word</TemplateValue>
+    </Part>
+    <Part Name="Eq" UId="51">
+      <TemplateValue Name="SrcType" Type="Type">Int</TemplateValue>
+    </Part>
+    <Part Name="Coil" UId="52" />
+    <Part Name="Contact" UId="53" />
+    <Part Name="And" UId="54" DisabledENO="true">
+      <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+      <TemplateValue Name="SrcType" Type="Type">Word</TemplateValue>
+    </Part>
+    <Part Name="Eq" UId="55">
+      <TemplateValue Name="SrcType" Type="Type">Int</TemplateValue>
+    </Part>
+    <Part Name="Coil" UId="56" />
+    <Part Name="Contact" UId="57" />
+    <Part Name="And" UId="58" DisabledENO="true">
+      <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+      <TemplateValue Name="SrcType" Type="Type">Word</TemplateValue>
+    </Part>
+    <Part Name="Eq" UId="59">
+      <TemplateValue Name="SrcType" Type="Type">Int</TemplateValue>
+    </Part>
+    <Part Name="Coil" UId="60" />
+    <Part Name="Contact" UId="61" />
+    <Part Name="And" UId="62" DisabledENO="true">
+      <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+      <TemplateValue Name="SrcType" Type="Type">Word</TemplateValue>
+    </Part>
+    <Part Name="Eq" UId="63">
+      <TemplateValue Name="SrcType" Type="Type">Int</TemplateValue>
+    </Part>
+    <Part Name="Coil" UId="64" />
+  </Parts>
+  <Wires>
+    <Wire UId="65">
+      <Powerrail />
+      <NameCon UId="49" Name="in" />
+      <NameCon UId="53" Name="in" />
+      <NameCon UId="57" Name="in" />
+      <NameCon UId="61" Name="in" />
+    </Wire>
+    <Wire UId="66">
+      <IdentCon UId="21" />
+      <NameCon UId="49" Name="operand" />
+    </Wire>
+    <Wire UId="67">
+      <NameCon UId="49" Name="out" />
+      <NameCon UId="50" Name="en" />
+    </Wire>
+    <Wire UId="68">
+      <IdentCon UId="22" />
+      <NameCon UId="50" Name="in1" />
+    </Wire>
+    <Wire UId="69">
+      <IdentCon UId="23" />
+      <NameCon UId="50" Name="in2" />
+    </Wire>
+    <Wire UId="70">
+      <NameCon UId="50" Name="eno" />
+      <NameCon UId="51" Name="pre" />
+    </Wire>
+    <Wire UId="71">
+      <NameCon UId="50" Name="out" />
+      <IdentCon UId="24" />
+    </Wire>
+    <Wire UId="72">
+      <IdentCon UId="25" />
+      <NameCon UId="51" Name="in1" />
+    </Wire>
+    <Wire UId="73">
+      <IdentCon UId="26" />
+      <NameCon UId="51" Name="in2" />
+    </Wire>
+    <Wire UId="74">
+      <NameCon UId="51" Name="out" />
+      <NameCon UId="52" Name="in" />
+    </Wire>
+    <Wire UId="75">
+      <IdentCon UId="27" />
+      <NameCon UId="52" Name="operand" />
+    </Wire>
+    <Wire UId="76">
+      <IdentCon UId="28" />
+      <NameCon UId="53" Name="operand" />
+    </Wire>
+    <Wire UId="77">
+      <NameCon UId="53" Name="out" />
+      <NameCon UId="54" Name="en" />
+    </Wire>
+    <Wire UId="78">
+      <IdentCon UId="29" />
+      <NameCon UId="54" Name="in1" />
+    </Wire>
+    <Wire UId="79">
+      <IdentCon UId="30" />
+      <NameCon UId="54" Name="in2" />
+    </Wire>
+    <Wire UId="80">
+      <NameCon UId="54" Name="eno" />
+      <NameCon UId="55" Name="pre" />
+    </Wire>
+    <Wire UId="81">
+      <NameCon UId="54" Name="out" />
+      <IdentCon UId="31" />
+    </Wire>
+    <Wire UId="82">
+      <IdentCon UId="32" />
+      <NameCon UId="55" Name="in1" />
+    </Wire>
+    <Wire UId="83">
+      <IdentCon UId="33" />
+      <NameCon UId="55" Name="in2" />
+    </Wire>
+    <Wire UId="84">
+      <NameCon UId="55" Name="out" />
+      <NameCon UId="56" Name="in" />
+    </Wire>
+    <Wire UId="85">
+      <IdentCon UId="34" />
+      <NameCon UId="56" Name="operand" />
+    </Wire>
+    <Wire UId="86">
+      <IdentCon UId="35" />
+      <NameCon UId="57" Name="operand" />
+    </Wire>
+    <Wire UId="87">
+      <NameCon UId="57" Name="out" />
+      <NameCon UId="58" Name="en" />
+    </Wire>
+    <Wire UId="88">
+      <IdentCon UId="36" />
+      <NameCon UId="58" Name="in1" />
+    </Wire>
+    <Wire UId="89">
+      <IdentCon UId="37" />
+      <NameCon UId="58" Name="in2" />
+    </Wire>
+    <Wire UId="90">
+      <NameCon UId="58" Name="eno" />
+      <NameCon UId="59" Name="pre" />
+    </Wire>
+    <Wire UId="91">
+      <NameCon UId="58" Name="out" />
+      <IdentCon UId="38" />
+    </Wire>
+    <Wire UId="92">
+      <IdentCon UId="39" />
+      <NameCon UId="59" Name="in1" />
+    </Wire>
+    <Wire UId="93">
+      <IdentCon UId="40" />
+      <NameCon UId="59" Name="in2" />
+    </Wire>
+    <Wire UId="94">
+      <NameCon UId="59" Name="out" />
+      <NameCon UId="60" Name="in" />
+    </Wire>
+    <Wire UId="95">
+      <IdentCon UId="41" />
+      <NameCon UId="60" Name="operand" />
+    </Wire>
+    <Wire UId="96">
+      <IdentCon UId="42" />
+      <NameCon UId="61" Name="operand" />
+    </Wire>
+    <Wire UId="97">
+      <NameCon UId="61" Name="out" />
+      <NameCon UId="62" Name="en" />
+    </Wire>
+    <Wire UId="98">
+      <IdentCon UId="43" />
+      <NameCon UId="62" Name="in1" />
+    </Wire>
+    <Wire UId="99">
+      <IdentCon UId="44" />
+      <NameCon UId="62" Name="in2" />
+    </Wire>
+    <Wire UId="100">
+      <NameCon UId="62" Name="eno" />
+      <NameCon UId="63" Name="pre" />
+    </Wire>
+    <Wire UId="101">
+      <NameCon UId="62" Name="out" />
+      <IdentCon UId="45" />
+    </Wire>
+    <Wire UId="102">
+      <IdentCon UId="46" />
+      <NameCon UId="63" Name="in1" />
+    </Wire>
+    <Wire UId="103">
+      <IdentCon UId="47" />
+      <NameCon UId="63" Name="in2" />
+    </Wire>
+    <Wire UId="104">
+      <NameCon UId="63" Name="out" />
+      <NameCon UId="64" Name="in" />
+    </Wire>
+    <Wire UId="105">
+      <IdentCon UId="48" />
+      <NameCon UId="64" Name="operand" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="44" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="45" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="46" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="47" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="48" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>If an indicator is on and the inputs are invalid, set the bit for operator display of errors</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="49" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>If an indicator is on and the inputs are invalid, set the bit for operator display of errors</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="4A" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="popupTrackers" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="RecipeCfg" />
+        <Component Name="setpoints_REAL" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="23">
+      <Symbol>
+        <Component Name="RecipeCfg" />
+        <Component Name="setpoints_DINT" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="RecipeCfg" />
+        <Component Name="setpoints_BOOL" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="25">
+      <Symbol>
+        <Component Name="RecipeCfg" />
+        <Component Name="setpoints_STRING" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="26">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="setpointPopup_REAL" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="27">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="setpointPopup_DINT" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="28">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="setpointPopup_BOOL" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="29">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="setpointPopup_STRING" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="30">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="currentPages" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="31">
+      <Symbol>
+        <Component Name="RecipeCfg" />
+        <Component Name="recipeNames" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="32">
+      <Symbol>
+        <Component Name="RecipeCfg" />
+        <Component Name="recipeLastSaveTimes" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="33">
+      <Symbol>
+        <Component Name="RecipeCfg" />
+        <Component Name="recipeCumTimes" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="34">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="setpointsArray_REAL" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="35">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="setpointsArray_DINT" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="36">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="setpointsArray_BOOL" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="37">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="setpointsArray_STRING" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="38">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="maxPages" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="39">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="displayDisable_REAL" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="40">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="displayDisable_DINT" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="41">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="displayDisable_BOOL" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="42">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="displayDisable_STRING" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="43">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="recipeArrayNames" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="44">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="recipeArraySaves" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="45">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="recipeArrayTimes" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="46">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="recipeArrayHide" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="47">
+      <Symbol>
+        <Component Name="RecipeManagement" />
+        <Component Name="recipeArrayNums" />
+      </Symbol>
+    </Access>
+    <Call UId="48">
+      <CallInfo Name="CPG_RecipeHMIManager" BlockType="FB">
+        <Instance Scope="LocalVariable" UId="49">
+          <Component Name="instRecipeManager" />
+        </Instance>
+        <Parameter Name="recipePopupTrackers" Section="Input" Type="Array[0..#NUM_TYPES] of Int" />
+        <Parameter Name="setpointsArray_REAL" Section="Output" Type="Array[0..11] of &quot;CPG_typeRecipeSetpoint_REAL&quot;" />
+        <Parameter Name="setpointsArray_DINT" Section="Output" Type="Array[0..11] of &quot;CPG_typeRecipeSetpoint_DINT&quot;" />
+        <Parameter Name="setpointsArray_BOOL" Section="Output" Type="Array[0..11] of &quot;CPG_typeRecipeSetpoint_BOOL&quot;" />
+        <Parameter Name="setpointsArray_STRING" Section="Output" Type="Array[0..11] of &quot;CPG_typeRecipeSetpoint_STRING&quot;" />
+        <Parameter Name="recipeMaxPages" Section="Output" Type="Array[0..4] of Int" />
+        <Parameter Name="setpointFaceplatesDisable_REAL" Section="Output" Type="Array[0..11] of Bool" />
+        <Parameter Name="setpoint FaceplatesDisable_DINT" Section="Output" Type="Array[0..11] of Bool" />
+        <Parameter Name="setpoint FaceplatesDisable_BOOL" Section="Output" Type="Array[0..11] of Bool" />
+        <Parameter Name="setpoint FaceplatesDisable_STRING" Section="Output" Type="Array[0..11] of Bool" />
+        <Parameter Name="recipeArrayNames" Section="Output" Type="Array[0..19] of String[60]" />
+        <Parameter Name="recipeArraySaves" Section="Output" Type="Array[0..19] of DTL" />
+        <Parameter Name="recipeArrayTimes" Section="Output" Type="Array[0..19] of Time" />
+        <Parameter Name="recipeArrayDisables" Section="Output" Type="Array[0..19] of Bool" />
+        <Parameter Name="recipeArrayNums" Section="Output" Type="Array[0..19] of Int" />
+        <Parameter Name="setpoints_REAL" Section="InOut" Type="Array[*] of &quot;CPG_typeRecipeSetpoint_REAL&quot;" />
+        <Parameter Name="setpoints_DINT" Section="InOut" Type="Array[*] of &quot;CPG_typeRecipeSetpoint_DINT&quot;" />
+        <Parameter Name="setpoints_BOOL" Section="InOut" Type="Array[*] of &quot;CPG_typeRecipeSetpoint_BOOL&quot;" />
+        <Parameter Name="setpoints_STRING" Section="InOut" Type="Array[*] of &quot;CPG_typeRecipeSetpoint_STRING&quot;" />
+        <Parameter Name="recipePopup_REAL" Section="InOut" Type="&quot;CPG_typeRecipeSetpoint_REAL&quot;" />
+        <Parameter Name="recipePopup_DINT" Section="InOut" Type="&quot;CPG_typeRecipeSetpoint_DINT&quot;" />
+        <Parameter Name="recipePopup_BOOL" Section="InOut" Type="&quot;CPG_typeRecipeSetpoint_BOOL&quot;" />
+        <Parameter Name="recipePopup_STRING" Section="InOut" Type="&quot;CPG_typeRecipeSetpoint_STRING&quot;" />
+        <Parameter Name="recipeCurrentPages" Section="InOut" Type="Array[0..4] of Int" />
+        <Parameter Name="recipeNamesArray" Section="InOut" Type="Array[*] of String[60]" />
+        <Parameter Name="recipeSavesArray" Section="InOut" Type="Array[*] of DTL" />
+        <Parameter Name="recipeTimesArray" Section="InOut" Type="Array[*] of Time" />
+      </CallInfo>
+    </Call>
+  </Parts>
+  <Wires>
+    <Wire UId="50">
+      <Powerrail />
+      <NameCon UId="48" Name="en" />
+    </Wire>
+    <Wire UId="51">
+      <IdentCon UId="21" />
+      <NameCon UId="48" Name="recipePopupTrackers" />
+    </Wire>
+    <Wire UId="52">
+      <IdentCon UId="22" />
+      <NameCon UId="48" Name="setpoints_REAL" />
+    </Wire>
+    <Wire UId="53">
+      <IdentCon UId="23" />
+      <NameCon UId="48" Name="setpoints_DINT" />
+    </Wire>
+    <Wire UId="54">
+      <IdentCon UId="24" />
+      <NameCon UId="48" Name="setpoints_BOOL" />
+    </Wire>
+    <Wire UId="55">
+      <IdentCon UId="25" />
+      <NameCon UId="48" Name="setpoints_STRING" />
+    </Wire>
+    <Wire UId="56">
+      <IdentCon UId="26" />
+      <NameCon UId="48" Name="recipePopup_REAL" />
+    </Wire>
+    <Wire UId="57">
+      <IdentCon UId="27" />
+      <NameCon UId="48" Name="recipePopup_DINT" />
+    </Wire>
+    <Wire UId="58">
+      <IdentCon UId="28" />
+      <NameCon UId="48" Name="recipePopup_BOOL" />
+    </Wire>
+    <Wire UId="59">
+      <IdentCon UId="29" />
+      <NameCon UId="48" Name="recipePopup_STRING" />
+    </Wire>
+    <Wire UId="60">
+      <IdentCon UId="30" />
+      <NameCon UId="48" Name="recipeCurrentPages" />
+    </Wire>
+    <Wire UId="61">
+      <IdentCon UId="31" />
+      <NameCon UId="48" Name="recipeNamesArray" />
+    </Wire>
+    <Wire UId="62">
+      <IdentCon UId="32" />
+      <NameCon UId="48" Name="recipeSavesArray" />
+    </Wire>
+    <Wire UId="63">
+      <IdentCon UId="33" />
+      <NameCon UId="48" Name="recipeTimesArray" />
+    </Wire>
+    <Wire UId="64">
+      <NameCon UId="48" Name="setpointsArray_REAL" />
+      <IdentCon UId="34" />
+    </Wire>
+    <Wire UId="65">
+      <NameCon UId="48" Name="setpointsArray_DINT" />
+      <IdentCon UId="35" />
+    </Wire>
+    <Wire UId="66">
+      <NameCon UId="48" Name="setpointsArray_BOOL" />
+      <IdentCon UId="36" />
+    </Wire>
+    <Wire UId="67">
+      <NameCon UId="48" Name="setpointsArray_STRING" />
+      <IdentCon UId="37" />
+    </Wire>
+    <Wire UId="68">
+      <NameCon UId="48" Name="recipeMaxPages" />
+      <IdentCon UId="38" />
+    </Wire>
+    <Wire UId="69">
+      <NameCon UId="48" Name="setpointFaceplatesDisable_REAL" />
+      <IdentCon UId="39" />
+    </Wire>
+    <Wire UId="70">
+      <NameCon UId="48" Name="setpoint FaceplatesDisable_DINT" />
+      <IdentCon UId="40" />
+    </Wire>
+    <Wire UId="71">
+      <NameCon UId="48" Name="setpoint FaceplatesDisable_BOOL" />
+      <IdentCon UId="41" />
+    </Wire>
+    <Wire UId="72">
+      <NameCon UId="48" Name="setpoint FaceplatesDisable_STRING" />
+      <IdentCon UId="42" />
+    </Wire>
+    <Wire UId="73">
+      <NameCon UId="48" Name="recipeArrayNames" />
+      <IdentCon UId="43" />
+    </Wire>
+    <Wire UId="74">
+      <NameCon UId="48" Name="recipeArraySaves" />
+      <IdentCon UId="44" />
+    </Wire>
+    <Wire UId="75">
+      <NameCon UId="48" Name="recipeArrayTimes" />
+      <IdentCon UId="45" />
+    </Wire>
+    <Wire UId="76">
+      <NameCon UId="48" Name="recipeArrayDisables" />
+      <IdentCon UId="46" />
+    </Wire>
+    <Wire UId="77">
+      <NameCon UId="48" Name="recipeArrayNums" />
+      <IdentCon UId="47" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="4B" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="4C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="4D" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="4E" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="4F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Call Recipe HMI Manager to handle display of setpoints</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="50" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Call Recipe HMI Manager to handle display of setpoints</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="51" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Part Name="ReturnTrue" UId="21" />
+  </Parts>
+  <Wires>
+    <Wire UId="22">
+      <Powerrail />
+      <NameCon UId="21" Name="in" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="52" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="53" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="54" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="55" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="56" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>END: Update the ENO Output. (DO NOT REMOVE. Must be last rung)</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="57" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>END: Update the ENO Output. (DO NOT REMOVE. Must be last rung)</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="58" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="59" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text>UN_07_RecipeControl</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="5A" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text>UN_07_RecipeControl</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.FB>
+</Document>

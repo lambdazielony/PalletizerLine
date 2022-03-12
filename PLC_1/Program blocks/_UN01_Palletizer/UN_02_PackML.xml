@@ -1,0 +1,4593 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V17" />
+  <DocumentInfo>
+    <Created>2022-03-12T16:05:15.1481305Z</Created>
+    <ExportSetting>WithDefaults</ExportSetting>
+    <InstalledProducts>
+      <Product>
+        <DisplayName>Totally Integrated Automation Portal</DisplayName>
+        <DisplayVersion>V17</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>TIA Portal Openness</DisplayName>
+        <DisplayVersion>V17</DisplayVersion>
+      </OptionPackage>
+      <OptionPackage>
+        <DisplayName>TIA Portal Version Control Interface</DisplayName>
+        <DisplayVersion>V17</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>STEP 7 Professional</DisplayName>
+        <DisplayVersion>V17</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>STEP 7 Safety</DisplayName>
+        <DisplayVersion>V17</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>WinCC Advanced / Unified PC</DisplayName>
+        <DisplayVersion>V17</DisplayVersion>
+      </Product>
+    </InstalledProducts>
+  </DocumentInfo>
+  <SW.Blocks.FB ID="0">
+    <AttributeList>
+      <AutoNumber>true</AutoNumber>
+      <HeaderAuthor>tech.team.motioncontrol@siemens.com</HeaderAuthor>
+      <HeaderFamily>CPG</HeaderFamily>
+      <HeaderName />
+      <HeaderVersion>1.0</HeaderVersion>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input" />
+  <Section Name="Output" />
+  <Section Name="InOut" />
+  <Section Name="Static">
+    <Member Name="statLanguageSelectedOld" Datatype="Int" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><StartValue>-1</StartValue></Member>
+    <Member Name="statPackML_CMD_SC" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="instUnitModeStateManager" Datatype="&quot;LPMLV30_UnitModeStateManager&quot;" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute></AttributeList><Sections><Section Name="Input"><Member Name="UnitMode" Datatype="DInt" /><Member Name="UnitModeChangeRequest" Datatype="Bool" /><Member Name="CntrlCmd" Datatype="DInt" /><Member Name="CmdChangeRequest" Datatype="Bool" /><Member Name="enableBooleanInterface" Datatype="Bool" /><Member Name="ProductionModeRequest" Datatype="Bool" /><Member Name="MaintenanceModeRequest" Datatype="Bool" /><Member Name="ManualModeRequest" Datatype="Bool" /><Member Name="UserMode01Request" Datatype="Bool" /><Member Name="UserMode02Request" Datatype="Bool" /><Member Name="UserMode03Request" Datatype="Bool" /><Member Name="UserMode04Request" Datatype="Bool" /><Member Name="UserMode05Request" Datatype="Bool" /><Member Name="UserMode06Request" Datatype="Bool" /><Member Name="UserMode07Request" Datatype="Bool" /><Member Name="UserMode08Request" Datatype="Bool" /><Member Name="ResetCmdRequest" Datatype="Bool" /><Member Name="StartCmdRequest" Datatype="Bool" /><Member Name="StopCmdRequest" Datatype="Bool" /><Member Name="HoldCmdRequest" Datatype="Bool" /><Member Name="UnholdCmdRequest" Datatype="Bool" /><Member Name="SuspendCmdRequest" Datatype="Bool" /><Member Name="UnsuspendCmdRequest" Datatype="Bool" /><Member Name="AbortCmdRequest" Datatype="Bool" /><Member Name="ClearCmdRequest" Datatype="Bool" /><Member Name="CompleteCmdRequest" Datatype="Bool" /><Member Name="SC" Datatype="Bool" /><Member Name="configuration" Datatype="&quot;typeLPMLV30_Configuration&quot;"><Sections><Section Name="None"><Member Name="disabledUnitModes" Datatype="Array[0..&quot;LPMLV30_MAX_MODES_UPPER_LIM&quot;] of Bool" /><Member Name="disabledStatesInUnitModes" Datatype="Array[0..&quot;LPMLV30_MAX_MODES_UPPER_LIM&quot;] of DInt" /></Section></Sections></Member></Section><Section Name="Output"><Member Name="UnitModeCurrent" Datatype="DInt" /><Member Name="UnitModeRequested" Datatype="DInt" /><Member Name="UnitModeChangeInProcess" Datatype="Bool" /><Member Name="StateCurrent" Datatype="DInt" /><Member Name="StateRequested" Datatype="DInt" /><Member Name="StateChangeInProcess" Datatype="Bool" /><Member Name="ProductionModeActive" Datatype="Bool" /><Member Name="MaintenanceModeActive" Datatype="Bool" /><Member Name="ManualModeActive" Datatype="Bool" /><Member Name="UserMode01Active" Datatype="Bool" /><Member Name="UserMode02Active" Datatype="Bool" /><Member Name="UserMode03Active" Datatype="Bool" /><Member Name="UserMode04Active" Datatype="Bool" /><Member Name="UserMode05Active" Datatype="Bool" /><Member Name="UserMode06Active" Datatype="Bool" /><Member Name="UserMode07Active" Datatype="Bool" /><Member Name="UserMode08Active" Datatype="Bool" /><Member Name="ClearingStateActive" Datatype="Bool" /><Member Name="StoppedStateActive" Datatype="Bool" /><Member Name="StartingStateActive" Datatype="Bool" /><Member Name="IdleStateActive" Datatype="Bool" /><Member Name="SuspendedStateActive" Datatype="Bool" /><Member Name="ExecuteStateActive" Datatype="Bool" /><Member Name="StoppingStateActive" Datatype="Bool" /><Member Name="AbortingStateActive" Datatype="Bool" /><Member Name="AbortedStateActive" Datatype="Bool" /><Member Name="HoldingStateActive" Datatype="Bool" /><Member Name="HeldStateActive" Datatype="Bool" /><Member Name="UnholdingStateActive" Datatype="Bool" /><Member Name="SuspendingStateActive" Datatype="Bool" /><Member Name="UnsuspendingStateActive" Datatype="Bool" /><Member Name="ResettingStateActive" Datatype="Bool" /><Member Name="CompletingStateActive" Datatype="Bool" /><Member Name="CompleteStateActive" Datatype="Bool" /><Member Name="StatesDisabled" Datatype="DInt" /><Member Name="diagnostics" Datatype="&quot;typeLPMLV30_Diagnostics&quot;"><Sections><Section Name="None"><Member Name="bufferIndex" Datatype="Int" /><Member Name="buffer" Datatype="Array[0..&quot;LPMLV30_DIAG_BUFFER_UPPER_LIM&quot;] of &quot;typeLPMLV30_DiagnosticsEntry&quot;"><Sections><Section Name="None"><Member Name="timestamp" Datatype="DTL" Version="1.0" /><Member Name="UnitModeCurrent" Datatype="Byte" /><Member Name="StateCurrent" Datatype="Byte" /><Member Name="UnitMode" Datatype="Byte" /><Member Name="CntrlCmd" Datatype="Byte" /><Member Name="SC" Datatype="Bool" /><Member Name="message" Datatype="Byte" /></Section></Sections></Member></Section></Sections></Member></Section><Section Name="InOut" /><Section Name="Static"><Member Name="statConfiguration" Datatype="&quot;typeLPMLV30_Configuration&quot;"><Sections><Section Name="None"><Member Name="disabledUnitModes" Datatype="Array[0..&quot;LPMLV30_MAX_MODES_UPPER_LIM&quot;] of Bool" /><Member Name="disabledStatesInUnitModes" Datatype="Array[0..&quot;LPMLV30_MAX_MODES_UPPER_LIM&quot;] of DInt" /></Section></Sections></Member><Member Name="statUnitModeChangeRequest" Datatype="Bool" /><Member Name="statCmdChangeRequest" Datatype="Bool" /><Member Name="statFirstCycle" Datatype="Bool" /><Member Name="statSCOld" Datatype="Bool" /><Member Name="statUnitMode" Datatype="DInt" /><Member Name="statUnitModeOld" Datatype="DInt" /><Member Name="statUnitModeCurrentInternal" Datatype="DInt" /><Member Name="statUnitModeCurrentInternalOld" Datatype="DInt" /><Member Name="statStateCurrentOld" Datatype="DInt" /><Member Name="statStateInternal" Datatype="DInt" /><Member Name="statStateInternalOld" Datatype="DInt" /><Member Name="statCntrlCmdOld" Datatype="DInt" /><Member Name="statStatesInCurrentMode" Datatype="Struct"><Member Name="clearing" Datatype="Bool" /><Member Name="stopped" Datatype="Bool" /><Member Name="starting" Datatype="Bool" /><Member Name="idle" Datatype="Bool" /><Member Name="suspended" Datatype="Bool" /><Member Name="execute" Datatype="Bool" /><Member Name="stopping" Datatype="Bool" /><Member Name="aborting" Datatype="Bool" /><Member Name="aborted" Datatype="Bool" /><Member Name="holding" Datatype="Bool" /><Member Name="held" Datatype="Bool" /><Member Name="unholding" Datatype="Bool" /><Member Name="suspending" Datatype="Bool" /><Member Name="unsuspending" Datatype="Bool" /><Member Name="resetting" Datatype="Bool" /><Member Name="completing" Datatype="Bool" /><Member Name="complete" Datatype="Bool" /></Member><Member Name="statBooleanInterfaceModeOld" Datatype="DWord" /><Member Name="statBooleanInterfaceCmdOld" Datatype="Word" /><Member Name="statCmdChangeRequestOld" Datatype="Bool" /><Member Name="statUnitModeChangeRequestOld" Datatype="Bool" /></Section></Sections></Member>
+    <Member Name="instUnitModeStateTimes" Datatype="&quot;LPMLV30_UnitModeStateTimes&quot;" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute></AttributeList><Sections><Section Name="Input"><Member Name="UnitModeCurrent" Datatype="DInt" /><Member Name="StateCurrent" Datatype="DInt" /><Member Name="resetTimes" Datatype="Bool" /></Section><Section Name="Output"><Member Name="ModeCurrentTime" Datatype="Array[0..&quot;LPMLV30_MODES_UPPER_LIM&quot;] of DInt" /><Member Name="ModeCumulativeTime" Datatype="Array[0..&quot;LPMLV30_MODES_UPPER_LIM&quot;] of DInt" /><Member Name="StateCurrentTime" Datatype="Array[0..&quot;LPMLV30_MODES_UPPER_LIM&quot;, 0..&quot;LPMLV30_STATES_UPPER_LIM&quot;] of DInt" /><Member Name="StateCumulativeTime" Datatype="Array[0..&quot;LPMLV30_MODES_UPPER_LIM&quot;, 0..&quot;LPMLV30_STATES_UPPER_LIM&quot;] of DInt" /><Member Name="actualTimeCurrentMode" Datatype="DInt" /><Member Name="cumulativeTimeCurrentMode" Datatype="DInt" /><Member Name="actualTimeCurrentStates" Datatype="Array[0..&quot;LPMLV30_STATES_UPPER_LIM&quot;] of DInt" /><Member Name="cumulativeTimeCurrentStates" Datatype="Array[0..&quot;LPMLV30_STATES_UPPER_LIM&quot;] of DInt" /><Member Name="AccTimeSinceReset" Datatype="DInt" /></Section><Section Name="InOut" /><Section Name="Static"><Member Name="statUnitModeCurrentOld" Datatype="DInt" /><Member Name="statStateCurrentOld" Datatype="DInt" /><Member Name="statResetTimesOld" Datatype="Bool" /><Member Name="statStartingPointMeasureRuntime" Datatype="LReal" /><Member Name="statRuntime" Datatype="LReal" /><Member Name="statFirstCycle" Datatype="Bool" /></Section></Sections></Member>
+    <Member Name="statRemoteCommand_ModeChangeRequest" Datatype="Struct" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Member Name="Production" Datatype="Bool"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">Request to goto mode - PRODUCTION (mode #1)</MultiLanguageText><MultiLanguageText Lang="de-DE">Request to goto mode - PRODUCTION (mode #1)</MultiLanguageText></Comment></Member><Member Name="Maintenance" Datatype="Bool"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">Request to goto mode - MAINTENANCE (mode #2)</MultiLanguageText><MultiLanguageText Lang="de-DE">Request to goto mode - MAINTENANCE (mode #2)</MultiLanguageText></Comment></Member><Member Name="Manual" Datatype="Bool"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">Request to goto mode - MANUAL (mode #3)</MultiLanguageText><MultiLanguageText Lang="de-DE">Request to goto mode - MANUAL (mode #3)</MultiLanguageText></Comment></Member><Member Name="UserMode01" Datatype="Bool"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">Request to goto mode - USER MODE 01 (mode #4)</MultiLanguageText><MultiLanguageText Lang="de-DE">Request to goto mode - USER MODE 01 (mode #4)</MultiLanguageText></Comment></Member><Member Name="UserMode02" Datatype="Bool"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">Request to goto mode - USER MODE 02 (mode #5)</MultiLanguageText><MultiLanguageText Lang="de-DE">Request to goto mode - USER MODE 02 (mode #5)</MultiLanguageText></Comment></Member><Member Name="UserMode03" Datatype="Bool"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">Request to goto mode - USER MODE 03 (mode #6)</MultiLanguageText><MultiLanguageText Lang="de-DE">Request to goto mode - USER MODE 03 (mode #6)</MultiLanguageText></Comment></Member><Member Name="UserMode04" Datatype="Bool"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">Request to goto mode - USER MODE 04 (mode #7)</MultiLanguageText><MultiLanguageText Lang="de-DE">Request to goto mode - USER MODE 04 (mode #7)</MultiLanguageText></Comment></Member><Member Name="UserMode05" Datatype="Bool"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">Request to goto mode - USER MODE 05 (mode #8)</MultiLanguageText><MultiLanguageText Lang="de-DE">Request to goto mode - USER MODE 05 (mode #8)</MultiLanguageText></Comment></Member><Member Name="UserMode06" Datatype="Bool"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">Request to goto mode - USER MODE 06 (mode #9)</MultiLanguageText><MultiLanguageText Lang="de-DE">Request to goto mode - USER MODE 06 (mode #9)</MultiLanguageText></Comment></Member><Member Name="UserMode07" Datatype="Bool"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">Request to goto mode - USER MODE 07 (mode #10)</MultiLanguageText><MultiLanguageText Lang="de-DE">Request to goto mode - USER MODE 07 (mode #10)</MultiLanguageText></Comment></Member><Member Name="UserMode08" Datatype="Bool"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">Request to goto mode - USER MODE 08 (mode #11)</MultiLanguageText><MultiLanguageText Lang="de-DE">Request to goto mode - USER MODE 08 (mode #11)</MultiLanguageText></Comment></Member></Member>
+    <Member Name="TPResettingDelay" Datatype="TP_TIME" Version="1.0" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute></AttributeList><Sections><Section Name="None"><Member Name="PT" Datatype="Time" /><Member Name="ET" Datatype="Time" /><Member Name="IN" Datatype="Bool" /><Member Name="Q" Datatype="Bool" /></Section></Sections></Member>
+    <Member Name="TPClearingDelay" Datatype="TP_TIME" Version="1.0" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute></AttributeList><Sections><Section Name="None"><Member Name="PT" Datatype="Time" /><Member Name="ET" Datatype="Time" /><Member Name="IN" Datatype="Bool" /><Member Name="Q" Datatype="Bool" /></Section></Sections></Member>
+  </Section>
+  <Section Name="Temp">
+    <Member Name="tempDiagnosticsBufferIndexForHMI" Datatype="Int">
+      <Comment>
+        <MultiLanguageText Lang="en-US">Temporary integer for PackML HMI diagnostics</MultiLanguageText>
+        <MultiLanguageText Lang="de-DE">Temporary integer for PackML HMI diagnostics</MultiLanguageText>
+      </Comment>
+    </Member>
+  </Section>
+  <Section Name="Constant" />
+</Sections></Interface>
+      <IsIECCheckEnabled>false</IsIECCheckEnabled>
+      <IsRetainMemResEnabled>false</IsRetainMemResEnabled>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <MemoryReserve>100</MemoryReserve>
+      <Name>UN_02_PackML</Name>
+      <Number>31622</Number>
+      <ProgrammingLanguage>LAD</ProgrammingLanguage>
+      <SetENOAutomatically>false</SetENOAutomatically>
+      <UDABlockProperties />
+      <UDAEnableTagReadback>false</UDAEnableTagReadback>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text>Support: tech.team.motioncontrol@siemens.com
+Fax: +49 (0) 9131/98-1297</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="3" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text>Support: tech.team.motioncontrol@siemens.com
+Fax: +49 (0) 9131/98-1297</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="4" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="UN" />
+        <Component Name="PackML_Sts" />
+        <Component Name="cmd_Reset" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="State" />
+        <Component Name="Stopped" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="23">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="State" />
+        <Component Name="Complete" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="State" />
+        <Component Name="Stopped" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="25">
+      <Symbol>
+        <Component Name="UN" />
+        <Component Name="PackML_Sts" />
+        <Component Name="cmd_Stop" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="26">
+      <Symbol>
+        <Component Name="UN" />
+        <Component Name="PackML_Sts" />
+        <Component Name="cmd_Abort" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="27">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Cmd_Reset" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="28" />
+    <Part Name="Contact" UId="29" />
+    <Part Name="Contact" UId="30" />
+    <Part Name="Contact" UId="31" />
+    <Part Name="Contact" UId="32">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="33">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="O" UId="34">
+      <TemplateValue Name="Card" Type="Cardinality">3</TemplateValue>
+    </Part>
+    <Part Name="Coil" UId="35" />
+  </Parts>
+  <Wires>
+    <Wire UId="36">
+      <Powerrail />
+      <NameCon UId="28" Name="in" />
+      <NameCon UId="31" Name="in" />
+    </Wire>
+    <Wire UId="37">
+      <IdentCon UId="21" />
+      <NameCon UId="28" Name="operand" />
+    </Wire>
+    <Wire UId="38">
+      <NameCon UId="28" Name="out" />
+      <NameCon UId="29" Name="in" />
+      <NameCon UId="30" Name="in" />
+    </Wire>
+    <Wire UId="39">
+      <IdentCon UId="22" />
+      <NameCon UId="29" Name="operand" />
+    </Wire>
+    <Wire UId="40">
+      <NameCon UId="29" Name="out" />
+      <NameCon UId="34" Name="in1" />
+    </Wire>
+    <Wire UId="41">
+      <IdentCon UId="23" />
+      <NameCon UId="30" Name="operand" />
+    </Wire>
+    <Wire UId="42">
+      <NameCon UId="30" Name="out" />
+      <NameCon UId="34" Name="in2" />
+    </Wire>
+    <Wire UId="43">
+      <IdentCon UId="24" />
+      <NameCon UId="31" Name="operand" />
+    </Wire>
+    <Wire UId="44">
+      <NameCon UId="31" Name="out" />
+      <NameCon UId="32" Name="in" />
+    </Wire>
+    <Wire UId="45">
+      <IdentCon UId="25" />
+      <NameCon UId="32" Name="operand" />
+    </Wire>
+    <Wire UId="46">
+      <NameCon UId="32" Name="out" />
+      <NameCon UId="33" Name="in" />
+    </Wire>
+    <Wire UId="47">
+      <IdentCon UId="26" />
+      <NameCon UId="33" Name="operand" />
+    </Wire>
+    <Wire UId="48">
+      <NameCon UId="33" Name="out" />
+      <NameCon UId="34" Name="in3" />
+    </Wire>
+    <Wire UId="49">
+      <NameCon UId="34" Name="out" />
+      <NameCon UId="35" Name="in" />
+    </Wire>
+    <Wire UId="50">
+      <IdentCon UId="27" />
+      <NameCon UId="35" Name="operand" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="5" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="6" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Reset Command:
+If the machine is stopped and there are no faults (no stop or abort commands), 
+then automatically reset and move the machine to idle.  This is common when all 
+the faults are cleared in the Clearing state and the machine moves to the 
+Stopped state with no more faults.</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="7" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Reset Command:
+If the machine is stopped and there are no faults (no stop or abort commands), 
+then automatically reset and move the machine to idle.  This is common when all 
+the faults are cleared in the Clearing state and the machine moves to the 
+Stopped state with no more faults.</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="8" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="9" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>PackML ModeManager &amp; State Model - Reset command</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>PackML ModeManager &amp; State Model - Reset command</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="B" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="UN" />
+        <Component Name="PackML_Sts" />
+        <Component Name="cmd_Start" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="State" />
+        <Component Name="Idle" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="23">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Cmd_Start" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="24" />
+    <Part Name="Contact" UId="25" />
+    <Part Name="Coil" UId="26" />
+  </Parts>
+  <Wires>
+    <Wire UId="27">
+      <Powerrail />
+      <NameCon UId="24" Name="in" />
+    </Wire>
+    <Wire UId="28">
+      <IdentCon UId="21" />
+      <NameCon UId="24" Name="operand" />
+    </Wire>
+    <Wire UId="29">
+      <NameCon UId="24" Name="out" />
+      <NameCon UId="25" Name="in" />
+    </Wire>
+    <Wire UId="30">
+      <IdentCon UId="22" />
+      <NameCon UId="25" Name="operand" />
+    </Wire>
+    <Wire UId="31">
+      <NameCon UId="25" Name="out" />
+      <NameCon UId="26" Name="in" />
+    </Wire>
+    <Wire UId="32">
+      <IdentCon UId="23" />
+      <NameCon UId="26" Name="operand" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="C" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="D" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="F" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="10" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>PackML ModeManager &amp; State Model - Start command</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="11" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>PackML ModeManager &amp; State Model - Start command</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="12" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="UN" />
+        <Component Name="PackML_Sts" />
+        <Component Name="cmd_Hold" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="State" />
+        <Component Name="Execute" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="23">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Cmd_Reset" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Cmd_Hold" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="25" />
+    <Part Name="Contact" UId="26" />
+    <Part Name="Contact" UId="27">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Coil" UId="28" />
+  </Parts>
+  <Wires>
+    <Wire UId="29">
+      <Powerrail />
+      <NameCon UId="25" Name="in" />
+    </Wire>
+    <Wire UId="30">
+      <IdentCon UId="21" />
+      <NameCon UId="25" Name="operand" />
+    </Wire>
+    <Wire UId="31">
+      <NameCon UId="25" Name="out" />
+      <NameCon UId="26" Name="in" />
+    </Wire>
+    <Wire UId="32">
+      <IdentCon UId="22" />
+      <NameCon UId="26" Name="operand" />
+    </Wire>
+    <Wire UId="33">
+      <NameCon UId="26" Name="out" />
+      <NameCon UId="27" Name="in" />
+    </Wire>
+    <Wire UId="34">
+      <IdentCon UId="23" />
+      <NameCon UId="27" Name="operand" />
+    </Wire>
+    <Wire UId="35">
+      <NameCon UId="27" Name="out" />
+      <NameCon UId="28" Name="in" />
+    </Wire>
+    <Wire UId="36">
+      <IdentCon UId="24" />
+      <NameCon UId="28" Name="operand" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="13" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="14" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="15" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="16" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="17" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>PackML ModeManager &amp; State Model - Hold command</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="18" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>PackML ModeManager &amp; State Model - Hold command</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="19" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="UN" />
+        <Component Name="PackML_Sts" />
+        <Component Name="cmd_UnHold" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="State" />
+        <Component Name="Held" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="23">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Cmd_UnHold" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="24" />
+    <Part Name="Contact" UId="25" />
+    <Part Name="Coil" UId="26" />
+  </Parts>
+  <Wires>
+    <Wire UId="27">
+      <Powerrail />
+      <NameCon UId="24" Name="in" />
+    </Wire>
+    <Wire UId="28">
+      <IdentCon UId="21" />
+      <NameCon UId="24" Name="operand" />
+    </Wire>
+    <Wire UId="29">
+      <NameCon UId="24" Name="out" />
+      <NameCon UId="25" Name="in" />
+    </Wire>
+    <Wire UId="30">
+      <IdentCon UId="22" />
+      <NameCon UId="25" Name="operand" />
+    </Wire>
+    <Wire UId="31">
+      <NameCon UId="25" Name="out" />
+      <NameCon UId="26" Name="in" />
+    </Wire>
+    <Wire UId="32">
+      <IdentCon UId="23" />
+      <NameCon UId="26" Name="operand" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="1A" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="1B" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="1C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="1D" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="1E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>PackML ModeManager &amp; State Model - UnHold command</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="1F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>PackML ModeManager &amp; State Model - UnHold command</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="20" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="UN" />
+        <Component Name="PackML_Sts" />
+        <Component Name="cmd_Suspend" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="State" />
+        <Component Name="Execute" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="23">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Cmd_Reset" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Cmd_Suspend" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="25" />
+    <Part Name="Contact" UId="26" />
+    <Part Name="Contact" UId="27">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Coil" UId="28" />
+  </Parts>
+  <Wires>
+    <Wire UId="29">
+      <Powerrail />
+      <NameCon UId="25" Name="in" />
+    </Wire>
+    <Wire UId="30">
+      <IdentCon UId="21" />
+      <NameCon UId="25" Name="operand" />
+    </Wire>
+    <Wire UId="31">
+      <NameCon UId="25" Name="out" />
+      <NameCon UId="26" Name="in" />
+    </Wire>
+    <Wire UId="32">
+      <IdentCon UId="22" />
+      <NameCon UId="26" Name="operand" />
+    </Wire>
+    <Wire UId="33">
+      <NameCon UId="26" Name="out" />
+      <NameCon UId="27" Name="in" />
+    </Wire>
+    <Wire UId="34">
+      <IdentCon UId="23" />
+      <NameCon UId="27" Name="operand" />
+    </Wire>
+    <Wire UId="35">
+      <NameCon UId="27" Name="out" />
+      <NameCon UId="28" Name="in" />
+    </Wire>
+    <Wire UId="36">
+      <IdentCon UId="24" />
+      <NameCon UId="28" Name="operand" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="21" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="22" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="23" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="24" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="25" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>PackML ModeManager &amp; State Model - Suspend command</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="26" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>PackML ModeManager &amp; State Model - Suspend command</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="27" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="UN" />
+        <Component Name="PackML_Sts" />
+        <Component Name="cmd_UnSuspend" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="State" />
+        <Component Name="Suspended" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="23">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Cmd_Suspend" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Cmd_UnSuspend" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="25" />
+    <Part Name="Contact" UId="26" />
+    <Part Name="Contact" UId="27">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Coil" UId="28" />
+  </Parts>
+  <Wires>
+    <Wire UId="29">
+      <Powerrail />
+      <NameCon UId="25" Name="in" />
+    </Wire>
+    <Wire UId="30">
+      <IdentCon UId="21" />
+      <NameCon UId="25" Name="operand" />
+    </Wire>
+    <Wire UId="31">
+      <NameCon UId="25" Name="out" />
+      <NameCon UId="26" Name="in" />
+    </Wire>
+    <Wire UId="32">
+      <IdentCon UId="22" />
+      <NameCon UId="26" Name="operand" />
+    </Wire>
+    <Wire UId="33">
+      <NameCon UId="26" Name="out" />
+      <NameCon UId="27" Name="in" />
+    </Wire>
+    <Wire UId="34">
+      <IdentCon UId="23" />
+      <NameCon UId="27" Name="operand" />
+    </Wire>
+    <Wire UId="35">
+      <NameCon UId="27" Name="out" />
+      <NameCon UId="28" Name="in" />
+    </Wire>
+    <Wire UId="36">
+      <IdentCon UId="24" />
+      <NameCon UId="28" Name="operand" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="28" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="29" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="2A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="2B" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="2C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>PackML ModeManager &amp; State Model - UnSuspend command</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="2D" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>PackML ModeManager &amp; State Model - UnSuspend command</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="2E" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="State" />
+        <Component Name="Resetting" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="PackTags" />
+        <Component Name="Status" />
+        <Component Name="StateChangeInProcess" />
+      </Symbol>
+    </Access>
+    <Access Scope="TypedConstant" UId="23">
+      <Constant>
+        <ConstantValue>T#3s</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="State" />
+        <Component Name="Idle" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="25">
+      <Symbol>
+        <Component Name="PackTags" />
+        <Component Name="Status" />
+        <Component Name="StateChangeInProcess" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="26">
+      <Symbol>
+        <Component Name="TPResettingDelay" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="27" />
+    <Part Name="Contact" UId="28" />
+    <Part Name="TP" Version="1.0" UId="29">
+      <Instance Scope="LocalVariable" UId="30">
+        <Component Name="TPResettingDelay" />
+      </Instance>
+      <TemplateValue Name="time_type" Type="Type">Time</TemplateValue>
+    </Part>
+    <Part Name="Contact" UId="31" />
+    <Part Name="Contact" UId="32" />
+    <Part Name="ResetIECTimerCoil" UId="33" />
+  </Parts>
+  <Wires>
+    <Wire UId="35">
+      <Powerrail />
+      <NameCon UId="27" Name="in" />
+      <NameCon UId="31" Name="in" />
+    </Wire>
+    <Wire UId="36">
+      <IdentCon UId="21" />
+      <NameCon UId="27" Name="operand" />
+    </Wire>
+    <Wire UId="37">
+      <NameCon UId="27" Name="out" />
+      <NameCon UId="28" Name="in" />
+    </Wire>
+    <Wire UId="38">
+      <IdentCon UId="22" />
+      <NameCon UId="28" Name="operand" />
+    </Wire>
+    <Wire UId="39">
+      <NameCon UId="28" Name="out" />
+      <NameCon UId="29" Name="IN" />
+    </Wire>
+    <Wire UId="40">
+      <IdentCon UId="23" />
+      <NameCon UId="29" Name="PT" />
+    </Wire>
+    <Wire UId="41">
+      <NameCon UId="29" Name="ET" />
+      <OpenCon UId="34" />
+    </Wire>
+    <Wire UId="42">
+      <IdentCon UId="24" />
+      <NameCon UId="31" Name="operand" />
+    </Wire>
+    <Wire UId="43">
+      <NameCon UId="31" Name="out" />
+      <NameCon UId="32" Name="in" />
+    </Wire>
+    <Wire UId="44">
+      <IdentCon UId="25" />
+      <NameCon UId="32" Name="operand" />
+    </Wire>
+    <Wire UId="45">
+      <NameCon UId="32" Name="out" />
+      <NameCon UId="33" Name="in" />
+    </Wire>
+    <Wire UId="46">
+      <IdentCon UId="26" />
+      <NameCon UId="33" Name="operand" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="2F" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="30" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="31" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="32" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="33" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Resetting Delay Timer</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="34" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Resetting Delay Timer</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="35" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="UN" />
+        <Component Name="PackML_Sts" />
+        <Component Name="cmd_Stop" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="UN" />
+        <Component Name="PackML_Sts" />
+        <Component Name="cmd_Reset" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="23">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="State" />
+        <Component Name="Stopping" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="State" />
+        <Component Name="Stopped" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="25">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="State" />
+        <Component Name="Aborting" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="26">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="State" />
+        <Component Name="Aborted" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="27">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Cmd_Reset" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="28">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="State" />
+        <Component Name="Resetting" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="29">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Cmd_Clear" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="30">
+      <Symbol>
+        <Component Name="TPResettingDelay" />
+        <Component Name="Q" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="31">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Cmd_Stop" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="32" />
+    <Part Name="Contact" UId="33">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="34">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="35">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="36">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="37">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="38">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="39">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="O" UId="40">
+      <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+    </Part>
+    <Part Name="Contact" UId="41">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="42">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Coil" UId="43" />
+  </Parts>
+  <Wires>
+    <Wire UId="44">
+      <Powerrail />
+      <NameCon UId="32" Name="in" />
+    </Wire>
+    <Wire UId="45">
+      <IdentCon UId="21" />
+      <NameCon UId="32" Name="operand" />
+    </Wire>
+    <Wire UId="46">
+      <NameCon UId="32" Name="out" />
+      <NameCon UId="33" Name="in" />
+    </Wire>
+    <Wire UId="47">
+      <IdentCon UId="22" />
+      <NameCon UId="33" Name="operand" />
+    </Wire>
+    <Wire UId="48">
+      <NameCon UId="33" Name="out" />
+      <NameCon UId="34" Name="in" />
+    </Wire>
+    <Wire UId="49">
+      <IdentCon UId="23" />
+      <NameCon UId="34" Name="operand" />
+    </Wire>
+    <Wire UId="50">
+      <NameCon UId="34" Name="out" />
+      <NameCon UId="35" Name="in" />
+    </Wire>
+    <Wire UId="51">
+      <IdentCon UId="24" />
+      <NameCon UId="35" Name="operand" />
+    </Wire>
+    <Wire UId="52">
+      <NameCon UId="35" Name="out" />
+      <NameCon UId="36" Name="in" />
+    </Wire>
+    <Wire UId="53">
+      <IdentCon UId="25" />
+      <NameCon UId="36" Name="operand" />
+    </Wire>
+    <Wire UId="54">
+      <NameCon UId="36" Name="out" />
+      <NameCon UId="37" Name="in" />
+    </Wire>
+    <Wire UId="55">
+      <IdentCon UId="26" />
+      <NameCon UId="37" Name="operand" />
+    </Wire>
+    <Wire UId="56">
+      <NameCon UId="37" Name="out" />
+      <NameCon UId="38" Name="in" />
+      <NameCon UId="39" Name="in" />
+    </Wire>
+    <Wire UId="57">
+      <IdentCon UId="27" />
+      <NameCon UId="38" Name="operand" />
+    </Wire>
+    <Wire UId="58">
+      <NameCon UId="38" Name="out" />
+      <NameCon UId="40" Name="in1" />
+    </Wire>
+    <Wire UId="59">
+      <IdentCon UId="28" />
+      <NameCon UId="39" Name="operand" />
+    </Wire>
+    <Wire UId="60">
+      <NameCon UId="39" Name="out" />
+      <NameCon UId="40" Name="in2" />
+    </Wire>
+    <Wire UId="61">
+      <NameCon UId="40" Name="out" />
+      <NameCon UId="41" Name="in" />
+    </Wire>
+    <Wire UId="62">
+      <IdentCon UId="29" />
+      <NameCon UId="41" Name="operand" />
+    </Wire>
+    <Wire UId="63">
+      <NameCon UId="41" Name="out" />
+      <NameCon UId="42" Name="in" />
+    </Wire>
+    <Wire UId="64">
+      <IdentCon UId="30" />
+      <NameCon UId="42" Name="operand" />
+    </Wire>
+    <Wire UId="65">
+      <NameCon UId="42" Name="out" />
+      <NameCon UId="43" Name="in" />
+    </Wire>
+    <Wire UId="66">
+      <IdentCon UId="31" />
+      <NameCon UId="43" Name="operand" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="36" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="37" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Stop Command
+Prevent the stop command from occuring while attempting to reset in order to 
+give the machine time to reset faults.</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="38" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Stop Command
+Prevent the stop command from occuring while attempting to reset in order to 
+give the machine time to reset faults.</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="39" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="3A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>PackML ModeManager &amp; State Model - Stop command</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="3B" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>PackML ModeManager &amp; State Model - Stop command</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="3C" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="State" />
+        <Component Name="Clearing" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="PackTags" />
+        <Component Name="Status" />
+        <Component Name="StateChangeInProcess" />
+      </Symbol>
+    </Access>
+    <Access Scope="TypedConstant" UId="23">
+      <Constant>
+        <ConstantValue>T#3s</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="State" />
+        <Component Name="Stopped" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="25">
+      <Symbol>
+        <Component Name="PackTags" />
+        <Component Name="Status" />
+        <Component Name="StateChangeInProcess" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="26">
+      <Symbol>
+        <Component Name="TPClearingDelay" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="27" />
+    <Part Name="Contact" UId="28" />
+    <Part Name="TP" Version="1.0" UId="29">
+      <Instance Scope="LocalVariable" UId="30">
+        <Component Name="TPClearingDelay" />
+      </Instance>
+      <TemplateValue Name="time_type" Type="Type">Time</TemplateValue>
+    </Part>
+    <Part Name="Contact" UId="31" />
+    <Part Name="Contact" UId="32" />
+    <Part Name="ResetIECTimerCoil" UId="33" />
+  </Parts>
+  <Wires>
+    <Wire UId="35">
+      <Powerrail />
+      <NameCon UId="27" Name="in" />
+      <NameCon UId="31" Name="in" />
+    </Wire>
+    <Wire UId="36">
+      <IdentCon UId="21" />
+      <NameCon UId="27" Name="operand" />
+    </Wire>
+    <Wire UId="37">
+      <NameCon UId="27" Name="out" />
+      <NameCon UId="28" Name="in" />
+    </Wire>
+    <Wire UId="38">
+      <IdentCon UId="22" />
+      <NameCon UId="28" Name="operand" />
+    </Wire>
+    <Wire UId="39">
+      <NameCon UId="28" Name="out" />
+      <NameCon UId="29" Name="IN" />
+    </Wire>
+    <Wire UId="40">
+      <IdentCon UId="23" />
+      <NameCon UId="29" Name="PT" />
+    </Wire>
+    <Wire UId="41">
+      <NameCon UId="29" Name="ET" />
+      <OpenCon UId="34" />
+    </Wire>
+    <Wire UId="42">
+      <IdentCon UId="24" />
+      <NameCon UId="31" Name="operand" />
+    </Wire>
+    <Wire UId="43">
+      <NameCon UId="31" Name="out" />
+      <NameCon UId="32" Name="in" />
+    </Wire>
+    <Wire UId="44">
+      <IdentCon UId="25" />
+      <NameCon UId="32" Name="operand" />
+    </Wire>
+    <Wire UId="45">
+      <NameCon UId="32" Name="out" />
+      <NameCon UId="33" Name="in" />
+    </Wire>
+    <Wire UId="46">
+      <IdentCon UId="26" />
+      <NameCon UId="33" Name="operand" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="3D" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="3E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="3F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="40" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="41" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Clearing Delay Timer</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="42" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Clearing Delay Timer</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="43" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="UN" />
+        <Component Name="PackML_Sts" />
+        <Component Name="cmd_Abort" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="State" />
+        <Component Name="Aborting" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="23">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="State" />
+        <Component Name="Aborted" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Cmd_Clear" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="25">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="State" />
+        <Component Name="Clearing" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="26">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Cmd_Reset" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="27">
+      <Symbol>
+        <Component Name="TPClearingDelay" />
+        <Component Name="Q" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="28">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Cmd_Abort" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="29" />
+    <Part Name="Contact" UId="30">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="31">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="32">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="33">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="O" UId="34">
+      <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+    </Part>
+    <Part Name="Contact" UId="35">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="36">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Coil" UId="37" />
+  </Parts>
+  <Wires>
+    <Wire UId="38">
+      <Powerrail />
+      <NameCon UId="29" Name="in" />
+    </Wire>
+    <Wire UId="39">
+      <IdentCon UId="21" />
+      <NameCon UId="29" Name="operand" />
+    </Wire>
+    <Wire UId="40">
+      <NameCon UId="29" Name="out" />
+      <NameCon UId="30" Name="in" />
+    </Wire>
+    <Wire UId="41">
+      <IdentCon UId="22" />
+      <NameCon UId="30" Name="operand" />
+    </Wire>
+    <Wire UId="42">
+      <NameCon UId="30" Name="out" />
+      <NameCon UId="31" Name="in" />
+    </Wire>
+    <Wire UId="43">
+      <IdentCon UId="23" />
+      <NameCon UId="31" Name="operand" />
+    </Wire>
+    <Wire UId="44">
+      <NameCon UId="31" Name="out" />
+      <NameCon UId="32" Name="in" />
+      <NameCon UId="33" Name="in" />
+    </Wire>
+    <Wire UId="45">
+      <IdentCon UId="24" />
+      <NameCon UId="32" Name="operand" />
+    </Wire>
+    <Wire UId="46">
+      <NameCon UId="32" Name="out" />
+      <NameCon UId="34" Name="in1" />
+    </Wire>
+    <Wire UId="47">
+      <IdentCon UId="25" />
+      <NameCon UId="33" Name="operand" />
+    </Wire>
+    <Wire UId="48">
+      <NameCon UId="33" Name="out" />
+      <NameCon UId="34" Name="in2" />
+    </Wire>
+    <Wire UId="49">
+      <NameCon UId="34" Name="out" />
+      <NameCon UId="35" Name="in" />
+    </Wire>
+    <Wire UId="50">
+      <IdentCon UId="26" />
+      <NameCon UId="35" Name="operand" />
+    </Wire>
+    <Wire UId="51">
+      <NameCon UId="35" Name="out" />
+      <NameCon UId="36" Name="in" />
+    </Wire>
+    <Wire UId="52">
+      <IdentCon UId="27" />
+      <NameCon UId="36" Name="operand" />
+    </Wire>
+    <Wire UId="53">
+      <NameCon UId="36" Name="out" />
+      <NameCon UId="37" Name="in" />
+    </Wire>
+    <Wire UId="54">
+      <IdentCon UId="28" />
+      <NameCon UId="37" Name="operand" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="44" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="45" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Abort Command
+Prevent the abort command from occuring while attempting to clear in order to 
+give the machine time to clear faults.</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="46" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Abort Command
+Prevent the abort command from occuring while attempting to clear in order to 
+give the machine time to clear faults.</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="47" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="48" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>PackML ModeManager &amp; State Model - Abort command</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="49" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>PackML ModeManager &amp; State Model - Abort command</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="4A" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="Mode" />
+        <Component Name="Production" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="State" />
+        <Component Name="Execute" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="23">
+      <Symbol>
+        <Component Name="UN" />
+        <Component Name="PackML_Sts" />
+        <Component Name="sts_Execute_SC" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Cmd_Complete" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="25" />
+    <Part Name="Contact" UId="26" />
+    <Part Name="Contact" UId="27" />
+    <Part Name="Coil" UId="28" />
+  </Parts>
+  <Wires>
+    <Wire UId="29">
+      <Powerrail />
+      <NameCon UId="25" Name="in" />
+    </Wire>
+    <Wire UId="30">
+      <IdentCon UId="21" />
+      <NameCon UId="25" Name="operand" />
+    </Wire>
+    <Wire UId="31">
+      <NameCon UId="25" Name="out" />
+      <NameCon UId="26" Name="in" />
+    </Wire>
+    <Wire UId="32">
+      <IdentCon UId="22" />
+      <NameCon UId="26" Name="operand" />
+    </Wire>
+    <Wire UId="33">
+      <NameCon UId="26" Name="out" />
+      <NameCon UId="27" Name="in" />
+    </Wire>
+    <Wire UId="34">
+      <IdentCon UId="23" />
+      <NameCon UId="27" Name="operand" />
+    </Wire>
+    <Wire UId="35">
+      <NameCon UId="27" Name="out" />
+      <NameCon UId="28" Name="in" />
+    </Wire>
+    <Wire UId="36">
+      <IdentCon UId="24" />
+      <NameCon UId="28" Name="operand" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="4B" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="4C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="4D" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="4E" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="4F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>PackML ModeManager &amp; State Model - EXECUTE state complete -  (from Execute)</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="50" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>PackML ModeManager &amp; State Model - EXECUTE state complete -  (from Execute)</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="51" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="UN" />
+        <Component Name="PackML_Sts" />
+        <Component Name="cmd_Clear" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="State" />
+        <Component Name="Aborted" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="23">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Cmd_Clear" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="24" />
+    <Part Name="Contact" UId="25" />
+    <Part Name="Coil" UId="26" />
+  </Parts>
+  <Wires>
+    <Wire UId="27">
+      <Powerrail />
+      <NameCon UId="24" Name="in" />
+    </Wire>
+    <Wire UId="28">
+      <IdentCon UId="21" />
+      <NameCon UId="24" Name="operand" />
+    </Wire>
+    <Wire UId="29">
+      <NameCon UId="24" Name="out" />
+      <NameCon UId="25" Name="in" />
+    </Wire>
+    <Wire UId="30">
+      <IdentCon UId="22" />
+      <NameCon UId="25" Name="operand" />
+    </Wire>
+    <Wire UId="31">
+      <NameCon UId="25" Name="out" />
+      <NameCon UId="26" Name="in" />
+    </Wire>
+    <Wire UId="32">
+      <IdentCon UId="23" />
+      <NameCon UId="26" Name="operand" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="52" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="53" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="54" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="55" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="56" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>PackML ModeManager &amp; State Model - Clear Command</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="57" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>PackML ModeManager &amp; State Model - Clear Command</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="58" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="remoteCommandEnable" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="PackTags" />
+        <Component Name="Command" />
+        <Component Name="UnitModeChangeRequest" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="23">
+      <Symbol>
+        <Component Name="PackTags" />
+        <Component Name="Command" />
+        <Component Name="UnitMode" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalConstant" UId="24">
+      <Constant Name="LPMLV30_MODE_PRODUCTION" />
+    </Access>
+    <Access Scope="LocalVariable" UId="25">
+      <Symbol>
+        <Component Name="statRemoteCommand_ModeChangeRequest" />
+        <Component Name="Production" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="26">
+      <Symbol>
+        <Component Name="PackTags" />
+        <Component Name="Command" />
+        <Component Name="UnitMode" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalConstant" UId="27">
+      <Constant Name="LPMLV30_MODE_MAINTENANCE" />
+    </Access>
+    <Access Scope="LocalVariable" UId="28">
+      <Symbol>
+        <Component Name="statRemoteCommand_ModeChangeRequest" />
+        <Component Name="Maintenance" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="29">
+      <Symbol>
+        <Component Name="PackTags" />
+        <Component Name="Command" />
+        <Component Name="UnitMode" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalConstant" UId="30">
+      <Constant Name="LPMLV30_MODE_MANUAL" />
+    </Access>
+    <Access Scope="LocalVariable" UId="31">
+      <Symbol>
+        <Component Name="statRemoteCommand_ModeChangeRequest" />
+        <Component Name="Manual" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="32">
+      <Symbol>
+        <Component Name="PackTags" />
+        <Component Name="Command" />
+        <Component Name="UnitMode" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalConstant" UId="33">
+      <Constant Name="LPMLV30_MODE_USER_01" />
+    </Access>
+    <Access Scope="LocalVariable" UId="34">
+      <Symbol>
+        <Component Name="statRemoteCommand_ModeChangeRequest" />
+        <Component Name="UserMode01" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="35">
+      <Symbol>
+        <Component Name="PackTags" />
+        <Component Name="Command" />
+        <Component Name="UnitMode" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalConstant" UId="36">
+      <Constant Name="LPMLV30_MODE_USER_02" />
+    </Access>
+    <Access Scope="LocalVariable" UId="37">
+      <Symbol>
+        <Component Name="statRemoteCommand_ModeChangeRequest" />
+        <Component Name="UserMode02" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="38">
+      <Symbol>
+        <Component Name="PackTags" />
+        <Component Name="Command" />
+        <Component Name="UnitMode" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalConstant" UId="39">
+      <Constant Name="LPMLV30_MODE_USER_03" />
+    </Access>
+    <Access Scope="LocalVariable" UId="40">
+      <Symbol>
+        <Component Name="statRemoteCommand_ModeChangeRequest" />
+        <Component Name="UserMode03" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="41">
+      <Symbol>
+        <Component Name="PackTags" />
+        <Component Name="Command" />
+        <Component Name="UnitMode" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalConstant" UId="42">
+      <Constant Name="LPMLV30_MODE_USER_04" />
+    </Access>
+    <Access Scope="LocalVariable" UId="43">
+      <Symbol>
+        <Component Name="statRemoteCommand_ModeChangeRequest" />
+        <Component Name="UserMode04" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="44">
+      <Symbol>
+        <Component Name="PackTags" />
+        <Component Name="Command" />
+        <Component Name="UnitMode" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalConstant" UId="45">
+      <Constant Name="LPMLV30_MODE_USER_05" />
+    </Access>
+    <Access Scope="LocalVariable" UId="46">
+      <Symbol>
+        <Component Name="statRemoteCommand_ModeChangeRequest" />
+        <Component Name="UserMode05" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="47">
+      <Symbol>
+        <Component Name="PackTags" />
+        <Component Name="Command" />
+        <Component Name="UnitMode" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalConstant" UId="48">
+      <Constant Name="LPMLV30_MODE_USER_06" />
+    </Access>
+    <Access Scope="LocalVariable" UId="49">
+      <Symbol>
+        <Component Name="statRemoteCommand_ModeChangeRequest" />
+        <Component Name="UserMode06" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="50" />
+    <Part Name="Contact" UId="51" />
+    <Part Name="Eq" UId="52">
+      <TemplateValue Name="SrcType" Type="Type">DInt</TemplateValue>
+    </Part>
+    <Part Name="Coil" UId="53" />
+    <Part Name="Eq" UId="54">
+      <TemplateValue Name="SrcType" Type="Type">DInt</TemplateValue>
+    </Part>
+    <Part Name="Coil" UId="55" />
+    <Part Name="Eq" UId="56">
+      <TemplateValue Name="SrcType" Type="Type">DInt</TemplateValue>
+    </Part>
+    <Part Name="Coil" UId="57" />
+    <Part Name="Eq" UId="58">
+      <TemplateValue Name="SrcType" Type="Type">DInt</TemplateValue>
+    </Part>
+    <Part Name="Coil" UId="59" />
+    <Part Name="Eq" UId="60">
+      <TemplateValue Name="SrcType" Type="Type">DInt</TemplateValue>
+    </Part>
+    <Part Name="Coil" UId="61" />
+    <Part Name="Eq" UId="62">
+      <TemplateValue Name="SrcType" Type="Type">DInt</TemplateValue>
+    </Part>
+    <Part Name="Coil" UId="63" />
+    <Part Name="Eq" UId="64">
+      <TemplateValue Name="SrcType" Type="Type">DInt</TemplateValue>
+    </Part>
+    <Part Name="Coil" UId="65" />
+    <Part Name="Eq" UId="66">
+      <TemplateValue Name="SrcType" Type="Type">DInt</TemplateValue>
+    </Part>
+    <Part Name="Coil" UId="67" />
+    <Part Name="Eq" UId="68">
+      <TemplateValue Name="SrcType" Type="Type">DInt</TemplateValue>
+    </Part>
+    <Part Name="Coil" UId="69" />
+  </Parts>
+  <Wires>
+    <Wire UId="70">
+      <Powerrail />
+      <NameCon UId="50" Name="in" />
+    </Wire>
+    <Wire UId="71">
+      <IdentCon UId="21" />
+      <NameCon UId="50" Name="operand" />
+    </Wire>
+    <Wire UId="72">
+      <NameCon UId="50" Name="out" />
+      <NameCon UId="51" Name="in" />
+    </Wire>
+    <Wire UId="73">
+      <IdentCon UId="22" />
+      <NameCon UId="51" Name="operand" />
+    </Wire>
+    <Wire UId="74">
+      <NameCon UId="51" Name="out" />
+      <NameCon UId="52" Name="pre" />
+      <NameCon UId="54" Name="pre" />
+      <NameCon UId="56" Name="pre" />
+      <NameCon UId="58" Name="pre" />
+      <NameCon UId="60" Name="pre" />
+      <NameCon UId="62" Name="pre" />
+      <NameCon UId="64" Name="pre" />
+      <NameCon UId="66" Name="pre" />
+      <NameCon UId="68" Name="pre" />
+    </Wire>
+    <Wire UId="75">
+      <IdentCon UId="23" />
+      <NameCon UId="52" Name="in1" />
+    </Wire>
+    <Wire UId="76">
+      <IdentCon UId="24" />
+      <NameCon UId="52" Name="in2" />
+    </Wire>
+    <Wire UId="77">
+      <NameCon UId="52" Name="out" />
+      <NameCon UId="53" Name="in" />
+    </Wire>
+    <Wire UId="78">
+      <IdentCon UId="25" />
+      <NameCon UId="53" Name="operand" />
+    </Wire>
+    <Wire UId="79">
+      <IdentCon UId="26" />
+      <NameCon UId="54" Name="in1" />
+    </Wire>
+    <Wire UId="80">
+      <IdentCon UId="27" />
+      <NameCon UId="54" Name="in2" />
+    </Wire>
+    <Wire UId="81">
+      <NameCon UId="54" Name="out" />
+      <NameCon UId="55" Name="in" />
+    </Wire>
+    <Wire UId="82">
+      <IdentCon UId="28" />
+      <NameCon UId="55" Name="operand" />
+    </Wire>
+    <Wire UId="83">
+      <IdentCon UId="29" />
+      <NameCon UId="56" Name="in1" />
+    </Wire>
+    <Wire UId="84">
+      <IdentCon UId="30" />
+      <NameCon UId="56" Name="in2" />
+    </Wire>
+    <Wire UId="85">
+      <NameCon UId="56" Name="out" />
+      <NameCon UId="57" Name="in" />
+    </Wire>
+    <Wire UId="86">
+      <IdentCon UId="31" />
+      <NameCon UId="57" Name="operand" />
+    </Wire>
+    <Wire UId="87">
+      <IdentCon UId="32" />
+      <NameCon UId="58" Name="in1" />
+    </Wire>
+    <Wire UId="88">
+      <IdentCon UId="33" />
+      <NameCon UId="58" Name="in2" />
+    </Wire>
+    <Wire UId="89">
+      <NameCon UId="58" Name="out" />
+      <NameCon UId="59" Name="in" />
+    </Wire>
+    <Wire UId="90">
+      <IdentCon UId="34" />
+      <NameCon UId="59" Name="operand" />
+    </Wire>
+    <Wire UId="91">
+      <IdentCon UId="35" />
+      <NameCon UId="60" Name="in1" />
+    </Wire>
+    <Wire UId="92">
+      <IdentCon UId="36" />
+      <NameCon UId="60" Name="in2" />
+    </Wire>
+    <Wire UId="93">
+      <NameCon UId="60" Name="out" />
+      <NameCon UId="61" Name="in" />
+    </Wire>
+    <Wire UId="94">
+      <IdentCon UId="37" />
+      <NameCon UId="61" Name="operand" />
+    </Wire>
+    <Wire UId="95">
+      <IdentCon UId="38" />
+      <NameCon UId="62" Name="in1" />
+    </Wire>
+    <Wire UId="96">
+      <IdentCon UId="39" />
+      <NameCon UId="62" Name="in2" />
+    </Wire>
+    <Wire UId="97">
+      <NameCon UId="62" Name="out" />
+      <NameCon UId="63" Name="in" />
+    </Wire>
+    <Wire UId="98">
+      <IdentCon UId="40" />
+      <NameCon UId="63" Name="operand" />
+    </Wire>
+    <Wire UId="99">
+      <IdentCon UId="41" />
+      <NameCon UId="64" Name="in1" />
+    </Wire>
+    <Wire UId="100">
+      <IdentCon UId="42" />
+      <NameCon UId="64" Name="in2" />
+    </Wire>
+    <Wire UId="101">
+      <NameCon UId="64" Name="out" />
+      <NameCon UId="65" Name="in" />
+    </Wire>
+    <Wire UId="102">
+      <IdentCon UId="43" />
+      <NameCon UId="65" Name="operand" />
+    </Wire>
+    <Wire UId="103">
+      <IdentCon UId="44" />
+      <NameCon UId="66" Name="in1" />
+    </Wire>
+    <Wire UId="104">
+      <IdentCon UId="45" />
+      <NameCon UId="66" Name="in2" />
+    </Wire>
+    <Wire UId="105">
+      <NameCon UId="66" Name="out" />
+      <NameCon UId="67" Name="in" />
+    </Wire>
+    <Wire UId="106">
+      <IdentCon UId="46" />
+      <NameCon UId="67" Name="operand" />
+    </Wire>
+    <Wire UId="107">
+      <IdentCon UId="47" />
+      <NameCon UId="68" Name="in1" />
+    </Wire>
+    <Wire UId="108">
+      <IdentCon UId="48" />
+      <NameCon UId="68" Name="in2" />
+    </Wire>
+    <Wire UId="109">
+      <NameCon UId="68" Name="out" />
+      <NameCon UId="69" Name="in" />
+    </Wire>
+    <Wire UId="110">
+      <IdentCon UId="49" />
+      <NameCon UId="69" Name="operand" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="59" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="5A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>External State Commands are handled in the UN_05_EventControl routine to ensure that the unit machine level alarm manager captures the reason for any machine stoppage.</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="5B" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>External State Commands are handled in the UN_05_EventControl routine to ensure that the unit machine level alarm manager captures the reason for any machine stoppage.</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="5C" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="5D" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>External PackML Mode Commands</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="5E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>External PackML Mode Commands</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="5F" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="FirstScan" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Cmd" />
+        <Component Name="Mode" />
+        <Component Name="Production" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="23">
+      <Symbol>
+        <Component Name="statRemoteCommand_ModeChangeRequest" />
+        <Component Name="Production" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Cmd" />
+        <Component Name="Mode" />
+        <Component Name="Maintenance" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="25">
+      <Symbol>
+        <Component Name="statRemoteCommand_ModeChangeRequest" />
+        <Component Name="Maintenance" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="26">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Cmd" />
+        <Component Name="Mode" />
+        <Component Name="Manual" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="27">
+      <Symbol>
+        <Component Name="statRemoteCommand_ModeChangeRequest" />
+        <Component Name="Manual" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="28">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Cmd" />
+        <Component Name="Mode" />
+        <Component Name="UserMode01" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="29">
+      <Symbol>
+        <Component Name="statRemoteCommand_ModeChangeRequest" />
+        <Component Name="UserMode01" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="30">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Cmd" />
+        <Component Name="Mode" />
+        <Component Name="UserMode02" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="31">
+      <Symbol>
+        <Component Name="statRemoteCommand_ModeChangeRequest" />
+        <Component Name="UserMode02" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="32">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Cmd" />
+        <Component Name="Mode" />
+        <Component Name="UserMode03" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="33">
+      <Symbol>
+        <Component Name="statRemoteCommand_ModeChangeRequest" />
+        <Component Name="UserMode03" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="34">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Cmd" />
+        <Component Name="Mode" />
+        <Component Name="UserMode04" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="35">
+      <Symbol>
+        <Component Name="statRemoteCommand_ModeChangeRequest" />
+        <Component Name="UserMode04" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="36">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Cmd" />
+        <Component Name="Mode" />
+        <Component Name="UserMode05" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="37">
+      <Symbol>
+        <Component Name="statRemoteCommand_ModeChangeRequest" />
+        <Component Name="UserMode05" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="38">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Cmd" />
+        <Component Name="Mode" />
+        <Component Name="UserMode06" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="39">
+      <Symbol>
+        <Component Name="statRemoteCommand_ModeChangeRequest" />
+        <Component Name="UserMode06" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="40">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Cmd" />
+        <Component Name="Mode" />
+        <Component Name="UserMode07" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="41">
+      <Symbol>
+        <Component Name="statRemoteCommand_ModeChangeRequest" />
+        <Component Name="UserMode07" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="42">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Cmd" />
+        <Component Name="Mode" />
+        <Component Name="UserMode08" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="43">
+      <Symbol>
+        <Component Name="statRemoteCommand_ModeChangeRequest" />
+        <Component Name="UserMode08" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="44">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Cmd_Reset" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="45">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Cmd_Start" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="46">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Cmd_Stop" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="47">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Cmd_Hold" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="48">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Cmd_UnHold" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="49">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Cmd_Suspend" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="50">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Cmd_UnSuspend" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="51">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Cmd_Abort" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="52">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Cmd_Clear" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="53">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Cmd_Complete" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="54">
+      <Symbol>
+        <Component Name="statPackML_CMD_SC" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="55">
+      <Constant>
+        <ConstantType>Bool</ConstantType>
+        <ConstantValue>FALSE</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="LiteralConstant" UId="56">
+      <Constant>
+        <ConstantType>Bool</ConstantType>
+        <ConstantValue>FALSE</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="LiteralConstant" UId="57">
+      <Constant>
+        <ConstantType>Bool</ConstantType>
+        <ConstantValue>TRUE</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="58">
+      <Symbol>
+        <Component Name="PackMLCfg" />
+        <Component Name="Cfg" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="59">
+      <Symbol>
+        <Component Name="PackTags" />
+        <Component Name="Status" />
+        <Component Name="UnitModeCurrent" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="60">
+      <Symbol>
+        <Component Name="PackTags" />
+        <Component Name="Status" />
+        <Component Name="UnitModeChangeInProcess" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="61">
+      <Symbol>
+        <Component Name="PackTags" />
+        <Component Name="Status" />
+        <Component Name="StateCurrent" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="62">
+      <Symbol>
+        <Component Name="PackTags" />
+        <Component Name="Status" />
+        <Component Name="StateChangeInProcess" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="63">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="Mode" />
+        <Component Name="Production" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="64">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="Mode" />
+        <Component Name="Maintenance" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="65">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="Mode" />
+        <Component Name="Manual" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="66">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="Mode" />
+        <Component Name="UserMode01" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="67">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="Mode" />
+        <Component Name="UserMode02" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="68">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="Mode" />
+        <Component Name="UserMode03" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="69">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="Mode" />
+        <Component Name="UserMode04" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="70">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="Mode" />
+        <Component Name="UserMode05" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="71">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="Mode" />
+        <Component Name="UserMode06" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="72">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="Mode" />
+        <Component Name="UserMode07" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="73">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="Mode" />
+        <Component Name="UserMode08" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="74">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="State" />
+        <Component Name="Clearing" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="75">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="State" />
+        <Component Name="Stopped" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="76">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="State" />
+        <Component Name="Starting" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="77">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="State" />
+        <Component Name="Idle" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="78">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="State" />
+        <Component Name="Suspended" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="79">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="State" />
+        <Component Name="Execute" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="80">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="State" />
+        <Component Name="Stopping" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="81">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="State" />
+        <Component Name="Aborting" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="82">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="State" />
+        <Component Name="Aborted" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="83">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="State" />
+        <Component Name="Holding" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="84">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="State" />
+        <Component Name="Held" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="85">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="State" />
+        <Component Name="Unholding" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="86">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="State" />
+        <Component Name="Suspending" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="87">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="State" />
+        <Component Name="Unsuspending" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="88">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="State" />
+        <Component Name="Resetting" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="89">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="State" />
+        <Component Name="Completing" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="90">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="State" />
+        <Component Name="Complete" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="91">
+      <Symbol>
+        <Component Name="PackTags" />
+        <Component Name="Admin" />
+        <Component Name="StatesDisabled" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="92">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="PackMLDiag" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="93">
+      <Symbol>
+        <Component Name="statPackML_CMD_SC" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="94">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="Contact" UId="95" />
+    <Part Name="Contact" UId="96" />
+    <Part Name="O" UId="97">
+      <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+    </Part>
+    <Part Name="Contact" UId="98" />
+    <Part Name="Contact" UId="99" />
+    <Part Name="O" UId="100">
+      <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+    </Part>
+    <Part Name="Contact" UId="101" />
+    <Part Name="Contact" UId="102" />
+    <Part Name="O" UId="103">
+      <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+    </Part>
+    <Part Name="Contact" UId="104" />
+    <Part Name="Contact" UId="105" />
+    <Part Name="O" UId="106">
+      <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+    </Part>
+    <Part Name="Contact" UId="107" />
+    <Part Name="Contact" UId="108" />
+    <Part Name="O" UId="109">
+      <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+    </Part>
+    <Part Name="Contact" UId="110" />
+    <Part Name="Contact" UId="111" />
+    <Part Name="O" UId="112">
+      <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+    </Part>
+    <Part Name="Contact" UId="113" />
+    <Part Name="Contact" UId="114" />
+    <Part Name="O" UId="115">
+      <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+    </Part>
+    <Part Name="Contact" UId="116" />
+    <Part Name="Contact" UId="117" />
+    <Part Name="O" UId="118">
+      <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+    </Part>
+    <Part Name="Contact" UId="119" />
+    <Part Name="Contact" UId="120" />
+    <Part Name="O" UId="121">
+      <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+    </Part>
+    <Part Name="Contact" UId="122" />
+    <Part Name="Contact" UId="123" />
+    <Part Name="O" UId="124">
+      <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+    </Part>
+    <Part Name="Contact" UId="125" />
+    <Part Name="Contact" UId="126" />
+    <Part Name="O" UId="127">
+      <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+    </Part>
+    <Part Name="Contact" UId="128" />
+    <Part Name="Contact" UId="129" />
+    <Part Name="Contact" UId="130" />
+    <Part Name="Contact" UId="131" />
+    <Part Name="Contact" UId="132" />
+    <Part Name="Contact" UId="133" />
+    <Part Name="Contact" UId="134" />
+    <Part Name="Contact" UId="135" />
+    <Part Name="Contact" UId="136" />
+    <Part Name="Contact" UId="137" />
+    <Part Name="Contact" UId="138" />
+    <Call UId="139">
+      <CallInfo Name="LPMLV30_UnitModeStateManager" BlockType="FB">
+        <Instance Scope="LocalVariable" UId="140">
+          <Component Name="instUnitModeStateManager" />
+        </Instance>
+        <Parameter Name="UnitMode" Section="Input" Type="DInt" />
+        <Parameter Name="UnitModeChangeRequest" Section="Input" Type="Bool" />
+        <Parameter Name="CntrlCmd" Section="Input" Type="DInt" />
+        <Parameter Name="CmdChangeRequest" Section="Input" Type="Bool" />
+        <Parameter Name="enableBooleanInterface" Section="Input" Type="Bool" />
+        <Parameter Name="ProductionModeRequest" Section="Input" Type="Bool" />
+        <Parameter Name="MaintenanceModeRequest" Section="Input" Type="Bool" />
+        <Parameter Name="ManualModeRequest" Section="Input" Type="Bool" />
+        <Parameter Name="UserMode01Request" Section="Input" Type="Bool" />
+        <Parameter Name="UserMode02Request" Section="Input" Type="Bool" />
+        <Parameter Name="UserMode03Request" Section="Input" Type="Bool" />
+        <Parameter Name="UserMode04Request" Section="Input" Type="Bool" />
+        <Parameter Name="UserMode05Request" Section="Input" Type="Bool" />
+        <Parameter Name="UserMode06Request" Section="Input" Type="Bool" />
+        <Parameter Name="UserMode07Request" Section="Input" Type="Bool" />
+        <Parameter Name="UserMode08Request" Section="Input" Type="Bool" />
+        <Parameter Name="ResetCmdRequest" Section="Input" Type="Bool" />
+        <Parameter Name="StartCmdRequest" Section="Input" Type="Bool" />
+        <Parameter Name="StopCmdRequest" Section="Input" Type="Bool" />
+        <Parameter Name="HoldCmdRequest" Section="Input" Type="Bool" />
+        <Parameter Name="UnholdCmdRequest" Section="Input" Type="Bool" />
+        <Parameter Name="SuspendCmdRequest" Section="Input" Type="Bool" />
+        <Parameter Name="UnsuspendCmdRequest" Section="Input" Type="Bool" />
+        <Parameter Name="AbortCmdRequest" Section="Input" Type="Bool" />
+        <Parameter Name="ClearCmdRequest" Section="Input" Type="Bool" />
+        <Parameter Name="CompleteCmdRequest" Section="Input" Type="Bool" />
+        <Parameter Name="SC" Section="Input" Type="Bool" />
+        <Parameter Name="configuration" Section="Input" Type="&quot;typeLPMLV30_Configuration&quot;" />
+        <Parameter Name="UnitModeCurrent" Section="Output" Type="DInt" />
+        <Parameter Name="UnitModeRequested" Section="Output" Type="DInt" />
+        <Parameter Name="UnitModeChangeInProcess" Section="Output" Type="Bool" />
+        <Parameter Name="StateCurrent" Section="Output" Type="DInt" />
+        <Parameter Name="StateRequested" Section="Output" Type="DInt" />
+        <Parameter Name="StateChangeInProcess" Section="Output" Type="Bool" />
+        <Parameter Name="ProductionModeActive" Section="Output" Type="Bool" />
+        <Parameter Name="MaintenanceModeActive" Section="Output" Type="Bool" />
+        <Parameter Name="ManualModeActive" Section="Output" Type="Bool" />
+        <Parameter Name="UserMode01Active" Section="Output" Type="Bool" />
+        <Parameter Name="UserMode02Active" Section="Output" Type="Bool" />
+        <Parameter Name="UserMode03Active" Section="Output" Type="Bool" />
+        <Parameter Name="UserMode04Active" Section="Output" Type="Bool" />
+        <Parameter Name="UserMode05Active" Section="Output" Type="Bool" />
+        <Parameter Name="UserMode06Active" Section="Output" Type="Bool" />
+        <Parameter Name="UserMode07Active" Section="Output" Type="Bool" />
+        <Parameter Name="UserMode08Active" Section="Output" Type="Bool" />
+        <Parameter Name="ClearingStateActive" Section="Output" Type="Bool" />
+        <Parameter Name="StoppedStateActive" Section="Output" Type="Bool" />
+        <Parameter Name="StartingStateActive" Section="Output" Type="Bool" />
+        <Parameter Name="IdleStateActive" Section="Output" Type="Bool" />
+        <Parameter Name="SuspendedStateActive" Section="Output" Type="Bool" />
+        <Parameter Name="ExecuteStateActive" Section="Output" Type="Bool" />
+        <Parameter Name="StoppingStateActive" Section="Output" Type="Bool" />
+        <Parameter Name="AbortingStateActive" Section="Output" Type="Bool" />
+        <Parameter Name="AbortedStateActive" Section="Output" Type="Bool" />
+        <Parameter Name="HoldingStateActive" Section="Output" Type="Bool" />
+        <Parameter Name="HeldStateActive" Section="Output" Type="Bool" />
+        <Parameter Name="UnholdingStateActive" Section="Output" Type="Bool" />
+        <Parameter Name="SuspendingStateActive" Section="Output" Type="Bool" />
+        <Parameter Name="UnsuspendingStateActive" Section="Output" Type="Bool" />
+        <Parameter Name="ResettingStateActive" Section="Output" Type="Bool" />
+        <Parameter Name="CompletingStateActive" Section="Output" Type="Bool" />
+        <Parameter Name="CompleteStateActive" Section="Output" Type="Bool" />
+        <Parameter Name="StatesDisabled" Section="Output" Type="DInt" />
+        <Parameter Name="diagnostics" Section="Output" Type="&quot;typeLPMLV30_Diagnostics&quot;" />
+      </CallInfo>
+    </Call>
+    <Part Name="RCoil" UId="141" />
+  </Parts>
+  <Wires>
+    <Wire UId="146">
+      <Powerrail />
+      <NameCon UId="94" Name="in" />
+      <NameCon UId="95" Name="in" />
+      <NameCon UId="96" Name="in" />
+      <NameCon UId="98" Name="in" />
+      <NameCon UId="99" Name="in" />
+      <NameCon UId="101" Name="in" />
+      <NameCon UId="102" Name="in" />
+      <NameCon UId="104" Name="in" />
+      <NameCon UId="105" Name="in" />
+      <NameCon UId="107" Name="in" />
+      <NameCon UId="108" Name="in" />
+      <NameCon UId="110" Name="in" />
+      <NameCon UId="111" Name="in" />
+      <NameCon UId="113" Name="in" />
+      <NameCon UId="114" Name="in" />
+      <NameCon UId="116" Name="in" />
+      <NameCon UId="117" Name="in" />
+      <NameCon UId="119" Name="in" />
+      <NameCon UId="120" Name="in" />
+      <NameCon UId="122" Name="in" />
+      <NameCon UId="123" Name="in" />
+      <NameCon UId="125" Name="in" />
+      <NameCon UId="126" Name="in" />
+      <NameCon UId="128" Name="in" />
+      <NameCon UId="129" Name="in" />
+      <NameCon UId="130" Name="in" />
+      <NameCon UId="131" Name="in" />
+      <NameCon UId="132" Name="in" />
+      <NameCon UId="133" Name="in" />
+      <NameCon UId="134" Name="in" />
+      <NameCon UId="135" Name="in" />
+      <NameCon UId="136" Name="in" />
+      <NameCon UId="137" Name="in" />
+      <NameCon UId="138" Name="in" />
+    </Wire>
+    <Wire UId="147">
+      <IdentCon UId="21" />
+      <NameCon UId="94" Name="operand" />
+    </Wire>
+    <Wire UId="148">
+      <NameCon UId="94" Name="out" />
+      <NameCon UId="139" Name="en" />
+    </Wire>
+    <Wire UId="149">
+      <IdentCon UId="22" />
+      <NameCon UId="95" Name="operand" />
+    </Wire>
+    <Wire UId="150">
+      <NameCon UId="95" Name="out" />
+      <NameCon UId="97" Name="in1" />
+    </Wire>
+    <Wire UId="151">
+      <IdentCon UId="23" />
+      <NameCon UId="96" Name="operand" />
+    </Wire>
+    <Wire UId="152">
+      <NameCon UId="96" Name="out" />
+      <NameCon UId="97" Name="in2" />
+    </Wire>
+    <Wire UId="153">
+      <NameCon UId="97" Name="out" />
+      <NameCon UId="139" Name="ProductionModeRequest" />
+    </Wire>
+    <Wire UId="154">
+      <IdentCon UId="24" />
+      <NameCon UId="98" Name="operand" />
+    </Wire>
+    <Wire UId="155">
+      <NameCon UId="98" Name="out" />
+      <NameCon UId="100" Name="in1" />
+    </Wire>
+    <Wire UId="156">
+      <IdentCon UId="25" />
+      <NameCon UId="99" Name="operand" />
+    </Wire>
+    <Wire UId="157">
+      <NameCon UId="99" Name="out" />
+      <NameCon UId="100" Name="in2" />
+    </Wire>
+    <Wire UId="158">
+      <NameCon UId="100" Name="out" />
+      <NameCon UId="139" Name="MaintenanceModeRequest" />
+    </Wire>
+    <Wire UId="159">
+      <IdentCon UId="26" />
+      <NameCon UId="101" Name="operand" />
+    </Wire>
+    <Wire UId="160">
+      <NameCon UId="101" Name="out" />
+      <NameCon UId="103" Name="in1" />
+    </Wire>
+    <Wire UId="161">
+      <IdentCon UId="27" />
+      <NameCon UId="102" Name="operand" />
+    </Wire>
+    <Wire UId="162">
+      <NameCon UId="102" Name="out" />
+      <NameCon UId="103" Name="in2" />
+    </Wire>
+    <Wire UId="163">
+      <NameCon UId="103" Name="out" />
+      <NameCon UId="139" Name="ManualModeRequest" />
+    </Wire>
+    <Wire UId="164">
+      <IdentCon UId="28" />
+      <NameCon UId="104" Name="operand" />
+    </Wire>
+    <Wire UId="165">
+      <NameCon UId="104" Name="out" />
+      <NameCon UId="106" Name="in1" />
+    </Wire>
+    <Wire UId="166">
+      <IdentCon UId="29" />
+      <NameCon UId="105" Name="operand" />
+    </Wire>
+    <Wire UId="167">
+      <NameCon UId="105" Name="out" />
+      <NameCon UId="106" Name="in2" />
+    </Wire>
+    <Wire UId="168">
+      <NameCon UId="106" Name="out" />
+      <NameCon UId="139" Name="UserMode01Request" />
+    </Wire>
+    <Wire UId="169">
+      <IdentCon UId="30" />
+      <NameCon UId="107" Name="operand" />
+    </Wire>
+    <Wire UId="170">
+      <NameCon UId="107" Name="out" />
+      <NameCon UId="109" Name="in1" />
+    </Wire>
+    <Wire UId="171">
+      <IdentCon UId="31" />
+      <NameCon UId="108" Name="operand" />
+    </Wire>
+    <Wire UId="172">
+      <NameCon UId="108" Name="out" />
+      <NameCon UId="109" Name="in2" />
+    </Wire>
+    <Wire UId="173">
+      <NameCon UId="109" Name="out" />
+      <NameCon UId="139" Name="UserMode02Request" />
+    </Wire>
+    <Wire UId="174">
+      <IdentCon UId="32" />
+      <NameCon UId="110" Name="operand" />
+    </Wire>
+    <Wire UId="175">
+      <NameCon UId="110" Name="out" />
+      <NameCon UId="112" Name="in1" />
+    </Wire>
+    <Wire UId="176">
+      <IdentCon UId="33" />
+      <NameCon UId="111" Name="operand" />
+    </Wire>
+    <Wire UId="177">
+      <NameCon UId="111" Name="out" />
+      <NameCon UId="112" Name="in2" />
+    </Wire>
+    <Wire UId="178">
+      <NameCon UId="112" Name="out" />
+      <NameCon UId="139" Name="UserMode03Request" />
+    </Wire>
+    <Wire UId="179">
+      <IdentCon UId="34" />
+      <NameCon UId="113" Name="operand" />
+    </Wire>
+    <Wire UId="180">
+      <NameCon UId="113" Name="out" />
+      <NameCon UId="115" Name="in1" />
+    </Wire>
+    <Wire UId="181">
+      <IdentCon UId="35" />
+      <NameCon UId="114" Name="operand" />
+    </Wire>
+    <Wire UId="182">
+      <NameCon UId="114" Name="out" />
+      <NameCon UId="115" Name="in2" />
+    </Wire>
+    <Wire UId="183">
+      <NameCon UId="115" Name="out" />
+      <NameCon UId="139" Name="UserMode04Request" />
+    </Wire>
+    <Wire UId="184">
+      <IdentCon UId="36" />
+      <NameCon UId="116" Name="operand" />
+    </Wire>
+    <Wire UId="185">
+      <NameCon UId="116" Name="out" />
+      <NameCon UId="118" Name="in1" />
+    </Wire>
+    <Wire UId="186">
+      <IdentCon UId="37" />
+      <NameCon UId="117" Name="operand" />
+    </Wire>
+    <Wire UId="187">
+      <NameCon UId="117" Name="out" />
+      <NameCon UId="118" Name="in2" />
+    </Wire>
+    <Wire UId="188">
+      <NameCon UId="118" Name="out" />
+      <NameCon UId="139" Name="UserMode05Request" />
+    </Wire>
+    <Wire UId="189">
+      <IdentCon UId="38" />
+      <NameCon UId="119" Name="operand" />
+    </Wire>
+    <Wire UId="190">
+      <NameCon UId="119" Name="out" />
+      <NameCon UId="121" Name="in1" />
+    </Wire>
+    <Wire UId="191">
+      <IdentCon UId="39" />
+      <NameCon UId="120" Name="operand" />
+    </Wire>
+    <Wire UId="192">
+      <NameCon UId="120" Name="out" />
+      <NameCon UId="121" Name="in2" />
+    </Wire>
+    <Wire UId="193">
+      <NameCon UId="121" Name="out" />
+      <NameCon UId="139" Name="UserMode06Request" />
+    </Wire>
+    <Wire UId="194">
+      <IdentCon UId="40" />
+      <NameCon UId="122" Name="operand" />
+    </Wire>
+    <Wire UId="195">
+      <NameCon UId="122" Name="out" />
+      <NameCon UId="124" Name="in1" />
+    </Wire>
+    <Wire UId="196">
+      <IdentCon UId="41" />
+      <NameCon UId="123" Name="operand" />
+    </Wire>
+    <Wire UId="197">
+      <NameCon UId="123" Name="out" />
+      <NameCon UId="124" Name="in2" />
+    </Wire>
+    <Wire UId="198">
+      <NameCon UId="124" Name="out" />
+      <NameCon UId="139" Name="UserMode07Request" />
+    </Wire>
+    <Wire UId="199">
+      <IdentCon UId="42" />
+      <NameCon UId="125" Name="operand" />
+    </Wire>
+    <Wire UId="200">
+      <NameCon UId="125" Name="out" />
+      <NameCon UId="127" Name="in1" />
+    </Wire>
+    <Wire UId="201">
+      <IdentCon UId="43" />
+      <NameCon UId="126" Name="operand" />
+    </Wire>
+    <Wire UId="202">
+      <NameCon UId="126" Name="out" />
+      <NameCon UId="127" Name="in2" />
+    </Wire>
+    <Wire UId="203">
+      <NameCon UId="127" Name="out" />
+      <NameCon UId="139" Name="UserMode08Request" />
+    </Wire>
+    <Wire UId="204">
+      <IdentCon UId="44" />
+      <NameCon UId="128" Name="operand" />
+    </Wire>
+    <Wire UId="205">
+      <NameCon UId="128" Name="out" />
+      <NameCon UId="139" Name="ResetCmdRequest" />
+    </Wire>
+    <Wire UId="206">
+      <IdentCon UId="45" />
+      <NameCon UId="129" Name="operand" />
+    </Wire>
+    <Wire UId="207">
+      <NameCon UId="129" Name="out" />
+      <NameCon UId="139" Name="StartCmdRequest" />
+    </Wire>
+    <Wire UId="208">
+      <IdentCon UId="46" />
+      <NameCon UId="130" Name="operand" />
+    </Wire>
+    <Wire UId="209">
+      <NameCon UId="130" Name="out" />
+      <NameCon UId="139" Name="StopCmdRequest" />
+    </Wire>
+    <Wire UId="210">
+      <IdentCon UId="47" />
+      <NameCon UId="131" Name="operand" />
+    </Wire>
+    <Wire UId="211">
+      <NameCon UId="131" Name="out" />
+      <NameCon UId="139" Name="HoldCmdRequest" />
+    </Wire>
+    <Wire UId="212">
+      <IdentCon UId="48" />
+      <NameCon UId="132" Name="operand" />
+    </Wire>
+    <Wire UId="213">
+      <NameCon UId="132" Name="out" />
+      <NameCon UId="139" Name="UnholdCmdRequest" />
+    </Wire>
+    <Wire UId="214">
+      <IdentCon UId="49" />
+      <NameCon UId="133" Name="operand" />
+    </Wire>
+    <Wire UId="215">
+      <NameCon UId="133" Name="out" />
+      <NameCon UId="139" Name="SuspendCmdRequest" />
+    </Wire>
+    <Wire UId="216">
+      <IdentCon UId="50" />
+      <NameCon UId="134" Name="operand" />
+    </Wire>
+    <Wire UId="217">
+      <NameCon UId="134" Name="out" />
+      <NameCon UId="139" Name="UnsuspendCmdRequest" />
+    </Wire>
+    <Wire UId="218">
+      <IdentCon UId="51" />
+      <NameCon UId="135" Name="operand" />
+    </Wire>
+    <Wire UId="219">
+      <NameCon UId="135" Name="out" />
+      <NameCon UId="139" Name="AbortCmdRequest" />
+    </Wire>
+    <Wire UId="220">
+      <IdentCon UId="52" />
+      <NameCon UId="136" Name="operand" />
+    </Wire>
+    <Wire UId="221">
+      <NameCon UId="136" Name="out" />
+      <NameCon UId="139" Name="ClearCmdRequest" />
+    </Wire>
+    <Wire UId="222">
+      <IdentCon UId="53" />
+      <NameCon UId="137" Name="operand" />
+    </Wire>
+    <Wire UId="223">
+      <NameCon UId="137" Name="out" />
+      <NameCon UId="139" Name="CompleteCmdRequest" />
+    </Wire>
+    <Wire UId="224">
+      <IdentCon UId="54" />
+      <NameCon UId="138" Name="operand" />
+    </Wire>
+    <Wire UId="225">
+      <NameCon UId="138" Name="out" />
+      <NameCon UId="139" Name="SC" />
+    </Wire>
+    <Wire UId="226">
+      <OpenCon UId="142" />
+      <NameCon UId="139" Name="UnitMode" />
+    </Wire>
+    <Wire UId="227">
+      <IdentCon UId="55" />
+      <NameCon UId="139" Name="UnitModeChangeRequest" />
+    </Wire>
+    <Wire UId="228">
+      <OpenCon UId="143" />
+      <NameCon UId="139" Name="CntrlCmd" />
+    </Wire>
+    <Wire UId="229">
+      <IdentCon UId="56" />
+      <NameCon UId="139" Name="CmdChangeRequest" />
+    </Wire>
+    <Wire UId="230">
+      <IdentCon UId="57" />
+      <NameCon UId="139" Name="enableBooleanInterface" />
+    </Wire>
+    <Wire UId="231">
+      <IdentCon UId="58" />
+      <NameCon UId="139" Name="configuration" />
+    </Wire>
+    <Wire UId="232">
+      <NameCon UId="139" Name="eno" />
+      <NameCon UId="141" Name="in" />
+    </Wire>
+    <Wire UId="233">
+      <NameCon UId="139" Name="UnitModeCurrent" />
+      <IdentCon UId="59" />
+    </Wire>
+    <Wire UId="234">
+      <NameCon UId="139" Name="UnitModeRequested" />
+      <OpenCon UId="144" />
+    </Wire>
+    <Wire UId="235">
+      <NameCon UId="139" Name="UnitModeChangeInProcess" />
+      <IdentCon UId="60" />
+    </Wire>
+    <Wire UId="236">
+      <NameCon UId="139" Name="StateCurrent" />
+      <IdentCon UId="61" />
+    </Wire>
+    <Wire UId="237">
+      <NameCon UId="139" Name="StateRequested" />
+      <OpenCon UId="145" />
+    </Wire>
+    <Wire UId="238">
+      <NameCon UId="139" Name="StateChangeInProcess" />
+      <IdentCon UId="62" />
+    </Wire>
+    <Wire UId="239">
+      <NameCon UId="139" Name="ProductionModeActive" />
+      <IdentCon UId="63" />
+    </Wire>
+    <Wire UId="240">
+      <NameCon UId="139" Name="MaintenanceModeActive" />
+      <IdentCon UId="64" />
+    </Wire>
+    <Wire UId="241">
+      <NameCon UId="139" Name="ManualModeActive" />
+      <IdentCon UId="65" />
+    </Wire>
+    <Wire UId="242">
+      <NameCon UId="139" Name="UserMode01Active" />
+      <IdentCon UId="66" />
+    </Wire>
+    <Wire UId="243">
+      <NameCon UId="139" Name="UserMode02Active" />
+      <IdentCon UId="67" />
+    </Wire>
+    <Wire UId="244">
+      <NameCon UId="139" Name="UserMode03Active" />
+      <IdentCon UId="68" />
+    </Wire>
+    <Wire UId="245">
+      <NameCon UId="139" Name="UserMode04Active" />
+      <IdentCon UId="69" />
+    </Wire>
+    <Wire UId="246">
+      <NameCon UId="139" Name="UserMode05Active" />
+      <IdentCon UId="70" />
+    </Wire>
+    <Wire UId="247">
+      <NameCon UId="139" Name="UserMode06Active" />
+      <IdentCon UId="71" />
+    </Wire>
+    <Wire UId="248">
+      <NameCon UId="139" Name="UserMode07Active" />
+      <IdentCon UId="72" />
+    </Wire>
+    <Wire UId="249">
+      <NameCon UId="139" Name="UserMode08Active" />
+      <IdentCon UId="73" />
+    </Wire>
+    <Wire UId="250">
+      <NameCon UId="139" Name="ClearingStateActive" />
+      <IdentCon UId="74" />
+    </Wire>
+    <Wire UId="251">
+      <NameCon UId="139" Name="StoppedStateActive" />
+      <IdentCon UId="75" />
+    </Wire>
+    <Wire UId="252">
+      <NameCon UId="139" Name="StartingStateActive" />
+      <IdentCon UId="76" />
+    </Wire>
+    <Wire UId="253">
+      <NameCon UId="139" Name="IdleStateActive" />
+      <IdentCon UId="77" />
+    </Wire>
+    <Wire UId="254">
+      <NameCon UId="139" Name="SuspendedStateActive" />
+      <IdentCon UId="78" />
+    </Wire>
+    <Wire UId="255">
+      <NameCon UId="139" Name="ExecuteStateActive" />
+      <IdentCon UId="79" />
+    </Wire>
+    <Wire UId="256">
+      <NameCon UId="139" Name="StoppingStateActive" />
+      <IdentCon UId="80" />
+    </Wire>
+    <Wire UId="257">
+      <NameCon UId="139" Name="AbortingStateActive" />
+      <IdentCon UId="81" />
+    </Wire>
+    <Wire UId="258">
+      <NameCon UId="139" Name="AbortedStateActive" />
+      <IdentCon UId="82" />
+    </Wire>
+    <Wire UId="259">
+      <NameCon UId="139" Name="HoldingStateActive" />
+      <IdentCon UId="83" />
+    </Wire>
+    <Wire UId="260">
+      <NameCon UId="139" Name="HeldStateActive" />
+      <IdentCon UId="84" />
+    </Wire>
+    <Wire UId="261">
+      <NameCon UId="139" Name="UnholdingStateActive" />
+      <IdentCon UId="85" />
+    </Wire>
+    <Wire UId="262">
+      <NameCon UId="139" Name="SuspendingStateActive" />
+      <IdentCon UId="86" />
+    </Wire>
+    <Wire UId="263">
+      <NameCon UId="139" Name="UnsuspendingStateActive" />
+      <IdentCon UId="87" />
+    </Wire>
+    <Wire UId="264">
+      <NameCon UId="139" Name="ResettingStateActive" />
+      <IdentCon UId="88" />
+    </Wire>
+    <Wire UId="265">
+      <NameCon UId="139" Name="CompletingStateActive" />
+      <IdentCon UId="89" />
+    </Wire>
+    <Wire UId="266">
+      <NameCon UId="139" Name="CompleteStateActive" />
+      <IdentCon UId="90" />
+    </Wire>
+    <Wire UId="267">
+      <NameCon UId="139" Name="StatesDisabled" />
+      <IdentCon UId="91" />
+    </Wire>
+    <Wire UId="268">
+      <NameCon UId="139" Name="diagnostics" />
+      <IdentCon UId="92" />
+    </Wire>
+    <Wire UId="269">
+      <IdentCon UId="93" />
+      <NameCon UId="141" Name="operand" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="60" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="61" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="62" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="63" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="64" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Call thePackML Mode Manager &amp; State Model FB</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="65" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Call thePackML Mode Manager &amp; State Model FB</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="66" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="PackTags" />
+        <Component Name="Status" />
+        <Component Name="UnitModeCurrent" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="PackTags" />
+        <Component Name="Status" />
+        <Component Name="StateCurrent" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="23">
+      <Symbol>
+        <Component Name="HMI_Data" />
+        <Component Name="resetPackMLTimers" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="PackTags" />
+        <Component Name="Admin" />
+        <Component Name="ModeCurrentTime" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="25">
+      <Symbol>
+        <Component Name="PackTags" />
+        <Component Name="Admin" />
+        <Component Name="ModeCumulativeTime" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="26">
+      <Symbol>
+        <Component Name="PackTags" />
+        <Component Name="Admin" />
+        <Component Name="StateCurrentTime" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="27">
+      <Symbol>
+        <Component Name="PackTags" />
+        <Component Name="Admin" />
+        <Component Name="StateCumulativeTime" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="28">
+      <Symbol>
+        <Component Name="HMI_Data" />
+        <Component Name="modeCurrentTime" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="29">
+      <Symbol>
+        <Component Name="HMI_Data" />
+        <Component Name="modeCumulativeTime" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="30">
+      <Symbol>
+        <Component Name="HMI_Data" />
+        <Component Name="State_Current_Times" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="31">
+      <Symbol>
+        <Component Name="HMI_Data" />
+        <Component Name="State_Cumulative_Times" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="32">
+      <Symbol>
+        <Component Name="PackTags" />
+        <Component Name="Admin" />
+        <Component Name="AccTimeSinceLastReset" />
+      </Symbol>
+    </Access>
+    <Call UId="33">
+      <CallInfo Name="LPMLV30_UnitModeStateTimes" BlockType="FB">
+        <Instance Scope="LocalVariable" UId="34">
+          <Component Name="instUnitModeStateTimes" />
+        </Instance>
+        <Parameter Name="UnitModeCurrent" Section="Input" Type="DInt" />
+        <Parameter Name="StateCurrent" Section="Input" Type="DInt" />
+        <Parameter Name="resetTimes" Section="Input" Type="Bool" />
+        <Parameter Name="ModeCurrentTime" Section="Output" Type="Array[0..&quot;LPMLV30_MODES_UPPER_LIM&quot;] of DInt" />
+        <Parameter Name="ModeCumulativeTime" Section="Output" Type="Array[0..&quot;LPMLV30_MODES_UPPER_LIM&quot;] of DInt" />
+        <Parameter Name="StateCurrentTime" Section="Output" Type="Array[0..&quot;LPMLV30_MODES_UPPER_LIM&quot;, 0..&quot;LPMLV30_STATES_UPPER_LIM&quot;] of DInt" />
+        <Parameter Name="StateCumulativeTime" Section="Output" Type="Array[0..&quot;LPMLV30_MODES_UPPER_LIM&quot;, 0..&quot;LPMLV30_STATES_UPPER_LIM&quot;] of DInt" />
+        <Parameter Name="actualTimeCurrentMode" Section="Output" Type="DInt" />
+        <Parameter Name="cumulativeTimeCurrentMode" Section="Output" Type="DInt" />
+        <Parameter Name="actualTimeCurrentStates" Section="Output" Type="Array[0..&quot;LPMLV30_STATES_UPPER_LIM&quot;] of DInt" />
+        <Parameter Name="cumulativeTimeCurrentStates" Section="Output" Type="Array[0..&quot;LPMLV30_STATES_UPPER_LIM&quot;] of DInt" />
+        <Parameter Name="AccTimeSinceReset" Section="Output" Type="DInt" />
+      </CallInfo>
+    </Call>
+  </Parts>
+  <Wires>
+    <Wire UId="35">
+      <Powerrail />
+      <NameCon UId="33" Name="en" />
+    </Wire>
+    <Wire UId="36">
+      <IdentCon UId="21" />
+      <NameCon UId="33" Name="UnitModeCurrent" />
+    </Wire>
+    <Wire UId="37">
+      <IdentCon UId="22" />
+      <NameCon UId="33" Name="StateCurrent" />
+    </Wire>
+    <Wire UId="38">
+      <IdentCon UId="23" />
+      <NameCon UId="33" Name="resetTimes" />
+    </Wire>
+    <Wire UId="39">
+      <NameCon UId="33" Name="ModeCurrentTime" />
+      <IdentCon UId="24" />
+    </Wire>
+    <Wire UId="40">
+      <NameCon UId="33" Name="ModeCumulativeTime" />
+      <IdentCon UId="25" />
+    </Wire>
+    <Wire UId="41">
+      <NameCon UId="33" Name="StateCurrentTime" />
+      <IdentCon UId="26" />
+    </Wire>
+    <Wire UId="42">
+      <NameCon UId="33" Name="StateCumulativeTime" />
+      <IdentCon UId="27" />
+    </Wire>
+    <Wire UId="43">
+      <NameCon UId="33" Name="actualTimeCurrentMode" />
+      <IdentCon UId="28" />
+    </Wire>
+    <Wire UId="44">
+      <NameCon UId="33" Name="cumulativeTimeCurrentMode" />
+      <IdentCon UId="29" />
+    </Wire>
+    <Wire UId="45">
+      <NameCon UId="33" Name="actualTimeCurrentStates" />
+      <IdentCon UId="30" />
+    </Wire>
+    <Wire UId="46">
+      <NameCon UId="33" Name="cumulativeTimeCurrentStates" />
+      <IdentCon UId="31" />
+    </Wire>
+    <Wire UId="47">
+      <NameCon UId="33" Name="AccTimeSinceReset" />
+      <IdentCon UId="32" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="67" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="68" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>PackML State and Mode Times for HMI
+
+The times spent in each mode and state are calculated in the PackML FB.  This 
+FB is used to move the modes and states time arrays (current and cumulative 
+times) into a single array - that is based upon the curent mode - for both 
+current and cumlative state times.   This single arry is used by the HMI </Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="69" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>PackML State and Mode Times for HMI
+
+The times spent in each mode and state are calculated in the PackML FB.  This 
+FB is used to move the modes and states time arrays (current and cumulative 
+times) into a single array - that is based upon the curent mode - for both 
+current and cumlative state times.   This single arry is used by the HMI </Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="6A" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="6B" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>"Times" used to format PackML.Admin times and for the HMI display</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="6C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>"Times" used to format PackML.Admin times and for the HMI display</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="6D" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="PackTags" />
+        <Component Name="Status" />
+        <Component Name="UnitModeCurrent" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="PackTags" />
+        <Component Name="Status" />
+        <Component Name="StateCurrent" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="23">
+      <Symbol>
+        <Component Name="HMI_Data" />
+        <Component Name="languageSelected" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="PackMLCfg" />
+        <Component Name="Names" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="25">
+      <Symbol>
+        <Component Name="PackTags" />
+        <Component Name="Status" />
+        <Component Name="UnitModeCurrentName" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="26">
+      <Symbol>
+        <Component Name="PackTags" />
+        <Component Name="Status" />
+        <Component Name="StateCurrentName" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="27">
+      <Symbol>
+        <Component Name="statLanguageSelectedOld" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="28">
+      <Symbol>
+        <Component Name="HMI_Data" />
+        <Component Name="languageSelected" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="29">
+      <Symbol>
+        <Component Name="PackMLCfg" />
+        <Component Name="Names" />
+        <Component Name="unitModesNames" AccessModifier="Array">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_Data" />
+              <Component Name="languageSelected" />
+            </Symbol>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="30">
+      <Symbol>
+        <Component Name="HMI_Data" />
+        <Component Name="ModeNames" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="31">
+      <Symbol>
+        <Component Name="PackMLCfg" />
+        <Component Name="Names" />
+        <Component Name="statesNames" AccessModifier="Array">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_Data" />
+              <Component Name="languageSelected" />
+            </Symbol>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="32">
+      <Symbol>
+        <Component Name="HMI_Data" />
+        <Component Name="StateNames" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="33">
+      <Symbol>
+        <Component Name="HMI_Data" />
+        <Component Name="languageSelected" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="34">
+      <Symbol>
+        <Component Name="statLanguageSelectedOld" />
+      </Symbol>
+    </Access>
+    <Call UId="35">
+      <CallInfo Name="LPMLV30_GetUnitModeStateNamesAsString" BlockType="FC">
+        <Parameter Name="UnitModeCurrent" Section="Input" Type="DInt" />
+        <Parameter Name="StateCurrent" Section="Input" Type="DInt" />
+        <Parameter Name="language" Section="Input" Type="Int" />
+        <Parameter Name="namesConfiguration" Section="Input" Type="&quot;typeLPMLV30_NamesConfiguration&quot;" />
+        <Parameter Name="unitModeCurrentName" Section="Output" Type="String" />
+        <Parameter Name="stateCurrentName" Section="Output" Type="String" />
+      </CallInfo>
+    </Call>
+    <Part Name="Ne" UId="36">
+      <TemplateValue Name="SrcType" Type="Type">Int</TemplateValue>
+    </Part>
+    <Part Name="Move" UId="37" DisabledENO="true">
+      <TemplateValue Name="Card" Type="Cardinality">1</TemplateValue>
+    </Part>
+    <Part Name="Move" UId="38" DisabledENO="true">
+      <TemplateValue Name="Card" Type="Cardinality">1</TemplateValue>
+    </Part>
+    <Part Name="Move" UId="39" DisabledENO="true">
+      <TemplateValue Name="Card" Type="Cardinality">1</TemplateValue>
+    </Part>
+  </Parts>
+  <Wires>
+    <Wire UId="40">
+      <Powerrail />
+      <NameCon UId="35" Name="en" />
+    </Wire>
+    <Wire UId="41">
+      <IdentCon UId="21" />
+      <NameCon UId="35" Name="UnitModeCurrent" />
+    </Wire>
+    <Wire UId="42">
+      <IdentCon UId="22" />
+      <NameCon UId="35" Name="StateCurrent" />
+    </Wire>
+    <Wire UId="43">
+      <IdentCon UId="23" />
+      <NameCon UId="35" Name="language" />
+    </Wire>
+    <Wire UId="44">
+      <IdentCon UId="24" />
+      <NameCon UId="35" Name="namesConfiguration" />
+    </Wire>
+    <Wire UId="45">
+      <NameCon UId="35" Name="eno" />
+      <NameCon UId="36" Name="pre" />
+    </Wire>
+    <Wire UId="46">
+      <NameCon UId="35" Name="unitModeCurrentName" />
+      <IdentCon UId="25" />
+    </Wire>
+    <Wire UId="47">
+      <NameCon UId="35" Name="stateCurrentName" />
+      <IdentCon UId="26" />
+    </Wire>
+    <Wire UId="48">
+      <IdentCon UId="27" />
+      <NameCon UId="36" Name="in1" />
+    </Wire>
+    <Wire UId="49">
+      <IdentCon UId="28" />
+      <NameCon UId="36" Name="in2" />
+    </Wire>
+    <Wire UId="50">
+      <NameCon UId="36" Name="out" />
+      <NameCon UId="37" Name="en" />
+    </Wire>
+    <Wire UId="51">
+      <IdentCon UId="29" />
+      <NameCon UId="37" Name="in" />
+    </Wire>
+    <Wire UId="52">
+      <NameCon UId="37" Name="eno" />
+      <NameCon UId="38" Name="en" />
+    </Wire>
+    <Wire UId="53">
+      <NameCon UId="37" Name="out1" />
+      <IdentCon UId="30" />
+    </Wire>
+    <Wire UId="54">
+      <IdentCon UId="31" />
+      <NameCon UId="38" Name="in" />
+    </Wire>
+    <Wire UId="55">
+      <NameCon UId="38" Name="eno" />
+      <NameCon UId="39" Name="en" />
+    </Wire>
+    <Wire UId="56">
+      <NameCon UId="38" Name="out1" />
+      <IdentCon UId="32" />
+    </Wire>
+    <Wire UId="57">
+      <IdentCon UId="33" />
+      <NameCon UId="39" Name="in" />
+    </Wire>
+    <Wire UId="58">
+      <NameCon UId="39" Name="out1" />
+      <IdentCon UId="34" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="6E" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="6F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="70" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="71" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="72" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Mode / State Names.</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="73" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Mode / State Names.</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="74" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource />
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="75" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="76" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="77" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="78" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="79" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>State Complete Commands</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="7A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>State Complete Commands</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="7B" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="State" />
+        <Component Name="Resetting" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="UN" />
+        <Component Name="PackML_Sts" />
+        <Component Name="sts_Resetting_SC" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="23">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="State" />
+        <Component Name="Clearing" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="UN" />
+        <Component Name="PackML_Sts" />
+        <Component Name="sts_Clearing_SC" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="25">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="State" />
+        <Component Name="Starting" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="26">
+      <Symbol>
+        <Component Name="UN" />
+        <Component Name="PackML_Sts" />
+        <Component Name="sts_Starting_SC" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="27">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="State" />
+        <Component Name="Holding" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="28">
+      <Symbol>
+        <Component Name="UN" />
+        <Component Name="PackML_Sts" />
+        <Component Name="sts_Holding_SC" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="29">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="State" />
+        <Component Name="Unholding" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="30">
+      <Symbol>
+        <Component Name="UN" />
+        <Component Name="PackML_Sts" />
+        <Component Name="sts_UnHolding_SC" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="31">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="State" />
+        <Component Name="Suspending" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="32">
+      <Symbol>
+        <Component Name="UN" />
+        <Component Name="PackML_Sts" />
+        <Component Name="sts_Suspending_SC" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="33">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="State" />
+        <Component Name="Unsuspending" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="34">
+      <Symbol>
+        <Component Name="UN" />
+        <Component Name="PackML_Sts" />
+        <Component Name="sts_UnSuspending_SC" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="35">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="State" />
+        <Component Name="Execute" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="36">
+      <Symbol>
+        <Component Name="UN" />
+        <Component Name="PackML_Sts" />
+        <Component Name="sts_Execute_SC" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="37">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="State" />
+        <Component Name="Completing" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="38">
+      <Symbol>
+        <Component Name="UN" />
+        <Component Name="PackML_Sts" />
+        <Component Name="sts_Completing_SC" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="39">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="State" />
+        <Component Name="Stopping" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="40">
+      <Symbol>
+        <Component Name="UN" />
+        <Component Name="PackML_Sts" />
+        <Component Name="sts_Stopping_SC" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="41">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="Sts" />
+        <Component Name="State" />
+        <Component Name="Aborting" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="42">
+      <Symbol>
+        <Component Name="UN" />
+        <Component Name="PackML_Sts" />
+        <Component Name="sts_Aborting_SC" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="43">
+      <Symbol>
+        <Component Name="statPackML_CMD_SC" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="44" />
+    <Part Name="Contact" UId="45" />
+    <Part Name="Contact" UId="46" />
+    <Part Name="Contact" UId="47" />
+    <Part Name="Contact" UId="48" />
+    <Part Name="Contact" UId="49" />
+    <Part Name="Contact" UId="50" />
+    <Part Name="Contact" UId="51" />
+    <Part Name="Contact" UId="52" />
+    <Part Name="Contact" UId="53" />
+    <Part Name="Contact" UId="54" />
+    <Part Name="Contact" UId="55" />
+    <Part Name="Contact" UId="56" />
+    <Part Name="Contact" UId="57" />
+    <Part Name="Contact" UId="58" />
+    <Part Name="Contact" UId="59" />
+    <Part Name="Contact" UId="60" />
+    <Part Name="Contact" UId="61" />
+    <Part Name="Contact" UId="62" />
+    <Part Name="Contact" UId="63" />
+    <Part Name="Contact" UId="64" />
+    <Part Name="Contact" UId="65" />
+    <Part Name="O" UId="66">
+      <TemplateValue Name="Card" Type="Cardinality">11</TemplateValue>
+    </Part>
+    <Part Name="SCoil" UId="67" />
+  </Parts>
+  <Wires>
+    <Wire UId="68">
+      <Powerrail />
+      <NameCon UId="44" Name="in" />
+      <NameCon UId="46" Name="in" />
+      <NameCon UId="48" Name="in" />
+      <NameCon UId="50" Name="in" />
+      <NameCon UId="52" Name="in" />
+      <NameCon UId="54" Name="in" />
+      <NameCon UId="56" Name="in" />
+      <NameCon UId="58" Name="in" />
+      <NameCon UId="60" Name="in" />
+      <NameCon UId="62" Name="in" />
+      <NameCon UId="64" Name="in" />
+    </Wire>
+    <Wire UId="69">
+      <IdentCon UId="21" />
+      <NameCon UId="44" Name="operand" />
+    </Wire>
+    <Wire UId="70">
+      <NameCon UId="44" Name="out" />
+      <NameCon UId="45" Name="in" />
+    </Wire>
+    <Wire UId="71">
+      <IdentCon UId="22" />
+      <NameCon UId="45" Name="operand" />
+    </Wire>
+    <Wire UId="72">
+      <NameCon UId="45" Name="out" />
+      <NameCon UId="66" Name="in1" />
+    </Wire>
+    <Wire UId="73">
+      <IdentCon UId="23" />
+      <NameCon UId="46" Name="operand" />
+    </Wire>
+    <Wire UId="74">
+      <NameCon UId="46" Name="out" />
+      <NameCon UId="47" Name="in" />
+    </Wire>
+    <Wire UId="75">
+      <IdentCon UId="24" />
+      <NameCon UId="47" Name="operand" />
+    </Wire>
+    <Wire UId="76">
+      <NameCon UId="47" Name="out" />
+      <NameCon UId="66" Name="in2" />
+    </Wire>
+    <Wire UId="77">
+      <IdentCon UId="25" />
+      <NameCon UId="48" Name="operand" />
+    </Wire>
+    <Wire UId="78">
+      <NameCon UId="48" Name="out" />
+      <NameCon UId="49" Name="in" />
+    </Wire>
+    <Wire UId="79">
+      <IdentCon UId="26" />
+      <NameCon UId="49" Name="operand" />
+    </Wire>
+    <Wire UId="80">
+      <NameCon UId="49" Name="out" />
+      <NameCon UId="66" Name="in3" />
+    </Wire>
+    <Wire UId="81">
+      <IdentCon UId="27" />
+      <NameCon UId="50" Name="operand" />
+    </Wire>
+    <Wire UId="82">
+      <NameCon UId="50" Name="out" />
+      <NameCon UId="51" Name="in" />
+    </Wire>
+    <Wire UId="83">
+      <IdentCon UId="28" />
+      <NameCon UId="51" Name="operand" />
+    </Wire>
+    <Wire UId="84">
+      <NameCon UId="51" Name="out" />
+      <NameCon UId="66" Name="in4" />
+    </Wire>
+    <Wire UId="85">
+      <IdentCon UId="29" />
+      <NameCon UId="52" Name="operand" />
+    </Wire>
+    <Wire UId="86">
+      <NameCon UId="52" Name="out" />
+      <NameCon UId="53" Name="in" />
+    </Wire>
+    <Wire UId="87">
+      <IdentCon UId="30" />
+      <NameCon UId="53" Name="operand" />
+    </Wire>
+    <Wire UId="88">
+      <NameCon UId="53" Name="out" />
+      <NameCon UId="66" Name="in5" />
+    </Wire>
+    <Wire UId="89">
+      <IdentCon UId="31" />
+      <NameCon UId="54" Name="operand" />
+    </Wire>
+    <Wire UId="90">
+      <NameCon UId="54" Name="out" />
+      <NameCon UId="55" Name="in" />
+    </Wire>
+    <Wire UId="91">
+      <IdentCon UId="32" />
+      <NameCon UId="55" Name="operand" />
+    </Wire>
+    <Wire UId="92">
+      <NameCon UId="55" Name="out" />
+      <NameCon UId="66" Name="in6" />
+    </Wire>
+    <Wire UId="93">
+      <IdentCon UId="33" />
+      <NameCon UId="56" Name="operand" />
+    </Wire>
+    <Wire UId="94">
+      <NameCon UId="56" Name="out" />
+      <NameCon UId="57" Name="in" />
+    </Wire>
+    <Wire UId="95">
+      <IdentCon UId="34" />
+      <NameCon UId="57" Name="operand" />
+    </Wire>
+    <Wire UId="96">
+      <NameCon UId="57" Name="out" />
+      <NameCon UId="66" Name="in7" />
+    </Wire>
+    <Wire UId="97">
+      <IdentCon UId="35" />
+      <NameCon UId="58" Name="operand" />
+    </Wire>
+    <Wire UId="98">
+      <NameCon UId="58" Name="out" />
+      <NameCon UId="59" Name="in" />
+    </Wire>
+    <Wire UId="99">
+      <IdentCon UId="36" />
+      <NameCon UId="59" Name="operand" />
+    </Wire>
+    <Wire UId="100">
+      <NameCon UId="59" Name="out" />
+      <NameCon UId="66" Name="in8" />
+    </Wire>
+    <Wire UId="101">
+      <IdentCon UId="37" />
+      <NameCon UId="60" Name="operand" />
+    </Wire>
+    <Wire UId="102">
+      <NameCon UId="60" Name="out" />
+      <NameCon UId="61" Name="in" />
+    </Wire>
+    <Wire UId="103">
+      <IdentCon UId="38" />
+      <NameCon UId="61" Name="operand" />
+    </Wire>
+    <Wire UId="104">
+      <NameCon UId="61" Name="out" />
+      <NameCon UId="66" Name="in9" />
+    </Wire>
+    <Wire UId="105">
+      <IdentCon UId="39" />
+      <NameCon UId="62" Name="operand" />
+    </Wire>
+    <Wire UId="106">
+      <NameCon UId="62" Name="out" />
+      <NameCon UId="63" Name="in" />
+    </Wire>
+    <Wire UId="107">
+      <IdentCon UId="40" />
+      <NameCon UId="63" Name="operand" />
+    </Wire>
+    <Wire UId="108">
+      <NameCon UId="63" Name="out" />
+      <NameCon UId="66" Name="in10" />
+    </Wire>
+    <Wire UId="109">
+      <IdentCon UId="41" />
+      <NameCon UId="64" Name="operand" />
+    </Wire>
+    <Wire UId="110">
+      <NameCon UId="64" Name="out" />
+      <NameCon UId="65" Name="in" />
+    </Wire>
+    <Wire UId="111">
+      <IdentCon UId="42" />
+      <NameCon UId="65" Name="operand" />
+    </Wire>
+    <Wire UId="112">
+      <NameCon UId="65" Name="out" />
+      <NameCon UId="66" Name="in11" />
+    </Wire>
+    <Wire UId="113">
+      <NameCon UId="66" Name="out" />
+      <NameCon UId="67" Name="in" />
+    </Wire>
+    <Wire UId="114">
+      <IdentCon UId="43" />
+      <NameCon UId="67" Name="operand" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="7C" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="7D" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="7E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="7F" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="80" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Set the State Complete (SC) bit</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="81" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Set the State Complete (SC) bit</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="82" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="HMI_Data" />
+        <Component Name="diagnosticsBufferIndexForHMI" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="22">
+      <Symbol>
+        <Component Name="tempDiagnosticsBufferIndexForHMI" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="23">
+      <Symbol>
+        <Component Name="tempDiagnosticsBufferIndexForHMI" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="24">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalConstant" UId="25">
+      <Constant Name="LPMLV30_DIAG_BUFFER_UPPER_LIM" />
+    </Access>
+    <Access Scope="LocalVariable" UId="26">
+      <Symbol>
+        <Component Name="tempDiagnosticsBufferIndexForHMI" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="27">
+      <Symbol>
+        <Component Name="tempDiagnosticsBufferIndexForHMI" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalConstant" UId="28">
+      <Constant Name="LPMLV30_DIAG_BUFFER_UPPER_LIM" />
+    </Access>
+    <Access Scope="LiteralConstant" UId="29">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="LocalVariable" UId="30">
+      <Symbol>
+        <Component Name="tempDiagnosticsBufferIndexForHMI" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="31">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="PackMLDiag" />
+        <Component Name="buffer" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="tempDiagnosticsBufferIndexForHMI" />
+            </Symbol>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="32">
+      <Symbol>
+        <Component Name="HMI_Data" />
+        <Component Name="diagnosticsBufferEntryForHMI" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="33">
+      <Symbol>
+        <Component Name="tempDiagnosticsBufferIndexForHMI" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="34">
+      <Symbol>
+        <Component Name="HMI_Data" />
+        <Component Name="diagnosticsBufferIndexForHMI" />
+      </Symbol>
+    </Access>
+    <Part Name="Move" UId="35" DisabledENO="true">
+      <TemplateValue Name="Card" Type="Cardinality">1</TemplateValue>
+    </Part>
+    <Part Name="Lt" UId="36">
+      <TemplateValue Name="SrcType" Type="Type">Int</TemplateValue>
+    </Part>
+    <Part Name="Move" UId="37" DisabledENO="true">
+      <TemplateValue Name="Card" Type="Cardinality">1</TemplateValue>
+    </Part>
+    <Part Name="Gt" UId="38">
+      <TemplateValue Name="SrcType" Type="Type">Int</TemplateValue>
+    </Part>
+    <Part Name="Move" UId="39" DisabledENO="true">
+      <TemplateValue Name="Card" Type="Cardinality">1</TemplateValue>
+    </Part>
+    <Part Name="Move" UId="40" DisabledENO="true">
+      <TemplateValue Name="Card" Type="Cardinality">1</TemplateValue>
+    </Part>
+    <Part Name="Move" UId="41" DisabledENO="true">
+      <TemplateValue Name="Card" Type="Cardinality">1</TemplateValue>
+    </Part>
+  </Parts>
+  <Wires>
+    <Wire UId="42">
+      <Powerrail />
+      <NameCon UId="35" Name="en" />
+      <NameCon UId="36" Name="pre" />
+      <NameCon UId="38" Name="pre" />
+      <NameCon UId="40" Name="en" />
+    </Wire>
+    <Wire UId="43">
+      <IdentCon UId="21" />
+      <NameCon UId="35" Name="in" />
+    </Wire>
+    <Wire UId="44">
+      <NameCon UId="35" Name="out1" />
+      <IdentCon UId="22" />
+    </Wire>
+    <Wire UId="45">
+      <IdentCon UId="23" />
+      <NameCon UId="36" Name="in1" />
+    </Wire>
+    <Wire UId="46">
+      <IdentCon UId="24" />
+      <NameCon UId="36" Name="in2" />
+    </Wire>
+    <Wire UId="47">
+      <NameCon UId="36" Name="out" />
+      <NameCon UId="37" Name="en" />
+    </Wire>
+    <Wire UId="48">
+      <IdentCon UId="25" />
+      <NameCon UId="37" Name="in" />
+    </Wire>
+    <Wire UId="49">
+      <NameCon UId="37" Name="out1" />
+      <IdentCon UId="26" />
+    </Wire>
+    <Wire UId="50">
+      <IdentCon UId="27" />
+      <NameCon UId="38" Name="in1" />
+    </Wire>
+    <Wire UId="51">
+      <IdentCon UId="28" />
+      <NameCon UId="38" Name="in2" />
+    </Wire>
+    <Wire UId="52">
+      <NameCon UId="38" Name="out" />
+      <NameCon UId="39" Name="en" />
+    </Wire>
+    <Wire UId="53">
+      <IdentCon UId="29" />
+      <NameCon UId="39" Name="in" />
+    </Wire>
+    <Wire UId="54">
+      <NameCon UId="39" Name="out1" />
+      <IdentCon UId="30" />
+    </Wire>
+    <Wire UId="55">
+      <IdentCon UId="31" />
+      <NameCon UId="40" Name="in" />
+    </Wire>
+    <Wire UId="56">
+      <NameCon UId="40" Name="eno" />
+      <NameCon UId="41" Name="en" />
+    </Wire>
+    <Wire UId="57">
+      <NameCon UId="40" Name="out1" />
+      <IdentCon UId="32" />
+    </Wire>
+    <Wire UId="58">
+      <IdentCon UId="33" />
+      <NameCon UId="41" Name="in" />
+    </Wire>
+    <Wire UId="59">
+      <NameCon UId="41" Name="out1" />
+      <IdentCon UId="34" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="83" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="84" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="85" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="86" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="87" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>PackML Diagnostics Information to HMI (from LPMLV30 library)</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="88" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>PackML Diagnostics Information to HMI (from LPMLV30 library)</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="89" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Part Name="ReturnTrue" UId="21" />
+  </Parts>
+  <Wires>
+    <Wire UId="22">
+      <Powerrail />
+      <NameCon UId="21" Name="in" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="8A" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="8B" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="8C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="8D" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="8E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>END: Update the ENO Output. (DO NOT REMOVE. Must be last rung)</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="8F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>END: Update the ENO Output. (DO NOT REMOVE. Must be last rung)</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="90" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="91" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text>UN_02_PackML</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="92" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text>UN_02_PackML</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.FB>
+</Document>

@@ -1,0 +1,156 @@
+﻿FUNCTION_BLOCK "CPG_Event"
+TITLE = CPG_Event
+{ S7_Optimized_Access := 'TRUE' }
+AUTHOR : 'tech.team.motioncontrol@siemens.com'
+FAMILY : CPG
+VERSION : 1.1
+//Support: tech.team.motioncontrol@siemens.com
+   VAR_INPUT 
+      EnableIn { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // Enable the FB call.
+      Cfg_Event { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : "CPG_typeEventCfg";   // configuration data structure for this event
+      Cfg_MessagePrefix { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : "CPG_typeMessagePrefix";   // Message Prefix value for event messages
+   END_VAR
+
+   VAR_OUTPUT 
+      Sts_Active { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // event is currently active
+      Sts_Latched { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // event has been active since last reset command
+   END_VAR
+
+   VAR_IN_OUT 
+      In_EventStatus : "CPG_typeEventStatus";   // Working event list data section
+   END_VAR
+
+   VAR 
+      statActive : Bool;   // event is currently active
+      statLatched : Bool;   // event has been active since last reset command
+      statEvent_Number { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;   // Event Number
+      statPrev_ResetID { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;   // Prev Reset ID
+      statError_RTC { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;   // Error code for reading of Real Time Clock
+      statEvent_CurDateTime {InstructionName := 'DTL'; LibVersion := '1.0'; ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : DTL;   // temp value for current date & time
+   END_VAR
+
+   VAR_TEMP 
+      tempLanguage : Int;   // value of the currently selected language
+   END_VAR
+
+
+BEGIN
+	//============================================================================================================
+	// SIEMENS AG
+	// (c)Copyright 2018 All Rights Reserved
+	//------------------------------------------------------------------------------------------------------------
+	// Project: CPG Template
+	// Tested with: S7-1500 with FW version V2.1
+	// Engineering: TIA Portal V14
+	// Restrictions: ---
+	// Requirements: S7-1500
+	// Functionality: Control TR88 EVENT functions for CPG Template. 
+	// Support: tech.team.motioncontrol@siemens.com
+	//------------------------------------------------------------------------------------------------------------
+	// Change log table:
+	// Version       Date               Expert in charge    Changes applied
+	//  01.00.00     01.01.2018         MP                  Initial Release & PackML V1.8  Renamed CPG V1.0
+	//  01.01.00     22.05.2018         JP                  Adopted to styleguide
+	//  01.01.01     06.02.2020         KB                  Optimized call of Concat instruction
+	//                                                      Changed RD_SYS_T -> RD_LOC_T
+	//============================================================================================================
+	// Function : CPG_Event
+	//============================================================================================================
+	
+	// ===========================================================================
+	//  Begin the LOGIC section:
+	
+	//-------------  If ENABLE is FALSE----------------------------------------
+	IF NOT (#EnableIn) THEN                          // If block is not enabled, then
+	  IF #statActive THEN              // Status Active
+	    IF #statEvent_Number < #In_EventStatus.wrk_EventArraySize THEN   // current event below max size?
+	      #statError_RTC := RD_LOC_T(#statEvent_CurDateTime);            // Read the Real Time Clock
+	      #In_EventStatus.sts_Events[#statEvent_Number].AckDateTimeDTL := #statEvent_CurDateTime; // update Acknowledge time
+	      #In_EventStatus.sts_Events[#statEvent_Number].Trigger := FALSE;
+	    END_IF;                     // IF Event_Number
+	
+	    #statActive := FALSE;             // Reset the active bit        
+	    #In_EventStatus.wrk_UpdateEventListID := #In_EventStatus.wrk_UpdateEventListID + 1;
+	  END_IF;                             // IF Sts_Active
+	
+	  IF #statLatched AND (#In_EventStatus.wrk_ResetID <> #statPrev_ResetID) THEN
+	    #statLatched := FALSE;
+	    #In_EventStatus.wrk_UpdateEventListID := #In_EventStatus.wrk_UpdateEventListID + 1;
+	    #statPrev_ResetID := #In_EventStatus.wrk_ResetID;
+	  END_IF;             // IF Sts_Latched
+	
+	  ENO := FALSE;         // enable out is false (0)
+	
+	ELSE                    // else IF NOT (enable)
+	  //-------------  If ENABLE is TRUE ----------------------------------------  
+	  // If this FB is enabled....  
+	  IF NOT (#statActive) OR (#In_EventStatus.wrk_ResetID <> #statPrev_ResetID) THEN
+	    IF NOT (#statLatched) THEN
+	      #statError_RTC := RD_LOC_T(#statEvent_CurDateTime);            // Read the Real Time Clock
+	    END_IF;
+	
+	    IF NOT (#statLatched) OR (#In_EventStatus.wrk_ResetID <> #statPrev_ResetID) THEN
+	      #statEvent_Number := #In_EventStatus.sts_NumAllEvents;             // increment event number
+	      #In_EventStatus.sts_NumAllEvents := #In_EventStatus.sts_NumAllEvents + 1;         // increment number of all event
+	      #statPrev_ResetID := #In_EventStatus.wrk_ResetID;                                     // update previous Reset ID      
+	    END_IF;
+	
+	    IF #statEvent_Number < #In_EventStatus.wrk_EventArraySize THEN
+	      #tempLanguage := #In_EventStatus.wrk_LanguageSelection;
+	
+	      #In_EventStatus.sts_Events[#statEvent_Number].ID := #Cfg_Event.ID;
+	      #In_EventStatus.sts_Events[#statEvent_Number].Value := #Cfg_Event.value;
+	      #In_EventStatus.sts_Events[#statEvent_Number].Category := #Cfg_Event.category;
+	
+	      // update the event message String with "UN"/EM prefix + CM prefix + event message for selected language
+	      IF #tempLanguage >= 0 AND #tempLanguage <= "LPMLV30_LANGUAGES_UPPER_LIM" THEN
+	          #In_EventStatus.sts_Events[#statEvent_Number].Message := CONCAT(IN1 := #In_EventStatus.wrk_MessagePrefix,
+	                                                                          IN2 := #Cfg_MessagePrefix.messagePrefix[#tempLanguage], IN3 := #Cfg_Event.message[#tempLanguage]);
+	      ELSE
+	          #In_EventStatus.sts_Events[#statEvent_Number].Message := #In_EventStatus.wrk_MessagePrefix;
+	      END_IF;
+	      
+	      
+	      #In_EventStatus.sts_Events[#statEvent_Number].Trigger := TRUE;                          // Set trigger to 1 
+	      #In_EventStatus.sts_Events[#statEvent_Number].DateTimeDTL := #statEvent_CurDateTime;       // Update with the current time
+	      #In_EventStatus.sts_Events[#statEvent_Number].AckDateTimeDTL := DT#1990-1-1-0:0:0.0;       // clear the acknowledge time value 
+	    END_IF;
+	
+	    #statActive := TRUE;                            // set the status active bit
+	    #statLatched := TRUE;                            // set the status latched bit
+	    #In_EventStatus.wrk_UpdateEventListID := #In_EventStatus.wrk_UpdateEventListID + 1;  // increment the work update listID
+	
+	    CASE DINT_TO_INT(#Cfg_Event.category) OF                     // set the appropriate category lateched bit
+	      0:
+	        #In_EventStatus.sts_Category_0_Latched := TRUE;
+	      1:
+	        #In_EventStatus.sts_Category_1_Latched := TRUE;
+	      2:
+	        #In_EventStatus.sts_Category_2_Latched := TRUE;
+	      3:
+	        #In_EventStatus.sts_Category_3_Latched := TRUE;
+	      4:
+	        #In_EventStatus.sts_Category_4_Latched := TRUE;
+	      5:
+	        #In_EventStatus.sts_Category_5_Latched := TRUE;
+	      6:
+	        #In_EventStatus.sts_Category_6_Latched := TRUE;
+	      7:
+	        #In_EventStatus.sts_Category_7_Latched := TRUE;
+	      8:
+	        #In_EventStatus.sts_Category_8_Latched := TRUE;
+	      9:
+	        #In_EventStatus.sts_Category_9_Latched := TRUE;
+	    END_CASE;
+	  END_IF; // End "IF NOT (Sts_Active)"
+	
+	END_IF; // End "IF NOT(EnableIn) "
+	
+	// Write output variables
+	#Sts_Latched := #statLatched;
+	#Sts_Active := #statActive;
+	
+	//  -------------- END OF LOGIC -------------------------
+	ENO := TRUE;   // Set the ENO output
+END_FUNCTION_BLOCK
+

@@ -1,0 +1,68 @@
+﻿FUNCTION "LPMLV30_GetUnitModeStateNamesAsString" : Void
+TITLE = LPMLV30_GetUnitModeStateNamesAsString
+{ S7_Optimized_Access := 'TRUE' }
+AUTHOR : APC_ERLF
+FAMILY : OMAC
+//Support: tech.team.motioncontrol@siemens.com 
+//Fax: +49 (0) 9131/98-1297
+   VAR_INPUT 
+      UnitModeCurrent : DInt;   // Current unit mode
+      StateCurrent : DInt;   // Current state
+      language : Int;   // Requested language (LPMLV30_LANGUAGE_1, LPMLV30_LANGUAGE_2, ...)
+      namesConfiguration : "typeLPMLV30_NamesConfiguration";   // All names of unit modes and states (in different languages)
+   END_VAR
+
+   VAR_OUTPUT 
+      unitModeCurrentName : String;   // Name of current unit mode in the requested language
+      stateCurrentName : String;   // Name of current state in the requested language
+   END_VAR
+
+   VAR_TEMP 
+      tempUnitModeCurrent : DInt;   // Current unit mode
+      tempStateCurrent : DInt;   // Current state
+      tempLanguage : Int;   // Requested language
+   END_VAR
+
+
+BEGIN
+	//============================================================================================================
+	// SIEMENS AG
+	// (c)Copyright 2015 All Rights Reserved
+	//------------------------------------------------------------------------------------------------------------
+	// Library: LPMLV30
+	// Tested with: S7-1200 with FW version V4.1, S7-1500 with FW version V1.7
+	// Engineering: TIA Portal V13 SP1
+	// Restrictions: ---
+	// Requirements: S7-1200 / S7-1500
+	// Functionality: Gets the names for current unit mode and state in one language 
+	//                corresponding to the names configuration
+	//------------------------------------------------------------------------------------------------------------
+	// Change log table:
+	// Version  Date        Expert in charge    Changes applied
+	// 03.00.01 29.05.2015  RK                  First released version 
+	//============================================================================================================
+	// Function: LPMLV30_GetUnitModeStateNamesAsString
+	//============================================================================================================
+	
+	#tempUnitModeCurrent := #UnitModeCurrent;
+	#tempStateCurrent    := #StateCurrent;
+	#tempLanguage        := #language;
+	
+	IF #tempUnitModeCurrent < 0 OR #tempUnitModeCurrent > "LPMLV30_MODES_UPPER_LIM" THEN
+	  #tempUnitModeCurrent := "LPMLV30_MODE_INVALID";
+	END_IF;
+	IF #tempStateCurrent < 0 OR #tempStateCurrent > "LPMLV30_STATES_UPPER_LIM" THEN
+	  #tempStateCurrent := "LPMLV30_STATE_UNDEFINED";
+	END_IF;
+	IF #tempLanguage < 0 OR #tempLanguage > "LPMLV30_LANGUAGES_UPPER_LIM" THEN
+	  #tempLanguage := "LPMLV30_LANGUAGE_1";
+	END_IF;
+	
+	#unitModeCurrentName := #namesConfiguration.unitModesNames[#tempLanguage, #tempUnitModeCurrent];
+	#stateCurrentName    := #namesConfiguration.statesNames[#tempLanguage, #tempStateCurrent];
+	
+	//============================================================================================================
+	// End of function: LPMLV30_GetUnitModeStateNamesAsString
+	//============================================================================================================
+END_FUNCTION
+

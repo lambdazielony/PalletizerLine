@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V17" />
+  <DocumentInfo>
+    <Created>2022-03-12T16:05:30.1117395Z</Created>
+    <ExportSetting>WithDefaults</ExportSetting>
+    <InstalledProducts>
+      <Product>
+        <DisplayName>Totally Integrated Automation Portal</DisplayName>
+        <DisplayVersion>V17</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>TIA Portal Openness</DisplayName>
+        <DisplayVersion>V17</DisplayVersion>
+      </OptionPackage>
+      <OptionPackage>
+        <DisplayName>TIA Portal Version Control Interface</DisplayName>
+        <DisplayVersion>V17</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>STEP 7 Professional</DisplayName>
+        <DisplayVersion>V17</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>STEP 7 Safety</DisplayName>
+        <DisplayVersion>V17</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>WinCC Advanced / Unified PC</DisplayName>
+        <DisplayVersion>V17</DisplayVersion>
+      </Product>
+    </InstalledProducts>
+  </DocumentInfo>
+  <SW.Blocks.GlobalDB ID="0">
+    <AttributeList>
+      <AutoNumber>true</AutoNumber>
+      <DBAccessibleFromOPCUA>true</DBAccessibleFromOPCUA>
+      <DBAccessibleFromWebserver>true</DBAccessibleFromWebserver>
+      <HeaderAuthor>tech.team.motioncontrol@siemens.com</HeaderAuthor>
+      <HeaderFamily>CPG</HeaderFamily>
+      <HeaderName />
+      <HeaderVersion>1.0</HeaderVersion>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Static">
+    <Member Name="Summation" Datatype="&quot;CPG_typeEventSummation&quot;" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">Unit Mode - Event Summation</MultiLanguageText><MultiLanguageText Lang="de-DE">Unit Mode - Event Summation</MultiLanguageText></Comment><Sections><Section Name="None"><Member Name="sts_FirstOutEvent" Datatype="&quot;CPG_typeEvent&quot;"><Sections><Section Name="None"><Member Name="Trigger" Datatype="Bool" /><Member Name="ID" Datatype="DInt" /><Member Name="Value" Datatype="DInt" /><Member Name="Message" Datatype="String[60]" /><Member Name="Category" Datatype="DInt" /><Member Name="DateTime" Datatype="Array[0..6] of DInt" /><Member Name="DateTimeDTL" Datatype="DTL" Version="1.0" /><Member Name="AckDateTime" Datatype="Array[0..6] of DInt" /><Member Name="AckDateTimeDTL" Datatype="DTL" Version="1.0" /></Section></Sections></Member><Member Name="sts_FirstOutEventCat" Datatype="Array[0..9] of &quot;CPG_typeEvent&quot;"><Sections><Section Name="None"><Member Name="Trigger" Datatype="Bool" /><Member Name="ID" Datatype="DInt" /><Member Name="Value" Datatype="DInt" /><Member Name="Message" Datatype="String[60]" /><Member Name="Category" Datatype="DInt" /><Member Name="DateTime" Datatype="Array[0..6] of DInt" /><Member Name="DateTimeDTL" Datatype="DTL" Version="1.0" /><Member Name="AckDateTime" Datatype="Array[0..6] of DInt" /><Member Name="AckDateTimeDTL" Datatype="DTL" Version="1.0" /></Section></Sections></Member><Member Name="sts_Events" Datatype="Array[0..&quot;CPG_NO_OF_STS_ELEMENTS_EVENT_SUM_UPPER_LIM&quot;] of &quot;CPG_typeEvent&quot;"><Sections><Section Name="None"><Member Name="Trigger" Datatype="Bool" /><Member Name="ID" Datatype="DInt" /><Member Name="Value" Datatype="DInt" /><Member Name="Message" Datatype="String[60]" /><Member Name="Category" Datatype="DInt" /><Member Name="DateTime" Datatype="Array[0..6] of DInt" /><Member Name="DateTimeDTL" Datatype="DTL" Version="1.0" /><Member Name="AckDateTime" Datatype="Array[0..6] of DInt" /><Member Name="AckDateTimeDTL" Datatype="DTL" Version="1.0" /></Section></Sections></Member><Member Name="sts_NumEvents" Datatype="Int" /><Member Name="sts_Category_0_Latched" Datatype="Bool" /><Member Name="sts_Category_1_Latched" Datatype="Bool" /><Member Name="sts_Category_2_Latched" Datatype="Bool" /><Member Name="sts_Category_3_Latched" Datatype="Bool" /><Member Name="sts_Category_4_Latched" Datatype="Bool" /><Member Name="sts_Category_5_Latched" Datatype="Bool" /><Member Name="sts_Category_6_Latched" Datatype="Bool" /><Member Name="sts_Category_7_Latched" Datatype="Bool" /><Member Name="sts_Category_8_Latched" Datatype="Bool" /><Member Name="sts_Category_9_Latched" Datatype="Bool" /><Member Name="sts_Category_0_NotLatched" Datatype="Bool" /><Member Name="sts_Category_1_NotLatched" Datatype="Bool" /><Member Name="sts_Category_2_NotLatched" Datatype="Bool" /><Member Name="sts_Category_3_NotLatched" Datatype="Bool" /><Member Name="sts_Category_4_NotLatched" Datatype="Bool" /><Member Name="sts_Category_5_NotLatched" Datatype="Bool" /><Member Name="sts_Category_6_NotLatched" Datatype="Bool" /><Member Name="sts_Category_7_NotLatched" Datatype="Bool" /><Member Name="sts_Category_8_NotLatched" Datatype="Bool" /><Member Name="sts_Category_9_NotLatched" Datatype="Bool" /><Member Name="sts_CurrentActiveEvent" Datatype="Bool" /><Member Name="wrk_EventArraySize" Datatype="Int"><StartValue>30</StartValue></Member><Member Name="wrk_Category_0_Latched" Datatype="Bool" /><Member Name="wrk_Category_1_Latched" Datatype="Bool" /><Member Name="wrk_Category_2_Latched" Datatype="Bool" /><Member Name="wrk_Category_3_Latched" Datatype="Bool" /><Member Name="wrk_Category_4_Latched" Datatype="Bool" /><Member Name="wrk_Category_5_Latched" Datatype="Bool" /><Member Name="wrk_Category_6_Latched" Datatype="Bool" /><Member Name="wrk_Category_7_Latched" Datatype="Bool" /><Member Name="wrk_Category_8_Latched" Datatype="Bool" /><Member Name="wrk_Category_9_Latched" Datatype="Bool" /><Member Name="wrk_Category_0_NotLatched" Datatype="Bool" /><Member Name="wrk_Category_1_NotLatched" Datatype="Bool" /><Member Name="wrk_Category_2_NotLatched" Datatype="Bool" /><Member Name="wrk_Category_3_NotLatched" Datatype="Bool" /><Member Name="wrk_Category_4_NotLatched" Datatype="Bool" /><Member Name="wrk_Category_5_NotLatched" Datatype="Bool" /><Member Name="wrk_Category_6_NotLatched" Datatype="Bool" /><Member Name="wrk_Category_7_NotLatched" Datatype="Bool" /><Member Name="wrk_Category_8_NotLatched" Datatype="Bool" /><Member Name="wrk_Category_9_NotLatched" Datatype="Bool" /><Member Name="wrk_CurrentActiveEvent" Datatype="Bool" /></Section></Sections></Member>
+  </Section>
+</Sections></Interface>
+      <IsOnlyStoredInLoadMemory>false</IsOnlyStoredInLoadMemory>
+      <IsRetainMemResEnabled>false</IsRetainMemResEnabled>
+      <IsWriteProtectedInAS>false</IsWriteProtectedInAS>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <MemoryReserve>0</MemoryReserve>
+      <Name>Alarm</Name>
+      <Number>31610</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text>Support: tech.team.motioncontrol@siemens.com
+Fax: +49 (0) 9131/98-1297</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="3" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text>Support: tech.team.motioncontrol@siemens.com
+Fax: +49 (0) 9131/98-1297</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="4" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="5" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text>CPG_Alarm</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="6" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text>CPG_Alarm</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.GlobalDB>
+</Document>

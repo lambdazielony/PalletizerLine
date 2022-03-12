@@ -1,0 +1,1391 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V17" />
+  <DocumentInfo>
+    <Created>2022-03-12T16:05:14.3241796Z</Created>
+    <ExportSetting>WithDefaults</ExportSetting>
+    <InstalledProducts>
+      <Product>
+        <DisplayName>Totally Integrated Automation Portal</DisplayName>
+        <DisplayVersion>V17</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>TIA Portal Openness</DisplayName>
+        <DisplayVersion>V17</DisplayVersion>
+      </OptionPackage>
+      <OptionPackage>
+        <DisplayName>TIA Portal Version Control Interface</DisplayName>
+        <DisplayVersion>V17</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>STEP 7 Professional</DisplayName>
+        <DisplayVersion>V17</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>STEP 7 Safety</DisplayName>
+        <DisplayVersion>V17</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>WinCC Advanced / Unified PC</DisplayName>
+        <DisplayVersion>V17</DisplayVersion>
+      </Product>
+    </InstalledProducts>
+  </DocumentInfo>
+  <SW.Blocks.FB ID="0">
+    <AttributeList>
+      <AutoNumber>true</AutoNumber>
+      <HeaderAuthor>tech.team.motioncontrol@siemens.com</HeaderAuthor>
+      <HeaderFamily>CPG</HeaderFamily>
+      <HeaderName />
+      <HeaderVersion>1.0</HeaderVersion>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input" />
+  <Section Name="Output" />
+  <Section Name="InOut" />
+  <Section Name="Static">
+    <Member Name="instAlarmRemoteStop" Datatype="&quot;CPG_Event&quot;" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">Remote Command - Stop</MultiLanguageText><MultiLanguageText Lang="de-DE">Remote Command - Stop</MultiLanguageText></Comment><Sections><Section Name="Input"><Member Name="EnableIn" Datatype="Bool" /><Member Name="Cfg_Event" Datatype="&quot;CPG_typeEventCfg&quot;"><Sections><Section Name="None"><Member Name="ID" Datatype="Int" /><Member Name="value" Datatype="Int" /><Member Name="message" Datatype="Array[0..&quot;LPMLV30_LANGUAGES_UPPER_LIM&quot;] of String[60]" /><Member Name="category" Datatype="Int" /></Section></Sections></Member><Member Name="Cfg_MessagePrefix" Datatype="&quot;CPG_typeMessagePrefix&quot;"><Sections><Section Name="None"><Member Name="messagePrefix" Datatype="Array[0..&quot;LPMLV30_LANGUAGES_UPPER_LIM&quot;] of String[30]" /></Section></Sections></Member></Section><Section Name="Output"><Member Name="Sts_Active" Datatype="Bool" /><Member Name="Sts_Latched" Datatype="Bool" /></Section><Section Name="InOut"><Member Name="In_EventStatus" Datatype="&quot;CPG_typeEventStatus&quot;"><Sections><Section Name="None" /></Sections></Member></Section><Section Name="Static"><Member Name="statActive" Datatype="Bool" /><Member Name="statLatched" Datatype="Bool" /><Member Name="statEvent_Number" Datatype="Int" /><Member Name="statPrev_ResetID" Datatype="Int" /><Member Name="statError_RTC" Datatype="Int" /><Member Name="statEvent_CurDateTime" Datatype="DTL" Version="1.0" /></Section></Sections></Member>
+    <Member Name="instAlarmRemoteAbort" Datatype="&quot;CPG_Event&quot;" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">Remote Command - Abort</MultiLanguageText><MultiLanguageText Lang="de-DE">Remote Command - Abort</MultiLanguageText></Comment><Sections><Section Name="Input"><Member Name="EnableIn" Datatype="Bool" /><Member Name="Cfg_Event" Datatype="&quot;CPG_typeEventCfg&quot;"><Sections><Section Name="None"><Member Name="ID" Datatype="Int" /><Member Name="value" Datatype="Int" /><Member Name="message" Datatype="Array[0..&quot;LPMLV30_LANGUAGES_UPPER_LIM&quot;] of String[60]" /><Member Name="category" Datatype="Int" /></Section></Sections></Member><Member Name="Cfg_MessagePrefix" Datatype="&quot;CPG_typeMessagePrefix&quot;"><Sections><Section Name="None"><Member Name="messagePrefix" Datatype="Array[0..&quot;LPMLV30_LANGUAGES_UPPER_LIM&quot;] of String[30]" /></Section></Sections></Member></Section><Section Name="Output"><Member Name="Sts_Active" Datatype="Bool" /><Member Name="Sts_Latched" Datatype="Bool" /></Section><Section Name="InOut"><Member Name="In_EventStatus" Datatype="&quot;CPG_typeEventStatus&quot;"><Sections><Section Name="None" /></Sections></Member></Section><Section Name="Static"><Member Name="statActive" Datatype="Bool" /><Member Name="statLatched" Datatype="Bool" /><Member Name="statEvent_Number" Datatype="Int" /><Member Name="statPrev_ResetID" Datatype="Int" /><Member Name="statError_RTC" Datatype="Int" /><Member Name="statEvent_CurDateTime" Datatype="DTL" Version="1.0" /></Section></Sections></Member>
+    <Member Name="instAlarmRemoteSuspendBlocked" Datatype="&quot;CPG_Event&quot;" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">Remote Command - Suspend (Blocked)</MultiLanguageText><MultiLanguageText Lang="de-DE">Remote Command - Suspend (Blocked)</MultiLanguageText></Comment><Sections><Section Name="Input"><Member Name="EnableIn" Datatype="Bool" /><Member Name="Cfg_Event" Datatype="&quot;CPG_typeEventCfg&quot;"><Sections><Section Name="None"><Member Name="ID" Datatype="Int" /><Member Name="value" Datatype="Int" /><Member Name="message" Datatype="Array[0..&quot;LPMLV30_LANGUAGES_UPPER_LIM&quot;] of String[60]" /><Member Name="category" Datatype="Int" /></Section></Sections></Member><Member Name="Cfg_MessagePrefix" Datatype="&quot;CPG_typeMessagePrefix&quot;"><Sections><Section Name="None"><Member Name="messagePrefix" Datatype="Array[0..&quot;LPMLV30_LANGUAGES_UPPER_LIM&quot;] of String[30]" /></Section></Sections></Member></Section><Section Name="Output"><Member Name="Sts_Active" Datatype="Bool" /><Member Name="Sts_Latched" Datatype="Bool" /></Section><Section Name="InOut"><Member Name="In_EventStatus" Datatype="&quot;CPG_typeEventStatus&quot;"><Sections><Section Name="None" /></Sections></Member></Section><Section Name="Static"><Member Name="statActive" Datatype="Bool" /><Member Name="statLatched" Datatype="Bool" /><Member Name="statEvent_Number" Datatype="Int" /><Member Name="statPrev_ResetID" Datatype="Int" /><Member Name="statError_RTC" Datatype="Int" /><Member Name="statEvent_CurDateTime" Datatype="DTL" Version="1.0" /></Section></Sections></Member>
+    <Member Name="instAlarmRemoteSuspendStarved" Datatype="&quot;CPG_Event&quot;" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">Remote Command - Suspend (Starved)</MultiLanguageText><MultiLanguageText Lang="de-DE">Remote Command - Suspend (Starved)</MultiLanguageText></Comment><Sections><Section Name="Input"><Member Name="EnableIn" Datatype="Bool" /><Member Name="Cfg_Event" Datatype="&quot;CPG_typeEventCfg&quot;"><Sections><Section Name="None"><Member Name="ID" Datatype="Int" /><Member Name="value" Datatype="Int" /><Member Name="message" Datatype="Array[0..&quot;LPMLV30_LANGUAGES_UPPER_LIM&quot;] of String[60]" /><Member Name="category" Datatype="Int" /></Section></Sections></Member><Member Name="Cfg_MessagePrefix" Datatype="&quot;CPG_typeMessagePrefix&quot;"><Sections><Section Name="None"><Member Name="messagePrefix" Datatype="Array[0..&quot;LPMLV30_LANGUAGES_UPPER_LIM&quot;] of String[30]" /></Section></Sections></Member></Section><Section Name="Output"><Member Name="Sts_Active" Datatype="Bool" /><Member Name="Sts_Latched" Datatype="Bool" /></Section><Section Name="InOut"><Member Name="In_EventStatus" Datatype="&quot;CPG_typeEventStatus&quot;"><Sections><Section Name="None" /></Sections></Member></Section><Section Name="Static"><Member Name="statActive" Datatype="Bool" /><Member Name="statLatched" Datatype="Bool" /><Member Name="statEvent_Number" Datatype="Int" /><Member Name="statPrev_ResetID" Datatype="Int" /><Member Name="statError_RTC" Datatype="Int" /><Member Name="statEvent_CurDateTime" Datatype="DTL" Version="1.0" /></Section></Sections></Member>
+    <Member Name="instAlarmRemoteHold" Datatype="&quot;CPG_Event&quot;" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">Remote Command - Hold</MultiLanguageText><MultiLanguageText Lang="de-DE">Remote Command - Hold</MultiLanguageText></Comment><Sections><Section Name="Input"><Member Name="EnableIn" Datatype="Bool" /><Member Name="Cfg_Event" Datatype="&quot;CPG_typeEventCfg&quot;"><Sections><Section Name="None"><Member Name="ID" Datatype="Int" /><Member Name="value" Datatype="Int" /><Member Name="message" Datatype="Array[0..&quot;LPMLV30_LANGUAGES_UPPER_LIM&quot;] of String[60]" /><Member Name="category" Datatype="Int" /></Section></Sections></Member><Member Name="Cfg_MessagePrefix" Datatype="&quot;CPG_typeMessagePrefix&quot;"><Sections><Section Name="None"><Member Name="messagePrefix" Datatype="Array[0..&quot;LPMLV30_LANGUAGES_UPPER_LIM&quot;] of String[30]" /></Section></Sections></Member></Section><Section Name="Output"><Member Name="Sts_Active" Datatype="Bool" /><Member Name="Sts_Latched" Datatype="Bool" /></Section><Section Name="InOut"><Member Name="In_EventStatus" Datatype="&quot;CPG_typeEventStatus&quot;"><Sections><Section Name="None" /></Sections></Member></Section><Section Name="Static"><Member Name="statActive" Datatype="Bool" /><Member Name="statLatched" Datatype="Bool" /><Member Name="statEvent_Number" Datatype="Int" /><Member Name="statPrev_ResetID" Datatype="Int" /><Member Name="statError_RTC" Datatype="Int" /><Member Name="statEvent_CurDateTime" Datatype="DTL" Version="1.0" /></Section></Sections></Member>
+    <Member Name="statRemoteSuspendCommand" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">Remote Suspend Command is active (from remote station)</MultiLanguageText><MultiLanguageText Lang="de-DE">Remote Suspend Command is active (from remote station)</MultiLanguageText></Comment></Member>
+    <Member Name="statRemoteHoldCommand" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">Remote Hold Command is active (from remote station)</MultiLanguageText><MultiLanguageText Lang="de-DE">Remote Hold Command is active (from remote station)</MultiLanguageText></Comment></Member>
+  </Section>
+  <Section Name="Temp" />
+  <Section Name="Constant" />
+</Sections></Interface>
+      <IsIECCheckEnabled>false</IsIECCheckEnabled>
+      <IsRetainMemResEnabled>false</IsRetainMemResEnabled>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <MemoryReserve>100</MemoryReserve>
+      <Name>UN_03_LineComm</Name>
+      <Number>31623</Number>
+      <ProgrammingLanguage>LAD</ProgrammingLanguage>
+      <SetENOAutomatically>false</SetENOAutomatically>
+      <UDABlockProperties />
+      <UDAEnableTagReadback>false</UDAEnableTagReadback>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text>Support: tech.team.motioncontrol@siemens.com
+Fax: +49 (0) 9131/98-1297</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="3" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text>Support: tech.team.motioncontrol@siemens.com
+Fax: +49 (0) 9131/98-1297</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="4" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource />
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="5" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="6" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="7" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="8" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="9" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>*** COMMUNICATION LOGIC ***</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>*** COMMUNICATION LOGIC ***</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="B" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource />
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="C" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="D" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="F" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="10" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>*** REMOTE COMMAND LOGIC ***</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="11" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>*** REMOTE COMMAND LOGIC ***</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="12" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="remoteCommandEnable" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="PackTags" />
+        <Component Name="Command" />
+        <Component Name="CntrlCmd" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalConstant" UId="23">
+      <Constant Name="LPMLV30_CMD_STOP" />
+    </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="PackTags" />
+        <Component Name="Command" />
+        <Component Name="CmdChangeRequest" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="25">
+      <Symbol>
+        <Component Name="AlarmCfg" />
+        <Component Name="Event" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>20</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="26">
+      <Symbol>
+        <Component Name="MessagePrefix" />
+        <Component Name="UN" />
+        <Component Name="Alarm" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="27">
+      <Symbol>
+        <Component Name="UN" />
+        <Component Name="Alarm" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="28">
+      <Symbol>
+        <Component Name="instAlarmRemoteStop" />
+        <Component Name="Sts_Active" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="29">
+      <Symbol>
+        <Component Name="instAlarmRemoteStop" />
+        <Component Name="Sts_Latched" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="30" />
+    <Part Name="Eq" UId="31">
+      <TemplateValue Name="SrcType" Type="Type">DInt</TemplateValue>
+    </Part>
+    <Part Name="Contact" UId="32" />
+    <Call UId="33">
+      <CallInfo Name="CPG_Event" BlockType="FB">
+        <Instance Scope="LocalVariable" UId="34">
+          <Component Name="instAlarmRemoteStop" />
+        </Instance>
+        <Parameter Name="EnableIn" Section="Input" Type="Bool" />
+        <Parameter Name="Cfg_Event" Section="Input" Type="&quot;CPG_typeEventCfg&quot;" />
+        <Parameter Name="Cfg_MessagePrefix" Section="Input" Type="&quot;CPG_typeMessagePrefix&quot;" />
+        <Parameter Name="Sts_Active" Section="Output" Type="Bool" />
+        <Parameter Name="Sts_Latched" Section="Output" Type="Bool" />
+        <Parameter Name="In_EventStatus" Section="InOut" Type="&quot;CPG_typeEventStatus&quot;" />
+      </CallInfo>
+    </Call>
+  </Parts>
+  <Wires>
+    <Wire UId="35">
+      <Powerrail />
+      <NameCon UId="33" Name="en" />
+      <NameCon UId="30" Name="in" />
+    </Wire>
+    <Wire UId="36">
+      <IdentCon UId="21" />
+      <NameCon UId="30" Name="operand" />
+    </Wire>
+    <Wire UId="37">
+      <NameCon UId="30" Name="out" />
+      <NameCon UId="31" Name="pre" />
+    </Wire>
+    <Wire UId="38">
+      <IdentCon UId="22" />
+      <NameCon UId="31" Name="in1" />
+    </Wire>
+    <Wire UId="39">
+      <IdentCon UId="23" />
+      <NameCon UId="31" Name="in2" />
+    </Wire>
+    <Wire UId="40">
+      <NameCon UId="31" Name="out" />
+      <NameCon UId="32" Name="in" />
+    </Wire>
+    <Wire UId="41">
+      <IdentCon UId="24" />
+      <NameCon UId="32" Name="operand" />
+    </Wire>
+    <Wire UId="42">
+      <NameCon UId="32" Name="out" />
+      <NameCon UId="33" Name="EnableIn" />
+    </Wire>
+    <Wire UId="43">
+      <IdentCon UId="25" />
+      <NameCon UId="33" Name="Cfg_Event" />
+    </Wire>
+    <Wire UId="44">
+      <IdentCon UId="26" />
+      <NameCon UId="33" Name="Cfg_MessagePrefix" />
+    </Wire>
+    <Wire UId="45">
+      <IdentCon UId="27" />
+      <NameCon UId="33" Name="In_EventStatus" />
+    </Wire>
+    <Wire UId="46">
+      <NameCon UId="33" Name="Sts_Active" />
+      <IdentCon UId="28" />
+    </Wire>
+    <Wire UId="47">
+      <NameCon UId="33" Name="Sts_Latched" />
+      <IdentCon UId="29" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="13" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="14" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>"PackTags".Command.CntrlCmd = 3 (stop command value)</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="15" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>"PackTags".Command.CntrlCmd = 3 (stop command value)</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="16" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="17" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Remote Stop Command</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="18" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Remote Stop Command</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="19" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="remoteCommandEnable" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="PackTags" />
+        <Component Name="Command" />
+        <Component Name="CntrlCmd" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalConstant" UId="23">
+      <Constant Name="LPMLV30_CMD_ABORT" />
+    </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="PackTags" />
+        <Component Name="Command" />
+        <Component Name="CmdChangeRequest" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="25">
+      <Symbol>
+        <Component Name="AlarmCfg" />
+        <Component Name="Event" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>21</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="26">
+      <Symbol>
+        <Component Name="MessagePrefix" />
+        <Component Name="UN" />
+        <Component Name="Alarm" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="27">
+      <Symbol>
+        <Component Name="UN" />
+        <Component Name="Alarm" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="28">
+      <Symbol>
+        <Component Name="instAlarmRemoteAbort" />
+        <Component Name="Sts_Active" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="29">
+      <Symbol>
+        <Component Name="instAlarmRemoteAbort" />
+        <Component Name="Sts_Latched" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="30" />
+    <Part Name="Eq" UId="31">
+      <TemplateValue Name="SrcType" Type="Type">DInt</TemplateValue>
+    </Part>
+    <Part Name="Contact" UId="32" />
+    <Call UId="33">
+      <CallInfo Name="CPG_Event" BlockType="FB">
+        <Instance Scope="LocalVariable" UId="34">
+          <Component Name="instAlarmRemoteAbort" />
+        </Instance>
+        <Parameter Name="EnableIn" Section="Input" Type="Bool" />
+        <Parameter Name="Cfg_Event" Section="Input" Type="&quot;CPG_typeEventCfg&quot;" />
+        <Parameter Name="Cfg_MessagePrefix" Section="Input" Type="&quot;CPG_typeMessagePrefix&quot;" />
+        <Parameter Name="Sts_Active" Section="Output" Type="Bool" />
+        <Parameter Name="Sts_Latched" Section="Output" Type="Bool" />
+        <Parameter Name="In_EventStatus" Section="InOut" Type="&quot;CPG_typeEventStatus&quot;" />
+      </CallInfo>
+    </Call>
+  </Parts>
+  <Wires>
+    <Wire UId="35">
+      <Powerrail />
+      <NameCon UId="33" Name="en" />
+      <NameCon UId="30" Name="in" />
+    </Wire>
+    <Wire UId="36">
+      <IdentCon UId="21" />
+      <NameCon UId="30" Name="operand" />
+    </Wire>
+    <Wire UId="37">
+      <NameCon UId="30" Name="out" />
+      <NameCon UId="31" Name="pre" />
+    </Wire>
+    <Wire UId="38">
+      <IdentCon UId="22" />
+      <NameCon UId="31" Name="in1" />
+    </Wire>
+    <Wire UId="39">
+      <IdentCon UId="23" />
+      <NameCon UId="31" Name="in2" />
+    </Wire>
+    <Wire UId="40">
+      <NameCon UId="31" Name="out" />
+      <NameCon UId="32" Name="in" />
+    </Wire>
+    <Wire UId="41">
+      <IdentCon UId="24" />
+      <NameCon UId="32" Name="operand" />
+    </Wire>
+    <Wire UId="42">
+      <NameCon UId="32" Name="out" />
+      <NameCon UId="33" Name="EnableIn" />
+    </Wire>
+    <Wire UId="43">
+      <IdentCon UId="25" />
+      <NameCon UId="33" Name="Cfg_Event" />
+    </Wire>
+    <Wire UId="44">
+      <IdentCon UId="26" />
+      <NameCon UId="33" Name="Cfg_MessagePrefix" />
+    </Wire>
+    <Wire UId="45">
+      <IdentCon UId="27" />
+      <NameCon UId="33" Name="In_EventStatus" />
+    </Wire>
+    <Wire UId="46">
+      <NameCon UId="33" Name="Sts_Active" />
+      <IdentCon UId="28" />
+    </Wire>
+    <Wire UId="47">
+      <NameCon UId="33" Name="Sts_Latched" />
+      <IdentCon UId="29" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="1A" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="1B" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>"PackTags".Command.CntrlCmd = 8 (abort command value)</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="1C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>"PackTags".Command.CntrlCmd = 8 (abort command value)</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="1D" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="1E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Remote Abort Command</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="1F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Remote Abort Command</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="20" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="remoteCommandEnable" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="PackTags" />
+        <Component Name="Command" />
+        <Component Name="CntrlCmd" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalConstant" UId="23">
+      <Constant Name="LPMLV30_CMD_SUSPEND" />
+    </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="PackTags" />
+        <Component Name="Command" />
+        <Component Name="CmdChangeRequest" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="25">
+      <Symbol>
+        <Component Name="statRemoteSuspendCommand" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="26">
+      <Symbol>
+        <Component Name="PackTags" />
+        <Component Name="Command" />
+        <Component Name="CntrlCmd" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalConstant" UId="27">
+      <Constant Name="LPMLV30_CMD_UNSUSPEND" />
+    </Access>
+    <Access Scope="GlobalVariable" UId="28">
+      <Symbol>
+        <Component Name="PackTags" />
+        <Component Name="Command" />
+        <Component Name="CmdChangeRequest" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="29">
+      <Symbol>
+        <Component Name="statRemoteSuspendCommand" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="30" />
+    <Part Name="Eq" UId="31">
+      <TemplateValue Name="SrcType" Type="Type">DInt</TemplateValue>
+    </Part>
+    <Part Name="Contact" UId="32" />
+    <Part Name="SCoil" UId="33" />
+    <Part Name="Eq" UId="34">
+      <TemplateValue Name="SrcType" Type="Type">DInt</TemplateValue>
+    </Part>
+    <Part Name="Contact" UId="35" />
+    <Part Name="RCoil" UId="36" />
+  </Parts>
+  <Wires>
+    <Wire UId="37">
+      <Powerrail />
+      <NameCon UId="30" Name="in" />
+    </Wire>
+    <Wire UId="38">
+      <IdentCon UId="21" />
+      <NameCon UId="30" Name="operand" />
+    </Wire>
+    <Wire UId="39">
+      <NameCon UId="30" Name="out" />
+      <NameCon UId="31" Name="pre" />
+      <NameCon UId="34" Name="pre" />
+    </Wire>
+    <Wire UId="40">
+      <IdentCon UId="22" />
+      <NameCon UId="31" Name="in1" />
+    </Wire>
+    <Wire UId="41">
+      <IdentCon UId="23" />
+      <NameCon UId="31" Name="in2" />
+    </Wire>
+    <Wire UId="42">
+      <NameCon UId="31" Name="out" />
+      <NameCon UId="32" Name="in" />
+    </Wire>
+    <Wire UId="43">
+      <IdentCon UId="24" />
+      <NameCon UId="32" Name="operand" />
+    </Wire>
+    <Wire UId="44">
+      <NameCon UId="32" Name="out" />
+      <NameCon UId="33" Name="in" />
+    </Wire>
+    <Wire UId="45">
+      <IdentCon UId="25" />
+      <NameCon UId="33" Name="operand" />
+    </Wire>
+    <Wire UId="46">
+      <IdentCon UId="26" />
+      <NameCon UId="34" Name="in1" />
+    </Wire>
+    <Wire UId="47">
+      <IdentCon UId="27" />
+      <NameCon UId="34" Name="in2" />
+    </Wire>
+    <Wire UId="48">
+      <NameCon UId="34" Name="out" />
+      <NameCon UId="35" Name="in" />
+    </Wire>
+    <Wire UId="49">
+      <IdentCon UId="28" />
+      <NameCon UId="35" Name="operand" />
+    </Wire>
+    <Wire UId="50">
+      <NameCon UId="35" Name="out" />
+      <NameCon UId="36" Name="in" />
+    </Wire>
+    <Wire UId="51">
+      <IdentCon UId="29" />
+      <NameCon UId="36" Name="operand" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="21" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="22" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>"PackTags".Command.CntrlCmd = 6 (suspend command value)
+"PackTags".Command.CntrlCmd = 7 (un-suspend command value)</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="23" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>"PackTags".Command.CntrlCmd = 6 (suspend command value)
+"PackTags".Command.CntrlCmd = 7 (un-suspend command value)</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="24" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="25" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Remote Suspend Command</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="26" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Remote Suspend Command</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="27" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="remoteCommandEnable" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="22">
+      <Symbol>
+        <Component Name="statRemoteSuspendCommand" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="23">
+      <Symbol>
+        <Component Name="AlarmCfg" />
+        <Component Name="Event" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>22</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="MessagePrefix" />
+        <Component Name="UN" />
+        <Component Name="Alarm" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="25">
+      <Symbol>
+        <Component Name="UN" />
+        <Component Name="Alarm" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="26">
+      <Symbol>
+        <Component Name="instAlarmRemoteSuspendBlocked" />
+        <Component Name="Sts_Active" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="27">
+      <Symbol>
+        <Component Name="instAlarmRemoteSuspendBlocked" />
+        <Component Name="Sts_Latched" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="28" />
+    <Part Name="Contact" UId="29" />
+    <Call UId="30">
+      <CallInfo Name="CPG_Event" BlockType="FB">
+        <Instance Scope="LocalVariable" UId="31">
+          <Component Name="instAlarmRemoteSuspendBlocked" />
+        </Instance>
+        <Parameter Name="EnableIn" Section="Input" Type="Bool" />
+        <Parameter Name="Cfg_Event" Section="Input" Type="&quot;CPG_typeEventCfg&quot;" />
+        <Parameter Name="Cfg_MessagePrefix" Section="Input" Type="&quot;CPG_typeMessagePrefix&quot;" />
+        <Parameter Name="Sts_Active" Section="Output" Type="Bool" />
+        <Parameter Name="Sts_Latched" Section="Output" Type="Bool" />
+        <Parameter Name="In_EventStatus" Section="InOut" Type="&quot;CPG_typeEventStatus&quot;" />
+      </CallInfo>
+    </Call>
+  </Parts>
+  <Wires>
+    <Wire UId="32">
+      <Powerrail />
+      <NameCon UId="30" Name="en" />
+      <NameCon UId="28" Name="in" />
+    </Wire>
+    <Wire UId="33">
+      <IdentCon UId="21" />
+      <NameCon UId="28" Name="operand" />
+    </Wire>
+    <Wire UId="34">
+      <NameCon UId="28" Name="out" />
+      <NameCon UId="29" Name="in" />
+    </Wire>
+    <Wire UId="35">
+      <IdentCon UId="22" />
+      <NameCon UId="29" Name="operand" />
+    </Wire>
+    <Wire UId="36">
+      <NameCon UId="29" Name="out" />
+      <NameCon UId="30" Name="EnableIn" />
+    </Wire>
+    <Wire UId="37">
+      <IdentCon UId="23" />
+      <NameCon UId="30" Name="Cfg_Event" />
+    </Wire>
+    <Wire UId="38">
+      <IdentCon UId="24" />
+      <NameCon UId="30" Name="Cfg_MessagePrefix" />
+    </Wire>
+    <Wire UId="39">
+      <IdentCon UId="25" />
+      <NameCon UId="30" Name="In_EventStatus" />
+    </Wire>
+    <Wire UId="40">
+      <NameCon UId="30" Name="Sts_Active" />
+      <IdentCon UId="26" />
+    </Wire>
+    <Wire UId="41">
+      <NameCon UId="30" Name="Sts_Latched" />
+      <IdentCon UId="27" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="28" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="29" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>"PackTags".Command.CntrlCmd = 6 (suspend command value)</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="2A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>"PackTags".Command.CntrlCmd = 6 (suspend command value)</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="2B" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="2C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Remote Suspend Command - Blocked</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="2D" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Remote Suspend Command - Blocked</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="2E" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="remoteCommandEnable" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="22">
+      <Symbol>
+        <Component Name="statRemoteSuspendCommand" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="23">
+      <Symbol>
+        <Component Name="AlwaysFALSE" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="AlarmCfg" />
+        <Component Name="Event" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>23</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="25">
+      <Symbol>
+        <Component Name="MessagePrefix" />
+        <Component Name="UN" />
+        <Component Name="Alarm" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="26">
+      <Symbol>
+        <Component Name="UN" />
+        <Component Name="Alarm" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="27">
+      <Symbol>
+        <Component Name="instAlarmRemoteSuspendStarved" />
+        <Component Name="Sts_Active" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="28">
+      <Symbol>
+        <Component Name="instAlarmRemoteSuspendStarved" />
+        <Component Name="Sts_Latched" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="29" />
+    <Part Name="Contact" UId="30" />
+    <Part Name="Contact" UId="31" />
+    <Call UId="32">
+      <CallInfo Name="CPG_Event" BlockType="FB">
+        <Instance Scope="LocalVariable" UId="33">
+          <Component Name="instAlarmRemoteSuspendStarved" />
+        </Instance>
+        <Parameter Name="EnableIn" Section="Input" Type="Bool" />
+        <Parameter Name="Cfg_Event" Section="Input" Type="&quot;CPG_typeEventCfg&quot;" />
+        <Parameter Name="Cfg_MessagePrefix" Section="Input" Type="&quot;CPG_typeMessagePrefix&quot;" />
+        <Parameter Name="Sts_Active" Section="Output" Type="Bool" />
+        <Parameter Name="Sts_Latched" Section="Output" Type="Bool" />
+        <Parameter Name="In_EventStatus" Section="InOut" Type="&quot;CPG_typeEventStatus&quot;" />
+      </CallInfo>
+    </Call>
+  </Parts>
+  <Wires>
+    <Wire UId="34">
+      <Powerrail />
+      <NameCon UId="32" Name="en" />
+      <NameCon UId="29" Name="in" />
+    </Wire>
+    <Wire UId="35">
+      <IdentCon UId="21" />
+      <NameCon UId="29" Name="operand" />
+    </Wire>
+    <Wire UId="36">
+      <NameCon UId="29" Name="out" />
+      <NameCon UId="30" Name="in" />
+    </Wire>
+    <Wire UId="37">
+      <IdentCon UId="22" />
+      <NameCon UId="30" Name="operand" />
+    </Wire>
+    <Wire UId="38">
+      <NameCon UId="30" Name="out" />
+      <NameCon UId="31" Name="in" />
+    </Wire>
+    <Wire UId="39">
+      <IdentCon UId="23" />
+      <NameCon UId="31" Name="operand" />
+    </Wire>
+    <Wire UId="40">
+      <NameCon UId="31" Name="out" />
+      <NameCon UId="32" Name="EnableIn" />
+    </Wire>
+    <Wire UId="41">
+      <IdentCon UId="24" />
+      <NameCon UId="32" Name="Cfg_Event" />
+    </Wire>
+    <Wire UId="42">
+      <IdentCon UId="25" />
+      <NameCon UId="32" Name="Cfg_MessagePrefix" />
+    </Wire>
+    <Wire UId="43">
+      <IdentCon UId="26" />
+      <NameCon UId="32" Name="In_EventStatus" />
+    </Wire>
+    <Wire UId="44">
+      <NameCon UId="32" Name="Sts_Active" />
+      <IdentCon UId="27" />
+    </Wire>
+    <Wire UId="45">
+      <NameCon UId="32" Name="Sts_Latched" />
+      <IdentCon UId="28" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="2F" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="30" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="31" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="32" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="33" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Remote Suspend Command - Starved</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="34" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Remote Suspend Command - Starved</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="35" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="remoteCommandEnable" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="PackTags" />
+        <Component Name="Command" />
+        <Component Name="CntrlCmd" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalConstant" UId="23">
+      <Constant Name="LPMLV30_CMD_HOLD" />
+    </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="PackTags" />
+        <Component Name="Command" />
+        <Component Name="CmdChangeRequest" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="25">
+      <Symbol>
+        <Component Name="statRemoteHoldCommand" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="26">
+      <Symbol>
+        <Component Name="PackTags" />
+        <Component Name="Command" />
+        <Component Name="CntrlCmd" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalConstant" UId="27">
+      <Constant Name="LPMLV30_CMD_UNHOLD" />
+    </Access>
+    <Access Scope="GlobalVariable" UId="28">
+      <Symbol>
+        <Component Name="PackTags" />
+        <Component Name="Command" />
+        <Component Name="CmdChangeRequest" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="29">
+      <Symbol>
+        <Component Name="statRemoteHoldCommand" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="30" />
+    <Part Name="Eq" UId="31">
+      <TemplateValue Name="SrcType" Type="Type">DInt</TemplateValue>
+    </Part>
+    <Part Name="Contact" UId="32" />
+    <Part Name="SCoil" UId="33" />
+    <Part Name="Eq" UId="34">
+      <TemplateValue Name="SrcType" Type="Type">DInt</TemplateValue>
+    </Part>
+    <Part Name="Contact" UId="35" />
+    <Part Name="RCoil" UId="36" />
+  </Parts>
+  <Wires>
+    <Wire UId="37">
+      <Powerrail />
+      <NameCon UId="30" Name="in" />
+    </Wire>
+    <Wire UId="38">
+      <IdentCon UId="21" />
+      <NameCon UId="30" Name="operand" />
+    </Wire>
+    <Wire UId="39">
+      <NameCon UId="30" Name="out" />
+      <NameCon UId="31" Name="pre" />
+      <NameCon UId="34" Name="pre" />
+    </Wire>
+    <Wire UId="40">
+      <IdentCon UId="22" />
+      <NameCon UId="31" Name="in1" />
+    </Wire>
+    <Wire UId="41">
+      <IdentCon UId="23" />
+      <NameCon UId="31" Name="in2" />
+    </Wire>
+    <Wire UId="42">
+      <NameCon UId="31" Name="out" />
+      <NameCon UId="32" Name="in" />
+    </Wire>
+    <Wire UId="43">
+      <IdentCon UId="24" />
+      <NameCon UId="32" Name="operand" />
+    </Wire>
+    <Wire UId="44">
+      <NameCon UId="32" Name="out" />
+      <NameCon UId="33" Name="in" />
+    </Wire>
+    <Wire UId="45">
+      <IdentCon UId="25" />
+      <NameCon UId="33" Name="operand" />
+    </Wire>
+    <Wire UId="46">
+      <IdentCon UId="26" />
+      <NameCon UId="34" Name="in1" />
+    </Wire>
+    <Wire UId="47">
+      <IdentCon UId="27" />
+      <NameCon UId="34" Name="in2" />
+    </Wire>
+    <Wire UId="48">
+      <NameCon UId="34" Name="out" />
+      <NameCon UId="35" Name="in" />
+    </Wire>
+    <Wire UId="49">
+      <IdentCon UId="28" />
+      <NameCon UId="35" Name="operand" />
+    </Wire>
+    <Wire UId="50">
+      <NameCon UId="35" Name="out" />
+      <NameCon UId="36" Name="in" />
+    </Wire>
+    <Wire UId="51">
+      <IdentCon UId="29" />
+      <NameCon UId="36" Name="operand" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="36" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="37" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>"PackTags".Command.CntrlCmd = 4 (hold command value)
+"PackTags".Command.CntrlCmd = 5 (un-hold command value)</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="38" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>"PackTags".Command.CntrlCmd = 4 (hold command value)
+"PackTags".Command.CntrlCmd = 5 (un-hold command value)</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="39" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="3A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Remote Hold Command</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="3B" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Remote Hold Command</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="3C" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="PackML" />
+        <Component Name="remoteCommandEnable" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="22">
+      <Symbol>
+        <Component Name="statRemoteHoldCommand" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="23">
+      <Symbol>
+        <Component Name="AlarmCfg" />
+        <Component Name="Event" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>24</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="MessagePrefix" />
+        <Component Name="UN" />
+        <Component Name="Alarm" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="25">
+      <Symbol>
+        <Component Name="UN" />
+        <Component Name="Alarm" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="26">
+      <Symbol>
+        <Component Name="instAlarmRemoteHold" />
+        <Component Name="Sts_Active" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="27">
+      <Symbol>
+        <Component Name="instAlarmRemoteHold" />
+        <Component Name="Sts_Latched" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="28" />
+    <Part Name="Contact" UId="29" />
+    <Call UId="30">
+      <CallInfo Name="CPG_Event" BlockType="FB">
+        <Instance Scope="LocalVariable" UId="31">
+          <Component Name="instAlarmRemoteHold" />
+        </Instance>
+        <Parameter Name="EnableIn" Section="Input" Type="Bool" />
+        <Parameter Name="Cfg_Event" Section="Input" Type="&quot;CPG_typeEventCfg&quot;" />
+        <Parameter Name="Cfg_MessagePrefix" Section="Input" Type="&quot;CPG_typeMessagePrefix&quot;" />
+        <Parameter Name="Sts_Active" Section="Output" Type="Bool" />
+        <Parameter Name="Sts_Latched" Section="Output" Type="Bool" />
+        <Parameter Name="In_EventStatus" Section="InOut" Type="&quot;CPG_typeEventStatus&quot;" />
+      </CallInfo>
+    </Call>
+  </Parts>
+  <Wires>
+    <Wire UId="32">
+      <Powerrail />
+      <NameCon UId="30" Name="en" />
+      <NameCon UId="28" Name="in" />
+    </Wire>
+    <Wire UId="33">
+      <IdentCon UId="21" />
+      <NameCon UId="28" Name="operand" />
+    </Wire>
+    <Wire UId="34">
+      <NameCon UId="28" Name="out" />
+      <NameCon UId="29" Name="in" />
+    </Wire>
+    <Wire UId="35">
+      <IdentCon UId="22" />
+      <NameCon UId="29" Name="operand" />
+    </Wire>
+    <Wire UId="36">
+      <NameCon UId="29" Name="out" />
+      <NameCon UId="30" Name="EnableIn" />
+    </Wire>
+    <Wire UId="37">
+      <IdentCon UId="23" />
+      <NameCon UId="30" Name="Cfg_Event" />
+    </Wire>
+    <Wire UId="38">
+      <IdentCon UId="24" />
+      <NameCon UId="30" Name="Cfg_MessagePrefix" />
+    </Wire>
+    <Wire UId="39">
+      <IdentCon UId="25" />
+      <NameCon UId="30" Name="In_EventStatus" />
+    </Wire>
+    <Wire UId="40">
+      <NameCon UId="30" Name="Sts_Active" />
+      <IdentCon UId="26" />
+    </Wire>
+    <Wire UId="41">
+      <NameCon UId="30" Name="Sts_Latched" />
+      <IdentCon UId="27" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="3D" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="3E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>"PackTags".Command.CntrlCmd = 4 (hold command value)</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="3F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>"PackTags".Command.CntrlCmd = 4 (hold command value)</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="40" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="41" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Remote Hold Command</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="42" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Remote Hold Command</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="43" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Part Name="ReturnTrue" UId="21" />
+  </Parts>
+  <Wires>
+    <Wire UId="22">
+      <Powerrail />
+      <NameCon UId="21" Name="in" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="44" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="45" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="46" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="47" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="48" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>END: Update the ENO Output. (DO NOT REMOVE. Must be last rung)</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="49" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>END: Update the ENO Output. (DO NOT REMOVE. Must be last rung)</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="4A" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4B" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text>UN_03_LineComm</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="4C" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text>UN_03_LineComm</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.FB>
+</Document>

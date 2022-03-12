@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V17" />
+  <DocumentInfo>
+    <Created>2022-03-12T16:05:35.1222026Z</Created>
+    <ExportSetting>WithDefaults</ExportSetting>
+    <InstalledProducts>
+      <Product>
+        <DisplayName>Totally Integrated Automation Portal</DisplayName>
+        <DisplayVersion>V17</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>TIA Portal Openness</DisplayName>
+        <DisplayVersion>V17</DisplayVersion>
+      </OptionPackage>
+      <OptionPackage>
+        <DisplayName>TIA Portal Version Control Interface</DisplayName>
+        <DisplayVersion>V17</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>STEP 7 Professional</DisplayName>
+        <DisplayVersion>V17</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>STEP 7 Safety</DisplayName>
+        <DisplayVersion>V17</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>WinCC Advanced / Unified PC</DisplayName>
+        <DisplayVersion>V17</DisplayVersion>
+      </Product>
+    </InstalledProducts>
+  </DocumentInfo>
+  <SW.Types.PlcStruct ID="0">
+    <AttributeList>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="None">
+    <Member Name="disabledUnitModes" Datatype="Array[0..&quot;LPMLV30_MAX_MODES_UPPER_LIM&quot;] of Bool"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">TRUE: Disable unit mode xx</MultiLanguageText><MultiLanguageText Lang="de-DE">TRUE: Disable unit mode xx</MultiLanguageText></Comment><Subelement Path="0"><StartValue>false</StartValue></Subelement><Subelement Path="1"><StartValue>false</StartValue></Subelement><Subelement Path="2"><StartValue>false</StartValue></Subelement><Subelement Path="3"><StartValue>false</StartValue></Subelement><Subelement Path="4"><StartValue>false</StartValue></Subelement><Subelement Path="5"><StartValue>false</StartValue></Subelement><Subelement Path="6"><StartValue>false</StartValue></Subelement><Subelement Path="7"><StartValue>false</StartValue></Subelement><Subelement Path="8"><StartValue>false</StartValue></Subelement><Subelement Path="9"><StartValue>false</StartValue></Subelement><Subelement Path="10"><StartValue>false</StartValue></Subelement><Subelement Path="11"><StartValue>false</StartValue></Subelement><Subelement Path="12"><StartValue>true</StartValue></Subelement><Subelement Path="13"><StartValue>true</StartValue></Subelement><Subelement Path="14"><StartValue>true</StartValue></Subelement><Subelement Path="15"><StartValue>true</StartValue></Subelement><Subelement Path="16"><StartValue>true</StartValue></Subelement><Subelement Path="17"><StartValue>true</StartValue></Subelement><Subelement Path="18"><StartValue>true</StartValue></Subelement><Subelement Path="19"><StartValue>true</StartValue></Subelement><Subelement Path="20"><StartValue>true</StartValue></Subelement><Subelement Path="21"><StartValue>true</StartValue></Subelement><Subelement Path="22"><StartValue>true</StartValue></Subelement><Subelement Path="23"><StartValue>true</StartValue></Subelement><Subelement Path="24"><StartValue>true</StartValue></Subelement><Subelement Path="25"><StartValue>true</StartValue></Subelement><Subelement Path="26"><StartValue>true</StartValue></Subelement><Subelement Path="27"><StartValue>true</StartValue></Subelement><Subelement Path="28"><StartValue>true</StartValue></Subelement><Subelement Path="29"><StartValue>true</StartValue></Subelement><Subelement Path="30"><StartValue>true</StartValue></Subelement><Subelement Path="31"><StartValue>true</StartValue></Subelement></Member>
+    <Member Name="disabledStatesInUnitModes" Datatype="Array[0..&quot;LPMLV30_MAX_MODES_UPPER_LIM&quot;] of DInt"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">TRUE: Disable states in unit mode (bit number = state number)</MultiLanguageText><MultiLanguageText Lang="de-DE">TRUE: Disable states in unit mode (bit number = state number)</MultiLanguageText></Comment><Subelement Path="0"><StartValue>0</StartValue></Subelement><Subelement Path="1"><StartValue>0</StartValue></Subelement><Subelement Path="2"><StartValue>0</StartValue></Subelement><Subelement Path="3"><StartValue>0</StartValue></Subelement><Subelement Path="4"><StartValue>0</StartValue></Subelement><Subelement Path="5"><StartValue>0</StartValue></Subelement><Subelement Path="6"><StartValue>0</StartValue></Subelement><Subelement Path="7"><StartValue>0</StartValue></Subelement><Subelement Path="8"><StartValue>0</StartValue></Subelement><Subelement Path="9"><StartValue>0</StartValue></Subelement><Subelement Path="10"><StartValue>0</StartValue></Subelement><Subelement Path="11"><StartValue>0</StartValue></Subelement><Subelement Path="12"><StartValue>0</StartValue></Subelement><Subelement Path="13"><StartValue>0</StartValue></Subelement><Subelement Path="14"><StartValue>0</StartValue></Subelement><Subelement Path="15"><StartValue>0</StartValue></Subelement><Subelement Path="16"><StartValue>0</StartValue></Subelement><Subelement Path="17"><StartValue>0</StartValue></Subelement><Subelement Path="18"><StartValue>0</StartValue></Subelement><Subelement Path="19"><StartValue>0</StartValue></Subelement><Subelement Path="20"><StartValue>0</StartValue></Subelement><Subelement Path="21"><StartValue>0</StartValue></Subelement><Subelement Path="22"><StartValue>0</StartValue></Subelement><Subelement Path="23"><StartValue>0</StartValue></Subelement><Subelement Path="24"><StartValue>0</StartValue></Subelement><Subelement Path="25"><StartValue>0</StartValue></Subelement><Subelement Path="26"><StartValue>0</StartValue></Subelement><Subelement Path="27"><StartValue>0</StartValue></Subelement><Subelement Path="28"><StartValue>0</StartValue></Subelement><Subelement Path="29"><StartValue>0</StartValue></Subelement><Subelement Path="30"><StartValue>0</StartValue></Subelement><Subelement Path="31"><StartValue>0</StartValue></Subelement></Member>
+  </Section>
+</Sections></Interface>
+      <IsFailsafeCompliant>false</IsFailsafeCompliant>
+      <Name>typeLPMLV30_Configuration</Name>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text>Support: tech.team.motioncontrol@siemens.com 
+Fax: +49 (0) 9131/98-1297</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="3" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text>Support: tech.team.motioncontrol@siemens.com 
+Fax: +49 (0) 9131/98-1297</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="4" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="5" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text>typeLPMLV30_Configuration</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="6" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text>typeLPMLV30_Configuration</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Types.PlcStruct>
+</Document>

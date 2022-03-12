@@ -1,0 +1,348 @@
+﻿FUNCTION_BLOCK "CPG_ParetoAnalysis"
+TITLE = CPG_ParetoAnalysis
+{ S7_Optimized_Access := 'TRUE' }
+AUTHOR : 'tech.team.motioncontrol@siemens.com'
+FAMILY : CPG
+VERSION : 1.1
+//Support: tech.team.motioncontrol@siemens.com
+   VAR_INPUT 
+      ID { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : DInt;   // ID of the current alarm (0 if no alarm active)
+      message { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : String[40];   // Text of the current alarm
+      resetPareto { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // Rising edge resets statistics
+      sort { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;   // Choose metric to sort by (0=totalDowntime, 1=percentOccurred, 2=timesOccurred, 3=MTTR)
+   END_VAR
+
+   VAR_OUTPUT 
+      totalStops { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : UInt;   // Total stops due to all faults
+      totalTimeSinceReset { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Real;   // Total time in minutes since reset
+      totalUptime { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Real;   // Total uptime in minutes
+      totalDowntime { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Real;   // Total downtime in minutes
+      percentUptime { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Real;   // Percent of total time since reset that was uptime
+      MTTR { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Real;   // Mean time to return
+      MTBF { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Real;   // Mean time between failures
+   END_VAR
+
+   VAR_IN_OUT 
+      paretoData : Array[0.."CPG_PARTEO_NO_OF_ERRORS_UPPER_LIM"] of "CPG_typePareto";   // Alarm data structure
+   END_VAR
+
+   VAR 
+      statFirstScan { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool := TRUE;   // Indicate first scan
+      statStopReasonOld { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : DInt;   // The last stop reason
+      statResetParetoOld { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // Reset on the rising edge of resetPareto
+      statEntryFound { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // Alarm code exists already
+      statCurrentTimestamp {InstructionName := 'DTL'; LibVersion := '1.0'; ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : DTL;   // Current local time
+      statPrevTimestamp {InstructionName := 'DTL'; LibVersion := '1.0'; ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : DTL;   // Previous local time stamp
+      statResetTimestamp {InstructionName := 'DTL'; LibVersion := '1.0'; ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : DTL;   // Time when reset
+      statSameCurrentTimestamp { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Date_And_Time;   // New current time when same alarm is present
+      statBaseDowntime { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Real;   // Set time when alarm doesn't change
+      statIndex { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;   // Current index in the alarm array
+      statTotalStops { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : UInt;   // Total number of alarm stops
+      statTotalDowntime { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Real;   // Total machine downtime
+      statOverallMTTR { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Real;   // Overall total downtime/ Total stops
+      statPrevTotalUptime { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Real;   // Previous total uptime
+      instShellSortPareto { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : "CPG_ShellSortPareto";   // Sort alarm array
+      statSort { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : String[30];   // Sort alarm data
+      statPrevSort { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;   // Sort on the last scan
+      instProgramAlarm {InstructionName := 'Program_Alarm'; LibVersion := '1.0'; ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Program_Alarm;   // Record alarm
+      statAlarm { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // Alarm is active
+      statArrayFull { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // Array is larger than MAX_AMOUNT_OF_ERRORS
+      statFullRunningDowntime { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Real;   // Running downtime when array is full
+      statFullPrevDowntime { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Real;   // Total downtime for all alarms not recorded in the array
+   END_VAR
+
+   VAR_TEMP 
+      tempTimestamp {InstructionName := 'DTL'; LibVersion := '1.0'} : DTL;
+      tempTimeErr : Int;
+      tempEntryFound : Bool;
+   END_VAR
+
+   VAR CONSTANT 
+      MS_TO_MIN : Real := 60000.0;   // Convert from milliseconds to minutes
+   END_VAR
+
+
+BEGIN
+	//============================================================================================================
+	// SIEMENS NV - APC Belgium
+	// (c)Copyright 2018 All Rights Reserved
+	//------------------------------------------------------------------------------------------------------------
+	// Tested with: S7
+	// -1500 with FW version V2.5, V2.6
+	// Engineering: TIA Portal V15, V15.1
+	// Restrictions: ---
+	// Requirements: S7-1x00
+	// Functionality: Pareto analysis on stop reasons
+	//------------------------------------------------------------------------------------------------------------
+	// Change log table:
+	// Version       Date               Expert in charge        Changes applied
+	// 01.00.00      14.10.2018         J.Pieters               Initial Release 
+	// 02.00.00      09.05.2019         K.Bartuska              Included text, total downtime, and MTBF
+	// 03.00.00      13.09.2019         K.Bartuska, M.Earnest   Included MTTR, custom sort, and continuous downtime updates         
+	//============================================================================================================
+	// Function : paretoAnalysis
+	//============================================================================================================
+	
+	
+	//REGION RESET_PARETO_RESULTS
+	IF #statFirstScan OR (#resetPareto AND NOT #statResetParetoOld)
+	THEN
+	    FOR #statIndex := 1 TO "CPG_PARTEO_NO_OF_ERRORS_UPPER_LIM" DO
+	        #paretoData[#statIndex].alarmID := 0;
+	        #paretoData[#statIndex].percentageOccurred := 0.0;
+	        #paretoData[#statIndex].timesOccurred := 0;
+	        #paretoData[#statIndex].alarmMessage := '';
+	        #paretoData[#statIndex].MTTR := 0.0;
+	        #paretoData[#statIndex].totalDowntime := 0.0;
+	    END_FOR;
+	    
+	    #tempTimeErr := RD_LOC_T(#statResetTimestamp);
+	    #statTotalStops := 0;
+	    #statTotalDowntime := 0.0;
+	    #statOverallMTTR := 0.0;
+	    #statFirstScan := FALSE;
+	    #statPrevTotalUptime := 0.0;
+	    #statStopReasonOld := 0;
+	    #statArrayFull := 0;
+	    #statFullPrevDowntime := 0.0;
+	    
+	END_IF;
+	// one shot bit
+	#statResetParetoOld := #resetPareto;
+	//END_REGION
+	
+	FOR #statIndex := 1 TO "CPG_PARTEO_NO_OF_ERRORS_UPPER_LIM" DO
+	    IF #paretoData[#statIndex].alarmID = #ID
+	    THEN
+	        #tempEntryFound := TRUE;
+	    END_IF;
+	END_FOR;
+	
+	//REGION UPDATE_DOWNTIME  
+	//adjust downtime & MTTR
+	
+	//For a different alarm
+	IF #ID <> #statStopReasonOld
+	THEN
+	    #statPrevTimestamp := #statCurrentTimestamp;
+	    #tempTimeErr := RD_LOC_T(#statCurrentTimestamp);
+	    #statBaseDowntime := 0.0;
+	    #statAlarm := 0;
+	    #statFullPrevDowntime := #statFullPrevDowntime + #statFullRunningDowntime;
+	    #statFullRunningDowntime := 0.0;
+	    
+	    
+	    //Update downtime when fault is active    
+	ELSIF #ID = #statStopReasonOld AND #ID <> 0
+	THEN
+	    #tempTimeErr := RD_LOC_T(#statSameCurrentTimestamp);
+	    #statAlarm := 1;
+	    IF #tempEntryFound
+	    THEN
+	        FOR #statIndex := 1 TO "CPG_PARTEO_NO_OF_ERRORS_UPPER_LIM" DO
+	            IF #paretoData[#statIndex].alarmID = #ID
+	            THEN
+	                #paretoData[#statIndex].totalDowntime := #statBaseDowntime + (DINT_TO_REAL(TIME_TO_DINT(T_DIFF(IN1 := #statSameCurrentTimestamp, IN2 := #statCurrentTimestamp))) / #MS_TO_MIN);
+	                IF #paretoData[#statIndex].timesOccurred <> 0
+	                THEN
+	                    #paretoData[#statIndex].MTTR := (#paretoData[#statIndex].totalDowntime) / #paretoData[#statIndex].timesOccurred;
+	                END_IF;
+	                EXIT;
+	            END_IF;
+	        END_FOR;
+	    ELSIF NOT #tempEntryFound AND #statArrayFull
+	    THEN
+	        #statFullRunningDowntime := DINT_TO_REAL(TIME_TO_DINT(T_DIFF(IN1 := #statSameCurrentTimestamp, IN2 := #statCurrentTimestamp))) / #MS_TO_MIN;
+	    END_IF;
+	END_IF;
+	//END_REGION
+	
+	
+	//REGION CREATE_PROGRAM_ALARM
+	//create an alarm
+	#instProgramAlarm(SIG := #statAlarm,
+	               SD_1 := #ID,
+	               SD_2 := #message);
+	//END_REGION
+	
+	//REGION PARETO_MAIN
+	// check if an error is active
+	IF #ID <> #statStopReasonOld AND (#ID <> 0)
+	THEN
+	    //REGION INCREMENT_EXISTING_ALARM_ID
+	    IF #tempEntryFound
+	    THEN
+	        FOR #statIndex := 1 TO "CPG_PARTEO_NO_OF_ERRORS_UPPER_LIM" DO
+	            // find if alarm is already defined in list
+	            IF #paretoData[#statIndex].alarmID = #ID
+	            THEN
+	                #paretoData[#statIndex].timesOccurred := #paretoData[#statIndex].timesOccurred + UINT#1;
+	                EXIT; // exit this loop
+	            END_IF;
+	        END_FOR;
+	    ELSIF NOT #tempEntryFound AND #statArrayFull
+	    THEN
+	        #statTotalStops := #statTotalStops + 1;
+	    END_IF;
+	    //END_REGION
+	    
+	    //REGION ADD_NEW_ALARM_ID
+	    //If alarm is not defined in list then make a new entry
+	    IF (NOT #tempEntryFound) AND (NOT #statArrayFull)
+	    THEN
+	        FOR #statIndex := 1 TO "CPG_PARTEO_NO_OF_ERRORS_UPPER_LIM" DO
+	            
+	            IF #paretoData[#statIndex].alarmID = 0
+	            THEN
+	                #paretoData[#statIndex].alarmID := #ID;
+	                #paretoData[#statIndex].timesOccurred := 1;
+	                #paretoData[#statIndex].alarmMessage := #message;
+	                #tempEntryFound := TRUE;
+	                //Array is now full
+	                IF #statIndex = "CPG_PARTEO_NO_OF_ERRORS_UPPER_LIM"
+	                THEN
+	                    #statArrayFull := 1;
+	                END_IF;
+	                EXIT; // exit this loop
+	            END_IF;
+	        END_FOR;
+	    END_IF;
+	    //END_REGION
+	END_IF;
+	
+	IF #ID <> #statStopReasonOld AND #tempEntryFound
+	THEN
+	    //REGION FIND_TOTAL_OCCURED_ALARMS
+	    // count total number stop has occured
+	    //initialize alarm counters
+	    #statTotalStops := 0;
+	    #statTotalDowntime := 0.0;
+	    #statOverallMTTR := 0.0;
+	    
+	    FOR #statIndex := 1 TO "CPG_PARTEO_NO_OF_ERRORS_UPPER_LIM" DO
+	        IF #paretoData[#statIndex].alarmID = #ID
+	        THEN
+	            #statBaseDowntime := #paretoData[#statIndex].totalDowntime;
+	        END_IF;
+	        IF #paretoData[#statIndex].alarmID <> 0
+	        THEN
+	            #statTotalStops := #statTotalStops + #paretoData[#statIndex].timesOccurred;
+	            #statTotalDowntime := #statTotalDowntime + #paretoData[#statIndex].totalDowntime;
+	        END_IF;
+	    END_FOR;
+	    
+	    IF #statTotalStops <> 0
+	    THEN
+	        #statOverallMTTR := (#statTotalDowntime + #statFullPrevDowntime + #statFullRunningDowntime) / #statTotalStops;
+	    END_IF;
+	    //END_REGION
+	    
+	    //REGION CALCULATE_PRECENTAGE_FOR_EACH_ALARM
+	    // calculate percentage each alarm occured
+	    FOR #statIndex := 1 TO "CPG_PARTEO_NO_OF_ERRORS_UPPER_LIM" DO
+	        IF #paretoData[#statIndex].alarmID <> 0
+	        THEN
+	            // avoid division by zero 
+	            #paretoData[#statIndex].percentageOccurred := SEL(G := #statTotalStops <> 0,
+	                                                              IN0 := 0.0,
+	                                                              IN1 := ((#paretoData[#statIndex].totalDowntime) / (#statTotalDowntime + #statFullPrevDowntime + #statFullRunningDowntime)) * 100.0);
+	        END_IF;
+	    END_FOR;
+	    //END_REGION
+	END_IF;
+	
+	//Update downtime and MTTR when fault is still active
+	IF #ID = #statStopReasonOld AND #ID <> 0
+	THEN
+	    //REGION FIND_TOTAL_OCCURED_ALARMS
+	    IF #tempEntryFound
+	    THEN
+	        #statTotalDowntime := 0.0;
+	        FOR #statIndex := 1 TO "CPG_PARTEO_NO_OF_ERRORS_UPPER_LIM" DO
+	            #statTotalDowntime := #statTotalDowntime + #paretoData[#statIndex].totalDowntime;
+	        END_FOR;
+	    END_IF;
+	    
+	    IF #statTotalStops <> 0 THEN
+	        #statOverallMTTR := (#statTotalDowntime + #statFullPrevDowntime + #statFullRunningDowntime) / #statTotalStops;
+	    END_IF;
+	    
+	    //END_REGION
+	    
+	    //REGION CALCULATE_PRECENTAGE_FOR_EACH_ALARM
+	    // calculate percentage each alarm occured
+	    IF #tempEntryFound
+	    THEN
+	        FOR #statIndex := 1 TO "CPG_PARTEO_NO_OF_ERRORS_UPPER_LIM" DO
+	            IF #paretoData[#statIndex].alarmID <> 0
+	            THEN
+	                // avoid division by zero 
+	                #paretoData[#statIndex].percentageOccurred := SEL(G := #statTotalStops <> 0,
+	                                                                  IN0 := 0.0,
+	                                                                  IN1 := ((#paretoData[#statIndex].totalDowntime) / (#statTotalDowntime + #statFullPrevDowntime + #statFullRunningDowntime)) * 100.0);
+	            END_IF;
+	        END_FOR;
+	    END_IF;
+	    //END_REGION
+	END_IF;
+	
+	//Sort the alarm array
+	//REGION SORT_ARRAY_CRITERIA
+	IF #sort = 0 THEN
+	    #statSort := 'totalDowntime';
+	ELSIF #sort = 1 THEN
+	    #statSort := 'percentageOccurred';
+	ELSIF #sort = 2 THEN
+	    #statSort := 'timesOccurred';
+	ELSIF #sort = 3 THEN
+	    #statSort := 'MTTR';
+	END_IF;
+	
+	// Sort list: most [statSort] alarms on top (index 1)
+	IF #statPrevSort <> #sort OR #ID <> #statStopReasonOld
+	THEN
+	    #instShellSortPareto(mode := TRUE,
+	                        sortBy := #statSort,
+	                        variantArray := #paretoData);
+	END_IF;
+	#statPrevSort := #sort;
+	//END_REGION
+	
+	#statStopReasonOld := #ID;
+	//END_REGION
+	
+	//REGION SET_OUTPUTS
+	//set other outputs
+	#totalStops := #statTotalStops;
+	#totalDowntime := #statTotalDowntime + #statFullPrevDowntime + #statFullRunningDowntime;
+	#MTTR := #statOverallMTTR;
+	
+	//compute total shift time, the amount and percent the machine was up
+	#tempTimeErr := RD_LOC_T(#tempTimestamp);
+	#totalTimeSinceReset := DINT_TO_REAL(TIME_TO_DINT(T_DIFF(IN1 := #tempTimestamp, IN2 := #statResetTimestamp))) / #MS_TO_MIN;
+	
+	#totalUptime := 0.0;
+	
+	//if a fault is active the uptime should stay at its previous value
+	IF #ID = 0 THEN
+	    #totalUptime := #totalTimeSinceReset - (#statTotalDowntime + #statFullPrevDowntime + #statFullRunningDowntime);
+	    #statPrevTotalUptime := #totalUptime;
+	ELSE
+	    #totalUptime := #statPrevTotalUptime;
+	END_IF;
+	
+	//avoid dividing by zero
+	IF #statTotalStops = 0 THEN
+	    #MTBF := #totalUptime;
+	ELSE
+	    #MTBF := #totalUptime / #statTotalStops;
+	END_IF;
+	
+	#percentUptime := 100.0 * (#totalUptime) / (#totalTimeSinceReset);
+	//END_REGION
+	
+	
+	//  -------------- END OF LOGIC -------------------------
+	ENO := TRUE;   // Set the ENO output
+END_FUNCTION_BLOCK
+

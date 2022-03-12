@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V17" />
+  <DocumentInfo>
+    <Created>2022-03-12T16:05:29.9950523Z</Created>
+    <ExportSetting>WithDefaults</ExportSetting>
+    <InstalledProducts>
+      <Product>
+        <DisplayName>Totally Integrated Automation Portal</DisplayName>
+        <DisplayVersion>V17</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>TIA Portal Openness</DisplayName>
+        <DisplayVersion>V17</DisplayVersion>
+      </OptionPackage>
+      <OptionPackage>
+        <DisplayName>TIA Portal Version Control Interface</DisplayName>
+        <DisplayVersion>V17</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>STEP 7 Professional</DisplayName>
+        <DisplayVersion>V17</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>STEP 7 Safety</DisplayName>
+        <DisplayVersion>V17</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>WinCC Advanced / Unified PC</DisplayName>
+        <DisplayVersion>V17</DisplayVersion>
+      </Product>
+    </InstalledProducts>
+  </DocumentInfo>
+  <SW.Blocks.GlobalDB ID="0">
+    <AttributeList>
+      <AutoNumber>true</AutoNumber>
+      <DBAccessibleFromOPCUA>true</DBAccessibleFromOPCUA>
+      <DBAccessibleFromWebserver>true</DBAccessibleFromWebserver>
+      <HeaderAuthor>tech.team.motioncontrol@siemens.com</HeaderAuthor>
+      <HeaderFamily>CPG</HeaderFamily>
+      <HeaderName />
+      <HeaderVersion>1.1</HeaderVersion>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Static">
+    <Member Name="setpoints_REAL" Datatype="Array[0..&quot;CPG_NO_OF_SETPOINT_REAL_UPPER_LIM&quot;] of &quot;CPG_typeRecipeSetpoint_REAL&quot;" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">Array of setpoints of REAL</MultiLanguageText><MultiLanguageText Lang="de-DE">Array of setpoints of REAL</MultiLanguageText></Comment><Sections><Section Name="None"><Member Name="IN" Datatype="Real" /><Member Name="SaveSetpoint" Datatype="Bool" /><Member Name="RevertSetpoint" Datatype="Bool" /><Member Name="RecipeValues" Datatype="Array[0..&quot;CPG_NO_OF_RECIPE_UPPER_LIM&quot;] of Real" /><Member Name="SetpointName" Datatype="Array[0..&quot;LPMLV30_LANGUAGES_UPPER_LIM&quot;] of String[60]"><Subelement Path="0,0"><StartValue>'LH 1 Length'</StartValue></Subelement></Member><Member Name="CurrentName" Datatype="String[60]" /><Member Name="minLimit" Datatype="Real" /><Member Name="maxLimit" Datatype="Real" /><Member Name="unit" Datatype="String[60]" /><Member Name="DisableRecipeControl" Datatype="Bool" /><Member Name="SetpointChangeEnabled" Datatype="Bool" /><Member Name="SetpointChangeDisabled" Datatype="Bool" /><Member Name="RecipeSetpointDiff" Datatype="Bool" /><Member Name="minLimitReached" Datatype="Bool" /><Member Name="maxLimitReached" Datatype="Bool" /><Member Name="OUT" Datatype="Real" /><Member Name="CurrentRecipeValue" Datatype="Real" /><Member Name="RecipeValueA" Datatype="Real" /><Member Name="RecipeValueB" Datatype="Real" /><Member Name="RecipeValueC" Datatype="Real" /></Section></Sections></Member>
+    <Member Name="setpoints_DINT" Datatype="Array[0..&quot;CPG_NO_OF_SETPOINT_DINT_UPPER_LIM&quot;] of &quot;CPG_typeRecipeSetpoint_DINT&quot;" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">Array of setpoints of DINT</MultiLanguageText><MultiLanguageText Lang="de-DE">Array of setpoints of DINT</MultiLanguageText></Comment><Sections><Section Name="None"><Member Name="IN" Datatype="DInt" /><Member Name="SaveSetpoint" Datatype="Bool" /><Member Name="RevertSetpoint" Datatype="Bool" /><Member Name="RecipeValues" Datatype="Array[0..&quot;CPG_NO_OF_RECIPE_UPPER_LIM&quot;] of DInt" /><Member Name="SetpointName" Datatype="Array[0..&quot;LPMLV30_LANGUAGES_UPPER_LIM&quot;] of String[60]"><Subelement Path="0,0"><StartValue>'DINT SP 0'</StartValue></Subelement></Member><Member Name="CurrentName" Datatype="String[60]" /><Member Name="minLimit" Datatype="DInt" /><Member Name="maxLimit" Datatype="DInt" /><Member Name="unit" Datatype="String[60]" /><Member Name="DisableRecipeControl" Datatype="Bool" /><Member Name="SetpointChangeEnabled" Datatype="Bool" /><Member Name="SetpointChangeDisabled" Datatype="Bool" /><Member Name="RecipeSetpointDiff" Datatype="Bool" /><Member Name="minLimitReached" Datatype="Bool" /><Member Name="maxLimitReached" Datatype="Bool" /><Member Name="OUT" Datatype="DInt" /><Member Name="CurrentRecipeValue" Datatype="DInt" /><Member Name="RecipeValueA" Datatype="DInt" /><Member Name="RecipeValueB" Datatype="DInt" /><Member Name="RecipeValueC" Datatype="DInt" /></Section></Sections></Member>
+    <Member Name="setpoints_BOOL" Datatype="Array[0..&quot;CPG_NO_OF_SETPOINT_BOOL_UPPER_LIM&quot;] of &quot;CPG_typeRecipeSetpoint_BOOL&quot;" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">Array of setpoints of BOOL</MultiLanguageText><MultiLanguageText Lang="de-DE">Array of setpoints of BOOL</MultiLanguageText></Comment><Sections><Section Name="None"><Member Name="IN" Datatype="Bool" /><Member Name="SaveSetpoint" Datatype="Bool" /><Member Name="RevertSetpoint" Datatype="Bool" /><Member Name="RecipeValues" Datatype="Array[0..&quot;CPG_NO_OF_RECIPE_UPPER_LIM&quot;] of Bool" /><Member Name="SetpointName" Datatype="Array[0..&quot;LPMLV30_LANGUAGES_UPPER_LIM&quot;] of String[60]"><Subelement Path="0,0"><StartValue>'BOOL SP 0'</StartValue></Subelement><Subelement Path="0,1"><StartValue>''</StartValue></Subelement></Member><Member Name="Text_True" Datatype="Array[0..&quot;LPMLV30_LANGUAGES_UPPER_LIM&quot;] of String[60]"><Subelement Path="0,0"><StartValue>'TRUE'</StartValue></Subelement><Subelement Path="0,1"><StartValue>''</StartValue></Subelement></Member><Member Name="Text_False" Datatype="Array[0..&quot;LPMLV30_LANGUAGES_UPPER_LIM&quot;] of String[60]"><Subelement Path="0,0"><StartValue>'FALSE'</StartValue></Subelement></Member><Member Name="CurrentName" Datatype="String[60]" /><Member Name="CurrentTextTrue" Datatype="String[60]" /><Member Name="CurrentTextFalse" Datatype="String[60]" /><Member Name="DisableRecipeControl" Datatype="Bool" /><Member Name="SetpointChangeEnabled" Datatype="Bool" /><Member Name="SetpointChangeDisabled" Datatype="Bool" /><Member Name="RecipeSetpointDiff" Datatype="Bool" /><Member Name="OUT" Datatype="Bool" /><Member Name="Out_Text" Datatype="String[60]" /><Member Name="CurrentRecipeValue" Datatype="Bool" /><Member Name="CurrentRecipeValue_Text" Datatype="String[60]" /><Member Name="RecipeValueA" Datatype="Bool" /><Member Name="RecipeA_Text" Datatype="String[60]" /><Member Name="RecipeValueB" Datatype="Bool" /><Member Name="RecipeB_Text" Datatype="String[60]" /><Member Name="RecipeValueC" Datatype="Bool" /><Member Name="RecipeC_Text" Datatype="String[60]" /></Section></Sections></Member>
+    <Member Name="setpoints_STRING" Datatype="Array[0..&quot;CPG_NO_OF_SETPOINT_STRING_UPPER_LIM&quot;] of &quot;CPG_typeRecipeSetpoint_STRING&quot;" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">Array of setpoints of STRING</MultiLanguageText><MultiLanguageText Lang="de-DE">Array of setpoints of STRING</MultiLanguageText></Comment><Sections><Section Name="None"><Member Name="IN" Datatype="String[60]" /><Member Name="SaveSetpoint" Datatype="Bool" /><Member Name="RevertSetpoint" Datatype="Bool" /><Member Name="RecipeValues" Datatype="Array[0..&quot;CPG_NO_OF_RECIPE_UPPER_LIM&quot;] of String[60]"><Subelement Path="0,0"><StartValue>'a'</StartValue></Subelement><Subelement Path="0,1"><StartValue>'b'</StartValue></Subelement><Subelement Path="0,2"><StartValue>'c'</StartValue></Subelement><Subelement Path="0,3"><StartValue>'d'</StartValue></Subelement><Subelement Path="0,4"><StartValue>'e'</StartValue></Subelement><Subelement Path="0,5"><StartValue>'f'</StartValue></Subelement><Subelement Path="0,6"><StartValue>'g'</StartValue></Subelement></Member><Member Name="SetpointName" Datatype="Array[0..&quot;LPMLV30_LANGUAGES_UPPER_LIM&quot;] of String[60]"><Subelement Path="0,0"><StartValue>'STRING SP 0'</StartValue></Subelement></Member><Member Name="CurrentSetpointName" Datatype="String[60]" /><Member Name="DisableRecipeControl" Datatype="Bool" /><Member Name="SetpointChangeEnabled" Datatype="Bool" /><Member Name="SetpointChangeDisabled" Datatype="Bool" /><Member Name="RecipeSetpointDiff" Datatype="Bool" /><Member Name="OUT" Datatype="String[60]" /><Member Name="CurrentRecipeValue" Datatype="String[60]" /><Member Name="RecipeValueA" Datatype="String[60]" /><Member Name="RecipeValueB" Datatype="String[60]" /><Member Name="RecipeValueC" Datatype="String[60]" /></Section></Sections></Member>
+    <Member Name="recipeControl" Datatype="&quot;CPG_typeRecipeControl&quot;" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">FB_Recipe_Control communicates to the setpoints via this tag</MultiLanguageText><MultiLanguageText Lang="de-DE">FB_Recipe_Control communicates to the setpoints via this tag</MultiLanguageText></Comment><Sections><Section Name="None"><Member Name="CurrentRecipeID" Datatype="Int"><StartValue>0</StartValue></Member><Member Name="CurrentRecipeName" Datatype="String[60]"><StartValue>'Recipe 0'</StartValue></Member><Member Name="RecipeChange" Datatype="Bool" /><Member Name="RecipeChangeNum" Datatype="Int" /><Member Name="RecipeSave" Datatype="Bool" /><Member Name="RecipeSaveNum" Datatype="Int" /><Member Name="RecipeCopy" Datatype="Bool" /><Member Name="RecipeCopyNum" Datatype="Int" /><Member Name="RecipeDelete" Datatype="Bool" /><Member Name="RecipeDeleteNum" Datatype="Int" /><Member Name="RecipeSourceID" Datatype="Int" /><Member Name="RecipeDestinationID" Datatype="Int" /><Member Name="LanguageSelection" Datatype="Int" /><Member Name="RecipeSetpointDiff" Datatype="Bool" /><Member Name="RecipeChangeDisabled" Datatype="Bool" /><Member Name="RecipeID_A" Datatype="Int"><StartValue>1</StartValue></Member><Member Name="RecipeName_A" Datatype="String[60]" /><Member Name="RecipeID_B" Datatype="Int"><StartValue>2</StartValue></Member><Member Name="RecipeName_B" Datatype="String[60]" /><Member Name="RecipeID_C" Datatype="Int"><StartValue>3</StartValue></Member><Member Name="RecipeName_C" Datatype="String[60]" /></Section></Sections></Member>
+    <Member Name="recipeNames" Datatype="Array[0..&quot;CPG_NO_OF_RECIPE_UPPER_LIM&quot;] of String[60]" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">Array holding the names of all recipes</MultiLanguageText><MultiLanguageText Lang="de-DE">Array holding the names of all recipes</MultiLanguageText></Comment><Subelement Path="0"><StartValue>'Recipe 0'</StartValue></Subelement><Subelement Path="1"><StartValue>'Recipe 1'</StartValue></Subelement><Subelement Path="2"><StartValue>'Recipe 2'</StartValue></Subelement><Subelement Path="3"><StartValue>'Recipe 3'</StartValue></Subelement><Subelement Path="4"><StartValue>'Recipe 4'</StartValue></Subelement><Subelement Path="5"><StartValue>'Recipe 5'</StartValue></Subelement><Subelement Path="6"><StartValue>'Recipe 6'</StartValue></Subelement><Subelement Path="7"><StartValue>'Recipe 7'</StartValue></Subelement><Subelement Path="8"><StartValue>'Recipe 8'</StartValue></Subelement><Subelement Path="9"><StartValue>'Recipe 9'</StartValue></Subelement><Subelement Path="10"><StartValue>'Recipe 10'</StartValue></Subelement><Subelement Path="11"><StartValue>'Recipe 11'</StartValue></Subelement><Subelement Path="12"><StartValue>'Recipe 12'</StartValue></Subelement><Subelement Path="13"><StartValue>'Recipe 13'</StartValue></Subelement><Subelement Path="14"><StartValue>'Recipe 14'</StartValue></Subelement><Subelement Path="15"><StartValue>'Recipe 15'</StartValue></Subelement><Subelement Path="16"><StartValue>'Recipe 16'</StartValue></Subelement><Subelement Path="17"><StartValue>'Recipe 17'</StartValue></Subelement><Subelement Path="18"><StartValue>'Recipe 18'</StartValue></Subelement><Subelement Path="19"><StartValue>'Recipe 19'</StartValue></Subelement><Subelement Path="20"><StartValue>'Recipe 20'</StartValue></Subelement></Member>
+    <Member Name="recipeCumTimes" Datatype="Array[0..&quot;CPG_NO_OF_RECIPE_UPPER_LIM&quot;] of Time" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">Array holding the cumulative time all recipes have been active</MultiLanguageText><MultiLanguageText Lang="de-DE">Array holding the cumulative time all recipes have been active</MultiLanguageText></Comment></Member>
+    <Member Name="recipeLastSaveTimes" Datatype="Array[0..&quot;CPG_NO_OF_RECIPE_UPPER_LIM&quot;] of DTL" Version="1.0" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">Array holding the last time each recipe was saved</MultiLanguageText><MultiLanguageText Lang="de-DE">Array holding the last time each recipe was saved</MultiLanguageText></Comment><Subelement Path="0"><StartValue>DTL#2019-1-1-00:00:00</StartValue></Subelement><Subelement Path="1"><StartValue>DTL#2019-1-1-00:00:00</StartValue></Subelement><Subelement Path="2"><StartValue>DTL#2019-1-1-00:00:00</StartValue></Subelement><Subelement Path="3"><StartValue>DTL#2019-1-1-00:00:00</StartValue></Subelement><Subelement Path="4"><StartValue>DTL#2019-1-1-00:00:00</StartValue></Subelement><Subelement Path="5"><StartValue>DTL#2019-1-1-00:00:00</StartValue></Subelement><Subelement Path="6"><StartValue>DTL#2019-1-1-00:00:00</StartValue></Subelement><Subelement Path="7"><StartValue>DTL#2019-1-1-00:00:00</StartValue></Subelement><Subelement Path="8"><StartValue>DTL#2019-1-1-00:00:00</StartValue></Subelement><Subelement Path="9"><StartValue>DTL#2019-1-1-00:00:00</StartValue></Subelement><Subelement Path="10"><StartValue>DTL#2019-1-1-00:00:00</StartValue></Subelement><Subelement Path="11"><StartValue>DTL#2019-1-1-00:00:00</StartValue></Subelement><Subelement Path="12"><StartValue>DTL#2019-1-1-00:00:00</StartValue></Subelement><Subelement Path="13"><StartValue>DTL#2019-1-1-00:00:00</StartValue></Subelement><Subelement Path="14"><StartValue>DTL#2019-1-1-00:00:00</StartValue></Subelement><Subelement Path="15"><StartValue>DTL#2019-1-1-00:00:00</StartValue></Subelement><Subelement Path="16"><StartValue>DTL#2019-1-1-00:00:00</StartValue></Subelement><Subelement Path="17"><StartValue>DTL#2019-1-1-00:00:00</StartValue></Subelement><Subelement Path="18"><StartValue>DTL#2019-1-1-00:00:00</StartValue></Subelement><Subelement Path="19"><StartValue>DTL#2019-1-1-00:00:00</StartValue></Subelement><Subelement Path="20"><StartValue>DTL#2019-1-1-00:00:00</StartValue></Subelement></Member>
+  </Section>
+</Sections></Interface>
+      <IsOnlyStoredInLoadMemory>false</IsOnlyStoredInLoadMemory>
+      <IsRetainMemResEnabled>false</IsRetainMemResEnabled>
+      <IsWriteProtectedInAS>false</IsWriteProtectedInAS>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <MemoryReserve>0</MemoryReserve>
+      <Name>RecipeCfg</Name>
+      <Number>1605</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text>Support: tech.team.motioncontrol@siemens.com</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="3" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text>Support: tech.team.motioncontrol@siemens.com</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="4" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="5" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text>CPG_RecipeCfg</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="6" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text>CPG_RecipeCfg</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.GlobalDB>
+</Document>

@@ -1,0 +1,84 @@
+﻿FUNCTION_BLOCK "ConveyorCrossing"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      bx_PalletSensor : Bool;
+      bx_P1_PalletReq : Bool;
+      bx_P2_PalletReq : Bool;
+      ix_CurrentState : DInt;
+   END_VAR
+
+   VAR_OUTPUT 
+      by_RollsFrd : Bool;
+      by_RollsRev : Bool;
+      by_ChainFrd : Bool;
+      by_ChainRev : Bool;
+      by_P1_Ack : Bool;
+      by_P2_Ack : Bool;
+      ModuleSts : "CPG_typePackML_ModuleSts";
+      iy_SeqStep : Int;
+   END_VAR
+
+   VAR 
+      i_SeqStep : Int;
+   END_VAR
+
+
+BEGIN
+	CASE #ix_CurrentState OF
+	    1://Clearing
+	        #ModuleSts.sts_Clearing_SC := True;
+	    2://Stopped
+	        #ModuleSts.sts_Stopping_SC := False;
+	        #ModuleSts.sts_Clearing_SC := False;
+	    3://Starting
+	        #ModuleSts.sts_Starting_SC := True;
+	        #iy_SeqStep := #i_SeqStep;
+	    4://Idle
+	        #ModuleSts.sts_Resetting_SC := False;
+	        #i_SeqStep := 0;
+	    5://Suspended
+	        ;
+	    6://Execute
+	        #ModuleSts.sts_Starting_SC := False;
+	        CASE #i_SeqStep OF
+	            0://Wait req
+	                IF #bx_P1_PalletReq THEN
+	                    #i_SeqStep := 1;
+	                ELSIF #bx_P2_PalletReq THEN
+	                    #i_SeqStep := 2;
+	                END_IF;
+	            1://Start the rolls, wait pallet arrive
+	                #by_RollsFrd := True;
+	                
+	               
+	        END_CASE;
+	        //#ModuleSts.sts_Execute_SC := True;
+	    7://Stopping
+	        #ModuleSts.sts_Stopping_SC := True;
+	    8://Aborting
+	        #ModuleSts.sts_Aborting_SC := True;
+	    9://Aborted
+	        #ModuleSts.sts_Aborting_SC := False;
+	    10://Holding
+	        #ModuleSts.sts_Holding_SC := True;
+	    11://Held
+	        ;
+	    12://Unholding
+	        ;
+	    13://Suspending
+	        ;
+	    14://Unsuspending
+	        ;
+	    15://Resetting
+	        #ModuleSts.cmd_Reset := False;
+	        #ModuleSts.sts_Resetting_SC := True;
+	    16://Completing
+	        #ModuleSts.sts_Execute_SC := False;
+	        #ModuleSts.sts_Completing_SC := True;
+	    17://Complete
+	        #ModuleSts.sts_Completing_SC := False;
+	END_CASE;
+	#iy_SeqStep := #i_SeqStep;
+END_FUNCTION_BLOCK
+

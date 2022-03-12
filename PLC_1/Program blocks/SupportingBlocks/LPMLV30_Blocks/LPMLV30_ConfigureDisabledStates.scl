@@ -1,0 +1,73 @@
+﻿FUNCTION "LPMLV30_ConfigureDisabledStates" : Void
+TITLE = LPMLV30_ConfigureDisabledStates
+{ S7_Optimized_Access := 'TRUE' }
+AUTHOR : APC_ERLF
+FAMILY : OMAC
+//Support: tech.team.motioncontrol@siemens.com 
+//Fax: +49 (0) 9131/98-1297
+   VAR_INPUT 
+      HoldingDisable : Bool;   // TRUE: Disable state Holding
+      HeldDisable : Bool;   // TRUE: Disable state Held
+      UnholdingDisable : Bool;   // TRUE: Disable state Unholding
+      SuspendingDisable : Bool;   // TRUE: Disable state Suspending
+      SuspendedDisable : Bool;   // TRUE: Disable state Suspended
+      UnsuspendingDisable : Bool;   // TRUE: Disable state Unsuspending
+      CompletingDisable : Bool;   // TRUE: Disable state Completing
+      CompleteDisable : Bool;   // TRUE: Disable state Complete
+   END_VAR
+
+   VAR_OUTPUT 
+      disabledStates : DInt;   // Disabled states configuration for one unit mode
+   END_VAR
+
+   VAR CONSTANT 
+      DISABLE_ALL_STATES : DWord := 16#FFFF_FFFF;   // Disable all states
+   END_VAR
+
+
+BEGIN
+	//============================================================================================================
+	// SIEMENS AG
+	// (c)Copyright 2015 All Rights Reserved
+	//------------------------------------------------------------------------------------------------------------
+	// Library: LPMLV30
+	// Tested with: S7-1200 with FW version V4.1, S7-1500 with FW version V1.7
+	// Engineering: TIA Portal V13 SP1
+	// Restrictions: ---
+	// Requirements: S7-1200 / S7-1500
+	// Functionality: The function generates a double integer value which represents the state configuration
+	//                for one unit mode.
+	//------------------------------------------------------------------------------------------------------------
+	// Change log table:
+	// Version  Date        Expert in charge    Changes applied
+	// 03.00.01 29.05.2015  RK                  First released version 
+	//============================================================================================================
+	// Function: LPMLV30_ConfigureDisabledStates
+	//============================================================================================================
+	
+	#disabledStates := DWORD_TO_DINT(#DISABLE_ALL_STATES);
+	
+	#disabledStates.%X0  := FALSE; // Undefined state is mandatory
+	#disabledStates.%X1  := FALSE; // Clearing state is mandatory
+	#disabledStates.%X2  := FALSE; // Stopped state is mandatory
+	#disabledStates.%X3  := FALSE; // Starting state is mandatory
+	#disabledStates.%X4  := FALSE; // Idle state is mandatory
+	#disabledStates.%X5  := #SuspendedDisable;
+	#disabledStates.%X6  := FALSE; // Execute state is mandatory
+	#disabledStates.%X7  := FALSE; // Stopping state is mandatory
+	#disabledStates.%X8  := FALSE; // Aborting state is mandatory
+	#disabledStates.%X9  := FALSE; // Aborted state is mandatory
+	#disabledStates.%X10 := #HoldingDisable;
+	#disabledStates.%X11 := #HeldDisable;
+	#disabledStates.%X12 := #UnholdingDisable;
+	#disabledStates.%X13 := #SuspendingDisable;
+	#disabledStates.%X14 := #UnsuspendingDisable;
+	#disabledStates.%X15 := FALSE; // Resetting state is mandatory
+	#disabledStates.%X16 := #CompletingDisable;
+	#disabledStates.%X17 := #CompleteDisable;
+	
+	//============================================================================================================
+	// End of function: LPMLV30_ConfigureDisabledStates
+	//============================================================================================================
+END_FUNCTION
+

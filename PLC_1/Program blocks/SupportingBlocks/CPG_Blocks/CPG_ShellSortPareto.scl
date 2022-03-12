@@ -1,0 +1,274 @@
+﻿FUNCTION_BLOCK "CPG_ShellSortPareto"
+TITLE = CPG_ShellSortPareto
+{ S7_Optimized_Access := 'TRUE' }
+AUTHOR : 'tech.team.motioncontrol@siemens.com'
+FAMILY : CPG
+VERSION : 1.1
+//Support: tech.team.motioncontrol@siemens.com
+   VAR_INPUT 
+      mode { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // True = sort decending, false = sort ascending
+      sortBy { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : String[30];   // Sorting method
+   END_VAR
+
+   VAR_OUTPUT 
+      done { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // Sort completed
+      error { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // Error while sorting
+      statusID { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : UInt;   // Indicates block in which error occurred
+      status { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Word;   // Status word
+   END_VAR
+
+   VAR_IN_OUT 
+      variantArray : Variant;   // Array to be sorted
+   END_VAR
+
+   VAR 
+      statOptions { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Struct   // Options for sorting alarm array
+         totalDowntime { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : String[30] := 'totalDowntime';
+         timesOccurred { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : String[30] := 'timesOccurred';
+         MTTR { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : String[30] := 'MTTR';
+         percentageOccurred { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : String[30] := 'percentageOccurred';
+      END_STRUCT;
+   END_VAR
+
+   VAR_TEMP 
+      tempArrayPareto : Array[1.."CPG_PARTEO_NO_OF_ERRORS_UPPER_LIM"] of "CPG_typePareto";
+      tempElementCount : Int;
+      tempElementCopyCount : UDInt;
+      tempMoveBlkError : Int;
+      tempIncrement : Int;
+      tempForCounter : Int;
+      tempExchangeIndex : Int;
+      tempExchangeVariable : "CPG_typePareto";
+      tempTypeTag : "CPG_typePareto";
+   END_VAR
+
+   VAR CONSTANT 
+      MAX_ARRAY_ELEMENTS : Int := 1000;
+      NO_ERROR : Word := 16#0000;
+      NO_CURRENT_JOBS : Word := 16#7000;
+      EMPTY_ARRAY : Word := 16#8200;
+      NOT_AN_ARRAY : Word := 16#8201;
+      WRONG_ELEMENT_TYPE : Word := 16#8202;
+      TOO_MANY_ELEMENTS : Word := 16#8203;
+      ERROR_IN_THIS_BLOCK : UInt := 1;
+      ERROR_MOVE_BLK_VARIANT_R : UInt := 2;
+      ERROR_MOVE_BLK_VARIANT_W : UInt := 3;
+   END_VAR
+
+
+BEGIN
+	//=============================================================================
+	// SIEMENS AG
+	// (c)Copyright 2017
+	//-----------------------------------------------------------------------------
+	// Library:       LGF (Library General Functions)
+	// Tested with:   CPU1212C DC/DC/DC FW:V4.2
+	// Engineering:   TIA Portal V14 Update 1
+	// Restrictions:  -
+	// Requirements:  PLC (S7-1200 / S7-1500)
+	// Functionality: A shellsort algorithm with a complexity between 'n^2' and
+	//                'n log n' for average, best and worst case inputs and space
+	//                complexity '1'.
+	//                The block accepts a pareto array as an inOut-variable and
+	//                returns the sorted version of the array in the same variable
+	//-----------------------------------------------------------------------------
+	// Change log table:
+	// Version  Date        Expert in charge / Changes applied
+	// 01.00.00 19.08.2015  Siemens Industry Online Support
+	//                      First released version
+	// 01.01.00 19.05.2016  Siemens Industry Online Support
+	//                      New function: reverse sort
+	// 01.01.01 02.01.2017  Siemens Industry Online Support
+	//                      Upgrade: TIA Portal V14 Update 1
+	// 01.01.02 17.08.2018  Siemens Industry Online Support
+	//                      Upgrade: TIA V15 Update 2
+	// 01.01.03 26.10.2018  APC-BE - Pieters
+	//                      Modified for use with pareto type
+	// 01.01.03 13.09.2019  Modified with variable sort parameters                  
+	//-----------------------------------------------------------------------------
+	//Status Codes:
+	// 16#7000:  No current jobs
+	// 16#0000:  Job finished; Note: There is no "Busy"-Status because the block is
+	//           finished within a single cycle
+	// 16#8200:  Error: Parameter is an array with only one element
+	// 16#8201:  Error: Parameter is not an array
+	// 16#8202:  Error: Parameter is an array of the wrong type
+	//           (correct type is Real)
+	// 16#8203:  Error: There are too many Elements in the array
+	//           (default: max. 1000 Elements)
+	//=============================================================================
+	
+	// Change note: If you wish to use this shellsort block for other datatypes,
+	// you simply need to change the following variables to that type
+	// 1. tempExchangeVariable
+	// 2. tempTypeTag
+	// 3. tempArray<Type>
+	// Space note: If you wish to reduce the space of this block, you may reduce the
+	// size of the tempArray<Type> to one just big enough for your specific purpose
+	// It is not recommended to increase the size significantly.
+	
+	// Initialization
+	#tempElementCount := 0;
+	#tempElementCopyCount := 0;
+	#tempMoveBlkError := 0;
+	#tempIncrement := 0;
+	#tempForCounter := 0;
+	#tempExchangeIndex := 0;
+	#tempExchangeVariable.alarmID := 0;
+	#tempExchangeVariable.percentageOccurred := 0.0;
+	#tempExchangeVariable.timesOccurred := 0;
+	#tempTypeTag.alarmID := 0;
+	#tempTypeTag.percentageOccurred := 0.0;
+	#tempTypeTag.timesOccurred := 0;
+	
+	// Set "No current job" status
+	#done := false;
+	#error := false;
+	#statusID := #ERROR_IN_THIS_BLOCK;
+	#status := #NO_CURRENT_JOBS;
+	
+	
+	// If the variant inOut-parameter is not an array, set error status 8201
+	IF (IS_ARRAY(#variantArray) = false) THEN
+	    #error := true;
+	    #statusID := #ERROR_IN_THIS_BLOCK;
+	    #status := #NOT_AN_ARRAY;
+	    RETURN;
+	ELSE
+	    IF TypeOfElements(#variantArray) = TypeOf(#tempTypeTag) THEN
+	        // If the parameter is an array of the type real, get the element count
+	        #tempElementCopyCount := CountOfElements(#variantArray);
+	        #tempElementCount := UDINT_TO_INT(CountOfElements(#variantArray));
+	        // Check whether the variant array contains less than the maximum possible amount of elements
+	        IF #tempElementCount > #MAX_ARRAY_ELEMENTS THEN
+	            #error := true;
+	            #statusID := #ERROR_IN_THIS_BLOCK;
+	            #status := #TOO_MANY_ELEMENTS;
+	            RETURN;
+	        END_IF;
+	    ELSE
+	        // If the parameter is an array but not of the type real, set an error status
+	        #error := true;
+	        #statusID := #ERROR_IN_THIS_BLOCK;
+	        #status := #WRONG_ELEMENT_TYPE;
+	        RETURN;
+	    END_IF;
+	END_IF;
+	
+	// If there are more than zero elements to sort, begin sorting    
+	IF #tempElementCount > 1 AND #error = false THEN
+	    
+	    // Read the elements of the incoming variant-array and write into the local array
+	    #tempMoveBlkError := MOVE_BLK_VARIANT(COUNT := #tempElementCopyCount,
+	                                          DEST => #tempArrayPareto,
+	                                          DEST_INDEX := 0,
+	                                          SRC := #variantArray,
+	                                          SRC_INDEX := 0);
+	    
+	    // Error handling for MOVE_BLK_VARIANT
+	    IF #tempMoveBlkError <> 0 THEN
+	        #error := true;
+	        #statusID := #ERROR_MOVE_BLK_VARIANT_R;
+	        #status := INT_TO_WORD(#tempMoveBlkError);
+	        RETURN;
+	    END_IF;
+	    
+	    // ShellSort Start
+	    #tempIncrement := 1;
+	    REPEAT
+	        #tempIncrement := (3 * #tempIncrement) + 1;
+	    UNTIL #tempIncrement > #tempElementCount
+	    END_REPEAT;
+	    
+	    REPEAT
+	        #tempIncrement := DINT_TO_INT(TRUNC(#tempIncrement / 3));
+	        FOR #tempForCounter := (#tempIncrement + 1) TO #tempElementCount DO
+	            #tempExchangeVariable := #tempArrayPareto[#tempForCounter];
+	            #tempExchangeIndex := #tempForCounter;
+	            
+	            IF #mode  // Modification Version 02.00.00
+	            THEN      //mode = TRUE --> sort descending  
+	                //Downtime
+	                IF #sortBy = #statOptions.totalDowntime THEN
+	                    WHILE ((#tempArrayPareto[#tempExchangeIndex - #tempIncrement].totalDowntime < #tempExchangeVariable.totalDowntime)) DO
+	                        #tempArrayPareto[#tempExchangeIndex] := #tempArrayPareto[#tempExchangeIndex - #tempIncrement];
+	                        #tempExchangeIndex := #tempExchangeIndex - #tempIncrement;
+	                        IF (#tempExchangeIndex <= #tempIncrement) THEN
+	                            GOTO EXITWhile;
+	                        END_IF;
+	                    END_WHILE;
+	                    //Times Occurred    
+	                ELSIF #sortBy = #statOptions.timesOccurred THEN
+	                    WHILE ((#tempArrayPareto[#tempExchangeIndex - #tempIncrement].timesOccurred < #tempExchangeVariable.timesOccurred)) DO
+	                        #tempArrayPareto[#tempExchangeIndex] := #tempArrayPareto[#tempExchangeIndex - #tempIncrement];
+	                        #tempExchangeIndex := #tempExchangeIndex - #tempIncrement;
+	                        IF (#tempExchangeIndex <= #tempIncrement) THEN
+	                            GOTO EXITWhile;
+	                        END_IF;
+	                    END_WHILE;
+	                    //Percentage Occurred
+	                ELSIF #sortBy = #statOptions.percentageOccurred THEN
+	                    WHILE ((#tempArrayPareto[#tempExchangeIndex - #tempIncrement].percentageOccurred < #tempExchangeVariable.percentageOccurred)) DO
+	                        #tempArrayPareto[#tempExchangeIndex] := #tempArrayPareto[#tempExchangeIndex - #tempIncrement];
+	                        #tempExchangeIndex := #tempExchangeIndex - #tempIncrement;
+	                        IF (#tempExchangeIndex <= #tempIncrement) THEN
+	                            GOTO EXITWhile;
+	                        END_IF;
+	                    END_WHILE;
+	                    // MTTR
+	                ELSIF #sortBy = #statOptions.MTTR THEN
+	                    WHILE ((#tempArrayPareto[#tempExchangeIndex - #tempIncrement].MTTR < #tempExchangeVariable.MTTR)) DO
+	                        #tempArrayPareto[#tempExchangeIndex] := #tempArrayPareto[#tempExchangeIndex - #tempIncrement];
+	                        #tempExchangeIndex := #tempExchangeIndex - #tempIncrement;
+	                        IF (#tempExchangeIndex <= #tempIncrement) THEN
+	                            GOTO EXITWhile;
+	                        END_IF;
+	                    END_WHILE;
+	                END_IF;
+	                
+	            ELSE      // mode = FALSE --> sort ascending
+	                WHILE ((#tempArrayPareto[#tempExchangeIndex - #tempIncrement].MTTR > #tempExchangeVariable.MTTR)) DO
+	                    #tempArrayPareto[#tempExchangeIndex] := #tempArrayPareto[#tempExchangeIndex - #tempIncrement];
+	                    #tempExchangeIndex := #tempExchangeIndex - #tempIncrement;
+	                    IF (#tempExchangeIndex <= #tempIncrement) THEN
+	                        GOTO EXITWhile;
+	                    END_IF;
+	                END_WHILE;
+	            END_IF;
+	            
+	        EXITWhile:
+	            #tempArrayPareto[#tempExchangeIndex] := #tempExchangeVariable;
+	        END_FOR;
+	    UNTIL #tempIncrement <= 1
+	    END_REPEAT;
+	    // ShellSort End
+	    
+	    // Write the elements of the local array back to the variant array
+	    #tempMoveBlkError := MOVE_BLK_VARIANT(COUNT := #tempElementCopyCount,
+	                                          DEST => #variantArray,
+	                                          DEST_INDEX := 0,
+	                                          SRC := #tempArrayPareto,
+	                                          SRC_INDEX := 0);
+	    
+	    // Error handling for MOVE_BLK_VARIANT
+	    IF #tempMoveBlkError <> 0 THEN
+	        #statusID := #ERROR_MOVE_BLK_VARIANT_W;
+	        #status := INT_TO_WORD(#tempMoveBlkError);
+	        RETURN;
+	    END_IF;
+	    
+	    // Set output status = "Job Finished" and output Done = true
+	    #done := true;
+	    #status := #NO_ERROR;
+	    
+	ELSIF #tempElementCount <= 1 THEN
+	    // If there are 0 elements in the array, set status to "Error: Parameter is an empty array"
+	    #error := true;
+	    #statusID := #ERROR_IN_THIS_BLOCK;
+	    #status := #EMPTY_ARRAY;
+	END_IF;
+	
+	//  -------------- END OF LOGIC -------------------------
+	ENO := TRUE;   // Set the ENO output
+END_FUNCTION_BLOCK
+

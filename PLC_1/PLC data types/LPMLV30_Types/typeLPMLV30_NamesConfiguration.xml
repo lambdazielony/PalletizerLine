@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V17" />
+  <DocumentInfo>
+    <Created>2022-03-12T16:05:35.5808644Z</Created>
+    <ExportSetting>WithDefaults</ExportSetting>
+    <InstalledProducts>
+      <Product>
+        <DisplayName>Totally Integrated Automation Portal</DisplayName>
+        <DisplayVersion>V17</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>TIA Portal Openness</DisplayName>
+        <DisplayVersion>V17</DisplayVersion>
+      </OptionPackage>
+      <OptionPackage>
+        <DisplayName>TIA Portal Version Control Interface</DisplayName>
+        <DisplayVersion>V17</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>STEP 7 Professional</DisplayName>
+        <DisplayVersion>V17</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>STEP 7 Safety</DisplayName>
+        <DisplayVersion>V17</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>WinCC Advanced / Unified PC</DisplayName>
+        <DisplayVersion>V17</DisplayVersion>
+      </Product>
+    </InstalledProducts>
+  </DocumentInfo>
+  <SW.Types.PlcStruct ID="0">
+    <AttributeList>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="None">
+    <Member Name="unitModesNames" Datatype="Array[0..&quot;LPMLV30_LANGUAGES_UPPER_LIM&quot;, 0..&quot;LPMLV30_MODES_UPPER_LIM&quot;] of String[18]"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">Names of unit modes [First index language, Second unit mode no]</MultiLanguageText><MultiLanguageText Lang="de-DE">Names of unit modes [First index language, Second unit mode no]</MultiLanguageText></Comment><Subelement Path="0,0"><StartValue>'Invalid'</StartValue></Subelement><Subelement Path="0,1"><StartValue>'Production'</StartValue></Subelement><Subelement Path="0,2"><StartValue>'Maintenance'</StartValue></Subelement><Subelement Path="0,3"><StartValue>'Manual'</StartValue></Subelement><Subelement Path="0,4"><StartValue>'User Mode 01'</StartValue></Subelement><Subelement Path="1,0"><StartValue>'Undefiniert'</StartValue></Subelement><Subelement Path="1,1"><StartValue>'Produktion'</StartValue></Subelement><Subelement Path="1,2"><StartValue>'Wartung'</StartValue></Subelement><Subelement Path="1,3"><StartValue>'Hand'</StartValue></Subelement><Subelement Path="1,4"><StartValue>'Benutzer Mode 01'</StartValue></Subelement></Member>
+    <Member Name="statesNames" Datatype="Array[0..&quot;LPMLV30_LANGUAGES_UPPER_LIM&quot;, 0..&quot;LPMLV30_STATES_UPPER_LIM&quot;] of String[16]"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">Names of states [First index language, Second state no]</MultiLanguageText><MultiLanguageText Lang="de-DE">Names of states [First index language, Second state no]</MultiLanguageText></Comment><Subelement Path="0,0"><StartValue>'Undefined'</StartValue></Subelement><Subelement Path="0,1"><StartValue>'Clearing'</StartValue></Subelement><Subelement Path="0,2"><StartValue>'Stopped'</StartValue></Subelement><Subelement Path="0,3"><StartValue>'Starting'</StartValue></Subelement><Subelement Path="0,4"><StartValue>'Idle'</StartValue></Subelement><Subelement Path="0,5"><StartValue>'Suspended'</StartValue></Subelement><Subelement Path="0,6"><StartValue>'Execute'</StartValue></Subelement><Subelement Path="0,7"><StartValue>'Stopping'</StartValue></Subelement><Subelement Path="0,8"><StartValue>'Aborting'</StartValue></Subelement><Subelement Path="0,9"><StartValue>'Aborted'</StartValue></Subelement><Subelement Path="0,10"><StartValue>'Holding'</StartValue></Subelement><Subelement Path="0,11"><StartValue>'Held'</StartValue></Subelement><Subelement Path="0,12"><StartValue>'UnHolding'</StartValue></Subelement><Subelement Path="0,13"><StartValue>'Suspending'</StartValue></Subelement><Subelement Path="0,14"><StartValue>'UnSuspending'</StartValue></Subelement><Subelement Path="0,15"><StartValue>'Resetting'</StartValue></Subelement><Subelement Path="0,16"><StartValue>'Completing'</StartValue></Subelement><Subelement Path="0,17"><StartValue>'Complete'</StartValue></Subelement><Subelement Path="1,0"><StartValue>'Undefiniert'</StartValue></Subelement><Subelement Path="1,1"><StartValue>'Clearing'</StartValue></Subelement><Subelement Path="1,2"><StartValue>'Stopped'</StartValue></Subelement><Subelement Path="1,3"><StartValue>'Starting'</StartValue></Subelement><Subelement Path="1,4"><StartValue>'Idle'</StartValue></Subelement><Subelement Path="1,5"><StartValue>'Suspended'</StartValue></Subelement><Subelement Path="1,6"><StartValue>'Execute'</StartValue></Subelement><Subelement Path="1,7"><StartValue>'Stopping'</StartValue></Subelement><Subelement Path="1,8"><StartValue>'Aborting'</StartValue></Subelement><Subelement Path="1,9"><StartValue>'Aborted'</StartValue></Subelement><Subelement Path="1,10"><StartValue>'Holding'</StartValue></Subelement><Subelement Path="1,11"><StartValue>'Held'</StartValue></Subelement><Subelement Path="1,12"><StartValue>'UnHolding'</StartValue></Subelement><Subelement Path="1,13"><StartValue>'Suspending'</StartValue></Subelement><Subelement Path="1,14"><StartValue>'UnSuspending'</StartValue></Subelement><Subelement Path="1,15"><StartValue>'Resetting'</StartValue></Subelement><Subelement Path="1,16"><StartValue>'Completing'</StartValue></Subelement><Subelement Path="1,17"><StartValue>'Complete'</StartValue></Subelement></Member>
+  </Section>
+</Sections></Interface>
+      <IsFailsafeCompliant>false</IsFailsafeCompliant>
+      <Name>typeLPMLV30_NamesConfiguration</Name>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text>Support: tech.team.motioncontrol@siemens.com 
+Fax: +49 (0) 9131/98-1297</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="3" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text>Support: tech.team.motioncontrol@siemens.com 
+Fax: +49 (0) 9131/98-1297</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="4" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="5" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text>typeLPMLV30_NamesConfiguration</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="6" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text>typeLPMLV30_NamesConfiguration</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Types.PlcStruct>
+</Document>

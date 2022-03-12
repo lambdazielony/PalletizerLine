@@ -1,0 +1,94 @@
+﻿FUNCTION "CPG_ModuleInitialize" : Void
+TITLE = CPG_ModuleInitialize
+{ S7_Optimized_Access := 'TRUE' }
+AUTHOR : 'tech.team.motioncontrol@siemens.com'
+FAMILY : CPG
+VERSION : 1.0
+//Support: tech.team.motioncontrol@siemens.com
+   VAR_INPUT 
+      enableIn : Bool;   // Enable the FB call.
+      firstScanBit : Bool;   // Bit used to tell logic that this is the first scan of PLC
+   END_VAR
+
+   VAR_IN_OUT 
+      PackML_ModuleStatus : "CPG_typePackML_ModuleSts";   // PackML Module Status UDT
+   END_VAR
+
+
+BEGIN
+	//============================================================================================================
+	// SIEMENS AG
+	// (c)Copyright 2018 All Rights Reserved
+	//------------------------------------------------------------------------------------------------------------
+	// Project: CPG Template
+	// Tested with: S7-1500 with FW version V2.1
+	// Engineering: TIA Portal V14
+	// Restrictions: ---
+	// Requirements: S7-1500
+	// Functionality: This FC will initialize the "PackML" "Status" AND commands within a control module to ensure that the bits are in the correct state IF they are NOT being
+	//                used later by that same control module. FOR example, if a start command is NOT being used by a control module, that bit should be turned off TO prevent
+	//                unintentional starting OF the machine (in CASE it was accidentally OR through a rung edit turned on). IF a state complete bit FOR a particular state is
+	//                NOT being used, that bit should be turned on TO allow the machine TO leave that state. This instruction is NOT needed FOR equipment modules OR the unit
+	//                machine since all PackML status AND command bits are programmed in the summation routines.
+	// Support: tech.team.motioncontrol@siemens.com
+	//------------------------------------------------------------------------------------------------------------
+	// Change log table:
+	// Version       Date               Expert in charge    Changes applied
+	//  01.00.00     01.01.2018         MP                  Initial Release & PackML V1.4  Renamed CPG V1.0
+	//  01.01.00     22.05.2018         JP                  Adopted to styleguide
+	//============================================================================================================
+	// Function : CPG_ModuleInitialize
+	//============================================================================================================
+	
+	
+	(*  Command vs State Complete:
+	•   State complete bits are AND’d together, meaning that all control modules and equipment modules must be done with an acting state 
+	      before it can transition to the wait state. For example, all of the CM’s and EM’s must be done Stopping before the machine can 
+	      transition to the Stopped state.
+	•   With two exceptions, PackML commands (such as Start, Stop, Abort, Suspend, etc.) are OR’d together, meaning that any 1 control or 
+	      equipment module can cause the machine to initiate action.  For example, the Stop command initiated from 1 equipment module will 
+	      stop the entire machine.  
+	
+	The only exceptions to this rule are the PackML commands UnHold and UnSuspend.  In either case, the UnHold and UnSuspend commands act 
+	      like state complete bits.  By doing this in a modular machine architecture, this prevents 1 equipment module from sending the 
+	      machine into UnHolding or UnSuspending when another equipment module is still wanting the machine to stay held or suspended.  
+	      For example, assume that both the Infeed Equipment Module (Starved) and Discharge Equipment Module (Blocked) is telling the 
+	      machine to suspend, if the Infeed Equipment Module has product again, the machine should not UnSuspend without the Discharge 
+	      Equipment Module also becoming unblocked.
+	*)
+	
+	IF #firstScanBit OR #enableIn THEN
+	// Reset all Command (CMD) bits - this forces the command(CMD) bit to be set in user program if the command is required/used by the CM
+	    #PackML_ModuleStatus.cmd_Reset           := FALSE; //
+	    #PackML_ModuleStatus.cmd_Start           := FALSE; //
+	    #PackML_ModuleStatus.cmd_Stop            := FALSE; //
+	    #PackML_ModuleStatus.cmd_Hold            := FALSE; //
+	    #PackML_ModuleStatus.cmd_Suspend         := FALSE; //
+	    #PackML_ModuleStatus.cmd_Abort           := FALSE; //
+	    #PackML_ModuleStatus.cmd_Clear           := FALSE; //
+	
+	// Set all State Complete (SC) bits - setting the SC bit true allows CM to transition to the next step with no user code need. If the
+	// respective SC bit is used by the CM, then user logic must be added to set/reset SC bits as required by the application.
+	    #PackML_ModuleStatus.sts_Resetting_SC    := TRUE; //
+	    #PackML_ModuleStatus.sts_Starting_SC     := TRUE; //
+	    #PackML_ModuleStatus.sts_Stopping_SC     := TRUE; //
+	    #PackML_ModuleStatus.sts_Holding_SC      := TRUE; //
+	    #PackML_ModuleStatus.sts_UnHolding_SC    := TRUE; //
+	    #PackML_ModuleStatus.sts_Suspending_SC   := TRUE; //
+	    #PackML_ModuleStatus.sts_UnSuspending_SC := TRUE; //
+	    #PackML_ModuleStatus.sts_Aborting_SC     := TRUE; //
+	    #PackML_ModuleStatus.sts_Clearing_SC     := TRUE; //
+	    #PackML_ModuleStatus.sts_Execute_SC      := TRUE; //
+	    #PackML_ModuleStatus.sts_Completing_SC   := TRUE; //
+	
+	    //
+	    #PackML_ModuleStatus.cmd_UnHold          := TRUE; //
+	    #PackML_ModuleStatus.cmd_UnSuspend       := TRUE; //
+	
+	END_IF;  // End "IF FirstScanBit OR EnableIn THEN"
+	
+	//  -------------- END OF LOGIC -------------------------
+	ENO := TRUE;   // Set the ENO output
+	
+END_FUNCTION
+

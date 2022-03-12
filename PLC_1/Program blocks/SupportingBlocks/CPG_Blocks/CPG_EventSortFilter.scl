@@ -1,0 +1,255 @@
+﻿FUNCTION_BLOCK "CPG_EventSortFilter"
+TITLE = CPG_EventSortFilter
+{ S7_Optimized_Access := 'TRUE' }
+AUTHOR : 'tech.team.motioncontrol@siemens.com'
+FAMILY : CPG
+VERSION : 1.0
+//Support: tech.team.motioncontrol@siemens.com
+   VAR_INPUT 
+      Cfg_EventListOffset { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;   // Commanded event list offset (used for scrolling)
+      Cfg_FilterCategory { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;   // Filtered category number
+      Cfg_TimeSortDirection { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // 1=newest first; 0=oldest first
+      Cmd_FilterActiveEvents { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // 1=only show active events; 0=show all events
+      Cmd_FilterCategory { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // Filter events to show only selected category number
+      Cmd_SortCategory { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // 1=Sort events by ascending category number
+   END_VAR
+
+   VAR_OUTPUT 
+      Sts_EventListOffset { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;   // Actual event list offset
+      Sts_FilterExcludedNumEvents { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;   // The number of events excluded by filtering
+      Sts_SortFilterNumEvents { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;   // Number of events in the sorted or filtered event list
+   END_VAR
+
+   VAR_IN_OUT 
+      In_Events : Array[0.."CPG_NO_OF_STS_ELEMENTS_EVENT_SUM_UPPER_LIM"] of "CPG_typeEvent";   // Input Event list to be sorted and/or filtered
+      In_NumEvents { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;   // Number of events to be sorted and/or filtered
+      Sts_SortFilterEventList : Array[0.."CPG_NO_OF_HMI_SORT_EVENTS_UPPER_LIM"] of "CPG_typeEvent";   // Output sorted and/or filtered event list
+   END_VAR
+
+   VAR 
+      statFirstScan { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // stat first scan bit
+      statCatIndex { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;   // stat category index
+      statCopiedIndex { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;   // stat copied index
+      statFilterActive { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // stat filter active = 1
+      statFilterCategory { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // stat filter category
+      statFilteredIndex { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;   // stat filtered index
+      statIndex { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;   // stat index
+      statLocalEventOffset { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;   // stat local event offset
+      statMaxInputSize { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;   // stat max input size
+      statMaxLocalInputSize { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;   // stat max  local input size
+      statMaxOutputSize { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;   // stat max output size
+      statMaxParameterInputSize { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;   // stat max parameter input size
+      statNumDisplayedEvents { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;   // stat num displayed events
+      statNumFilteredEvents { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;   // stat num of filtered events
+      statPrevNumEvents { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;   // stat previous number of events
+      statSortedIndex { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;   // stat sorted index
+      statFilteredEventList { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Array[0.."CPG_NO_OF_STS_ELEMENTS_EVENT_SUM_UPPER_LIM"] of "CPG_typeEvent";   // stat sorted event list
+      statZeroEvent { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : "CPG_typeEvent";   // stat zeroized event list
+   END_VAR
+
+   VAR_TEMP 
+      tempMoveBlkVariantRetVal : Int;   // temp return value for BlockMoveVariant
+   END_VAR
+
+   VAR CONSTANT 
+      ZERO_VALUE : Int := 0;
+   END_VAR
+
+
+BEGIN
+	//============================================================================================================
+	// SIEMENS AG
+	// (c)Copyright 2018 All Rights Reserved
+	//------------------------------------------------------------------------------------------------------------
+	// Project: CPG Template
+	// Tested with: S7-1500 with FW version V2.1
+	// Engineering: TIA Portal V14
+	// Restrictions: ---
+	// Requirements: S7-1500
+	// Functionality: Control Event Sort Filter commands
+	// Support: tech.team.motioncontrol@siemens.com
+	//------------------------------------------------------------------------------------------------------------
+	// Change log table:
+	// Version       Date               Expert in charge    Changes applied
+	//  01.00.00     01.01.2018         MP                  Initial Release & PackML V2.1  Renamed CPG V1.0
+	//  01.01.00     29.05.2018         JP                  Adopted to styleguide
+	//============================================================================================================
+	// Function : CPG_EventSortFilter
+	//============================================================================================================
+	
+	IF #statFirstScan = FALSE THEN
+	    // initialize & determine max array size
+	    // input array size (i.e. Array[0.."CPG_NO_STS_ELEMENTS_EVENT_STATUS"] of "typeCPG_Event")
+	    "CPG_ArrayLength"(arrayToBeSized := #In_Events,
+	                      arraySize => #statMaxParameterInputSize);
+	    
+	    //output array size for HMI (i.e. Array[0.."CPG_NO_HMI_SORT_EVENTS"] of "typeCPG_Event")
+	    "CPG_ArrayLength"(arrayToBeSized := #Sts_SortFilterEventList,
+	                      arraySize => #statMaxOutputSize);
+	    
+	    // internal/temporary array size (i.e. Array[0.."CPG_NO_STS_ELEMENTS_EVENT_STATUS"] of "typeCPG_Event")   
+	    "CPG_ArrayLength"(arrayToBeSized := #statFilteredEventList,
+	                              arraySize => #statMaxLocalInputSize);
+	    
+	    //Take smallest aray as the maximum number of input events to filter and sort
+	    IF #statMaxParameterInputSize > #statMaxLocalInputSize THEN
+	        #statMaxInputSize := #statMaxLocalInputSize;
+	    ELSE
+	        #statMaxInputSize := #statMaxParameterInputSize;
+	    END_IF;
+	    // clear the output sort buffer
+	    FOR #statIndex := 0 TO #statMaxOutputSize - 1 DO
+	        #Sts_SortFilterEventList[#statIndex] := #statZeroEvent;
+	    END_FOR;
+	    
+	    #statFirstScan := TRUE;            // set the first scan bit 
+	END_IF;
+	// End of First Scan Section
+	
+	
+	// Main Filter Logic
+	
+	#statFilteredIndex := 0;
+	// sort by ascending OR descending?
+	IF #Cfg_TimeSortDirection THEN
+	    #statIndex := #In_NumEvents - 1;  // newest events first
+	ELSE
+	    #statIndex := 0;   // oldest events first
+	END_IF;
+	
+	IF #In_NumEvents > 0 THEN
+	    
+	    REPEAT
+	        #statFilterCategory := 0;
+	        #statFilterActive := 0;
+	        IF #Cmd_FilterCategory AND (#In_Events[#statIndex].Category = #Cfg_FilterCategory) THEN
+	            #statFilterCategory := 1;
+	        END_IF;
+	        IF #Cmd_FilterActiveEvents AND (#In_Events[#statIndex].Trigger) THEN
+	            #statFilterActive := 1;
+	        END_IF;
+	        
+	        IF ((#Cmd_FilterCategory AND #statFilterCategory) OR NOT (#Cmd_FilterCategory)) AND ((#Cmd_FilterActiveEvents AND #statFilterActive) OR NOT (#Cmd_FilterActiveEvents)) THEN
+	            #statFilteredEventList[#statFilteredIndex] := #In_Events[#statIndex];
+	            #statFilteredIndex := #statFilteredIndex + 1;
+	        END_IF;
+	        
+	        IF #Cfg_TimeSortDirection THEN
+	            #statIndex := #statIndex - 1;
+	        ELSE
+	            #statIndex := #statIndex + 1;
+	        END_IF;
+	        
+	    UNTIL #statFilteredIndex >= #In_NumEvents OR #statFilteredIndex >= #statMaxInputSize OR #statIndex < 0 OR #statIndex >= #In_NumEvents END_REPEAT;
+	END_IF;
+	
+	#statNumFilteredEvents := #statFilteredIndex;
+	
+	#Sts_SortFilterNumEvents := #statNumFilteredEvents;
+	#Sts_FilterExcludedNumEvents := #In_NumEvents - #statNumFilteredEvents;
+	
+	//Sanitize and limit Cfg_EventListOffset, offset cannot go past the last event
+	IF #Cfg_EventListOffset > #statNumFilteredEvents - 1 THEN
+	    #statLocalEventOffset := #statNumFilteredEvents - 1;
+	ELSE
+	    #statLocalEventOffset := #Cfg_EventListOffset;
+	END_IF;
+	
+	IF #statLocalEventOffset < 0 THEN
+	    #statLocalEventOffset := 0;
+	END_IF;
+	#Sts_EventListOffset := #statLocalEventOffset;
+	
+	#statSortedIndex := 0;
+	#statCopiedIndex := 0;
+	
+	//Category sorting loops
+	IF #Cmd_SortCategory THEN
+	    IF #statNumFilteredEvents <> 0 THEN
+	        #statCatIndex := 0;
+	        REPEAT //Repeat for categories 0-9
+	            #statIndex := 0;
+	            
+	            REPEAT //Repeat for every event in the filtered list
+	                //If the category matches, add to the list
+	                
+	                IF #statCatIndex = #statFilteredEventList[#statIndex].Category THEN
+	                    //Track sorted index separate from copied index.  
+	                    //This allows a "hypothetical" sort when an offset is applied, without using memory for a non-offset sorted list
+	                    IF (#statSortedIndex >= #statLocalEventOffset) THEN
+	                        #Sts_SortFilterEventList[#statCopiedIndex] := #statFilteredEventList[#statIndex];
+	                        #statCopiedIndex := #statCopiedIndex + 1;
+	                    END_IF;
+	                    #statSortedIndex := #statSortedIndex + 1;
+	                END_IF;
+	                
+	                IF #statCopiedIndex >= #statMaxOutputSize THEN
+	                    EXIT; //EXIT unsorted loop
+	                END_IF;
+	                
+	                #statIndex := #statIndex + 1;
+	            UNTIL #statIndex >= #statNumFilteredEvents END_REPEAT;
+	            
+	            IF #statCopiedIndex >= #statMaxOutputSize THEN
+	                EXIT; //EXIT category loop
+	            END_IF;
+	            #statCatIndex := #statCatIndex + 1;
+	        UNTIL #statCatIndex > 9 END_REPEAT;
+	        
+	        //Handle display of events in the case the category is not 0-9, but do not sort in order for scan time purposes
+	        //Only for special cases
+	        IF #statCopiedIndex < #statMaxOutputSize - 1 AND #statSortedIndex <> #statNumFilteredEvents THEN
+	            #statIndex := 0;
+	            REPEAT
+	                IF #statFilteredEventList[#statIndex].Category > 9 THEN
+	                    IF (#statSortedIndex >= #statLocalEventOffset) THEN
+	                        #Sts_SortFilterEventList[#statCopiedIndex] := #statFilteredEventList[#statIndex];
+	                        #statCopiedIndex := #statCopiedIndex + 1;
+	                    END_IF;
+	                    
+	                    #statSortedIndex := #statSortedIndex + 1;
+	                    
+	                END_IF;
+	                
+	                
+	                IF #statCopiedIndex >= #statMaxOutputSize THEN
+	                    EXIT;
+	                END_IF;
+	                
+	                #statIndex := #statIndex + 1;
+	                
+	            UNTIL #statIndex >= #statNumFilteredEvents END_REPEAT;
+	            
+	        END_IF;
+	        
+	    END_IF;
+	    
+	ELSE
+	    //If no category sorting is done, copy the entire filtered list and apply any offset
+	    #statCopiedIndex := #statNumFilteredEvents - #statLocalEventOffset;
+	    
+	    IF #statCopiedIndex > #statMaxOutputSize THEN
+	        #statCopiedIndex := #statMaxOutputSize;
+	    ELSIF #statCopiedIndex < 0 THEN
+	        #statCopiedIndex := 0;
+	    END_IF;
+	    
+	    #tempMoveBlkVariantRetVal := MOVE_BLK_VARIANT(SRC := #statFilteredEventList, COUNT := DINT_TO_UDINT(#statCopiedIndex), SRC_INDEX := #statLocalEventOffset, DEST_INDEX := #ZERO_VALUE, DEST => #Sts_SortFilterEventList);
+	    
+	END_IF;
+	
+	#statNumDisplayedEvents := #statCopiedIndex;
+	
+	// Clean up event list
+	IF #statPrevNumEvents > #statNumDisplayedEvents THEN
+	    FOR #statIndex := #statNumDisplayedEvents TO #statPrevNumEvents - 1 DO
+	        #Sts_SortFilterEventList[#statIndex] := #statZeroEvent;
+	    END_FOR;
+	END_IF;
+	
+	#statPrevNumEvents := #statNumDisplayedEvents;
+	
+	//  -------------- END OF LOGIC -------------------------
+	ENO := TRUE;   // Set the ENO output
+END_FUNCTION_BLOCK
+

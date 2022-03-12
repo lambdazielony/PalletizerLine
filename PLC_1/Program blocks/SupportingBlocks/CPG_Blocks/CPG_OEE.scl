@@ -1,0 +1,171 @@
+﻿FUNCTION_BLOCK "CPG_OEE"
+TITLE = CPG_OEE
+{ S7_Optimized_Access := 'TRUE' }
+AUTHOR : 'tech.team.motioncontrol@siemens.com'
+FAMILY : CPG
+VERSION : 1.0
+//Support: tech.team.motioncontrol@siemens.com
+   VAR_INPUT 
+      totalProdProcessed { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : DInt;   // Total Number OF Products Processed
+      totalDefectiveProd { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : DInt;   // Total Number OF Defective Products
+      timeSinceLastReset { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : DInt;   // Total Acumulative TIME since Last RESET
+      machineDesignSpeed { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Real;   // Machine Design Speed
+   END_VAR
+
+   VAR_OUTPUT 
+      OEERealTimeValue { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Real;   // REAL TIME OEE value (availabilty x performance x quality)
+      OEEAvailability { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Real;   // OEE - Availability value
+      OEEPerformance { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Real;   // OEE - Performance value
+      OEEQuality { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Real;   // OEE - Quality  value
+   END_VAR
+
+   VAR_IN_OUT 
+      modeCumulativeTimes : Array[0.."LPMLV30_MODES_UPPER_LIM"] of DInt;   // Mode Cummulative Times
+   END_VAR
+
+   VAR 
+      statTotalProdProcessed_In { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : DInt;   // Initial "TotalProdProcessed" value after accum TIME reset
+      statTotalDefectiveProd_In { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : DInt;   // Initial "TotalDefectiveProcessed" value after accum TIME reset
+      statAcumTimeEqualZero { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // The "TimeSinceLastReset" is = 0 seconds
+      statAcumTimeEqualZeroOS { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // OneShot for "TimeSinceLastReset" is = 0 seconds
+   END_VAR
+
+   VAR_TEMP 
+      tempTimeSinceLastReset : Real;   // used to eliminate divide by zero errors
+      tempTotalProducts : Real;   // used to eliminate divide by zero errors
+      tempDefectiveProducts : Real;   // used to eliminate divide by zero errors
+   END_VAR
+
+
+BEGIN
+	//============================================================================================================
+	// SIEMENS AG
+	// (c)Copyright 2018 All Rights Reserved
+	//------------------------------------------------------------------------------------------------------------
+	// Project: CPG Template
+	// Tested with: S7-1500 with FW version V2.1
+	// Engineering: TIA Portal V14
+	// Restrictions: ---
+	// Requirements: S7-1500
+	// Functionality:  calculate real-time OEE values
+	// Support: tech.team.motioncontrol@siemens.com
+	//------------------------------------------------------------------------------------------------------------
+	// Change log table:
+	// Version       Date               Expert in charge    Changes applied
+	//  01.00.00     28.02.1012         MP                  Original - using OEE Realtime calculation
+	//  01.01.00     04.09.2014         MP                  Added seperate Availabity, Performace, Quality calculation
+	//  01.02.00     07.07.2014         MP                  Updated interface FOR new Mode/State FB          
+	//  01.02.01     01.02.2016         MP                  Added logic to prevent floating point / divide by zero errors
+	//  02.00.00     01.01.2018         MP                  Prepared for CPG Release
+	//  02.01.00     29.05.2018         JP                  Adopted to styleguide
+	//============================================================================================================
+	// Function Block : CPG_OEE
+	//============================================================================================================
+	
+	// ===========================================================================
+	//  Begin the LOGIC section:
+	//  
+	(* ISA TR88.00.02 Document - 9.1 OEE Definition:
+	Overall Equipment Effectiveness (OEE) is a measure comparing how well manufacturing equipment is running compared to the ideal plant. The resulting measurement is expressed as the ratio of the actual
+	output of the equipment divided by the maximum possible output of the equipment under ideal conditions. OEE is calculated by multiplying three independently measured values: Availability,
+	Performance Rate, and Quality Rate. The fundamental OEE definition is defined as an availability ratio multiplied by a performance ratio multiplied by a quality ratio.
+	
+	OEE = Availability x Performance x Quality
+	
+	Where each component is defined as the following:
+	Availability = Operating Time / Planned Production Time
+	Performance = Total Pieces / (Operating Time* Ideal Run Rate)
+	Quality = Good Pieces / Total Pieces
+	
+	OEE is often displayed as a waterfall object in which the major components of Availability, Performance, and Quality are displayed graphically.
+	*)
+	
+	// Determine is TimeSinceLastReset value is equal to zero.
+	IF  #timeSinceLastReset   = 0 THEN
+	    #statAcumTimeEqualZero   := TRUE;  // SET the AcumTimeEqualZero bool tag
+	ELSE
+	    #statAcumTimeEqualZero   := FALSE; // RESET the AcumTimeEqualZero bool tag
+	    #statAcumTimeEqualZeroOS := FALSE; // RESET the AcumTimeEqualZero one-shot bool tag
+	END_IF;
+	
+	// Update the AcumTimeEqualZeroOS One-Shot bool
+	IF #statAcumTimeEqualZero AND NOT #statAcumTimeEqualZeroOS THEN
+	   #statAcumTimeEqualZeroOS := TRUE;  // Set the One-Shot bool tag
+	END_IF;
+	
+	// Update the initial product count values after the accum timer value has been reset
+	IF #statAcumTimeEqualZeroOS THEN
+	   #statTotalProdProcessed_In := #totalProdProcessed;
+	   #statTotalDefectiveProd_In := #totalDefectiveProd;
+	END_IF;  
+	
+	// Update the TimeSinceLastReset temp. value.  If = 0 (zero) then change to 0.0001 to ensure no divide by zero errors
+	IF #timeSinceLastReset = 0 THEN
+	    #tempTimeSinceLastReset := 0.0001;
+	ELSE
+	    #tempTimeSinceLastReset := DINT_TO_REAL(#timeSinceLastReset);
+	END_IF;
+	
+	
+	
+	(*  9.1.1 Availability Definition
+	Availability is defined as operating time divided by planned production time. The basic concept behind availability is to show the time the machine has been running divided by the time that the
+	machine has been planned to run. Typical losses in this area are losses to unplanned maintenance, cleaning, changeovers, and breakdowns.
+	* Availability = Operating Time / Planned Production Time Operating Time is defined as the amount of time the machine has been attempting to produce parts.  
+	* Planned Production Time is defined as the total amount of time the machine has been scheduled to run. 
+	*)
+	// Availablity = operating time (attempt to run production) / planned production time
+	#OEEAvailability :=   DINT_TO_REAL (#modeCumulativeTimes[1]) / #tempTimeSinceLastReset;
+	IF #OEEAvailability > 1.0 THEN #OEEAvailability := 1.0; END_IF;
+	IF #OEEAvailability < 0.0 THEN #OEEAvailability := 0.0; END_IF;
+	
+	(* 9.1.2 Performance Definition
+	Performance is defined as the total number of pieces on which the machine operated divided by the ideal production if a machine ran perfectly for the allocated amount of operating time.
+	* Performance = Total Pieces / (Operating Time* Ideal Run Rate).  
+	* Total Pieces is defined as good pieces and bad pieces during the production run. This should be linked to the main consumed count of the machine. If a filler, this should be bottles into the filler.
+	* Operating Time is defined as the amount of time the machine has been attempting to produce parts. (Same as above)
+	* Ideal Run Rate is defined as the ideal rate that the machine can run for the product that is being run on the machine and the way the machine is configured.
+	*)
+	// Performance = Total Pieces / (Operating Time * Ideal Run Rate / 60)
+	#OEEPerformance := (DINT_TO_REAL(#totalProdProcessed - #statTotalProdProcessed_In)) / ((#tempTimeSinceLastReset * #machineDesignSpeed / 60.0));
+	IF #OEEPerformance > 1.0 THEN #OEEPerformance := 1.0; END_IF;
+	IF #OEEPerformance < 0.0 THEN #OEEPerformance := 0.0; END_IF;
+	
+	(*  9.1.3 Quality Definition
+	Quality is defined as the total number of good pieces divided by the total number of pieces on which the machine operated.
+	* Quality = Good Pieces / Total Pieces
+	* Good Pieces is defined as only good pieces processed during the production run. So this is the main production processed count of the machine. If a filler, this should be bottles out of the filler.
+	* Total Pieces includes good pieces and bad pieces during the production run. This should be linked to the main consumed count of the machine. 
+	   If a filler, this should be bottles into the filler. This should be the same count as used in the performance definition.
+	*)
+	// Quality = Good Piece / Total Piece
+	#tempTotalProducts     :=  DINT_TO_REAL(#totalProdProcessed-#statTotalProdProcessed_In);
+	#tempDefectiveProducts :=  DINT_TO_REAL(#totalDefectiveProd-#statTotalDefectiveProd_In);
+	
+	// Prevent divide by zero errors by checking if Total Products <> 0.0
+	IF (#totalProdProcessed - #statTotalProdProcessed_In) = 0 THEN 
+	    #tempTotalProducts := 0.0001;
+	END_IF;
+	
+	// Make sure that defective products < total products
+	IF #tempDefectiveProducts > #tempTotalProducts THEN
+	    #tempDefectiveProducts := 0.0;
+	END_IF;
+	
+	#OEEQuality            := (#tempTotalProducts - #tempDefectiveProducts) / #tempTotalProducts;
+	
+	IF #OEEQuality  > 1.0 THEN #OEEQuality  := 1.0; END_IF;
+	IF #OEEQuality  < 0.0 THEN #OEEQuality  := 0.0; END_IF;
+	IF #tempTotalProducts = 0 THEN
+	    #OEEQuality := 0.0;
+	END_IF;
+	
+	
+	#OEERealTimeValue := #OEEAvailability * #OEEPerformance * #OEEQuality;
+	
+	//  -------------- END OF LOGIC -------------------------
+	ENO := TRUE;   // Set the ENO output
+	 
+	
+END_FUNCTION_BLOCK
+

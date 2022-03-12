@@ -1,0 +1,85 @@
+﻿FUNCTION_BLOCK "CPG_MsgScroll"
+TITLE = CPG_Msg_Scroll
+{ S7_Optimized_Access := 'TRUE' }
+AUTHOR : 'tech.team.motioncontrol@siemens.com'
+FAMILY : CPG
+VERSION : 1.0
+//Support: tech.team.motioncontrol@siemens.com
+   VAR_INPUT 
+      Trigger { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // input trigger to enable scroll logic
+      NumEvents { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;   // input value with number of active events
+      In_Events { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Array[0.."CPG_NO_OF_HMI_SORT_EVENTS_UPPER_LIM"] of "CPG_typeEvent";   // incoming events list
+   END_VAR
+
+   VAR_OUTPUT 
+      Msg_Scroll { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : String[40];   // message output value
+   END_VAR
+
+   VAR 
+      statScrollIndex { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;   // index value for scroll logic
+      statTriggerOS { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // one shot trigger
+      statMaxSize { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;   // max size
+   END_VAR
+
+   VAR_TEMP 
+      tempScroll_Index_Max : Int;   // max value for scroll index
+   END_VAR
+
+
+BEGIN
+	//============================================================================================================
+	// SIEMENS AG
+	// (c)Copyright 2018 All Rights Reserved
+	//------------------------------------------------------------------------------------------------------------
+	// Project: CPG Template
+	// Tested with: S7-1500 with FW version V2.1
+	// Engineering: TIA Portal V14
+	// Restrictions: ---
+	// Requirements: S7-1500
+	// Functionality:  Used to scoll messages from an array of the active events to a single string for display on the HMI
+	// Support: tech.team.motioncontrol@siemens.com
+	//------------------------------------------------------------------------------------------------------------
+	// Change log table:
+	// Version       Date               Expert in charge    Changes applied
+	//  01.00.00     01.01.2018         MP                  Initial Release & PackML V2.1  Renamed CPG V1.0
+	//  01.01.00     29.05.2018         JP                  Adopted to styleguide
+	//============================================================================================================
+	// Function Block : CPG_Msg_Scroll
+	//============================================================================================================
+	
+	
+	
+	// ===========================================================================
+	//  Begin the LOGIC section:
+	// initialize & determine max array size
+	"CPG_ArrayLength"(arrayToBeSized := #In_Events,
+	                         arraySize => #statMaxSize);
+	
+	IF #NumEvents > #statMaxSize THEN
+	    #tempScroll_Index_Max := #statMaxSize;
+	ELSE
+	    #tempScroll_Index_Max := #NumEvents;
+	END_IF;
+	    
+	// Statement Section 
+	IF #Trigger AND NOT #statTriggerOS THEN
+	    #statScrollIndex := #statScrollIndex + 1;  // increment the index
+	    
+	    IF  #statScrollIndex > #tempScroll_Index_Max - 1 THEN
+	            #statScrollIndex := 0;
+	        END_IF;
+	        
+	   #Msg_Scroll := #In_Events[#statScrollIndex].Message;      // move the message from the UDT_Event structure to string output.  
+	
+	    #statTriggerOS := TRUE;              // Set the trigger OS bit
+	END_IF;
+	
+	IF NOT #Trigger AND #statTriggerOS THEN
+	    #statTriggerOS := FALSE;
+	END_IF;
+	
+	//  -------------- END OF LOGIC -------------------------
+	ENO := TRUE;   // Set the ENO output
+	
+END_FUNCTION_BLOCK
+

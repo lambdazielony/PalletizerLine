@@ -1,0 +1,100 @@
+﻿FUNCTION_BLOCK "CPG_EventSummationEnd"
+TITLE = CPG_EventSummationEnd
+{ S7_Optimized_Access := 'TRUE' }
+AUTHOR : 'tech.team.motioncontrol@siemens.com'
+FAMILY : CPG
+VERSION : 1.0
+//Support: tech.team.motioncontrol@siemens.com
+   VAR_IN_OUT 
+      Sts_EventSummation : "CPG_typeEventSummation";   // Working event list data section
+   END_VAR
+
+   VAR 
+      statFirstScan { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // 0=1st scan of FB; set to 1 after 1st FB scan...
+      statIndex { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;   // stat index
+      statPrev_NumAllEvents { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;   // stat value needed with FOR loop
+   END_VAR
+
+   VAR_TEMP 
+      tempZeroEvent : "CPG_typeEvent";   // null instance of UDT Event
+   END_VAR
+
+
+BEGIN
+	//============================================================================================================
+	// SIEMENS AG
+	// (c)Copyright 2018 All Rights Reserved
+	//------------------------------------------------------------------------------------------------------------
+	// Project: CPG Template
+	// Tested with: S7-1500 with FW version V2.1
+	// Engineering: TIA Portal V14
+	// Restrictions: ---
+	// Requirements: S7-1500
+	// Functionality:  Summarizes the "Data" from the equipment modules (from FB_EventManager) AND will create one list OF events FOR the unit machine.
+	//                 It summarizes the data by finding the unit machine first out event and summarizes which category of events are active.
+	//                 CPG_EventSummationBegin initializes the summation, and CPG_EventSummationEnd finalizes the summation.
+	// Support: tech.team.motioncontrol@siemens.com
+	//------------------------------------------------------------------------------------------------------------
+	// Change log table:
+	// Version       Date               Expert in charge    Changes applied
+	//  01.00.00     01.01.2018         MP                  Initial Release & PackML V2.1  Renamed CPG V1.0
+	//  01.01.00     29.05.2018         JP                  Adopted to styleguide
+	//  01.00.01     13.06.2019         ThH                 Corrected handling of Bit 5; new Version CPG Template V1.0.1
+	//============================================================================================================
+	// Function Block : CPG_EventSummationEnd
+	//============================================================================================================
+	
+	// ===========================================================================
+	//  Begin the LOGIC section:
+	// first scan logic
+	IF #statFirstScan = FALSE THEN
+	    // initialize & determine max array size
+	    "CPG_ArrayLength"(arrayToBeSized := #Sts_EventSummation.sts_Events,
+	                      arraySize => #Sts_EventSummation.wrk_EventArraySize);
+	    
+	    #statPrev_NumAllEvents := #Sts_EventSummation.wrk_EventArraySize;
+	    
+	    #statFirstScan := TRUE;            // set the first scan bit
+	END_IF;
+	
+	// Cleanup the summation - This FB is to be called after the numerous "FB_PMLe_EventSum" calls.
+	IF #statPrev_NumAllEvents > #Sts_EventSummation.sts_NumEvents THEN
+	    
+	    FOR #statIndex := #Sts_EventSummation.sts_NumEvents TO (#statPrev_NumAllEvents-1) DO
+	        #Sts_EventSummation.sts_Events[#statIndex]:= #tempZeroEvent;   // clear event area of cleared alarms
+	    END_FOR;
+	    
+	END_IF;
+	    
+	#statPrev_NumAllEvents := #Sts_EventSummation.sts_NumEvents;     
+	
+	// Update the output bits from work area
+	#Sts_EventSummation.sts_Category_0_Latched := #Sts_EventSummation.wrk_Category_0_Latched;
+	#Sts_EventSummation.sts_Category_1_Latched := #Sts_EventSummation.wrk_Category_1_Latched;
+	#Sts_EventSummation.sts_Category_2_Latched := #Sts_EventSummation.wrk_Category_2_Latched;
+	#Sts_EventSummation.sts_Category_3_Latched := #Sts_EventSummation.wrk_Category_3_Latched;
+	#Sts_EventSummation.sts_Category_4_Latched := #Sts_EventSummation.wrk_Category_4_Latched;
+	#Sts_EventSummation.sts_Category_5_Latched := #Sts_EventSummation.wrk_Category_5_Latched;
+	#Sts_EventSummation.sts_Category_6_Latched := #Sts_EventSummation.wrk_Category_6_Latched;
+	#Sts_EventSummation.sts_Category_7_Latched := #Sts_EventSummation.wrk_Category_7_Latched;
+	#Sts_EventSummation.sts_Category_8_Latched := #Sts_EventSummation.wrk_Category_8_Latched;
+	#Sts_EventSummation.sts_Category_9_Latched := #Sts_EventSummation.wrk_Category_9_Latched;
+	
+	#Sts_EventSummation.sts_Category_0_NotLatched := #Sts_EventSummation.wrk_Category_0_NotLatched;
+	#Sts_EventSummation.sts_Category_1_NotLatched := #Sts_EventSummation.wrk_Category_1_NotLatched;
+	#Sts_EventSummation.sts_Category_2_NotLatched := #Sts_EventSummation.wrk_Category_2_NotLatched;
+	#Sts_EventSummation.sts_Category_3_NotLatched := #Sts_EventSummation.wrk_Category_3_NotLatched;
+	#Sts_EventSummation.sts_Category_4_NotLatched := #Sts_EventSummation.wrk_Category_4_NotLatched;
+	#Sts_EventSummation.sts_Category_5_NotLatched := #Sts_EventSummation.wrk_Category_5_NotLatched;
+	#Sts_EventSummation.sts_Category_6_NotLatched := #Sts_EventSummation.wrk_Category_6_NotLatched;
+	#Sts_EventSummation.sts_Category_7_NotLatched := #Sts_EventSummation.wrk_Category_7_NotLatched;
+	#Sts_EventSummation.sts_Category_8_NotLatched := #Sts_EventSummation.wrk_Category_8_NotLatched;
+	#Sts_EventSummation.sts_Category_9_NotLatched := #Sts_EventSummation.wrk_Category_9_NotLatched;
+	
+	#Sts_EventSummation.sts_CurrentActiveEvent  := #Sts_EventSummation.wrk_CurrentActiveEvent; 
+	    
+	//  -------------- END OF LOGIC -------------------------
+	ENO := TRUE;   // Set the ENO output
+	
+END_FUNCTION_BLOCK
+

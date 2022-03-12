@@ -1,0 +1,266 @@
+﻿FUNCTION_BLOCK "CPG_RecipeSetpoint_REAL"
+TITLE = CPG_RecipeSetpoint_REAL
+{ S7_Optimized_Access := 'TRUE' }
+AUTHOR : 'tech.team.motioncontrol@siemens.com'
+FAMILY : CPG
+VERSION : 1.1
+//Support: tech.team.motioncontrol@siemens.com
+   VAR_INPUT 
+      enable { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // If true, setpoint changes are permitted
+      disableRecipeControl { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'; S7_HiddenAssignment := 'HideIfNoParamAssigned'} : Bool;   // If true, the setpoint is no longer handled as a recipe
+   END_VAR
+
+   VAR_OUTPUT 
+      out { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Real;   // Currently running recipe value
+      changeEnabled { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // Enable input is true, setpoint can be changed
+      recipeControlDisabled { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // The value is not subject to recipe controls
+      changeNotAllowed { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // Change is not permitted due to machine state
+      recipeSetpointDifference { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // The currently running (out) value and setpoint value are not equal
+      minLimitExceeded { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // Minimum limit exceeded
+      maxLimitExceeded { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // Maximum limit exceeded
+   END_VAR
+
+   VAR_IN_OUT 
+      recipeControl : "CPG_typeRecipeControl";   // Recipe control tag
+      recipeSetpoint : "CPG_typeRecipeSetpoint_REAL";   // Recipe setpoint tag
+   END_VAR
+
+   VAR 
+      statFirstScan { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool := true;
+      statPrevChangeNum { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;
+      statPrevSaveNum { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;
+      statPrevCopyNum { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;
+      statPrevDeleteNum { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;
+      statPrevOut { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Real;
+      statLimitsTimer {InstructionName := 'TP_TIME'; LibVersion := '1.0'; ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : TP_TIME;
+      statLimitsTimerEN { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;
+      statChangeNotAllowedTimer {InstructionName := 'TON_TIME'; LibVersion := '1.0'; ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : TON_TIME;
+      statTimerEN { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;
+   END_VAR
+
+   VAR_TEMP 
+      tempLimit : Real;
+   END_VAR
+
+   VAR CONSTANT 
+      DELAY_TIME : Time := T#3s;
+   END_VAR
+
+
+BEGIN
+	//============================================================================================================
+	// SIEMENS AG
+	// (c)Copyright 2019 All Rights Reserved
+	//------------------------------------------------------------------------------------------------------------
+	// Library: LCPG
+	// Tested with: S7-1500 with FW version V2.1
+	// Engineering: TIA Portal V14
+	// Restrictions: ---
+	// Requirements: S7-1500
+	// Functionality: instantiate this once in the program for each recipe setpoint of REAL
+	// Support: tech.team.motioncontrol@siemens.com
+	//------------------------------------------------------------------------------------------------------------
+	// Change log table:
+	// Version       Date               Expert in charge    Changes applied
+	//  01.01.00     02.01.2019         KB                  Initial Release
+	//============================================================================================================
+	// Function : CPG_RecipeSetpoint_REAL
+	//============================================================================================================
+	
+	// Language Selection
+	#recipeSetpoint.CurrentName := #recipeSetpoint.SetpointName[#recipeControl.LanguageSelection];
+	
+	//Recipe Disable Control
+	#recipeSetpoint.DisableRecipeControl := #disableRecipeControl;
+	
+	//Pass through enable bit
+	#recipeSetpoint.SetpointChangeEnabled := #enable;
+	
+	//Set out value to match initial one on first scan
+	IF #statFirstScan THEN
+	    #recipeSetpoint.CurrentRecipeValue := #recipeSetpoint.RecipeValues[#recipeControl.CurrentRecipeID];
+	    #recipeSetpoint.OUT := #recipeSetpoint.RecipeValues[#recipeControl.CurrentRecipeID];
+	    #statFirstScan := false;
+	END_IF;
+	
+	
+	REGION CHECK LIMITS
+	    //checks if min & max limits are valid.  If they are not in order, swap them
+	    IF #recipeSetpoint.minLimit > #recipeSetpoint.maxLimit THEN
+	        #tempLimit := #recipeSetpoint.minLimit;
+	        #recipeSetpoint.minLimit := #recipeSetpoint.maxLimit;
+	        #recipeSetpoint.maxLimit := #tempLimit;
+	    END_IF;
+	    
+	    //checks if the saved recipe value is outside the bounds, either due to a runtime change of the limits or a bad configuration
+	    //if problems, and recipe control is on, set the saved value to the default (min limit, same as recipeDelete)
+	    //Note that this check is only on the current recipe, and also is only performed if recipeControlDisable is false
+	    IF #recipeSetpoint.RecipeValues[#recipeControl.CurrentRecipeID] < #recipeSetpoint.minLimit
+	        OR #recipeSetpoint.RecipeValues[#recipeControl.CurrentRecipeID] > #recipeSetpoint.maxLimit
+	        AND NOT (#recipeSetpoint.DisableRecipeControl) THEN
+	        #recipeSetpoint.RecipeValues[#recipeControl.CurrentRecipeID] := #recipeSetpoint.minLimit;
+	    END_IF;
+	    
+	    //Checks the out value.  Note that this value matters even if recipeControlDisable is true
+	    //If the value is a being controlled, then set the value to the (guarenteed to be in range) saved recipe value
+	    //If the value is not being treated as a recipe, set it to the default (minlimit)
+	    IF #recipeSetpoint.OUT < #recipeSetpoint.minLimit OR #recipeSetpoint.OUT > #recipeSetpoint.maxLimit THEN
+	        IF NOT (#recipeSetpoint.DisableRecipeControl) THEN
+	            #recipeSetpoint.OUT := #recipeSetpoint.RecipeValues[#recipeControl.CurrentRecipeID];
+	        ELSE
+	            #recipeSetpoint.OUT := #recipeSetpoint.minLimit;
+	        END_IF;
+	    END_IF;
+	END_REGION
+	
+	
+	REGION RECIPE CONTROL
+	    // Recipe Control - Change, Save, Copy, Delete, Revert setpoint, Save setpoint
+	    IF NOT (#recipeSetpoint.DisableRecipeControl) THEN
+	        //Recipe Change Command
+	        IF #recipeControl.RecipeChangeNum <> #statPrevChangeNum THEN
+	            #recipeSetpoint.OUT := #recipeSetpoint.RecipeValues[#recipeControl.CurrentRecipeID];
+	            #statPrevChangeNum := #recipeControl.RecipeChangeNum;
+	            // Prevents multiple commands from being executed if this instruction is not being scanned
+	            #statPrevSaveNum := #recipeControl.RecipeSaveNum;
+	            #statPrevCopyNum := #recipeControl.RecipeCopyNum;
+	            #statPrevDeleteNum := #recipeControl.RecipeDeleteNum;
+	        END_IF;
+	        //Recipe Save Command
+	        IF #recipeControl.RecipeSaveNum <> #statPrevSaveNum THEN
+	            #recipeSetpoint.RecipeValues[#recipeControl.RecipeDestinationID] := #recipeSetpoint.OUT;
+	            #statPrevSaveNum := #recipeControl.RecipeSaveNum;
+	            // Prevents multiple commands from being executed if this instruction is not being scanned
+	            #statPrevCopyNum := #recipeControl.RecipeCopyNum;
+	            #statPrevDeleteNum := #recipeControl.RecipeDeleteNum;
+	        END_IF;
+	        //Recipe Copy Command
+	        IF #recipeControl.RecipeCopyNum <> #statPrevCopyNum THEN
+	            #recipeSetpoint.RecipeValues[#recipeControl.RecipeDestinationID] := #recipeSetpoint.RecipeValues[#recipeControl.RecipeSourceID];
+	            #statPrevCopyNum := #recipeControl.RecipeCopyNum;
+	            // Prevents multiple commands from being executed if this instruction is not being scanned
+	            #statPrevDeleteNum := #recipeControl.RecipeDeleteNum;
+	        END_IF;
+	        //Recipe Delete Command
+	        IF #recipeControl.RecipeDeleteNum <> #statPrevDeleteNum THEN
+	            //edit this line to change the value a deleted recipe defaults to
+	            #recipeSetpoint.RecipeValues[#recipeControl.RecipeDestinationID] := #recipeSetpoint.minLimit;   
+	            #statPrevDeleteNum := #recipeControl.RecipeDeleteNum;
+	        END_IF;
+	        // Revert setpoint to saved value
+	        IF #recipeSetpoint.RevertSetpoint THEN
+	            #recipeSetpoint.OUT := #recipeSetpoint.RecipeValues[#recipeControl.CurrentRecipeID];
+	        END_IF;
+	        //Detect recipe/setpoint difference
+	        IF (#recipeSetpoint.RecipeValues[#recipeControl.CurrentRecipeID] <> #recipeSetpoint.OUT) AND NOT (#recipeControl.RecipeChange) THEN
+	            #recipeControl.RecipeSetpointDiff := true;  //signal to recipe control that a setpoint differs
+	            #recipeSetpoint.RecipeSetpointDiff := true;
+	        ELSE
+	            #recipeSetpoint.RecipeSetpointDiff := false;
+	        END_IF;
+	        //Save setpoint
+	        IF #recipeSetpoint.SaveSetpoint THEN
+	            #recipeSetpoint.RecipeValues[#recipeControl.CurrentRecipeID] := #recipeSetpoint.OUT;
+	        END_IF;
+	        
+	        
+	        //update values stored for current recipe & recipes A, B, & C
+	        #recipeSetpoint.CurrentRecipeValue := #recipeSetpoint.RecipeValues[#recipeControl.CurrentRecipeID];
+	        #recipeSetpoint.RecipeValueA := #recipeSetpoint.RecipeValues[#recipeControl.RecipeID_A];
+	        #recipeSetpoint.RecipeValueB := #recipeSetpoint.RecipeValues[#recipeControl.RecipeID_B];
+	        #recipeSetpoint.RecipeValueC := #recipeSetpoint.RecipeValues[#recipeControl.RecipeID_C];
+	        
+	    ELSE    //if recipe control is disabled, just update counters
+	        #recipeSetpoint.RecipeSetpointDiff := false;
+	        #statPrevChangeNum := #recipeControl.RecipeChangeNum;
+	        #statPrevSaveNum := #recipeControl.RecipeSaveNum;
+	        #statPrevCopyNum := #recipeControl.RecipeCopyNum;
+	        #statPrevDeleteNum := #recipeControl.RecipeDeleteNum;
+	    END_IF;
+	END_REGION
+	
+	
+	REGION UPDATE IN VALUE
+	    //If ENABLE, then changes to the setpoint value are possible
+	    //otherwise, updating the setpoint is not possible via changing RecipeSetpoint.IN
+	    IF #enable THEN
+	        //Clear status bit
+	        #recipeSetpoint.SetpointChangeDisabled := false;
+	        
+	        // Check for value within limits and input changed (due to user updating RecipeSetpoint.IN)
+	        IF (#recipeSetpoint.minLimit <= #recipeSetpoint.IN) AND (#recipeSetpoint.IN <= #recipeSetpoint.maxLimit) AND
+	            (#recipeSetpoint.IN <> #recipeSetpoint.OUT) AND (#recipeSetpoint.OUT = #statPrevOut) THEN
+	            #recipeSetpoint.OUT := #recipeSetpoint.IN;
+	            #recipeSetpoint.minLimitReached := false;
+	            #recipeSetpoint.maxLimitReached := false;
+	        // Check for value within limits and output changed (due to a recipe change)
+	        ELSIF (#recipeSetpoint.minLimit <= #recipeSetpoint.IN) AND (#recipeSetpoint.IN <= #recipeSetpoint.maxLimit) AND
+	            (#recipeSetpoint.IN <> #recipeSetpoint.OUT) AND (#recipeSetpoint.OUT <> #statPrevOut) THEN
+	            #recipeSetpoint.IN := #recipeSetpoint.OUT;
+	            #recipeSetpoint.minLimitReached := false;
+	            #recipeSetpoint.maxLimitReached := false;
+	        // Check for value below minimum limit
+	        ELSIF (#recipeSetpoint.minLimit > #recipeSetpoint.IN) THEN
+	            #statLimitsTimerEN := true;
+	            #recipeSetpoint.IN := #recipeSetpoint.OUT;
+	            #recipeSetpoint.minLimitReached := true;
+	            #recipeSetpoint.maxLimitReached := false;
+	        // Check for value above maximum limit
+	        ELSIF (#recipeSetpoint.maxLimit < #recipeSetpoint.IN) THEN
+	            #statLimitsTimerEN := true;
+	            #recipeSetpoint.IN := #recipeSetpoint.OUT;
+	            #recipeSetpoint.minLimitReached := false;
+	            #recipeSetpoint.maxLimitReached := true;
+	        END_IF;
+	        
+	        #statLimitsTimer(IN := #statLimitsTimerEN,
+	                     PT := #DELAY_TIME);
+	        
+	        // Continue to display the status bits for the duration of the timer.
+	        IF #recipeSetpoint.minLimitReached OR #recipeSetpoint.maxLimitReached THEN
+	            #statLimitsTimerEN := false;
+	            #recipeSetpoint.minLimitReached := #recipeSetpoint.minLimitReached AND #statLimitsTimer.Q;
+	            #recipeSetpoint.maxLimitReached := #recipeSetpoint.maxLimitReached AND #statLimitsTimer.Q;
+	        END_IF;
+	        
+	    ELSE
+	        
+	        // If IN changes, revert and display message
+	        IF (#recipeSetpoint.IN <> #recipeSetpoint.OUT) OR #recipeSetpoint.RevertSetpoint THEN
+	            #recipeSetpoint.IN := #recipeSetpoint.OUT;
+	            #statTimerEN := false;
+	            #recipeSetpoint.SetpointChangeDisabled := true;
+	            #recipeSetpoint.minLimitReached := false;
+	            #recipeSetpoint.maxLimitReached := false;
+	        END_IF;
+	        
+	        //display "setpoint changes not allowed" 3 seconds after inputting an invalid change
+	        #statChangeNotAllowedTimer(IN := #statTimerEN,
+	                               PT := #DELAY_TIME);
+	        
+	        // Continue to display the status bits for the duration of the timer.
+	        IF #recipeSetpoint.SetpointChangeDisabled THEN
+	            #statTimerEN := true;
+	            #recipeSetpoint.SetpointChangeDisabled :=
+	                #recipeSetpoint.SetpointChangeDisabled AND #statTimerEN AND NOT #statChangeNotAllowedTimer.Q;
+	        END_IF;
+	        
+	    END_IF;
+	END_REGION
+	
+	
+	REGION SET OUTPUTS
+	    #out := #recipeSetpoint.OUT;
+	    #statPrevOut := #recipeSetpoint.OUT;
+	    #changeNotAllowed := #recipeSetpoint.SetpointChangeDisabled;
+	    #recipeSetpointDifference := #recipeSetpoint.RecipeSetpointDiff;
+	    #recipeControlDisabled := #recipeSetpoint.DisableRecipeControl;
+	    #changeEnabled := #recipeSetpoint.SetpointChangeEnabled;
+	    #minLimitExceeded := #recipeSetpoint.minLimitReached;
+	    #maxLimitExceeded := #recipeSetpoint.maxLimitReached;
+	END_REGION
+	
+	//  -------------- END OF LOGIC -------------------------
+	ENO := TRUE;   // Set the ENO output
+END_FUNCTION_BLOCK
+

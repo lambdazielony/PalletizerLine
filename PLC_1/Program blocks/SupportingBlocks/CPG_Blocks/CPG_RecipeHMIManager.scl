@@ -1,0 +1,335 @@
+﻿FUNCTION_BLOCK "CPG_RecipeHMIManager"
+TITLE = CPG_RecipeHMIManager
+{ S7_Optimized_Access := 'TRUE' }
+AUTHOR : 'tech.team.motioncontrol@siemens.com'
+FAMILY : CPG
+VERSION : 1.1
+//Support: tech.team.motioncontrol@siemens.com
+   VAR_INPUT 
+      recipePopupTrackers { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Array[0..#NUM_TYPES] of Int;   // Index of recipe that is to be displayed in popup
+   END_VAR
+
+   VAR_OUTPUT 
+      setpointsArray_REAL { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Array[0..11] of "CPG_typeRecipeSetpoint_REAL";   // Setpoints to display
+      setpointsArray_DINT { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Array[0..11] of "CPG_typeRecipeSetpoint_DINT";   // Setpoints to display
+      setpointsArray_BOOL { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Array[0..11] of "CPG_typeRecipeSetpoint_BOOL";   // Setpoints to display
+      setpointsArray_STRING { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Array[0..11] of "CPG_typeRecipeSetpoint_STRING";   // Setpoints to display
+      recipeMaxPages { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Array[0..4] of Int;   // Max pages for all types of setpoint
+      setpointFaceplatesDisable_REAL { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Array[0..11] of Bool;   // True if that setpoint should be hidden
+      "setpoint FaceplatesDisable_DINT" { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Array[0..11] of Bool;   // True if that setpoint should be hidden
+      "setpoint FaceplatesDisable_BOOL" { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Array[0..11] of Bool;   // True if that setpoint should be hidden
+      "setpoint FaceplatesDisable_STRING" { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Array[0..11] of Bool;   // True if that setpoint should be hidden
+      recipeArrayNames { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Array[0..19] of String[60];   // Recipe names to display
+      recipeArraySaves {InstructionName := 'DTL'; LibVersion := '1.0'; ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Array[0..19] of DTL;   // Recipe save times to display
+      recipeArrayTimes { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Array[0..19] of Time;   // Recipe cumtimes to display
+      recipeArrayDisables { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Array[0..19] of Bool;   // True if that recipe should be hidden
+      recipeArrayNums { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Array[0..19] of Int;   // Recipe numbers to display
+   END_VAR
+
+   VAR_IN_OUT 
+      setpoints_REAL : Array[*] of "CPG_typeRecipeSetpoint_REAL";   // Machine setpoints
+      setpoints_DINT : Array[*] of "CPG_typeRecipeSetpoint_DINT";   // Machine setpoints
+      setpoints_BOOL : Array[*] of "CPG_typeRecipeSetpoint_BOOL";   // Machine setpoints
+      setpoints_STRING : Array[*] of "CPG_typeRecipeSetpoint_STRING";   // Machine setpoints
+      recipePopup_REAL : "CPG_typeRecipeSetpoint_REAL";   // Tag of popup
+      recipePopup_DINT : "CPG_typeRecipeSetpoint_DINT";   // Tag of popup
+      recipePopup_BOOL : "CPG_typeRecipeSetpoint_BOOL";   // Tag of popup
+      recipePopup_STRING : "CPG_typeRecipeSetpoint_STRING";   // Tag of popup
+      recipeCurrentPages : Array[0..4] of Int;   // Current page for viewing setpoints/recipies
+      recipeNamesArray : Array[*] of String[60];   // Recipe names
+      recipeSavesArray {InstructionName := 'DTL'; LibVersion := '1.0'} : Array[*] of DTL;   // Recipe saves
+      recipeTimesArray : Array[*] of Time;   // Recipe cumtimes
+   END_VAR
+
+   VAR 
+      statPrevCurrentPages { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Array[0..4] of Int := [4(-1)];
+      statPrevPopupTrackers { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Array[0..#NUM_TYPES] of Int := [4(-1)];
+      statPrevPopupsSave { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Array[0..#NUM_TYPES] of Bool;
+      statPrevPopupsRevert { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Array[0..#NUM_TYPES] of Bool;
+      statPrevPopupIN_REAL { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Real;
+      statPrevSetpointIN_REAL { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Real;
+      statPrevPopupIN_DINT { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : DInt;
+      statPrevSetpointIN_DINT { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : DInt;
+      statPrevPopupIn_BOOL { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;
+      statPrevSetpointIn_BOOL { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;
+      statPrevPopupIn_STRING { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : String[60];
+      statPrevSetpointIn_STRING { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : String[60];
+   END_VAR
+
+   VAR_TEMP 
+      tempLoop : Int;
+      tempSetptsLower : Array[0..#NUM_TYPES] of Int;
+      tempSetptsUpper : Array[0..#NUM_TYPES] of Int;
+      tempCurrentPopup : Int;
+      tempNumRecipesLower : Int;
+      tempNumRecipesUpper : Int;
+   END_VAR
+
+   VAR CONSTANT 
+      NUM_TYPES : Int := 3;
+      SETPOINTS_PERPAGE : Int := 12;
+      RECIPES_PERPAGE : Int := 20;
+      INDEX_REAL : Int := 0;
+      INDEX_DINT : Int := 1;
+      INDEX_BOOL : Int := 2;
+      INDEX_STRING : Int := 3;
+   END_VAR
+
+
+BEGIN
+	//============================================================================================================
+	// SIEMENS AG
+	// (c)Copyright 2019 All Rights Reserved
+	//------------------------------------------------------------------------------------------------------------
+	// Library: LCPG
+	// Tested with: S7-1500 with FW version V2.1
+	// Engineering: TIA Portal V14
+	// Restrictions: ---
+	// Requirements: S7-1500
+	// Functionality: handles the automatic display of setpoints/recipies
+	// Support: tech.team.motioncontrol@siemens.com
+	//------------------------------------------------------------------------------------------------------------
+	// Change log table:
+	// Version       Date               Expert in charge    Changes applied
+	//  01.01.00     02.01.2019         KB                  Initial Release
+	//============================================================================================================
+	// Function : CPG_RecipeHMIManager
+	//============================================================================================================
+	//
+	
+	//This function handles the automatic display of the four types of setpoints and the list of recipies
+	//There can be any number of setpoints or recipies, but only 12 setpoints and 20 recipies will fit on the screen
+	//This block copies 12 of the setpoints into an auxillary array, which is actually displayed on the screen
+	//Which 12 setpoints are copied depends on the current page
+	//A similar procedure is carried out for the 20 recipe names displayed on the "Recipe_Control" screen
+	//Lastly, the recipe that's currently selected is loaded into the popup tag,
+	//and any changes made to that tag are propogated back into the "true" setpoint tag
+	//The user generally will not need to modify the contents of this block
+	
+	
+	REGION CALCULATE BOUNDS
+	    //calculate upper and lower limits 
+	    #tempSetptsLower[0] := DINT_TO_INT(LOWER_BOUND(ARR := #setpoints_REAL, DIM := 1));
+	    #tempSetptsLower[1] := DINT_TO_INT(LOWER_BOUND(ARR := #setpoints_DINT, DIM := 1));
+	    #tempSetptsLower[2] := DINT_TO_INT(LOWER_BOUND(ARR := #setpoints_BOOL, DIM := 1));
+	    #tempSetptsLower[3] := DINT_TO_INT(LOWER_BOUND(ARR := #setpoints_STRING, DIM := 1));
+	    #tempNumRecipesLower := DINT_TO_INT(LOWER_BOUND(ARR := #recipeNamesArray, DIM := 1));
+	    
+	    #tempSetptsUpper[0] := DINT_TO_INT(UPPER_BOUND(ARR := #setpoints_REAL, DIM := 1));
+	    #tempSetptsUpper[1] := DINT_TO_INT(UPPER_BOUND(ARR := #setpoints_DINT, DIM := 1));
+	    #tempSetptsUpper[2] := DINT_TO_INT(UPPER_BOUND(ARR := #setpoints_BOOL, DIM := 1));
+	    #tempSetptsUpper[3] := DINT_TO_INT(UPPER_BOUND(ARR := #setpoints_STRING, DIM := 1));
+	    #tempNumRecipesUpper := DINT_TO_INT(UPPER_BOUND(ARR := #recipeNamesArray, DIM := 1));
+	    
+	    FOR #tempLoop := 0 TO #NUM_TYPES DO
+	        //calculate max # of pages
+	        #recipeMaxPages[#tempLoop] := DINT_TO_INT(CEIL((#tempSetptsUpper[#tempLoop] - #tempSetptsLower[#tempLoop] + 1.0) / #SETPOINTS_PERPAGE));
+	        //ensure that current page is within the limits
+	        #recipeCurrentPages[#tempLoop] := LIMIT(MN := 1, IN := #recipeCurrentPages[#tempLoop], MX := #recipeMaxPages[#tempLoop]);
+	    END_FOR;
+	    
+	    #recipeMaxPages[4] := DINT_TO_INT(CEIL((#tempNumRecipesUpper - #tempNumRecipesLower + 1.0) / #RECIPES_PERPAGE));
+	    #recipeCurrentPages[4] := LIMIT(MN := 1, IN := #recipeCurrentPages[4], MX := #recipeMaxPages[4]);
+	END_REGION
+	
+	
+	REGION REAL
+	    //index in Setpoints_XXX of the current popup
+	    #tempCurrentPopup := #recipePopupTrackers[#INDEX_REAL] + #SETPOINTS_PERPAGE * (#recipeCurrentPages[#INDEX_REAL] - 1) + #tempSetptsLower[#INDEX_REAL];
+	    
+	    IF #statPrevPopupTrackers[#INDEX_REAL] <> #recipePopupTrackers[#INDEX_REAL] THEN
+	        //if a new popup has been loaded, load the new setpoint so they can be displayed
+	        #recipePopup_REAL := #setpoints_REAL[#tempCurrentPopup];
+	    ELSE
+	        //if the HMI popup was updated, relay the commands back to the actual setpoint tag for processing
+	        //taking care to ensure that changes to the setpoints tags made in other areas of the program do not get overwritten
+	        IF (#statPrevPopupIN_REAL <> #recipePopup_REAL.IN) AND (#statPrevSetpointIN_REAL = #setpoints_REAL[#tempCurrentPopup].IN) THEN
+	            #setpoints_REAL[#tempCurrentPopup].IN := #recipePopup_REAL.IN;
+	        END_IF;
+	        IF #statPrevPopupsSave[#INDEX_REAL] <> #recipePopup_REAL.SaveSetpoint THEN
+	            #setpoints_REAL[#tempCurrentPopup].SaveSetpoint := #recipePopup_REAL.SaveSetpoint;
+	        END_IF;
+	        IF #statPrevPopupsRevert[#INDEX_REAL] <> #recipePopup_REAL.RevertSetpoint THEN
+	            #setpoints_REAL[#tempCurrentPopup].RevertSetpoint := #recipePopup_REAL.RevertSetpoint;
+	        END_IF;
+	        
+	        //then update the popup with the latest setpoint information
+	        #recipePopup_REAL := #setpoints_REAL[#tempCurrentPopup];
+	    END_IF;
+	    
+	    //set previous values for next scan
+	    #statPrevPopupIN_REAL := #recipePopup_REAL.IN;
+	    #statPrevSetpointIN_REAL := #setpoints_REAL[#tempCurrentPopup].IN;
+	    #statPrevPopupsSave[#INDEX_REAL] := #recipePopup_REAL.SaveSetpoint;
+	    #statPrevPopupsRevert[#INDEX_REAL] := #recipePopup_REAL.RevertSetpoint;
+	    
+	    
+	    //update main setpoint display with setpoint data
+	    FOR #tempLoop := 0 TO #SETPOINTS_PERPAGE - 1 DO
+	        IF #tempLoop + #SETPOINTS_PERPAGE * (#recipeCurrentPages[#INDEX_REAL] - 1) + #tempSetptsLower[#INDEX_REAL] <= #tempSetptsUpper[#INDEX_REAL] THEN
+	            #setpointsArray_REAL[#tempLoop] := #setpoints_REAL[#tempLoop + #SETPOINTS_PERPAGE * (#recipeCurrentPages[#INDEX_REAL] - 1) + #tempSetptsLower[#INDEX_REAL]];
+	            #setpointFaceplatesDisable_REAL[#tempLoop] := false;
+	        ELSE
+	            #setpointFaceplatesDisable_REAL[#tempLoop] := true;
+	        END_IF;
+	    END_FOR;
+	END_REGION
+	
+	
+	REGION DINT
+	    //index in Setpoints_XXX of the current popup
+	    #tempCurrentPopup := #recipePopupTrackers[#INDEX_DINT] + #SETPOINTS_PERPAGE * (#recipeCurrentPages[#INDEX_DINT] - 1) + #tempSetptsLower[#INDEX_DINT];
+	    
+	    IF #statPrevPopupTrackers[#INDEX_DINT] <> #recipePopupTrackers[#INDEX_DINT] THEN
+	        //if a new popup has been loaded, load the new setpoint so they can be displayed
+	        #recipePopup_DINT := #setpoints_DINT[#tempCurrentPopup];
+	    ELSE
+	        //if the HMI popup was updated, relay the commands back to the actual setpoint tag for processing
+	        //taking care to ensure that changes to the setpoints tags made in other areas of the program do not get overwritten
+	        IF (#statPrevPopupIN_DINT <> #recipePopup_DINT.IN) AND (#statPrevSetpointIN_DINT = #setpoints_DINT[#tempCurrentPopup].IN) THEN
+	            #setpoints_DINT[#tempCurrentPopup].IN := #recipePopup_DINT.IN;
+	        END_IF;
+	        IF #statPrevPopupsSave[#INDEX_DINT] <> #recipePopup_DINT.SaveSetpoint THEN
+	            #setpoints_DINT[#tempCurrentPopup].SaveSetpoint := #recipePopup_DINT.SaveSetpoint;
+	        END_IF;
+	        IF #statPrevPopupsRevert[#INDEX_DINT] <> #recipePopup_DINT.RevertSetpoint THEN
+	            #setpoints_DINT[#tempCurrentPopup].RevertSetpoint := #recipePopup_DINT.RevertSetpoint;
+	        END_IF;
+	        
+	        //then update the popup with the latest setpoint information
+	        #recipePopup_DINT := #setpoints_DINT[#tempCurrentPopup];
+	    END_IF;
+	    
+	    //set previous values for next scan
+	    #statPrevPopupIN_DINT := #recipePopup_DINT.IN;
+	    #statPrevSetpointIN_DINT := #setpoints_DINT[#tempCurrentPopup].IN;
+	    #statPrevPopupsSave[#INDEX_DINT] := #recipePopup_DINT.SaveSetpoint;
+	    #statPrevPopupsRevert[#INDEX_DINT] := #recipePopup_DINT.RevertSetpoint;
+	    
+	    
+	    //update main setpoint display with setpoint data
+	    FOR #tempLoop :=  0 TO #SETPOINTS_PERPAGE - 1 DO
+	        IF #tempLoop + #SETPOINTS_PERPAGE * (#recipeCurrentPages[#INDEX_DINT] - 1) + #tempSetptsLower[#INDEX_DINT] <= #tempSetptsUpper[#INDEX_DINT] THEN
+	            #setpointsArray_DINT[#tempLoop] := #setpoints_DINT[#tempLoop + #SETPOINTS_PERPAGE * (#recipeCurrentPages[#INDEX_DINT] - 1) + #tempSetptsLower[#INDEX_DINT]];
+	            #"setpoint FaceplatesDisable_DINT"[#tempLoop] := false;
+	        ELSE
+	            #"setpoint FaceplatesDisable_DINT"[#tempLoop] := true;
+	        END_IF;
+	    END_FOR;
+	END_REGION
+	
+	
+	REGION BOOL
+	    //index in Setpoints_XXX of the current popup
+	    #tempCurrentPopup := #recipePopupTrackers[#INDEX_BOOL] + #SETPOINTS_PERPAGE * (#recipeCurrentPages[#INDEX_BOOL] - 1) + #tempSetptsLower[#INDEX_BOOL];
+	    
+	    IF #statPrevPopupTrackers[#INDEX_BOOL] <> #recipePopupTrackers[#INDEX_BOOL] THEN
+	        //if a new popup has been loaded, load the new setpoint so they can be displayed
+	        #recipePopup_BOOL := #setpoints_BOOL[#tempCurrentPopup];
+	    ELSE
+	        //if the HMI popup was updated, relay the commands back to the actual setpoint tag for processing
+	        //taking care to ensure that changes to the setpoints tags made in other areas of the program do not get overwritten
+	        IF (#statPrevPopupIn_BOOL <> #recipePopup_BOOL.IN) AND (#statPrevSetpointIn_BOOL = #setpoints_BOOL[#tempCurrentPopup].IN) THEN
+	            #setpoints_BOOL[#tempCurrentPopup].IN := #recipePopup_BOOL.IN;
+	        END_IF;
+	        IF #statPrevPopupsSave[#INDEX_BOOL] <> #recipePopup_BOOL.SaveSetpoint THEN
+	            #setpoints_BOOL[#tempCurrentPopup].SaveSetpoint := #recipePopup_BOOL.SaveSetpoint;
+	        END_IF;
+	        IF #statPrevPopupsRevert[#INDEX_BOOL] <> #recipePopup_BOOL.RevertSetpoint THEN
+	            #setpoints_BOOL[#tempCurrentPopup].RevertSetpoint := #recipePopup_BOOL.RevertSetpoint;
+	        END_IF;
+	        
+	        //then update the popup with the latest setpoint information
+	        #recipePopup_BOOL := #setpoints_BOOL[#tempCurrentPopup];
+	    END_IF;
+	    
+	    //set previous values for next scan
+	    #statPrevPopupIn_BOOL := #recipePopup_BOOL.IN;
+	    #statPrevSetpointIn_BOOL := #setpoints_BOOL[#tempCurrentPopup].IN;
+	    #statPrevPopupsSave[#INDEX_BOOL] := #recipePopup_BOOL.SaveSetpoint;
+	    #statPrevPopupsRevert[#INDEX_BOOL] := #recipePopup_BOOL.RevertSetpoint;
+	    
+	    
+	    //update main setpoint display with setpoint data
+	    FOR #tempLoop := 0 TO #SETPOINTS_PERPAGE-1 DO
+	        IF #tempLoop + #SETPOINTS_PERPAGE * (#recipeCurrentPages[#INDEX_BOOL] - 1) + #tempSetptsLower[#INDEX_BOOL] <= #tempSetptsUpper[#INDEX_BOOL] THEN
+	            #setpointsArray_BOOL[#tempLoop] := #setpoints_BOOL[#tempLoop + #SETPOINTS_PERPAGE * (#recipeCurrentPages[#INDEX_BOOL] - 1) + #tempSetptsLower[#INDEX_BOOL]];
+	            #"setpoint FaceplatesDisable_BOOL"[#tempLoop] := false;
+	        ELSE
+	            #"setpoint FaceplatesDisable_BOOL"[#tempLoop] := true;
+	        END_IF;
+	    END_FOR;
+	END_REGION
+	
+	
+	REGION STRING
+	    //index in Setpoints_XXX of the current popup
+	    #tempCurrentPopup := #recipePopupTrackers[#INDEX_STRING] + #SETPOINTS_PERPAGE * (#recipeCurrentPages[#INDEX_STRING] - 1) + #tempSetptsLower[#INDEX_STRING];
+	    
+	    IF #statPrevPopupTrackers[#INDEX_STRING] <> #recipePopupTrackers[#INDEX_STRING] THEN
+	        //if a new popup has been loaded, load the new setpoint so they can be displayed
+	        #recipePopup_STRING := #setpoints_STRING[#tempCurrentPopup];
+	    ELSE
+	        //if the HMI popup was updated, relay the commands back to the actual setpoint tag for processing
+	        //taking care to ensure that changes to the setpoints tags made in other areas of the program do not get overwritten
+	        IF (#statPrevPopupIn_STRING <> #recipePopup_STRING.IN) AND (#statPrevSetpointIn_STRING = #setpoints_STRING[#tempCurrentPopup].IN) THEN
+	            #setpoints_STRING[#tempCurrentPopup].IN := #recipePopup_STRING.IN;
+	        END_IF;
+	        IF #statPrevPopupsSave[#INDEX_STRING] <> #recipePopup_STRING.SaveSetpoint THEN
+	            #setpoints_STRING[#tempCurrentPopup].SaveSetpoint := #recipePopup_STRING.SaveSetpoint;
+	        END_IF;
+	        IF #statPrevPopupsRevert[#INDEX_STRING] <> #recipePopup_STRING.RevertSetpoint THEN
+	            #setpoints_STRING[#tempCurrentPopup].RevertSetpoint := #recipePopup_STRING.RevertSetpoint;
+	        END_IF;
+	        
+	        //then update the popup with the latest setpoint information
+	        #recipePopup_STRING := #setpoints_STRING[#tempCurrentPopup];
+	    END_IF;
+	    
+	    //set previous values for next scan
+	    #statPrevPopupIn_STRING := #recipePopup_STRING.IN;
+	    #statPrevSetpointIn_STRING := #setpoints_STRING[#tempCurrentPopup].IN;
+	    #statPrevPopupsSave[#INDEX_STRING] := #recipePopup_STRING.SaveSetpoint;
+	    #statPrevPopupsRevert[#INDEX_STRING] := #recipePopup_STRING.RevertSetpoint;
+	    
+	    
+	    //update main setpoint display with setpoint data
+	    FOR #tempLoop := 0 TO #SETPOINTS_PERPAGE - 1 DO
+	        IF #tempLoop + #SETPOINTS_PERPAGE * (#recipeCurrentPages[#INDEX_STRING] - 1) + #tempSetptsLower[#INDEX_STRING] <= #tempSetptsUpper[#INDEX_STRING] THEN
+	            #setpointsArray_STRING[#tempLoop] := #setpoints_STRING[#tempLoop + #SETPOINTS_PERPAGE * (#recipeCurrentPages[#INDEX_STRING] - 1) + #tempSetptsLower[#INDEX_STRING]];
+	            #"setpoint FaceplatesDisable_STRING"[#tempLoop] := false;
+	        ELSE
+	            #"setpoint FaceplatesDisable_STRING"[#tempLoop] := true;
+	        END_IF;
+	    END_FOR;
+	END_REGION
+	
+	
+	REGION RECIPE NAMES AND TIMES
+	    //update the recipe arrays, save times, cum times, and numbers with their current values
+	    //these values are read only so no need to update the "Recipe Names Array" like we did with the popups
+	    FOR #tempLoop := 0 TO #RECIPES_PERPAGE - 1 DO
+	        IF #tempLoop + #RECIPES_PERPAGE * (#recipeCurrentPages[4] - 1) + #tempNumRecipesLower <= #tempNumRecipesUpper THEN
+	            #recipeArrayNames[#tempLoop] := #recipeNamesArray[#tempLoop + #RECIPES_PERPAGE * (#recipeCurrentPages[4] - 1) + #tempNumRecipesLower];
+	            #recipeArraySaves[#tempLoop] := #recipeSavesArray[#tempLoop + #RECIPES_PERPAGE * (#recipeCurrentPages[4] - 1) + #tempNumRecipesLower];
+	            #recipeArrayTimes[#tempLoop] := #recipeTimesArray[#tempLoop + #RECIPES_PERPAGE * (#recipeCurrentPages[4] - 1) + #tempNumRecipesLower];
+	            #recipeArrayNums[#tempLoop] := #tempLoop + #RECIPES_PERPAGE * (#recipeCurrentPages[4] - 1) + #tempNumRecipesLower;
+	            #recipeArrayDisables[#tempLoop] := false;
+	        ELSE
+	            #recipeArrayDisables[#tempLoop] := true;
+	        END_IF;
+	    END_FOR;
+	END_REGION
+	
+	
+	
+	
+	
+	//update previous values
+	#statPrevCurrentPages := #recipeCurrentPages;
+	#statPrevPopupTrackers := #recipePopupTrackers;
+	
+	//  -------------- END OF LOGIC -------------------------
+	ENO := TRUE;   // Set the ENO output
+END_FUNCTION_BLOCK
+

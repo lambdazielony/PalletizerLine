@@ -1,0 +1,416 @@
+﻿FUNCTION_BLOCK "CPG_RecipeControl"
+TITLE = CPG_RecipeControl
+{ S7_Optimized_Access := 'TRUE' }
+AUTHOR : 'tech.team.motioncontrol@siemens.com'
+FAMILY : CPG
+VERSION : 1.1
+//Support: tech.team.motioncontrol@siemens.com
+   VAR_INPUT 
+      enable { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // Recipe change is only possible if instruction is enabled
+      recipeChangeID { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;   // ID of recipe to change to
+      recipeChangeReq { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // Change recipe on rising edge
+      recipeSaveReq { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // Save current recipe on rising edge
+      recipeSaveAsID { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;   // Location to saveas recipe to
+      recipeSaveAsReq { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // SaveAs recipe on rising edge
+      recipeCopySourceID { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;   // Location to copy recipe from
+      recipeCopyID { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;   // Location to copy recipe to
+      recipeCopyReq { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // Copy recipe on rising edge
+      newRecipeName { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : String[60];   // Name of the saveas or copied recipe
+      recipeDeleteID { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;   // Location of recipe to delete
+      recipeDeleteReq { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // Delete recipe on rising edge
+      resetAllTimes { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // Reset cumulative seconds for all recipes
+   END_VAR
+
+   VAR_OUTPUT 
+      currentRecipeID { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;   // ID of the current recipe
+      currentRecipeName { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : String[60];   // Name of the current recipe
+      recipeChangeDisabled { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // Recipe changes are enabled
+      recipeSetpointDiff { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // New setpoint differs from current recipe value
+      recipeCurrentSeconds { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Time;   // Current recipe time in seconds
+      error { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // Error Present
+      errorID { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Word := 16#0000;   // Code for Status
+   END_VAR
+
+   VAR_IN_OUT 
+      recipeControl : "CPG_typeRecipeControl";   // Recipe Control tag
+      recipeNames : Array[0.."CPG_NO_OF_RECIPE_UPPER_LIM"] of String[60];   // All recipe names
+      recipeCumSeconds : Array[0.."CPG_NO_OF_RECIPE_UPPER_LIM"] of Time;   // Cumulative times for all recipes
+      recipeSaveDates {InstructionName := 'DTL'; LibVersion := '1.0'} : Array[0.."CPG_NO_OF_RECIPE_UPPER_LIM"] of DTL;   // Recipe saved date time
+   END_VAR
+
+   VAR 
+      statSetpoinDiffTimer {InstructionName := 'TON_TIME'; LibVersion := '1.0'; ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : TON_TIME;
+      statPrevRecipe { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;
+      statChangeReq {InstructionName := 'R_TRIG'; LibVersion := '1.0'; ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : R_TRIG;
+      statSaveReq {InstructionName := 'R_TRIG'; LibVersion := '1.0'; ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : R_TRIG;
+      statSaveAsReq {InstructionName := 'R_TRIG'; LibVersion := '1.0'; ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : R_TRIG;
+      statCopyReq {InstructionName := 'R_TRIG'; LibVersion := '1.0'; ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : R_TRIG;
+      statDeleteReq {InstructionName := 'R_TRIG'; LibVersion := '1.0'; ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : R_TRIG;
+      statChangeTimer {InstructionName := 'TP_TIME'; LibVersion := '1.0'; ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : TP_TIME;
+      statChangeTimerFall {InstructionName := 'F_TRIG'; LibVersion := '1.0'; ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : F_TRIG;
+      statSaveTimer {InstructionName := 'TP_TIME'; LibVersion := '1.0'; ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : TP_TIME;
+      statSaveTimerFall {InstructionName := 'F_TRIG'; LibVersion := '1.0'; ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : F_TRIG;
+      statSaveAsTimer {InstructionName := 'TP_TIME'; LibVersion := '1.0'; ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : TP_TIME;
+      statSaveAsTimerFall {InstructionName := 'F_TRIG'; LibVersion := '1.0'; ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : F_TRIG;
+      statCopyTimer {InstructionName := 'TP_TIME'; LibVersion := '1.0'; ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : TP_TIME;
+      statCopyTimerFall {InstructionName := 'F_TRIG'; LibVersion := '1.0'; ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : F_TRIG;
+      statDeleteTimer {InstructionName := 'TP_TIME'; LibVersion := '1.0'; ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : TP_TIME;
+      statDeleteTimerFall {InstructionName := 'F_TRIG'; LibVersion := '1.0'; ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : F_TRIG;
+      statPrevCumSeconds { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Array[0.."CPG_NO_OF_RECIPE_UPPER_LIM"] of Time;
+      statChangeTimeStamp {InstructionName := 'DTL'; LibVersion := '1.0'; ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : DTL;
+   END_VAR
+
+   VAR_TEMP 
+      tempChangeEN : Bool;
+      tempCopyRecipeEN : Bool;
+      tempSaveRecipeEN : Bool;
+      tempDeleteRecipeEN : Bool;
+      tempDTLError : Int;
+      tempLoop : Int;
+      tempTime {InstructionName := 'DTL'; LibVersion := '1.0'} : DTL;
+      tempRecipeSaveAs : Bool;
+   END_VAR
+
+   VAR CONSTANT 
+      MAX_RECIPE_NUM : Int := 20;
+      WARNING_TIMERLEN : Time := T#1s;
+      CHG_ERR : Word := 16#8001;
+      SAVE_ERR : Word := 16#8002;
+      COPY_ERR : Word := 16#8004;
+      DEL_ERR : Word := 16#8008;
+   END_VAR
+
+
+BEGIN
+	//============================================================================================================
+	// SIEMENS AG
+	// (c)Copyright 2019 All Rights Reserved
+	//------------------------------------------------------------------------------------------------------------
+	// Library: LCPG
+	// Tested with: S7-1500 with FW version V2.1
+	// Engineering: TIA Portal V14
+	// Restrictions: ---
+	// Requirements: S7-1500
+	// Functionality: used to control the current machine recipe
+	// Support: tech.team.motioncontrol@siemens.com
+	//------------------------------------------------------------------------------------------------------------
+	// Change log table:
+	// Version       Date               Expert in charge    Changes applied
+	//  01.01.00     02.01.2019         KB                  Initial Release
+	//============================================================================================================
+	// Function : CPG_RecipeControl
+	//============================================================================================================
+	
+	REGION INITIALIZATION
+	    #errorID := 16#0000;
+	    
+	    #recipeControl.RecipeChangeDisabled := NOT #enable;
+	    
+	    //check lanugage for out of bounds
+	    IF (#recipeControl.LanguageSelection < 0) OR (#recipeControl.LanguageSelection > "LPMLV30_LANGUAGES_UPPER_LIM") THEN
+	        #errorID := #errorID OR 16#1000;
+	        #recipeControl.LanguageSelection := 0;
+	    END_IF;
+	    
+	    
+	    //Dectect any recipe & setpoint differences
+	    //if any call of recipe setpoint FBs has a difference, the RecipeSetpointDiff bit is set
+	    IF #recipeControl.RecipeSetpointDiff THEN
+	        #recipeSetpointDiff := true;
+	        #recipeControl.RecipeSetpointDiff := false;
+	    END_IF;
+	END_REGION
+	
+	
+	REGION RECIPE MANAGEMENT ENABLING
+	    //Check that only 1 recipe command is active
+	    IF NOT (#recipeControl.RecipeCopy OR #recipeControl.RecipeDelete OR #recipeControl.RecipeSave) THEN     //all false except change
+	        #tempChangeEN := true;
+	    END_IF;
+	    IF NOT (#recipeControl.RecipeCopy OR #recipeControl.RecipeDelete OR #recipeControl.RecipeChange) THEN   //all false except save/saveas
+	        #tempSaveRecipeEN := true;
+	    END_IF;
+	    IF NOT (#recipeControl.RecipeChange OR #recipeControl.RecipeDelete OR #recipeControl.RecipeSave) THEN   //all false except copy
+	        #tempCopyRecipeEN := true;
+	    END_IF;
+	    IF NOT (#recipeControl.RecipeCopy OR #recipeControl.RecipeChange OR #recipeControl.RecipeSave) THEN     //all false except delete
+	        #tempDeleteRecipeEN := true;
+	    END_IF;
+	    
+	    
+	    //RecipeCmd out of bounds, or equal to the current recipe
+	    IF (#recipeChangeID > #MAX_RECIPE_NUM) OR (#recipeChangeID < 0) OR (#recipeChangeID = #recipeControl.CurrentRecipeID) THEN
+	        #errorID := #errorID OR #CHG_ERR;
+	        #tempChangeEN := false;
+	    END_IF;
+	    //RecipeSaveAsCmd out of bounds, or attempting to over current recipe
+	    IF (#recipeSaveAsID > #MAX_RECIPE_NUM) OR (#recipeSaveAsID < 0) OR (#recipeSaveAsID = #recipeControl.CurrentRecipeID) THEN
+	        #errorID := #errorID OR #SAVE_ERR;
+	        #tempSaveRecipeEN := false;
+	    END_IF;
+	    //RecipeCopyCmd or RecipeCopySourceCmd out of bounds, cannot copy to currently running recipe
+	    IF (#recipeCopyID > #MAX_RECIPE_NUM) OR (#recipeCopyID < 0) OR (#recipeCopySourceID > #MAX_RECIPE_NUM) OR (#recipeCopySourceID < 0)
+	        OR #recipeCopyID = #recipeControl.CurrentRecipeID THEN
+	        #errorID := #errorID OR #COPY_ERR;
+	        #tempCopyRecipeEN := false;
+	    END_IF;
+	    //RecipeDeleteCmd out of bounds or equal to current recipe
+	    IF (#recipeDeleteID > #MAX_RECIPE_NUM) OR (#recipeDeleteID < 0) OR (#recipeDeleteID = #recipeControl.CurrentRecipeID) THEN
+	        #errorID := #errorID OR #DEL_ERR;
+	        #tempDeleteRecipeEN := false;
+	    END_IF;
+	END_REGION
+	
+	
+	REGION RECIPE CHANGE
+	    //only allow recipe changes while enabled
+	    IF #enable THEN
+	        
+	        //timer needed for display & troubleshooting
+	        //timer starts on rising edge of the req signal and persists for 1s
+	        #statChangeReq(CLK := #recipeChangeReq);
+	        
+	        #statChangeTimer(IN := #statChangeReq.Q,
+	                     PT := #WARNING_TIMERLEN);
+	        
+	        #statChangeTimerFall(CLK := #statChangeTimer.Q);
+	        
+	        
+	        //Check that the recipe to change is valid & no other command is active
+	        IF #tempChangeEN THEN
+	            
+	            //set output to indicate that a recipe is being changed
+	            IF #statChangeTimer.Q THEN
+	                #recipeControl.RecipeChange := true;
+	            ELSE
+	                #recipeControl.RecipeChange := false;
+	            END_IF;
+	            
+	            //change recipe on done bit, true for only 1 scan
+	            IF #statChangeTimerFall.Q THEN
+	                #recipeControl.RecipeChangeNum := #recipeControl.RecipeChangeNum + 1;
+	                #recipeControl.CurrentRecipeID := #recipeChangeID;
+	                #recipeControl.CurrentRecipeName := #recipeNames[#recipeControl.CurrentRecipeID];
+	            END_IF;
+	            
+	        END_IF;
+	        
+	    END_IF;
+	END_REGION
+	
+	
+	REGION RECIPE SAVEAS
+	    //timer needed for display & troubleshooting
+	    //timer starts on rising edge of the req signal and persists for 1s
+	    #statSaveAsReq(CLK := #recipeSaveAsReq);
+	    
+	    #statSaveAsTimer(IN := #statSaveAsReq.Q,
+	                 PT := #WARNING_TIMERLEN);
+	    
+	    #statSaveAsTimerFall(CLK := #statSaveAsTimer.Q);
+	    
+	    
+	    //Check that the recipe to save is valid & no other command is active
+	    IF #tempSaveRecipeEN THEN
+	        
+	        //set output to indicate that a recipe is being saved
+	        //because Save & SaveAs use the same output (RecipeControl.RecipeSave), this is handled slightly differently
+	        IF #statSaveAsTimer.Q THEN
+	            #tempRecipeSaveAs := true;
+	        END_IF;
+	        
+	        
+	        //set work variables so that setpoints know the source/destination of the copy operation
+	        IF #statSaveAsTimer.Q THEN
+	            #recipeControl.RecipeSourceID := #recipeControl.CurrentRecipeID;
+	            #recipeControl.RecipeDestinationID := #recipeSaveAsID;
+	        END_IF;
+	        
+	        //update counter, take timestamp, and update recipe name
+	        IF #statSaveAsTimerFall.Q THEN
+	            #recipeControl.RecipeSaveNum := #recipeControl.RecipeSaveNum + 1;
+	            #tempDTLError := RD_LOC_T(#recipeSaveDates[#recipeControl.RecipeDestinationID]);
+	            #recipeNames[#recipeControl.RecipeDestinationID] := #newRecipeName;
+	        END_IF;
+	        
+	    END_IF;
+	END_REGION
+	
+	
+	REGION RECIPE SAVE
+	    //timer needed for display & troubleshooting
+	    //timer starts on rising edge of the req signal and persists for 1s
+	    #statSaveReq(CLK := #recipeSaveReq);
+	    
+	    #statSaveTimer(IN := #statSaveReq.Q,
+	               PT := #WARNING_TIMERLEN);
+	    
+	    #statSaveTimerFall(CLK := #statSaveTimer.Q);
+	    
+	    
+	    //saving is always possible
+	    //note that the saveas REGION must be after the save REGION
+	    //otherwise RecipeControl.RecipeSave won't be set by a saveas
+	    
+	    //set output to indicate that a recipe is being saved
+	    //because Save & SaveAs use the same output (RecipeControl.RecipeSave), this is handled slightly differently
+	    IF #statSaveTimer.Q  OR #tempRecipeSaveAs THEN
+	        #recipeControl.RecipeSave := true;
+	    ELSE
+	        #recipeControl.RecipeSave := false;
+	    END_IF;
+	    
+	    //set work variables so that setpoints know the source/destination of the save operation
+	    IF #statSaveTimer.Q THEN
+	        #recipeControl.RecipeSourceID := #recipeControl.CurrentRecipeID;
+	        #recipeControl.RecipeDestinationID := #recipeControl.CurrentRecipeID;
+	    END_IF;
+	    
+	    //update counter, take timestamp
+	    IF #statSaveTimerFall.Q THEN
+	        #recipeControl.RecipeSaveNum := #recipeControl.RecipeSaveNum + 1;
+	        #tempDTLError := RD_LOC_T(#recipeSaveDates[#recipeControl.RecipeDestinationID]);
+	    END_IF;
+	END_REGION
+	
+	
+	REGION RECIPE COPY
+	    //timer needed for display & troubleshooting
+	    //timer starts on rising edge of the req signal and persists for 1s
+	    #statCopyReq(CLK := #recipeCopyReq);
+	    
+	    #statCopyTimer(IN := #statCopyReq.Q,
+	               PT := #WARNING_TIMERLEN);
+	    
+	    #statCopyTimerFall(CLK := #statCopyTimer.Q);
+	    
+	    
+	    //Check that the recipes to copy are valid & no other command is active
+	    IF #tempCopyRecipeEN THEN
+	        
+	        //set output to indicate that a recipe is being copied
+	        IF #statCopyTimer.Q THEN
+	            #recipeControl.RecipeCopy := true;
+	        ELSE
+	            #recipeControl.RecipeCopy := false;
+	        END_IF;
+	        
+	        //set work variables so that setpoints know the source/destination of the copy operation
+	        IF #statCopyTimer.Q THEN
+	            #recipeControl.RecipeSourceID := #recipeCopySourceID;
+	            #recipeControl.RecipeDestinationID := #recipeCopyID;
+	        END_IF;
+	        
+	        //update the recipename of the new recipe, increment change work variable
+	        IF #statCopyTimerFall.Q THEN
+	            #recipeControl.RecipeCopyNum := #recipeControl.RecipeCopyNum + 1;
+	            #tempDTLError := RD_LOC_T(#recipeSaveDates[#recipeControl.RecipeDestinationID]);
+	            #recipeNames[#recipeControl.RecipeDestinationID] := #newRecipeName;
+	        END_IF;
+	        
+	    END_IF;
+	END_REGION
+	
+	
+	REGION RECIPE DELETE
+	    //timer needed for display & troubleshooting
+	    //timer starts on rising edge of the req signal and persists for 1s
+	    #statDeleteReq(CLK := #recipeDeleteReq);
+	    
+	    #statDeleteTimer(IN := #statDeleteReq.Q,
+	                 PT := #WARNING_TIMERLEN);
+	    
+	    #statDeleteTimerFall(CLK := #statDeleteTimer.Q);
+	    
+	    
+	    //Check that the recipe to delete is valid & no other command is active
+	    IF #tempDeleteRecipeEN THEN
+	        
+	        //set output to indicate that a recipe is being copied
+	        IF #statDeleteTimer.Q THEN
+	            #recipeControl.RecipeDelete := true;
+	        ELSE
+	            #recipeControl.RecipeDelete := false;
+	        END_IF;
+	        
+	        //set work variable so that setpoints know the destination of the delete operation
+	        IF #statDeleteTimer.Q THEN
+	            #recipeControl.RecipeDestinationID := #recipeDeleteID;
+	        END_IF;
+	        
+	        //clear the recipe name
+	        IF #statDeleteTimerFall.Q THEN
+	            #recipeControl.RecipeDeleteNum := #recipeControl.RecipeDeleteNum + 1;
+	            #tempDTLError := RD_LOC_T(#recipeSaveDates[#recipeControl.RecipeDestinationID]);
+	            #recipeNames[#recipeControl.RecipeDestinationID] := '';
+	        END_IF;
+	        
+	    END_IF;
+	END_REGION
+	
+	
+	REGION TIME TRACKING
+	    //reset all times resets the cumulative time for all recipes, and the cum seconds output, but does not change the save timestamps
+	    IF #resetAllTimes THEN
+	        FOR #tempLoop := 0 TO #MAX_RECIPE_NUM DO
+	            // set all cumulative times to zero
+	            #recipeCumSeconds[#tempLoop] := T#0s;
+	            #statPrevCumSeconds[#tempLoop] := T#0s;
+	        END_FOR;
+	        #recipeCurrentSeconds := T#0s;
+	    END_IF;
+	    
+	    //if recipe changes, note the time of change and save the accumulated time for the 
+	    IF #recipeControl.CurrentRecipeID <> #statPrevRecipe THEN
+	        #tempDTLError := RD_LOC_T(#statChangeTimeStamp);
+	        #statPrevCumSeconds[#recipeControl.CurrentRecipeID] := #recipeCumSeconds[#recipeControl.CurrentRecipeID];
+	        #recipeCurrentSeconds := T#0s;
+	    END_IF;
+	    
+	    //must initialize this value or timetracking does not work on plc startup
+	    IF #statChangeTimeStamp = DTL#1970-01-01-00:00:00 THEN
+	        #tempDTLError := RD_LOC_T(#statChangeTimeStamp);
+	    END_IF;
+	    
+	    #tempDTLError := RD_LOC_T(#tempTime);
+	    #recipeCurrentSeconds := T_DIFF(IN1 := #tempTime, IN2 := #statChangeTimeStamp);
+	    #recipeCumSeconds[#recipeControl.CurrentRecipeID] := #statPrevCumSeconds[#recipeControl.CurrentRecipeID] + #recipeCurrentSeconds;
+	END_REGION
+	
+	
+	REGION SET OUTPUTS
+	    //Update current recipe name in case user changed RecipeControl.CurrentRecipeName on the HMI
+	    IF #recipeControl.CurrentRecipeName <> #recipeNames[#recipeControl.CurrentRecipeID] THEN
+	        #recipeNames[#recipeControl.CurrentRecipeID] := #recipeControl.CurrentRecipeName;
+	    ELSE
+	        #recipeControl.CurrentRecipeName := #recipeNames[#recipeControl.CurrentRecipeID];
+	    END_IF;
+	    
+	    //tmpDTLerror recieves a value if there is an eror returning the PLC system time
+	    IF #tempDTLError <> 0 THEN
+	        #errorID := #errorID OR 16#0100;
+	    END_IF;
+	    
+	    //report error bit
+	    IF #errorID = 16#0 THEN
+	        #error := false;
+	    ELSE
+	        #error := true;
+	    END_IF;
+	    
+	    //ensure recipe display numbers are in bounds
+	    #recipeControl.RecipeID_A := LIMIT(MN := 0, IN := #recipeControl.RecipeID_A, MX := #MAX_RECIPE_NUM);
+	    #recipeControl.RecipeID_B := LIMIT(MN := 0, IN := #recipeControl.RecipeID_B, MX := #MAX_RECIPE_NUM);
+	    #recipeControl.RecipeID_C := LIMIT(MN := 0, IN := #recipeControl.RecipeID_C, MX := #MAX_RECIPE_NUM);
+	    
+	    //set some final outputs
+	    #statPrevRecipe := #recipeControl.CurrentRecipeID;
+	    #currentRecipeID := #recipeControl.CurrentRecipeID;
+	    #currentRecipeName := #recipeControl.CurrentRecipeName;
+	    #recipeChangeDisabled := #recipeControl.RecipeChangeDisabled;
+	END_REGION
+	
+	//  -------------- END OF LOGIC -------------------------
+	ENO := TRUE;   // Set the ENO output
+END_FUNCTION_BLOCK
+

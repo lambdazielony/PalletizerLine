@@ -1,0 +1,822 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V17" />
+  <DocumentInfo>
+    <Created>2022-03-12T16:05:25.9607726Z</Created>
+    <ExportSetting>WithDefaults</ExportSetting>
+    <InstalledProducts>
+      <Product>
+        <DisplayName>Totally Integrated Automation Portal</DisplayName>
+        <DisplayVersion>V17</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>TIA Portal Openness</DisplayName>
+        <DisplayVersion>V17</DisplayVersion>
+      </OptionPackage>
+      <OptionPackage>
+        <DisplayName>TIA Portal Version Control Interface</DisplayName>
+        <DisplayVersion>V17</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>STEP 7 Professional</DisplayName>
+        <DisplayVersion>V17</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>STEP 7 Safety</DisplayName>
+        <DisplayVersion>V17</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>WinCC Advanced / Unified PC</DisplayName>
+        <DisplayVersion>V17</DisplayVersion>
+      </Product>
+    </InstalledProducts>
+  </DocumentInfo>
+  <SW.Blocks.FB ID="0">
+    <AttributeList>
+      <AutoNumber>true</AutoNumber>
+      <HeaderAuthor>tech.team.motioncontrol@siemens.com</HeaderAuthor>
+      <HeaderFamily>CPG</HeaderFamily>
+      <HeaderName />
+      <HeaderVersion>1.1</HeaderVersion>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input" />
+  <Section Name="Output" />
+  <Section Name="InOut" />
+  <Section Name="Static">
+    <Member Name="instEventControl" Datatype="&quot;EM00_01_EventControl&quot;" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">Instance DB - EM's Event Control Logic</MultiLanguageText><MultiLanguageText Lang="de-DE">Instance DB - EM's Event Control Logic</MultiLanguageText></Comment><Sections><Section Name="Input" /><Section Name="Output" /><Section Name="InOut" /><Section Name="Static"><Member Name="instEventMgr_Alarm" Datatype="&quot;CPG_EventManager&quot;"><Sections><Section Name="Input"><Member Name="Cmd_Reset" Datatype="Bool" /><Member Name="Cmd_ClearFirstOutEvents" Datatype="Bool" /><Member Name="firstScanBit" Datatype="Bool" /><Member Name="Cfg_MessagePrefix" Datatype="&quot;CPG_typeMessagePrefix&quot;"><Sections><Section Name="None"><Member Name="messagePrefix" Datatype="Array[0..&quot;LPMLV30_LANGUAGES_UPPER_LIM&quot;] of String[30]" /></Section></Sections></Member><Member Name="Cfg_LanguageSelection" Datatype="Int" /></Section><Section Name="Output"><Member Name="Sts_Category_0_Latched" Datatype="Bool" /><Member Name="Sts_Category_1_Latched" Datatype="Bool" /><Member Name="Sts_Category_2_Latched" Datatype="Bool" /><Member Name="Sts_Category_3_Latched" Datatype="Bool" /><Member Name="Sts_Category_4_Latched" Datatype="Bool" /><Member Name="Sts_Category_5_Latched" Datatype="Bool" /><Member Name="Sts_Category_6_Latched" Datatype="Bool" /><Member Name="Sts_Category_7_Latched" Datatype="Bool" /><Member Name="Sts_Category_8_Latched" Datatype="Bool" /><Member Name="Sts_Category_9_Latched" Datatype="Bool" /><Member Name="Sts_Category_0_NotLatched" Datatype="Bool" /><Member Name="Sts_Category_1_NotLatched" Datatype="Bool" /><Member Name="Sts_Category_2_NotLatched" Datatype="Bool" /><Member Name="Sts_Category_3_NotLatched" Datatype="Bool" /><Member Name="Sts_Category_4_NotLatched" Datatype="Bool" /><Member Name="Sts_Category_5_NotLatched" Datatype="Bool" /><Member Name="Sts_Category_6_NotLatched" Datatype="Bool" /><Member Name="Sts_Category_7_NotLatched" Datatype="Bool" /><Member Name="Sts_Category_8_NotLatched" Datatype="Bool" /><Member Name="Sts_Category_9_NotLatched" Datatype="Bool" /><Member Name="Sts_NumEvents" Datatype="Int" /><Member Name="Sts_CurrentActiveEvent" Datatype="Bool" /><Member Name="Sts_Error" Datatype="Bool" /><Member Name="Sts_ErrorCode" Datatype="DInt" /></Section><Section Name="InOut"><Member Name="In_EventStatus" Datatype="&quot;CPG_typeEventStatus&quot;"><Sections><Section Name="None" /></Sections></Member></Section><Section Name="Static"><Member Name="statEventCategory" Datatype="DInt" /><Member Name="statIndexAllEvents" Datatype="Int" /><Member Name="statIndexClearActiveEvents" Datatype="Int" /><Member Name="statIndexClearFirstOut" Datatype="Int" /><Member Name="statNumEvents" Datatype="Int" /><Member Name="statPrevCmdReset" Datatype="Bool" /><Member Name="statPrevNumEvents" Datatype="Int" /><Member Name="statPrevUpdateEventListID" Datatype="Int" /><Member Name="statUpdateEventList" Datatype="Bool" /><Member Name="statCurrentErrorCode" Datatype="Int" /><Member Name="statCurrentActiveEvent" Datatype="Bool" /><Member Name="statZeroEvent" Datatype="&quot;CPG_typeEvent&quot;"><Sections><Section Name="None"><Member Name="Trigger" Datatype="Bool" /><Member Name="ID" Datatype="DInt" /><Member Name="Value" Datatype="DInt" /><Member Name="Message" Datatype="String[60]" /><Member Name="Category" Datatype="DInt" /><Member Name="DateTime" Datatype="Array[0..6] of DInt" /><Member Name="DateTimeDTL" Datatype="DTL" Version="1.0" /><Member Name="AckDateTime" Datatype="Array[0..6] of DInt" /><Member Name="AckDateTimeDTL" Datatype="DTL" Version="1.0" /></Section></Sections></Member></Section></Sections></Member><Member Name="instEventMgr_Warning" Datatype="&quot;CPG_EventManager&quot;"><Sections><Section Name="Input"><Member Name="Cmd_Reset" Datatype="Bool" /><Member Name="Cmd_ClearFirstOutEvents" Datatype="Bool" /><Member Name="firstScanBit" Datatype="Bool" /><Member Name="Cfg_MessagePrefix" Datatype="&quot;CPG_typeMessagePrefix&quot;"><Sections><Section Name="None"><Member Name="messagePrefix" Datatype="Array[0..&quot;LPMLV30_LANGUAGES_UPPER_LIM&quot;] of String[30]" /></Section></Sections></Member><Member Name="Cfg_LanguageSelection" Datatype="Int" /></Section><Section Name="Output"><Member Name="Sts_Category_0_Latched" Datatype="Bool" /><Member Name="Sts_Category_1_Latched" Datatype="Bool" /><Member Name="Sts_Category_2_Latched" Datatype="Bool" /><Member Name="Sts_Category_3_Latched" Datatype="Bool" /><Member Name="Sts_Category_4_Latched" Datatype="Bool" /><Member Name="Sts_Category_5_Latched" Datatype="Bool" /><Member Name="Sts_Category_6_Latched" Datatype="Bool" /><Member Name="Sts_Category_7_Latched" Datatype="Bool" /><Member Name="Sts_Category_8_Latched" Datatype="Bool" /><Member Name="Sts_Category_9_Latched" Datatype="Bool" /><Member Name="Sts_Category_0_NotLatched" Datatype="Bool" /><Member Name="Sts_Category_1_NotLatched" Datatype="Bool" /><Member Name="Sts_Category_2_NotLatched" Datatype="Bool" /><Member Name="Sts_Category_3_NotLatched" Datatype="Bool" /><Member Name="Sts_Category_4_NotLatched" Datatype="Bool" /><Member Name="Sts_Category_5_NotLatched" Datatype="Bool" /><Member Name="Sts_Category_6_NotLatched" Datatype="Bool" /><Member Name="Sts_Category_7_NotLatched" Datatype="Bool" /><Member Name="Sts_Category_8_NotLatched" Datatype="Bool" /><Member Name="Sts_Category_9_NotLatched" Datatype="Bool" /><Member Name="Sts_NumEvents" Datatype="Int" /><Member Name="Sts_CurrentActiveEvent" Datatype="Bool" /><Member Name="Sts_Error" Datatype="Bool" /><Member Name="Sts_ErrorCode" Datatype="DInt" /></Section><Section Name="InOut"><Member Name="In_EventStatus" Datatype="&quot;CPG_typeEventStatus&quot;"><Sections><Section Name="None" /></Sections></Member></Section><Section Name="Static"><Member Name="statEventCategory" Datatype="DInt" /><Member Name="statIndexAllEvents" Datatype="Int" /><Member Name="statIndexClearActiveEvents" Datatype="Int" /><Member Name="statIndexClearFirstOut" Datatype="Int" /><Member Name="statNumEvents" Datatype="Int" /><Member Name="statPrevCmdReset" Datatype="Bool" /><Member Name="statPrevNumEvents" Datatype="Int" /><Member Name="statPrevUpdateEventListID" Datatype="Int" /><Member Name="statUpdateEventList" Datatype="Bool" /><Member Name="statCurrentErrorCode" Datatype="Int" /><Member Name="statCurrentActiveEvent" Datatype="Bool" /><Member Name="statZeroEvent" Datatype="&quot;CPG_typeEvent&quot;"><Sections><Section Name="None"><Member Name="Trigger" Datatype="Bool" /><Member Name="ID" Datatype="DInt" /><Member Name="Value" Datatype="DInt" /><Member Name="Message" Datatype="String[60]" /><Member Name="Category" Datatype="DInt" /><Member Name="DateTime" Datatype="Array[0..6] of DInt" /><Member Name="DateTimeDTL" Datatype="DTL" Version="1.0" /><Member Name="AckDateTime" Datatype="Array[0..6] of DInt" /><Member Name="AckDateTimeDTL" Datatype="DTL" Version="1.0" /></Section></Sections></Member></Section></Sections></Member><Member Name="instEventMgr_Status" Datatype="&quot;CPG_EventManager&quot;"><Sections><Section Name="Input"><Member Name="Cmd_Reset" Datatype="Bool" /><Member Name="Cmd_ClearFirstOutEvents" Datatype="Bool" /><Member Name="firstScanBit" Datatype="Bool" /><Member Name="Cfg_MessagePrefix" Datatype="&quot;CPG_typeMessagePrefix&quot;"><Sections><Section Name="None"><Member Name="messagePrefix" Datatype="Array[0..&quot;LPMLV30_LANGUAGES_UPPER_LIM&quot;] of String[30]" /></Section></Sections></Member><Member Name="Cfg_LanguageSelection" Datatype="Int" /></Section><Section Name="Output"><Member Name="Sts_Category_0_Latched" Datatype="Bool" /><Member Name="Sts_Category_1_Latched" Datatype="Bool" /><Member Name="Sts_Category_2_Latched" Datatype="Bool" /><Member Name="Sts_Category_3_Latched" Datatype="Bool" /><Member Name="Sts_Category_4_Latched" Datatype="Bool" /><Member Name="Sts_Category_5_Latched" Datatype="Bool" /><Member Name="Sts_Category_6_Latched" Datatype="Bool" /><Member Name="Sts_Category_7_Latched" Datatype="Bool" /><Member Name="Sts_Category_8_Latched" Datatype="Bool" /><Member Name="Sts_Category_9_Latched" Datatype="Bool" /><Member Name="Sts_Category_0_NotLatched" Datatype="Bool" /><Member Name="Sts_Category_1_NotLatched" Datatype="Bool" /><Member Name="Sts_Category_2_NotLatched" Datatype="Bool" /><Member Name="Sts_Category_3_NotLatched" Datatype="Bool" /><Member Name="Sts_Category_4_NotLatched" Datatype="Bool" /><Member Name="Sts_Category_5_NotLatched" Datatype="Bool" /><Member Name="Sts_Category_6_NotLatched" Datatype="Bool" /><Member Name="Sts_Category_7_NotLatched" Datatype="Bool" /><Member Name="Sts_Category_8_NotLatched" Datatype="Bool" /><Member Name="Sts_Category_9_NotLatched" Datatype="Bool" /><Member Name="Sts_NumEvents" Datatype="Int" /><Member Name="Sts_CurrentActiveEvent" Datatype="Bool" /><Member Name="Sts_Error" Datatype="Bool" /><Member Name="Sts_ErrorCode" Datatype="DInt" /></Section><Section Name="InOut"><Member Name="In_EventStatus" Datatype="&quot;CPG_typeEventStatus&quot;"><Sections><Section Name="None" /></Sections></Member></Section><Section Name="Static"><Member Name="statEventCategory" Datatype="DInt" /><Member Name="statIndexAllEvents" Datatype="Int" /><Member Name="statIndexClearActiveEvents" Datatype="Int" /><Member Name="statIndexClearFirstOut" Datatype="Int" /><Member Name="statNumEvents" Datatype="Int" /><Member Name="statPrevCmdReset" Datatype="Bool" /><Member Name="statPrevNumEvents" Datatype="Int" /><Member Name="statPrevUpdateEventListID" Datatype="Int" /><Member Name="statUpdateEventList" Datatype="Bool" /><Member Name="statCurrentErrorCode" Datatype="Int" /><Member Name="statCurrentActiveEvent" Datatype="Bool" /><Member Name="statZeroEvent" Datatype="&quot;CPG_typeEvent&quot;"><Sections><Section Name="None"><Member Name="Trigger" Datatype="Bool" /><Member Name="ID" Datatype="DInt" /><Member Name="Value" Datatype="DInt" /><Member Name="Message" Datatype="String[60]" /><Member Name="Category" Datatype="DInt" /><Member Name="DateTime" Datatype="Array[0..6] of DInt" /><Member Name="DateTimeDTL" Datatype="DTL" Version="1.0" /><Member Name="AckDateTime" Datatype="Array[0..6] of DInt" /><Member Name="AckDateTimeDTL" Datatype="DTL" Version="1.0" /></Section></Sections></Member></Section></Sections></Member><Member Name="instStatus_AlarmNotReset" Datatype="&quot;CPG_Event&quot;"><Sections><Section Name="Input"><Member Name="EnableIn" Datatype="Bool" /><Member Name="Cfg_Event" Datatype="&quot;CPG_typeEventCfg&quot;"><Sections><Section Name="None"><Member Name="ID" Datatype="Int" /><Member Name="value" Datatype="Int" /><Member Name="message" Datatype="Array[0..&quot;LPMLV30_LANGUAGES_UPPER_LIM&quot;] of String[60]" /><Member Name="category" Datatype="Int" /></Section></Sections></Member><Member Name="Cfg_MessagePrefix" Datatype="&quot;CPG_typeMessagePrefix&quot;"><Sections><Section Name="None"><Member Name="messagePrefix" Datatype="Array[0..&quot;LPMLV30_LANGUAGES_UPPER_LIM&quot;] of String[30]" /></Section></Sections></Member></Section><Section Name="Output"><Member Name="Sts_Active" Datatype="Bool" /><Member Name="Sts_Latched" Datatype="Bool" /></Section><Section Name="InOut"><Member Name="In_EventStatus" Datatype="&quot;CPG_typeEventStatus&quot;"><Sections><Section Name="None" /></Sections></Member></Section><Section Name="Static"><Member Name="statActive" Datatype="Bool" /><Member Name="statLatched" Datatype="Bool" /><Member Name="statEvent_Number" Datatype="Int" /><Member Name="statPrev_ResetID" Datatype="Int" /><Member Name="statError_RTC" Datatype="Int" /><Member Name="statEvent_CurDateTime" Datatype="DTL" Version="1.0" /></Section></Sections></Member><Member Name="statEventMgr_Cmd_Reset" Datatype="Bool" /><Member Name="statEventMgr_Cmd_Clear1stFlt" Datatype="Bool" /><Member Name="statEventMgr_Clear1stFlt_OS" Datatype="Bool" /></Section></Sections></Member>
+    <Member Name="instPackML_ModuleSum" Datatype="&quot;EM00_02_PackML_ModuleSum&quot;" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">Instance DB - EM's  PackML  Module Summation Logic</MultiLanguageText><MultiLanguageText Lang="de-DE">Instance DB - EM's  PackML  Module Summation Logic</MultiLanguageText></Comment><Sections><Section Name="Input" /><Section Name="Output" /><Section Name="InOut" /><Section Name="Static"><Member Name="statDummyBool" Datatype="Bool" /></Section></Sections></Member>
+    <Member Name="instCM01" Datatype="&quot;EM00_CM01_MainOpStation&quot;" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">Instance DB - CM01</MultiLanguageText><MultiLanguageText Lang="de-DE">Instance DB - CM01</MultiLanguageText></Comment><Sections><Section Name="Input" /><Section Name="Output" /><Section Name="InOut" /><Section Name="Static"><Member Name="instAlarm_EStop" Datatype="&quot;CPG_Event&quot;"><Sections><Section Name="Input"><Member Name="EnableIn" Datatype="Bool" /><Member Name="Cfg_Event" Datatype="&quot;CPG_typeEventCfg&quot;"><Sections><Section Name="None"><Member Name="ID" Datatype="Int" /><Member Name="value" Datatype="Int" /><Member Name="message" Datatype="Array[0..&quot;LPMLV30_LANGUAGES_UPPER_LIM&quot;] of String[60]" /><Member Name="category" Datatype="Int" /></Section></Sections></Member><Member Name="Cfg_MessagePrefix" Datatype="&quot;CPG_typeMessagePrefix&quot;"><Sections><Section Name="None"><Member Name="messagePrefix" Datatype="Array[0..&quot;LPMLV30_LANGUAGES_UPPER_LIM&quot;] of String[30]" /></Section></Sections></Member></Section><Section Name="Output"><Member Name="Sts_Active" Datatype="Bool" /><Member Name="Sts_Latched" Datatype="Bool" /></Section><Section Name="InOut"><Member Name="In_EventStatus" Datatype="&quot;CPG_typeEventStatus&quot;"><Sections><Section Name="None" /></Sections></Member></Section><Section Name="Static"><Member Name="statActive" Datatype="Bool" /><Member Name="statLatched" Datatype="Bool" /><Member Name="statEvent_Number" Datatype="Int" /><Member Name="statPrev_ResetID" Datatype="Int" /><Member Name="statError_RTC" Datatype="Int" /><Member Name="statEvent_CurDateTime" Datatype="DTL" Version="1.0" /></Section></Sections></Member><Member Name="instAlarm_HMI_StopPB" Datatype="&quot;CPG_Event&quot;"><Sections><Section Name="Input"><Member Name="EnableIn" Datatype="Bool" /><Member Name="Cfg_Event" Datatype="&quot;CPG_typeEventCfg&quot;"><Sections><Section Name="None"><Member Name="ID" Datatype="Int" /><Member Name="value" Datatype="Int" /><Member Name="message" Datatype="Array[0..&quot;LPMLV30_LANGUAGES_UPPER_LIM&quot;] of String[60]" /><Member Name="category" Datatype="Int" /></Section></Sections></Member><Member Name="Cfg_MessagePrefix" Datatype="&quot;CPG_typeMessagePrefix&quot;"><Sections><Section Name="None"><Member Name="messagePrefix" Datatype="Array[0..&quot;LPMLV30_LANGUAGES_UPPER_LIM&quot;] of String[30]" /></Section></Sections></Member></Section><Section Name="Output"><Member Name="Sts_Active" Datatype="Bool" /><Member Name="Sts_Latched" Datatype="Bool" /></Section><Section Name="InOut"><Member Name="In_EventStatus" Datatype="&quot;CPG_typeEventStatus&quot;"><Sections><Section Name="None" /></Sections></Member></Section><Section Name="Static"><Member Name="statActive" Datatype="Bool" /><Member Name="statLatched" Datatype="Bool" /><Member Name="statEvent_Number" Datatype="Int" /><Member Name="statPrev_ResetID" Datatype="Int" /><Member Name="statError_RTC" Datatype="Int" /><Member Name="statEvent_CurDateTime" Datatype="DTL" Version="1.0" /></Section></Sections></Member><Member Name="instStatus_WaitingForStartCmd" Datatype="&quot;CPG_Event&quot;"><Sections><Section Name="Input"><Member Name="EnableIn" Datatype="Bool" /><Member Name="Cfg_Event" Datatype="&quot;CPG_typeEventCfg&quot;"><Sections><Section Name="None"><Member Name="ID" Datatype="Int" /><Member Name="value" Datatype="Int" /><Member Name="message" Datatype="Array[0..&quot;LPMLV30_LANGUAGES_UPPER_LIM&quot;] of String[60]" /><Member Name="category" Datatype="Int" /></Section></Sections></Member><Member Name="Cfg_MessagePrefix" Datatype="&quot;CPG_typeMessagePrefix&quot;"><Sections><Section Name="None"><Member Name="messagePrefix" Datatype="Array[0..&quot;LPMLV30_LANGUAGES_UPPER_LIM&quot;] of String[30]" /></Section></Sections></Member></Section><Section Name="Output"><Member Name="Sts_Active" Datatype="Bool" /><Member Name="Sts_Latched" Datatype="Bool" /></Section><Section Name="InOut"><Member Name="In_EventStatus" Datatype="&quot;CPG_typeEventStatus&quot;"><Sections><Section Name="None" /></Sections></Member></Section><Section Name="Static"><Member Name="statActive" Datatype="Bool" /><Member Name="statLatched" Datatype="Bool" /><Member Name="statEvent_Number" Datatype="Int" /><Member Name="statPrev_ResetID" Datatype="Int" /><Member Name="statError_RTC" Datatype="Int" /><Member Name="statEvent_CurDateTime" Datatype="DTL" Version="1.0" /></Section></Sections></Member><Member Name="instStatus_WaitingForResetCmd" Datatype="&quot;CPG_Event&quot;"><Sections><Section Name="Input"><Member Name="EnableIn" Datatype="Bool" /><Member Name="Cfg_Event" Datatype="&quot;CPG_typeEventCfg&quot;"><Sections><Section Name="None"><Member Name="ID" Datatype="Int" /><Member Name="value" Datatype="Int" /><Member Name="message" Datatype="Array[0..&quot;LPMLV30_LANGUAGES_UPPER_LIM&quot;] of String[60]" /><Member Name="category" Datatype="Int" /></Section></Sections></Member><Member Name="Cfg_MessagePrefix" Datatype="&quot;CPG_typeMessagePrefix&quot;"><Sections><Section Name="None"><Member Name="messagePrefix" Datatype="Array[0..&quot;LPMLV30_LANGUAGES_UPPER_LIM&quot;] of String[30]" /></Section></Sections></Member></Section><Section Name="Output"><Member Name="Sts_Active" Datatype="Bool" /><Member Name="Sts_Latched" Datatype="Bool" /></Section><Section Name="InOut"><Member Name="In_EventStatus" Datatype="&quot;CPG_typeEventStatus&quot;"><Sections><Section Name="None" /></Sections></Member></Section><Section Name="Static"><Member Name="statActive" Datatype="Bool" /><Member Name="statLatched" Datatype="Bool" /><Member Name="statEvent_Number" Datatype="Int" /><Member Name="statPrev_ResetID" Datatype="Int" /><Member Name="statError_RTC" Datatype="Int" /><Member Name="statEvent_CurDateTime" Datatype="DTL" Version="1.0" /></Section></Sections></Member><Member Name="instAlarm_Hold_PB" Datatype="&quot;CPG_Event&quot;"><Sections><Section Name="Input"><Member Name="EnableIn" Datatype="Bool" /><Member Name="Cfg_Event" Datatype="&quot;CPG_typeEventCfg&quot;"><Sections><Section Name="None"><Member Name="ID" Datatype="Int" /><Member Name="value" Datatype="Int" /><Member Name="message" Datatype="Array[0..&quot;LPMLV30_LANGUAGES_UPPER_LIM&quot;] of String[60]" /><Member Name="category" Datatype="Int" /></Section></Sections></Member><Member Name="Cfg_MessagePrefix" Datatype="&quot;CPG_typeMessagePrefix&quot;"><Sections><Section Name="None"><Member Name="messagePrefix" Datatype="Array[0..&quot;LPMLV30_LANGUAGES_UPPER_LIM&quot;] of String[30]" /></Section></Sections></Member></Section><Section Name="Output"><Member Name="Sts_Active" Datatype="Bool" /><Member Name="Sts_Latched" Datatype="Bool" /></Section><Section Name="InOut"><Member Name="In_EventStatus" Datatype="&quot;CPG_typeEventStatus&quot;"><Sections><Section Name="None" /></Sections></Member></Section><Section Name="Static"><Member Name="statActive" Datatype="Bool" /><Member Name="statLatched" Datatype="Bool" /><Member Name="statEvent_Number" Datatype="Int" /><Member Name="statPrev_ResetID" Datatype="Int" /><Member Name="statError_RTC" Datatype="Int" /><Member Name="statEvent_CurDateTime" Datatype="DTL" Version="1.0" /></Section></Sections></Member><Member Name="instStatus_WaitingForUnHoldCmd" Datatype="&quot;CPG_Event&quot;"><Sections><Section Name="Input"><Member Name="EnableIn" Datatype="Bool" /><Member Name="Cfg_Event" Datatype="&quot;CPG_typeEventCfg&quot;"><Sections><Section Name="None"><Member Name="ID" Datatype="Int" /><Member Name="value" Datatype="Int" /><Member Name="message" Datatype="Array[0..&quot;LPMLV30_LANGUAGES_UPPER_LIM&quot;] of String[60]" /><Member Name="category" Datatype="Int" /></Section></Sections></Member><Member Name="Cfg_MessagePrefix" Datatype="&quot;CPG_typeMessagePrefix&quot;"><Sections><Section Name="None"><Member Name="messagePrefix" Datatype="Array[0..&quot;LPMLV30_LANGUAGES_UPPER_LIM&quot;] of String[30]" /></Section></Sections></Member></Section><Section Name="Output"><Member Name="Sts_Active" Datatype="Bool" /><Member Name="Sts_Latched" Datatype="Bool" /></Section><Section Name="InOut"><Member Name="In_EventStatus" Datatype="&quot;CPG_typeEventStatus&quot;"><Sections><Section Name="None" /></Sections></Member></Section><Section Name="Static"><Member Name="statActive" Datatype="Bool" /><Member Name="statLatched" Datatype="Bool" /><Member Name="statEvent_Number" Datatype="Int" /><Member Name="statPrev_ResetID" Datatype="Int" /><Member Name="statError_RTC" Datatype="Int" /><Member Name="statEvent_CurDateTime" Datatype="DTL" Version="1.0" /></Section></Sections></Member><Member Name="instTimer_StartingDelay_SC" Datatype="IEC_TIMER" Version="1.0"><Sections><Section Name="None"><Member Name="PT" Datatype="Time" /><Member Name="ET" Datatype="Time" /><Member Name="IN" Datatype="Bool" /><Member Name="Q" Datatype="Bool" /></Section></Sections></Member><Member Name="instTimer_CompletingDelay_SC" Datatype="IEC_TIMER" Version="1.0"><Sections><Section Name="None"><Member Name="PT" Datatype="Time" /><Member Name="ET" Datatype="Time" /><Member Name="IN" Datatype="Bool" /><Member Name="Q" Datatype="Bool" /></Section></Sections></Member><Member Name="instTimer_AbortingDelay_SC" Datatype="IEC_TIMER" Version="1.0"><Sections><Section Name="None"><Member Name="PT" Datatype="Time" /><Member Name="ET" Datatype="Time" /><Member Name="IN" Datatype="Bool" /><Member Name="Q" Datatype="Bool" /></Section></Sections></Member><Member Name="instTimer_StoppingDelay_SC" Datatype="IEC_TIMER" Version="1.0"><Sections><Section Name="None"><Member Name="PT" Datatype="Time" /><Member Name="ET" Datatype="Time" /><Member Name="IN" Datatype="Bool" /><Member Name="Q" Datatype="Bool" /></Section></Sections></Member><Member Name="instTimer_ResettingDelay_SC" Datatype="IEC_TIMER" Version="1.0"><Sections><Section Name="None"><Member Name="PT" Datatype="Time" /><Member Name="ET" Datatype="Time" /><Member Name="IN" Datatype="Bool" /><Member Name="Q" Datatype="Bool" /></Section></Sections></Member><Member Name="instTimer_HoldingDelay_SC" Datatype="IEC_TIMER" Version="1.0"><Sections><Section Name="None"><Member Name="PT" Datatype="Time" /><Member Name="ET" Datatype="Time" /><Member Name="IN" Datatype="Bool" /><Member Name="Q" Datatype="Bool" /></Section></Sections></Member><Member Name="instTimer_UnHoldingDelay_SC" Datatype="IEC_TIMER" Version="1.0"><Sections><Section Name="None"><Member Name="PT" Datatype="Time" /><Member Name="ET" Datatype="Time" /><Member Name="IN" Datatype="Bool" /><Member Name="Q" Datatype="Bool" /></Section></Sections></Member><Member Name="instTimer_SuspendingDelay_SC" Datatype="IEC_TIMER" Version="1.0"><Sections><Section Name="None"><Member Name="PT" Datatype="Time" /><Member Name="ET" Datatype="Time" /><Member Name="IN" Datatype="Bool" /><Member Name="Q" Datatype="Bool" /></Section></Sections></Member><Member Name="instTimer_UnSuspendingDelay_SC" Datatype="IEC_TIMER" Version="1.0"><Sections><Section Name="None"><Member Name="PT" Datatype="Time" /><Member Name="ET" Datatype="Time" /><Member Name="IN" Datatype="Bool" /><Member Name="Q" Datatype="Bool" /></Section></Sections></Member><Member Name="instTimer_ClearingDelay_SC" Datatype="IEC_TIMER" Version="1.0"><Sections><Section Name="None"><Member Name="PT" Datatype="Time" /><Member Name="ET" Datatype="Time" /><Member Name="IN" Datatype="Bool" /><Member Name="Q" Datatype="Bool" /></Section></Sections></Member></Section></Sections></Member>
+    <Member Name="instCM02" Datatype="&quot;EM00_CM02_Conveyor&quot;" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">Instance DB - CM02</MultiLanguageText><MultiLanguageText Lang="de-DE">Instance DB - CM02</MultiLanguageText></Comment><Sections><Section Name="Input" /><Section Name="Output" /><Section Name="InOut" /><Section Name="Static"><Member Name="statDummy" Datatype="Bool" /></Section></Sections></Member>
+    <Member Name="instCM03" Datatype="&quot;EM00_CM03_ConveyorCrossing&quot;" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">Instance DB - CM03</MultiLanguageText><MultiLanguageText Lang="de-DE">Instance DB - CM03</MultiLanguageText></Comment><Sections><Section Name="Input" /><Section Name="Output" /><Section Name="InOut" /><Section Name="Static"><Member Name="statDummyBool" Datatype="Bool" /></Section></Sections></Member>
+    <Member Name="instCM04" Datatype="&quot;EM00_CM04_Conveyor&quot;" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">Instance DB - CM04</MultiLanguageText><MultiLanguageText Lang="de-DE">Instance DB - CM04</MultiLanguageText></Comment><Sections><Section Name="Input" /><Section Name="Output" /><Section Name="InOut" /><Section Name="Static"><Member Name="statDummyBool" Datatype="Bool" /></Section></Sections></Member>
+    <Member Name="instCM05" Datatype="&quot;EM00_CM05_ConveyorCrossing&quot;" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">Instance DB - CM05</MultiLanguageText><MultiLanguageText Lang="de-DE">Instance DB - CM05</MultiLanguageText></Comment><Sections><Section Name="Input" /><Section Name="Output" /><Section Name="InOut" /><Section Name="Static"><Member Name="statDummyBool" Datatype="Bool" /></Section></Sections></Member>
+  </Section>
+  <Section Name="Temp" />
+  <Section Name="Constant" />
+</Sections></Interface>
+      <IsIECCheckEnabled>false</IsIECCheckEnabled>
+      <IsRetainMemResEnabled>false</IsRetainMemResEnabled>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <MemoryReserve>100</MemoryReserve>
+      <Name>EM00_00_Main</Name>
+      <Number>31640</Number>
+      <ProgrammingLanguage>LAD</ProgrammingLanguage>
+      <SetENOAutomatically>false</SetENOAutomatically>
+      <UDABlockProperties />
+      <UDAEnableTagReadback>false</UDAEnableTagReadback>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text>Support: tech.team.motioncontrol@siemens.com</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="3" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text>Support: tech.team.motioncontrol@siemens.com</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="4" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource />
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="5" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="6" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="7" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="8" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="9" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>*** BEGIN MAIN LOGIC SECTION  ***</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>*** BEGIN MAIN LOGIC SECTION  ***</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="B" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="PackMLCfg" />
+        <Component Name="disable" />
+        <Component Name="EM00" />
+        <Component Name="CM01" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="EM00" />
+        <Component Name="PackML_Sts" />
+        <Component Name="CM01" />
+        <Component Name="moduleActive" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="23">
+      <Negated Name="operand" />
+    </Part>
+    <Call UId="24">
+      <CallInfo Name="EM00_CM01_MainOpStation" BlockType="FB">
+        <Instance Scope="LocalVariable" UId="25">
+          <Component Name="instCM01" />
+        </Instance>
+      </CallInfo>
+    </Call>
+    <Part Name="Coil" UId="26" />
+  </Parts>
+  <Wires>
+    <Wire UId="27">
+      <Powerrail />
+      <NameCon UId="23" Name="in" />
+    </Wire>
+    <Wire UId="28">
+      <IdentCon UId="21" />
+      <NameCon UId="23" Name="operand" />
+    </Wire>
+    <Wire UId="29">
+      <NameCon UId="23" Name="out" />
+      <NameCon UId="24" Name="en" />
+    </Wire>
+    <Wire UId="30">
+      <NameCon UId="24" Name="eno" />
+      <NameCon UId="26" Name="in" />
+    </Wire>
+    <Wire UId="31">
+      <IdentCon UId="22" />
+      <NameCon UId="26" Name="operand" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="C" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="D" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="F" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="10" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Call the Control Module Logic - Main Oper. Station</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="11" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Call the Control Module Logic - Main Oper. Station</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="12" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="PackMLCfg" />
+        <Component Name="disable" />
+        <Component Name="EM00" />
+        <Component Name="CM02" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="EM00" />
+        <Component Name="PackML_Sts" />
+        <Component Name="CM02" />
+        <Component Name="moduleActive" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="23">
+      <Negated Name="operand" />
+    </Part>
+    <Call UId="24">
+      <CallInfo Name="EM00_CM02_Conveyor" BlockType="FB">
+        <Instance Scope="LocalVariable" UId="25">
+          <Component Name="instCM02" />
+        </Instance>
+      </CallInfo>
+    </Call>
+    <Part Name="Coil" UId="26" />
+  </Parts>
+  <Wires>
+    <Wire UId="27">
+      <Powerrail />
+      <NameCon UId="23" Name="in" />
+    </Wire>
+    <Wire UId="28">
+      <IdentCon UId="21" />
+      <NameCon UId="23" Name="operand" />
+    </Wire>
+    <Wire UId="29">
+      <NameCon UId="23" Name="out" />
+      <NameCon UId="24" Name="en" />
+    </Wire>
+    <Wire UId="30">
+      <NameCon UId="24" Name="eno" />
+      <NameCon UId="26" Name="in" />
+    </Wire>
+    <Wire UId="31">
+      <IdentCon UId="22" />
+      <NameCon UId="26" Name="operand" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="13" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="14" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="15" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="16" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="17" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Call the Control Module Logic - Horns and Beacons</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="18" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Call the Control Module Logic - Horns and Beacons</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="19" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="PackMLCfg" />
+        <Component Name="disable" />
+        <Component Name="EM00" />
+        <Component Name="CM03" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="EM00" />
+        <Component Name="PackML_Sts" />
+        <Component Name="CM03" />
+        <Component Name="moduleActive" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="23">
+      <Negated Name="operand" />
+    </Part>
+    <Call UId="24">
+      <CallInfo Name="EM00_CM03_ConveyorCrossing" BlockType="FB">
+        <Instance Scope="LocalVariable" UId="25">
+          <Component Name="instCM03" />
+        </Instance>
+      </CallInfo>
+    </Call>
+    <Part Name="Coil" UId="26" />
+  </Parts>
+  <Wires>
+    <Wire UId="27">
+      <Powerrail />
+      <NameCon UId="23" Name="in" />
+    </Wire>
+    <Wire UId="28">
+      <IdentCon UId="21" />
+      <NameCon UId="23" Name="operand" />
+    </Wire>
+    <Wire UId="29">
+      <NameCon UId="23" Name="out" />
+      <NameCon UId="24" Name="en" />
+    </Wire>
+    <Wire UId="30">
+      <NameCon UId="24" Name="eno" />
+      <NameCon UId="26" Name="in" />
+    </Wire>
+    <Wire UId="31">
+      <IdentCon UId="22" />
+      <NameCon UId="26" Name="operand" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="1A" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="1B" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="1C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="1D" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="1E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Call the Control Module Logic - CM03</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="1F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Call the Control Module Logic - CM03</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="20" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="PackMLCfg" />
+        <Component Name="disable" />
+        <Component Name="EM00" />
+        <Component Name="CM04" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="EM00" />
+        <Component Name="PackML_Sts" />
+        <Component Name="CM04" />
+        <Component Name="moduleActive" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="23">
+      <Negated Name="operand" />
+    </Part>
+    <Call UId="24">
+      <CallInfo Name="EM00_CM04_Conveyor" BlockType="FB">
+        <Instance Scope="LocalVariable" UId="25">
+          <Component Name="instCM04" />
+        </Instance>
+      </CallInfo>
+    </Call>
+    <Part Name="Coil" UId="26" />
+  </Parts>
+  <Wires>
+    <Wire UId="27">
+      <Powerrail />
+      <NameCon UId="23" Name="in" />
+    </Wire>
+    <Wire UId="28">
+      <IdentCon UId="21" />
+      <NameCon UId="23" Name="operand" />
+    </Wire>
+    <Wire UId="29">
+      <NameCon UId="23" Name="out" />
+      <NameCon UId="24" Name="en" />
+    </Wire>
+    <Wire UId="30">
+      <NameCon UId="24" Name="eno" />
+      <NameCon UId="26" Name="in" />
+    </Wire>
+    <Wire UId="31">
+      <IdentCon UId="22" />
+      <NameCon UId="26" Name="operand" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="21" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="22" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="23" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="24" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="25" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Call the Control Module Logic - CM04</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="26" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Call the Control Module Logic - CM04</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="27" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="PackMLCfg" />
+        <Component Name="disable" />
+        <Component Name="EM00" />
+        <Component Name="CM05" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="EM00" />
+        <Component Name="PackML_Sts" />
+        <Component Name="CM05" />
+        <Component Name="moduleActive" />
+      </Symbol>
+    </Access>
+    <Part Name="Contact" UId="23">
+      <Negated Name="operand" />
+    </Part>
+    <Call UId="24">
+      <CallInfo Name="EM00_CM05_ConveyorCrossing" BlockType="FB">
+        <Instance Scope="LocalVariable" UId="25">
+          <Component Name="instCM05" />
+        </Instance>
+      </CallInfo>
+    </Call>
+    <Part Name="Coil" UId="26" />
+  </Parts>
+  <Wires>
+    <Wire UId="27">
+      <Powerrail />
+      <NameCon UId="23" Name="in" />
+    </Wire>
+    <Wire UId="28">
+      <IdentCon UId="21" />
+      <NameCon UId="23" Name="operand" />
+    </Wire>
+    <Wire UId="29">
+      <NameCon UId="23" Name="out" />
+      <NameCon UId="24" Name="en" />
+    </Wire>
+    <Wire UId="30">
+      <NameCon UId="24" Name="eno" />
+      <NameCon UId="26" Name="in" />
+    </Wire>
+    <Wire UId="31">
+      <IdentCon UId="22" />
+      <NameCon UId="26" Name="operand" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="28" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="29" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="2A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="2B" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="2C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Call the Control Module Logic - CM05</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="2D" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Call the Control Module Logic - CM05</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="2E" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="EM00" />
+        <Component Name="PackML_Sts" />
+        <Component Name="Alarm" />
+        <Component Name="moduleActive" />
+      </Symbol>
+    </Access>
+    <Call UId="22">
+      <CallInfo Name="EM00_01_EventControl" BlockType="FB">
+        <Instance Scope="LocalVariable" UId="23">
+          <Component Name="instEventControl" />
+        </Instance>
+      </CallInfo>
+    </Call>
+    <Part Name="Coil" UId="24" />
+  </Parts>
+  <Wires>
+    <Wire UId="25">
+      <Powerrail />
+      <NameCon UId="22" Name="en" />
+    </Wire>
+    <Wire UId="26">
+      <NameCon UId="22" Name="eno" />
+      <NameCon UId="24" Name="in" />
+    </Wire>
+    <Wire UId="27">
+      <IdentCon UId="21" />
+      <NameCon UId="24" Name="operand" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="2F" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="30" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="31" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="32" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="33" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Call the Event Control Logic</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="34" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Call the Event Control Logic</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="35" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Call UId="21">
+      <CallInfo Name="EM00_02_PackML_ModuleSum" BlockType="FB">
+        <Instance Scope="LocalVariable" UId="22">
+          <Component Name="instPackML_ModuleSum" />
+        </Instance>
+      </CallInfo>
+    </Call>
+  </Parts>
+  <Wires>
+    <Wire UId="23">
+      <Powerrail />
+      <NameCon UId="21" Name="en" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="36" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="37" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="38" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="39" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="3A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Call the PackML Module Summation Logic</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="3B" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Call the PackML Module Summation Logic</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="3C" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource />
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="3D" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="3E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="3F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="40" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="41" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="42" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="43" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Part Name="ReturnTrue" UId="21" />
+  </Parts>
+  <Wires>
+    <Wire UId="22">
+      <Powerrail />
+      <NameCon UId="21" Name="in" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="44" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="45" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="46" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="47" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="48" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>END: Update the ENO Output. (DO NOT REMOVE. Must be last rung)</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="49" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>END: Update the ENO Output. (DO NOT REMOVE. Must be last rung)</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="4A" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4B" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text>EM00_00_Main</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="4C" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text>EM00_00_Main</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.FB>
+</Document>

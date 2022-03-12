@@ -1,0 +1,87 @@
+﻿FUNCTION_BLOCK "CPG_AlarmMove"
+TITLE = CPG_AlarmMove
+{ S7_Optimized_Access := 'TRUE' }
+AUTHOR : 'tech.team.motioncontrol@siemens.com'
+FAMILY : CPG
+VERSION : 1.0
+//Support: tech.team.motioncontrol@siemens.com
+   VAR_INPUT 
+      Sts_NumEvents { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;   // Number of Active Alarms
+   END_VAR
+
+   VAR_OUTPUT 
+      Sts_Error { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // Error Status.  0=no error, 1=error
+      Sts_ErrorCode { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;   // Error code / number
+   END_VAR
+
+   VAR_IN_OUT 
+      source : Array[0.."CPG_NO_OF_STS_ELEMENTS_EVENT_SUM_UPPER_LIM"] of "CPG_typeEvent";   // source location of the machine alarms
+      destination : Array[0.."CPG_NO_OF_ADMIN_EVENTS_UPPER_LIM"] of "CPG_typeEvent";   // destination location of the PackTag alarms
+   END_VAR
+
+   VAR 
+      statSourceNumEvents { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;   // MAX # OF Events - source event list
+      statDestinationNumEvents { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;   // MAX # OF Events - destination event list
+      statIndex { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;   // index value
+      statPrevNumEvents { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;   // previous number of events
+      statZeroEvent { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : "CPG_typeEvent";   // blank event
+      statWrkNumEvents { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;   // working number of active events
+   END_VAR
+
+
+BEGIN
+	//============================================================================================================
+	// SIEMENS AG
+	// (c)Copyright 2018 All Rights Reserved
+	//------------------------------------------------------------------------------------------------------------
+	// Project: CPG Template
+	// Tested with: S7-1500 with FW version V2.1
+	// Engineering: TIA Portal V14
+	// Restrictions: ---
+	// Requirements: S7-1500
+	// Functionality: move alarm structures 
+	// Support: tech.team.motioncontrol@siemens.com
+	//------------------------------------------------------------------------------------------------------------
+	// Change log table:
+	// Version       Date               Expert in charge    Changes applied
+	//  01.00.00     01.01.2018         MP                  Initial Release & PackML V1.5  Renamed CPG V1.0
+	//  01.01.00     22.05.2018         JP                  Adopted to styleguide
+	//============================================================================================================
+	// Function : CPG_AlarmMove
+	//============================================================================================================
+	
+	
+	// initialize & determine max array size
+	"CPG_ArrayLength"(arrayToBeSized := #source,
+	                  arraySize => #statSourceNumEvents);
+	
+	"CPG_ArrayLength"(arrayToBeSized := #destination,
+	                  arraySize => #statDestinationNumEvents);
+	
+	#statWrkNumEvents := #Sts_NumEvents;
+	
+	IF (#statDestinationNumEvents < #statSourceNumEvents) AND (#statDestinationNumEvents < #Sts_NumEvents) THEN
+	  #statWrkNumEvents := #statDestinationNumEvents;
+	END_IF;
+	
+	IF (#statSourceNumEvents < #statDestinationNumEvents) AND (#statSourceNumEvents < #Sts_NumEvents) THEN
+	  #statWrkNumEvents := #statSourceNumEvents;
+	END_IF;
+	
+	FOR #statIndex := 0 TO #statWrkNumEvents - 1 DO
+	  #destination[#statIndex] := #source[#statIndex];
+	END_FOR;
+	
+	// Clean up event list
+	IF #statPrevNumEvents > #statWrkNumEvents THEN
+	  FOR #statIndex := #statWrkNumEvents TO #statPrevNumEvents - 1 DO
+	    #destination[#statIndex] := #statZeroEvent;
+	  END_FOR;
+	END_IF;
+	
+	#statPrevNumEvents := #statWrkNumEvents;
+	
+	//  -------------- END OF LOGIC -------------------------
+	ENO := TRUE;   // Set the ENO output
+END_FUNCTION_BLOCK
+

@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V17" />
+  <DocumentInfo>
+    <Created>2022-03-12T16:05:21.451342Z</Created>
+    <ExportSetting>WithDefaults</ExportSetting>
+    <InstalledProducts>
+      <Product>
+        <DisplayName>Totally Integrated Automation Portal</DisplayName>
+        <DisplayVersion>V17</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>TIA Portal Openness</DisplayName>
+        <DisplayVersion>V17</DisplayVersion>
+      </OptionPackage>
+      <OptionPackage>
+        <DisplayName>TIA Portal Version Control Interface</DisplayName>
+        <DisplayVersion>V17</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>STEP 7 Professional</DisplayName>
+        <DisplayVersion>V17</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>STEP 7 Safety</DisplayName>
+        <DisplayVersion>V17</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>WinCC Advanced / Unified PC</DisplayName>
+        <DisplayVersion>V17</DisplayVersion>
+      </Product>
+    </InstalledProducts>
+  </DocumentInfo>
+  <SW.Blocks.GlobalDB ID="0">
+    <AttributeList>
+      <AutoNumber>true</AutoNumber>
+      <DBAccessibleFromOPCUA>true</DBAccessibleFromOPCUA>
+      <DBAccessibleFromWebserver>true</DBAccessibleFromWebserver>
+      <HeaderAuthor>tech.team.motioncontrol@siemens.com</HeaderAuthor>
+      <HeaderFamily>CPG</HeaderFamily>
+      <HeaderName />
+      <HeaderVersion>1.0</HeaderVersion>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Static">
+    <Member Name="Event" Datatype="Array[0..&quot;CPG_NO_OF_CFG_WARNINGS_UPPER_LIM&quot;] of &quot;CPG_typeEventCfg&quot;" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute></AttributeList><Sections><Section Name="None"><Member Name="ID" Datatype="Int"><Subelement Path="0"><StartValue>0</StartValue></Subelement><Subelement Path="1"><StartValue>1</StartValue></Subelement><Subelement Path="2"><StartValue>2</StartValue></Subelement><Subelement Path="3"><StartValue>3</StartValue></Subelement><Subelement Path="4"><StartValue>4</StartValue></Subelement><Subelement Path="5"><StartValue>5</StartValue></Subelement><Subelement Path="6"><StartValue>6</StartValue></Subelement><Subelement Path="7"><StartValue>7</StartValue></Subelement><Subelement Path="8"><StartValue>8</StartValue></Subelement><Subelement Path="9"><StartValue>9</StartValue></Subelement><Subelement Path="10"><StartValue>10</StartValue></Subelement><Subelement Path="11"><StartValue>11</StartValue></Subelement><Subelement Path="12"><StartValue>12</StartValue></Subelement><Subelement Path="13"><StartValue>13</StartValue></Subelement><Subelement Path="14"><StartValue>14</StartValue></Subelement><Subelement Path="15"><StartValue>15</StartValue></Subelement><Subelement Path="16"><StartValue>16</StartValue></Subelement><Subelement Path="17"><StartValue>17</StartValue></Subelement><Subelement Path="18"><StartValue>18</StartValue></Subelement><Subelement Path="19"><StartValue>19</StartValue></Subelement><Subelement Path="20"><StartValue>20</StartValue></Subelement><Subelement Path="21"><StartValue>21</StartValue></Subelement><Subelement Path="22"><StartValue>22</StartValue></Subelement><Subelement Path="23"><StartValue>23</StartValue></Subelement><Subelement Path="24"><StartValue>24</StartValue></Subelement><Subelement Path="25"><StartValue>25</StartValue></Subelement><Subelement Path="26"><StartValue>26</StartValue></Subelement><Subelement Path="27"><StartValue>27</StartValue></Subelement><Subelement Path="28"><StartValue>28</StartValue></Subelement><Subelement Path="29"><StartValue>29</StartValue></Subelement></Member><Member Name="value" Datatype="Int" /><Member Name="message" Datatype="Array[0..&quot;LPMLV30_LANGUAGES_UPPER_LIM&quot;] of String[60]"><Subelement Path="0,0"><StartValue>'Warning Test'</StartValue></Subelement><Subelement Path="0,1"><StartValue>'Warning Test'</StartValue></Subelement><Subelement Path="0,2"><StartValue>'Los Warning Test'</StartValue></Subelement><Subelement Path="1,0"><StartValue>'Low Bottle Supply'</StartValue></Subelement><Subelement Path="1,1"><StartValue>'Flaschenzufuhr niedrig'</StartValue></Subelement><Subelement Path="1,2"><StartValue>'Las Low Bottle Supply'</StartValue></Subelement><Subelement Path="2,0"><StartValue>'Low Label Supply'</StartValue></Subelement><Subelement Path="2,1"><StartValue>'Etikettenzufuhr niedrig'</StartValue></Subelement><Subelement Path="2,2"><StartValue>'Las Low Label Supply'</StartValue></Subelement><Subelement Path="3,0"><StartValue>'Spare'</StartValue></Subelement><Subelement Path="3,1"><StartValue>'Reserve'</StartValue></Subelement><Subelement Path="3,2"><StartValue>'Spare'</StartValue></Subelement><Subelement Path="4,0"><StartValue>'Spare'</StartValue></Subelement><Subelement Path="4,1"><StartValue>'Reserve'</StartValue></Subelement><Subelement Path="4,2"><StartValue>'Spare'</StartValue></Subelement><Subelement Path="5,0"><StartValue>'Spare'</StartValue></Subelement><Subelement Path="5,1"><StartValue>'Reserve'</StartValue></Subelement><Subelement Path="5,2"><StartValue>'Spare'</StartValue></Subelement><Subelement Path="6,0"><StartValue>'Spare'</StartValue></Subelement><Subelement Path="6,1"><StartValue>'Reserve'</StartValue></Subelement><Subelement Path="6,2"><StartValue>'Spare'</StartValue></Subelement><Subelement Path="7,0"><StartValue>'Spare'</StartValue></Subelement><Subelement Path="7,1"><StartValue>'Reserve'</StartValue></Subelement><Subelement Path="7,2"><StartValue>'Spare'</StartValue></Subelement><Subelement Path="8,0"><StartValue>'Spare'</StartValue></Subelement><Subelement Path="8,1"><StartValue>'Reserve'</StartValue></Subelement><Subelement Path="8,2"><StartValue>'Spare'</StartValue></Subelement><Subelement Path="9,0"><StartValue>'Spare'</StartValue></Subelement><Subelement Path="9,1"><StartValue>'Reserve'</StartValue></Subelement><Subelement Path="9,2"><StartValue>'Spare'</StartValue></Subelement><Subelement Path="10,0"><StartValue>'Spare'</StartValue></Subelement><Subelement Path="10,1"><StartValue>'Reserve'</StartValue></Subelement><Subelement Path="10,2"><StartValue>'Spare'</StartValue></Subelement><Subelement Path="11,0"><StartValue>'Spare'</StartValue></Subelement><Subelement Path="11,1"><StartValue>'Reserve'</StartValue></Subelement><Subelement Path="11,2"><StartValue>'Spare'</StartValue></Subelement><Subelement Path="12,0"><StartValue>'Spare'</StartValue></Subelement><Subelement Path="12,1"><StartValue>'Reserve'</StartValue></Subelement><Subelement Path="12,2"><StartValue>'Spare'</StartValue></Subelement><Subelement Path="13,0"><StartValue>'Spare'</StartValue></Subelement><Subelement Path="13,1"><StartValue>'Reserve'</StartValue></Subelement><Subelement Path="13,2"><StartValue>'Spare'</StartValue></Subelement><Subelement Path="14,0"><StartValue>'Spare'</StartValue></Subelement><Subelement Path="14,1"><StartValue>'Reserve'</StartValue></Subelement><Subelement Path="14,2"><StartValue>'Spare'</StartValue></Subelement><Subelement Path="15,0"><StartValue>'Spare'</StartValue></Subelement><Subelement Path="15,1"><StartValue>'Reserve'</StartValue></Subelement><Subelement Path="15,2"><StartValue>'Spare'</StartValue></Subelement><Subelement Path="16,0"><StartValue>'Spare'</StartValue></Subelement><Subelement Path="16,1"><StartValue>'Reserve'</StartValue></Subelement><Subelement Path="16,2"><StartValue>'Spare'</StartValue></Subelement><Subelement Path="17,0"><StartValue>'Spare'</StartValue></Subelement><Subelement Path="17,1"><StartValue>'Reserve'</StartValue></Subelement><Subelement Path="17,2"><StartValue>'Spare'</StartValue></Subelement><Subelement Path="18,0"><StartValue>'Spare'</StartValue></Subelement><Subelement Path="18,1"><StartValue>'Reserve'</StartValue></Subelement><Subelement Path="18,2"><StartValue>'Spare'</StartValue></Subelement><Subelement Path="19,0"><StartValue>'Spare'</StartValue></Subelement><Subelement Path="19,1"><StartValue>'Reserve'</StartValue></Subelement><Subelement Path="19,2"><StartValue>'Spare'</StartValue></Subelement><Subelement Path="20,0"><StartValue>'Spare'</StartValue></Subelement><Subelement Path="20,1"><StartValue>'Reserve'</StartValue></Subelement><Subelement Path="20,2"><StartValue>'Spare'</StartValue></Subelement><Subelement Path="21,0"><StartValue>'Spare'</StartValue></Subelement><Subelement Path="21,1"><StartValue>'Reserve'</StartValue></Subelement><Subelement Path="21,2"><StartValue>'Spare'</StartValue></Subelement><Subelement Path="22,0"><StartValue>'Spare'</StartValue></Subelement><Subelement Path="22,1"><StartValue>'Reserve'</StartValue></Subelement><Subelement Path="22,2"><StartValue>'Spare'</StartValue></Subelement><Subelement Path="23,0"><StartValue>'Spare'</StartValue></Subelement><Subelement Path="23,1"><StartValue>'Reserve'</StartValue></Subelement><Subelement Path="23,2"><StartValue>'Spare'</StartValue></Subelement><Subelement Path="24,0"><StartValue>'Spare'</StartValue></Subelement><Subelement Path="24,1"><StartValue>'Reserve'</StartValue></Subelement><Subelement Path="24,2"><StartValue>'Spare'</StartValue></Subelement><Subelement Path="25,0"><StartValue>'Spare'</StartValue></Subelement><Subelement Path="25,1"><StartValue>'Reserve'</StartValue></Subelement><Subelement Path="25,2"><StartValue>'Spare'</StartValue></Subelement><Subelement Path="26,0"><StartValue>'Spare'</StartValue></Subelement><Subelement Path="26,1"><StartValue>'Reserve'</StartValue></Subelement><Subelement Path="26,2"><StartValue>'Spare'</StartValue></Subelement><Subelement Path="27,0"><StartValue>'Spare'</StartValue></Subelement><Subelement Path="27,1"><StartValue>'Reserve'</StartValue></Subelement><Subelement Path="27,2"><StartValue>'Spare'</StartValue></Subelement><Subelement Path="28,0"><StartValue>'Spare'</StartValue></Subelement><Subelement Path="28,1"><StartValue>'Reserve'</StartValue></Subelement><Subelement Path="28,2"><StartValue>'Spare'</StartValue></Subelement><Subelement Path="29,0"><StartValue>'Spare'</StartValue></Subelement><Subelement Path="29,1"><StartValue>'Reserve'</StartValue></Subelement><Subelement Path="29,2"><StartValue>'Spare'</StartValue></Subelement></Member><Member Name="category" Datatype="Int" /></Section></Sections><Subelement Path="0"><Comment><MultiLanguageText Lang="en-US">Warning Test</MultiLanguageText><MultiLanguageText Lang="de-DE">Warning Test</MultiLanguageText></Comment></Subelement><Subelement Path="1"><Comment><MultiLanguageText Lang="en-US">Low Bottle Supply</MultiLanguageText><MultiLanguageText Lang="de-DE">Low Bottle Supply</MultiLanguageText></Comment></Subelement><Subelement Path="2"><Comment><MultiLanguageText Lang="en-US">Low Label Supply</MultiLanguageText><MultiLanguageText Lang="de-DE">Low Label Supply</MultiLanguageText></Comment></Subelement><Subelement Path="3"><Comment><MultiLanguageText Lang="en-US">Spare</MultiLanguageText><MultiLanguageText Lang="de-DE">Spare</MultiLanguageText></Comment></Subelement><Subelement Path="4"><Comment><MultiLanguageText Lang="en-US">Spare</MultiLanguageText><MultiLanguageText Lang="de-DE">Spare</MultiLanguageText></Comment></Subelement><Subelement Path="5"><Comment><MultiLanguageText Lang="en-US">Spare</MultiLanguageText><MultiLanguageText Lang="de-DE">Spare</MultiLanguageText></Comment></Subelement><Subelement Path="6"><Comment><MultiLanguageText Lang="en-US">Spare</MultiLanguageText><MultiLanguageText Lang="de-DE">Spare</MultiLanguageText></Comment></Subelement><Subelement Path="7"><Comment><MultiLanguageText Lang="en-US">Spare</MultiLanguageText><MultiLanguageText Lang="de-DE">Spare</MultiLanguageText></Comment></Subelement><Subelement Path="8"><Comment><MultiLanguageText Lang="en-US">Spare</MultiLanguageText><MultiLanguageText Lang="de-DE">Spare</MultiLanguageText></Comment></Subelement><Subelement Path="9"><Comment><MultiLanguageText Lang="en-US">Spare</MultiLanguageText><MultiLanguageText Lang="de-DE">Spare</MultiLanguageText></Comment></Subelement><Subelement Path="10"><Comment><MultiLanguageText Lang="en-US">Spare</MultiLanguageText><MultiLanguageText Lang="de-DE">Spare</MultiLanguageText></Comment></Subelement><Subelement Path="11"><Comment><MultiLanguageText Lang="en-US">Spare</MultiLanguageText><MultiLanguageText Lang="de-DE">Spare</MultiLanguageText></Comment></Subelement><Subelement Path="12"><Comment><MultiLanguageText Lang="en-US">Spare</MultiLanguageText><MultiLanguageText Lang="de-DE">Spare</MultiLanguageText></Comment></Subelement><Subelement Path="13"><Comment><MultiLanguageText Lang="en-US">Spare</MultiLanguageText><MultiLanguageText Lang="de-DE">Spare</MultiLanguageText></Comment></Subelement><Subelement Path="14"><Comment><MultiLanguageText Lang="en-US">Spare</MultiLanguageText><MultiLanguageText Lang="de-DE">Spare</MultiLanguageText></Comment></Subelement><Subelement Path="15"><Comment><MultiLanguageText Lang="en-US">Spare</MultiLanguageText><MultiLanguageText Lang="de-DE">Spare</MultiLanguageText></Comment></Subelement><Subelement Path="16"><Comment><MultiLanguageText Lang="en-US">Spare</MultiLanguageText><MultiLanguageText Lang="de-DE">Spare</MultiLanguageText></Comment></Subelement><Subelement Path="17"><Comment><MultiLanguageText Lang="en-US">Spare</MultiLanguageText><MultiLanguageText Lang="de-DE">Spare</MultiLanguageText></Comment></Subelement><Subelement Path="18"><Comment><MultiLanguageText Lang="en-US">Spare</MultiLanguageText><MultiLanguageText Lang="de-DE">Spare</MultiLanguageText></Comment></Subelement><Subelement Path="19"><Comment><MultiLanguageText Lang="en-US">Spare</MultiLanguageText><MultiLanguageText Lang="de-DE">Spare</MultiLanguageText></Comment></Subelement><Subelement Path="20"><Comment><MultiLanguageText Lang="en-US">Spare</MultiLanguageText><MultiLanguageText Lang="de-DE">Spare</MultiLanguageText></Comment></Subelement><Subelement Path="21"><Comment><MultiLanguageText Lang="en-US">Spare</MultiLanguageText><MultiLanguageText Lang="de-DE">Spare</MultiLanguageText></Comment></Subelement><Subelement Path="22"><Comment><MultiLanguageText Lang="en-US">Spare</MultiLanguageText><MultiLanguageText Lang="de-DE">Spare</MultiLanguageText></Comment></Subelement><Subelement Path="23"><Comment><MultiLanguageText Lang="en-US">Spare</MultiLanguageText><MultiLanguageText Lang="de-DE">Spare</MultiLanguageText></Comment></Subelement><Subelement Path="24"><Comment><MultiLanguageText Lang="en-US">Spare</MultiLanguageText><MultiLanguageText Lang="de-DE">Spare</MultiLanguageText></Comment></Subelement><Subelement Path="25"><Comment><MultiLanguageText Lang="en-US">Spare</MultiLanguageText><MultiLanguageText Lang="de-DE">Spare</MultiLanguageText></Comment></Subelement><Subelement Path="26"><Comment><MultiLanguageText Lang="en-US">Spare</MultiLanguageText><MultiLanguageText Lang="de-DE">Spare</MultiLanguageText></Comment></Subelement><Subelement Path="27"><Comment><MultiLanguageText Lang="en-US">Spare</MultiLanguageText><MultiLanguageText Lang="de-DE">Spare</MultiLanguageText></Comment></Subelement><Subelement Path="28"><Comment><MultiLanguageText Lang="en-US">Spare</MultiLanguageText><MultiLanguageText Lang="de-DE">Spare</MultiLanguageText></Comment></Subelement><Subelement Path="29"><Comment><MultiLanguageText Lang="en-US">Spare</MultiLanguageText><MultiLanguageText Lang="de-DE">Spare</MultiLanguageText></Comment></Subelement></Member>
+  </Section>
+</Sections></Interface>
+      <IsOnlyStoredInLoadMemory>false</IsOnlyStoredInLoadMemory>
+      <IsRetainMemResEnabled>false</IsRetainMemResEnabled>
+      <IsWriteProtectedInAS>false</IsWriteProtectedInAS>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <MemoryReserve>0</MemoryReserve>
+      <Name>WarningCfg</Name>
+      <Number>31601</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text>Support: tech.team.motioncontrol@siemens.com
+Fax: +49 (0) 9131/98-1297</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="3" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text>Support: tech.team.motioncontrol@siemens.com
+Fax: +49 (0) 9131/98-1297</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="4" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="5" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text>CPG_WarningCfg</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="6" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text>CPG_WarningCfg</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.GlobalDB>
+</Document>
