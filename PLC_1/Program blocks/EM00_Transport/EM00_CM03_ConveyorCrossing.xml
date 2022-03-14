@@ -2,7 +2,7 @@
 <Document>
   <Engineering version="V17" />
   <DocumentInfo>
-    <Created>2022-03-12T16:05:26.1487963Z</Created>
+    <Created>2022-03-14T21:17:27.1705299Z</Created>
     <ExportSetting>WithDefaults</ExportSetting>
     <InstalledProducts>
       <Product>
@@ -44,6 +44,7 @@
   <Section Name="InOut" />
   <Section Name="Static">
     <Member Name="statDummyBool" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">dummy bool - placeholder</MultiLanguageText><MultiLanguageText Lang="de-DE">dummy bool - placeholder</MultiLanguageText></Comment></Member>
+    <Member Name="instConveyorCrossing" Datatype="&quot;ConveyorCrossing&quot;" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute></AttributeList><Sections><Section Name="Input"><Member Name="bx_PalletSensor" Datatype="Bool" /><Member Name="bx_P1_EmptyPalletReq" Datatype="Bool" /><Member Name="bx_P1_ReleasePalletReq" Datatype="Bool" /><Member Name="bx_PrevAck" Datatype="Bool" /><Member Name="bx_NextAck" Datatype="Bool" /><Member Name="ix_CurrentState" Datatype="DInt" /></Section><Section Name="Output"><Member Name="by_RollsFrd" Datatype="Bool" /><Member Name="by_RollsRev" Datatype="Bool" /><Member Name="by_ChainFrd" Datatype="Bool" /><Member Name="by_ChainRev" Datatype="Bool" /><Member Name="by_P1_EmptyPalletAck" Datatype="Bool" /><Member Name="by_P1_ReleasePalletAck" Datatype="Bool" /><Member Name="by_PrevReq" Datatype="Bool" /><Member Name="by_NextReq" Datatype="Bool" /><Member Name="ModuleSts" Datatype="&quot;CPG_typePackML_ModuleSts&quot;"><Sections><Section Name="None"><Member Name="cmd_Reset" Datatype="Bool" /><Member Name="sts_Resetting_SC" Datatype="Bool" /><Member Name="cmd_Start" Datatype="Bool" /><Member Name="sts_Starting_SC" Datatype="Bool" /><Member Name="cmd_Stop" Datatype="Bool" /><Member Name="sts_Stopping_SC" Datatype="Bool" /><Member Name="cmd_Hold" Datatype="Bool" /><Member Name="sts_Holding_SC" Datatype="Bool" /><Member Name="cmd_UnHold" Datatype="Bool" /><Member Name="sts_UnHolding_SC" Datatype="Bool" /><Member Name="cmd_Suspend" Datatype="Bool" /><Member Name="sts_Suspending_SC" Datatype="Bool" /><Member Name="cmd_UnSuspend" Datatype="Bool" /><Member Name="sts_UnSuspending_SC" Datatype="Bool" /><Member Name="cmd_Abort" Datatype="Bool" /><Member Name="sts_Aborting_SC" Datatype="Bool" /><Member Name="cmd_Clear" Datatype="Bool" /><Member Name="sts_Clearing_SC" Datatype="Bool" /><Member Name="sts_Execute_SC" Datatype="Bool" /><Member Name="sts_Completing_SC" Datatype="Bool" /><Member Name="moduleActive" Datatype="Bool" /><Member Name="ONS" Datatype="Bool" /></Section></Sections></Member><Member Name="iy_SeqStep" Datatype="Int" /></Section><Section Name="InOut" /><Section Name="Static"><Member Name="i_SeqStep" Datatype="Int" /></Section></Sections></Member>
   </Section>
   <Section Name="Temp" />
   <Section Name="Constant" />
@@ -158,7 +159,258 @@
       </SW.Blocks.CompileUnit>
       <SW.Blocks.CompileUnit ID="12" CompositionName="CompileUnits">
         <AttributeList>
-          <NetworkSource />
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="Tag_3" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="InstEM01_00_Main" />
+        <Component Name="instCM02" />
+        <Component Name="instPalletizer" />
+        <Component Name="by_PalletReq" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="23">
+      <Symbol>
+        <Component Name="InstEM01_00_Main" />
+        <Component Name="instCM02" />
+        <Component Name="instPalletizer" />
+        <Component Name="by_ReleasePalletReq" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="InstEM00_00_Main" />
+        <Component Name="instCM02" />
+        <Component Name="instConveyor" />
+        <Component Name="by_NextAck" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="25">
+      <Symbol>
+        <Component Name="InstEM00_00_Main" />
+        <Component Name="instCM04" />
+        <Component Name="instConveyor" />
+        <Component Name="by_PrevAck" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="26">
+      <Symbol>
+        <Component Name="PackTags" />
+        <Component Name="Status" />
+        <Component Name="StateCurrent" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="27">
+      <Symbol>
+        <Component Name="Tag_4" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="28">
+      <Symbol>
+        <Component Name="Tag_5" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="29">
+      <Symbol>
+        <Component Name="Tag_6" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="30">
+      <Symbol>
+        <Component Name="Tag_7" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="31">
+      <Symbol>
+        <Component Name="InstEM01_00_Main" />
+        <Component Name="instCM02" />
+        <Component Name="instPalletizer" />
+        <Component Name="bx_PalletReady" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="32">
+      <Symbol>
+        <Component Name="InstEM01_00_Main" />
+        <Component Name="instCM02" />
+        <Component Name="instPalletizer" />
+        <Component Name="bx_ReleasePalletAck" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="33">
+      <Symbol>
+        <Component Name="InstEM00_00_Main" />
+        <Component Name="instCM02" />
+        <Component Name="instConveyor" />
+        <Component Name="bx_NextReq" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="34">
+      <Symbol>
+        <Component Name="InstEM00_00_Main" />
+        <Component Name="instCM04" />
+        <Component Name="instConveyor" />
+        <Component Name="bx_PrevReq" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="35">
+      <Symbol>
+        <Component Name="EM00" />
+        <Component Name="PackML_Sts" />
+        <Component Name="CM03" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="36">
+      <Symbol>
+        <Component Name="instConveyorCrossing" />
+        <Component Name="by_ChainFrd" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="37">
+      <Symbol>
+        <Component Name="Tag_29" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="38">
+      <Symbol>
+        <Component Name="instConveyorCrossing" />
+        <Component Name="by_ChainRev" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="39">
+      <Symbol>
+        <Component Name="Tag_30" />
+      </Symbol>
+    </Access>
+    <Call UId="40">
+      <CallInfo Name="ConveyorCrossing" BlockType="FB">
+        <Instance Scope="LocalVariable" UId="41">
+          <Component Name="instConveyorCrossing" />
+        </Instance>
+        <Parameter Name="bx_PalletSensor" Section="Input" Type="Bool" />
+        <Parameter Name="bx_P1_EmptyPalletReq" Section="Input" Type="Bool" />
+        <Parameter Name="bx_P1_ReleasePalletReq" Section="Input" Type="Bool" />
+        <Parameter Name="bx_PrevAck" Section="Input" Type="Bool" />
+        <Parameter Name="bx_NextAck" Section="Input" Type="Bool" />
+        <Parameter Name="ix_CurrentState" Section="Input" Type="DInt" />
+        <Parameter Name="by_RollsFrd" Section="Output" Type="Bool" />
+        <Parameter Name="by_RollsRev" Section="Output" Type="Bool" />
+        <Parameter Name="by_ChainFrd" Section="Output" Type="Bool" />
+        <Parameter Name="by_ChainRev" Section="Output" Type="Bool" />
+        <Parameter Name="by_P1_EmptyPalletAck" Section="Output" Type="Bool" />
+        <Parameter Name="by_P1_ReleasePalletAck" Section="Output" Type="Bool" />
+        <Parameter Name="by_PrevReq" Section="Output" Type="Bool" />
+        <Parameter Name="by_NextReq" Section="Output" Type="Bool" />
+        <Parameter Name="ModuleSts" Section="Output" Type="&quot;CPG_typePackML_ModuleSts&quot;" />
+        <Parameter Name="iy_SeqStep" Section="Output" Type="Int" />
+      </CallInfo>
+    </Call>
+    <Part Name="Contact" UId="42" />
+    <Part Name="Coil" UId="43" />
+    <Part Name="Contact" UId="44" />
+    <Part Name="Coil" UId="45" />
+  </Parts>
+  <Wires>
+    <Wire UId="47">
+      <Powerrail />
+      <NameCon UId="40" Name="en" />
+      <NameCon UId="42" Name="in" />
+      <NameCon UId="44" Name="in" />
+    </Wire>
+    <Wire UId="48">
+      <IdentCon UId="21" />
+      <NameCon UId="40" Name="bx_PalletSensor" />
+    </Wire>
+    <Wire UId="49">
+      <IdentCon UId="22" />
+      <NameCon UId="40" Name="bx_P1_EmptyPalletReq" />
+    </Wire>
+    <Wire UId="50">
+      <IdentCon UId="23" />
+      <NameCon UId="40" Name="bx_P1_ReleasePalletReq" />
+    </Wire>
+    <Wire UId="51">
+      <IdentCon UId="24" />
+      <NameCon UId="40" Name="bx_PrevAck" />
+    </Wire>
+    <Wire UId="52">
+      <IdentCon UId="25" />
+      <NameCon UId="40" Name="bx_NextAck" />
+    </Wire>
+    <Wire UId="53">
+      <IdentCon UId="26" />
+      <NameCon UId="40" Name="ix_CurrentState" />
+    </Wire>
+    <Wire UId="54">
+      <NameCon UId="40" Name="by_RollsFrd" />
+      <IdentCon UId="27" />
+    </Wire>
+    <Wire UId="55">
+      <NameCon UId="40" Name="by_RollsRev" />
+      <IdentCon UId="28" />
+    </Wire>
+    <Wire UId="56">
+      <NameCon UId="40" Name="by_ChainFrd" />
+      <IdentCon UId="29" />
+    </Wire>
+    <Wire UId="57">
+      <NameCon UId="40" Name="by_ChainRev" />
+      <IdentCon UId="30" />
+    </Wire>
+    <Wire UId="58">
+      <NameCon UId="40" Name="by_P1_EmptyPalletAck" />
+      <IdentCon UId="31" />
+    </Wire>
+    <Wire UId="59">
+      <NameCon UId="40" Name="by_P1_ReleasePalletAck" />
+      <IdentCon UId="32" />
+    </Wire>
+    <Wire UId="60">
+      <NameCon UId="40" Name="by_PrevReq" />
+      <IdentCon UId="33" />
+    </Wire>
+    <Wire UId="61">
+      <NameCon UId="40" Name="by_NextReq" />
+      <IdentCon UId="34" />
+    </Wire>
+    <Wire UId="62">
+      <NameCon UId="40" Name="ModuleSts" />
+      <IdentCon UId="35" />
+    </Wire>
+    <Wire UId="63">
+      <NameCon UId="40" Name="iy_SeqStep" />
+      <OpenCon UId="46" />
+    </Wire>
+    <Wire UId="64">
+      <IdentCon UId="36" />
+      <NameCon UId="42" Name="operand" />
+    </Wire>
+    <Wire UId="65">
+      <NameCon UId="42" Name="out" />
+      <NameCon UId="43" Name="in" />
+    </Wire>
+    <Wire UId="66">
+      <IdentCon UId="37" />
+      <NameCon UId="43" Name="operand" />
+    </Wire>
+    <Wire UId="67">
+      <IdentCon UId="38" />
+      <NameCon UId="44" Name="operand" />
+    </Wire>
+    <Wire UId="68">
+      <NameCon UId="44" Name="out" />
+      <NameCon UId="45" Name="in" />
+    </Wire>
+    <Wire UId="69">
+      <IdentCon UId="39" />
+      <NameCon UId="45" Name="operand" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
           <ProgrammingLanguage>LAD</ProgrammingLanguage>
         </AttributeList>
         <ObjectList>
@@ -183,13 +435,13 @@
               <MultilingualTextItem ID="17" CompositionName="Items">
                 <AttributeList>
                   <Culture>en-US</Culture>
-                  <Text>*** Begin the Event Information Section ***</Text>
+                  <Text />
                 </AttributeList>
               </MultilingualTextItem>
               <MultilingualTextItem ID="18" CompositionName="Items">
                 <AttributeList>
                   <Culture>de-DE</Culture>
-                  <Text>*** Begin the Event Information Section ***</Text>
+                  <Text>Conveyor crossing instance</Text>
                 </AttributeList>
               </MultilingualTextItem>
             </ObjectList>
@@ -223,10 +475,50 @@
               <MultilingualTextItem ID="1E" CompositionName="Items">
                 <AttributeList>
                   <Culture>en-US</Culture>
-                  <Text>*** Begin the State Model Status Feedback Section ***</Text>
+                  <Text>*** Begin the Event Information Section ***</Text>
                 </AttributeList>
               </MultilingualTextItem>
               <MultilingualTextItem ID="1F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>*** Begin the Event Information Section ***</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="20" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource />
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="21" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="22" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="23" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="24" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="25" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>*** Begin the State Model Status Feedback Section ***</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="26" CompositionName="Items">
                 <AttributeList>
                   <Culture>de-DE</Culture>
                   <Text>*** Begin the State Model Status Feedback Section ***</Text>
@@ -236,7 +528,7 @@
           </MultilingualText>
         </ObjectList>
       </SW.Blocks.CompileUnit>
-      <SW.Blocks.CompileUnit ID="20" CompositionName="CompileUnits">
+      <SW.Blocks.CompileUnit ID="27" CompositionName="CompileUnits">
         <AttributeList>
           <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
   <Parts>
@@ -312,46 +604,6 @@
           <ProgrammingLanguage>LAD</ProgrammingLanguage>
         </AttributeList>
         <ObjectList>
-          <MultilingualText ID="21" CompositionName="Comment">
-            <ObjectList>
-              <MultilingualTextItem ID="22" CompositionName="Items">
-                <AttributeList>
-                  <Culture>en-US</Culture>
-                  <Text />
-                </AttributeList>
-              </MultilingualTextItem>
-              <MultilingualTextItem ID="23" CompositionName="Items">
-                <AttributeList>
-                  <Culture>de-DE</Culture>
-                  <Text />
-                </AttributeList>
-              </MultilingualTextItem>
-            </ObjectList>
-          </MultilingualText>
-          <MultilingualText ID="24" CompositionName="Title">
-            <ObjectList>
-              <MultilingualTextItem ID="25" CompositionName="Items">
-                <AttributeList>
-                  <Culture>en-US</Culture>
-                  <Text>*** Call the PackML Module Initialize Logic ***</Text>
-                </AttributeList>
-              </MultilingualTextItem>
-              <MultilingualTextItem ID="26" CompositionName="Items">
-                <AttributeList>
-                  <Culture>de-DE</Culture>
-                  <Text>*** Call the PackML Module Initialize Logic ***</Text>
-                </AttributeList>
-              </MultilingualTextItem>
-            </ObjectList>
-          </MultilingualText>
-        </ObjectList>
-      </SW.Blocks.CompileUnit>
-      <SW.Blocks.CompileUnit ID="27" CompositionName="CompileUnits">
-        <AttributeList>
-          <NetworkSource />
-          <ProgrammingLanguage>LAD</ProgrammingLanguage>
-        </AttributeList>
-        <ObjectList>
           <MultilingualText ID="28" CompositionName="Comment">
             <ObjectList>
               <MultilingualTextItem ID="29" CompositionName="Items">
@@ -373,13 +625,13 @@
               <MultilingualTextItem ID="2C" CompositionName="Items">
                 <AttributeList>
                   <Culture>en-US</Culture>
-                  <Text />
+                  <Text>*** Call the PackML Module Initialize Logic ***</Text>
                 </AttributeList>
               </MultilingualTextItem>
               <MultilingualTextItem ID="2D" CompositionName="Items">
                 <AttributeList>
                   <Culture>de-DE</Culture>
-                  <Text />
+                  <Text>*** Call the PackML Module Initialize Logic ***</Text>
                 </AttributeList>
               </MultilingualTextItem>
             </ObjectList>
@@ -388,17 +640,7 @@
       </SW.Blocks.CompileUnit>
       <SW.Blocks.CompileUnit ID="2E" CompositionName="CompileUnits">
         <AttributeList>
-          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
-  <Parts>
-    <Part Name="ReturnTrue" UId="21" />
-  </Parts>
-  <Wires>
-    <Wire UId="22">
-      <Powerrail />
-      <NameCon UId="21" Name="in" />
-    </Wire>
-  </Wires>
-</FlgNet></NetworkSource>
+          <NetworkSource />
           <ProgrammingLanguage>LAD</ProgrammingLanguage>
         </AttributeList>
         <ObjectList>
@@ -423,10 +665,60 @@
               <MultilingualTextItem ID="33" CompositionName="Items">
                 <AttributeList>
                   <Culture>en-US</Culture>
-                  <Text>Update the ENO Output value. (DO NOT REMOVE.  Must be last rung)</Text>
+                  <Text />
                 </AttributeList>
               </MultilingualTextItem>
               <MultilingualTextItem ID="34" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="35" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Part Name="ReturnTrue" UId="21" />
+  </Parts>
+  <Wires>
+    <Wire UId="22">
+      <Powerrail />
+      <NameCon UId="21" Name="in" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="36" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="37" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="38" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="39" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="3A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Update the ENO Output value. (DO NOT REMOVE.  Must be last rung)</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="3B" CompositionName="Items">
                 <AttributeList>
                   <Culture>de-DE</Culture>
                   <Text>Update the ENO Output value. (DO NOT REMOVE.  Must be last rung)</Text>
@@ -436,15 +728,15 @@
           </MultilingualText>
         </ObjectList>
       </SW.Blocks.CompileUnit>
-      <MultilingualText ID="35" CompositionName="Title">
+      <MultilingualText ID="3C" CompositionName="Title">
         <ObjectList>
-          <MultilingualTextItem ID="36" CompositionName="Items">
+          <MultilingualTextItem ID="3D" CompositionName="Items">
             <AttributeList>
               <Culture>en-US</Culture>
               <Text>EM00_CM03</Text>
             </AttributeList>
           </MultilingualTextItem>
-          <MultilingualTextItem ID="37" CompositionName="Items">
+          <MultilingualTextItem ID="3E" CompositionName="Items">
             <AttributeList>
               <Culture>de-DE</Culture>
               <Text>EM00_CM03</Text>

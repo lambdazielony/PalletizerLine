@@ -4,12 +4,14 @@ VERSION : 0.1
    VAR_INPUT 
       bx_PalletSensor : Bool;
       bx_NextReq : Bool;
+      bx_PrevReq : Bool;
       ix_CurrentState : DInt;
    END_VAR
 
    VAR_OUTPUT 
       by_ConvFrd : Bool;
       by_NextAck : Bool;
+      by_PrevAck : Bool;
       ModuleSts : "CPG_typePackML_ModuleSts";
       iy_SeqStep : Int;
    END_VAR
@@ -31,6 +33,7 @@ BEGIN
 	        #iy_SeqStep := #i_SeqStep;
 	    4://Idle
 	        #ModuleSts.sts_Resetting_SC := False;
+	        #by_ConvFrd := False;
 	        #i_SeqStep := 0;
 	    5://Suspended
 	        ;
@@ -38,10 +41,12 @@ BEGIN
 	        #ModuleSts.sts_Starting_SC := False;
 	        CASE #i_SeqStep OF
 	            0://Check if pallet is present
-	                IF #bx_PalletSensor THEN
-	                    #i_SeqStep := 2; 
-	                ELSIF NOT #bx_PalletSensor THEN
+	                IF #bx_PalletSensor AND NOT #bx_PrevReq THEN
+	                    #i_SeqStep := 2;
+	                ELSIF NOT #bx_PalletSensor AND NOT #bx_PrevReq THEN
 	                    #i_SeqStep := 1;
+	                ELSIF #bx_PrevReq THEN
+	                    #i_SeqStep := 4;
 	                END_IF;
 	            1://Run the conveyor
 	                #by_ConvFrd := True;
@@ -59,6 +64,14 @@ BEGIN
 	                IF NOT #bx_PalletSensor THEN
 	                    #by_NextAck := False;
 	                    #by_ConvFrd := False;
+	                    #i_SeqStep := 0;
+	                END_IF;
+	            4://Send the ack to the prev module
+	                #by_ConvFrd := True;
+	                #by_PrevAck := True;
+	                IF #bx_PalletSensor THEN
+	                    #by_ConvFrd := False;
+	                    #by_PrevAck := False;
 	                    #i_SeqStep := 0;
 	                END_IF;
 	        END_CASE;

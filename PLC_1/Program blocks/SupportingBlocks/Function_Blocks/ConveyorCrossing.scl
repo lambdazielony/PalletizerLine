@@ -3,8 +3,10 @@
 VERSION : 0.1
    VAR_INPUT 
       bx_PalletSensor : Bool;
-      bx_P1_PalletReq : Bool;
-      bx_P2_PalletReq : Bool;
+      bx_P1_EmptyPalletReq : Bool;
+      bx_P1_ReleasePalletReq : Bool;
+      bx_PrevAck : Bool;
+      bx_NextAck : Bool;
       ix_CurrentState : DInt;
    END_VAR
 
@@ -13,8 +15,10 @@ VERSION : 0.1
       by_RollsRev : Bool;
       by_ChainFrd : Bool;
       by_ChainRev : Bool;
-      by_P1_Ack : Bool;
-      by_P2_Ack : Bool;
+      by_P1_EmptyPalletAck : Bool;
+      by_P1_ReleasePalletAck : Bool;
+      by_PrevReq : Bool;
+      by_NextReq : Bool;
       ModuleSts : "CPG_typePackML_ModuleSts";
       iy_SeqStep : Int;
    END_VAR
@@ -36,6 +40,10 @@ BEGIN
 	        #iy_SeqStep := #i_SeqStep;
 	    4://Idle
 	        #ModuleSts.sts_Resetting_SC := False;
+	        #by_ChainFrd := False;
+	        #by_ChainRev := False;
+	        #by_RollsFrd := FALSE;
+	        #by_RollsRev := False;
 	        #i_SeqStep := 0;
 	    5://Suspended
 	        ;
@@ -43,15 +51,57 @@ BEGIN
 	        #ModuleSts.sts_Starting_SC := False;
 	        CASE #i_SeqStep OF
 	            0://Wait req
-	                IF #bx_P1_PalletReq THEN
+	                IF #bx_P1_EmptyPalletReq THEN
 	                    #i_SeqStep := 1;
-	                ELSIF #bx_P2_PalletReq THEN
+	                ELSIF #bx_P1_ReleasePalletReq THEN
+	                    #i_SeqStep := 4;
+	                END_IF;
+	            1://Send the req to the prev module
+	                #by_PrevReq := True;
+	                IF #bx_PrevAck THEN
 	                    #i_SeqStep := 2;
 	                END_IF;
-	            1://Start the rolls, wait pallet arrive
+	            2://Start the rolls, wait the empty pallet arrive
 	                #by_RollsFrd := True;
-	                
-	               
+	                #by_RollsRev := False;
+	                IF #bx_PalletSensor THEN
+	                    #by_RollsFrd := False;
+	                    #by_RollsRev := False;
+	                    #by_PrevReq := False;
+	                    #i_SeqStep := 3;
+	                END_IF;
+	            3://Start the chain conveyor, wait pallet leave
+	                #by_P1_EmptyPalletAck := True;
+	                #by_ChainRev := True;
+	                #by_ChainFrd := False;
+	                IF NOT #bx_PalletSensor AND NOT #bx_P1_EmptyPalletReq THEN
+	                    #by_ChainRev := False;
+	                    #by_ChainFrd := False;
+	                    #i_SeqStep := 0;
+	                END_IF;
+	            4://Send ack to the palletizer, wait pallet arrive at the crossing
+	                #by_P1_ReleasePalletAck := True;
+	                #by_ChainFrd := True;
+	                #by_ChainRev := False;
+	                IF #bx_PalletSensor THEN
+	                    #by_ChainFrd := False;
+	                    #by_ChainRev := False;
+	                    #i_SeqStep := 5;
+	                END_IF;
+	            5://Send the req to the next module
+	                #by_NextReq := True;
+	                IF #bx_NextAck THEN
+	                    #by_NextReq := False;
+	                    #i_SeqStep := 6;
+	                END_IF;
+	            6://Start the rolls forward, wait the pallet leave
+	                #by_RollsFrd := True;
+	                #by_RollsRev := False;
+	                IF NOT #bx_PalletSensor THEN
+	                    #by_RollsFrd := False;
+	                    #by_RollsRev := False;
+	                    #i_SeqStep := 0;
+	                END_IF;
 	        END_CASE;
 	        //#ModuleSts.sts_Execute_SC := True;
 	    7://Stopping
