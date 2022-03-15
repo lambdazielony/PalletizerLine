@@ -72,7 +72,7 @@ BEGIN
 	                IF #bx_PalletSensor THEN
 	                    #by_ConvFrd := False;
 	                    #by_PrevAck := False;
-	                    #i_SeqStep := 0;
+	                    #i_SeqStep := 3;
 	                END_IF;
 	        END_CASE;
 	        //#ModuleSts.sts_Execute_SC := True;

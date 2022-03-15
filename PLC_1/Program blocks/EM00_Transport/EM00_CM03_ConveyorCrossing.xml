@@ -2,7 +2,7 @@
 <Document>
   <Engineering version="V17" />
   <DocumentInfo>
-    <Created>2022-03-14T21:17:27.1705299Z</Created>
+    <Created>2022-03-15T19:20:16.1949439Z</Created>
     <ExportSetting>WithDefaults</ExportSetting>
     <InstalledProducts>
       <Product>
@@ -163,34 +163,13 @@
   <Parts>
     <Access Scope="GlobalVariable" UId="21">
       <Symbol>
-        <Component Name="Tag_3" />
+        <Component Name="InstEM00_00_Main" />
+        <Component Name="instCM04" />
+        <Component Name="instConveyor" />
+        <Component Name="bx_PrevReq" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="22">
-      <Symbol>
-        <Component Name="InstEM01_00_Main" />
-        <Component Name="instCM02" />
-        <Component Name="instPalletizer" />
-        <Component Name="by_PalletReq" />
-      </Symbol>
-    </Access>
-    <Access Scope="GlobalVariable" UId="23">
-      <Symbol>
-        <Component Name="InstEM01_00_Main" />
-        <Component Name="instCM02" />
-        <Component Name="instPalletizer" />
-        <Component Name="by_ReleasePalletReq" />
-      </Symbol>
-    </Access>
-    <Access Scope="GlobalVariable" UId="24">
-      <Symbol>
-        <Component Name="InstEM00_00_Main" />
-        <Component Name="instCM02" />
-        <Component Name="instConveyor" />
-        <Component Name="by_NextAck" />
-      </Symbol>
-    </Access>
-    <Access Scope="GlobalVariable" UId="25">
       <Symbol>
         <Component Name="InstEM00_00_Main" />
         <Component Name="instCM04" />
@@ -198,39 +177,60 @@
         <Component Name="by_PrevAck" />
       </Symbol>
     </Access>
+    <Access Scope="GlobalVariable" UId="23">
+      <Symbol>
+        <Component Name="Tag_3" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="InstEM01_00_Main" />
+        <Component Name="instCM02" />
+        <Component Name="instPalletizer" />
+        <Component Name="by_PalletReq" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="25">
+      <Symbol>
+        <Component Name="InstEM01_00_Main" />
+        <Component Name="instCM02" />
+        <Component Name="instPalletizer" />
+        <Component Name="by_ReleasePalletReq" />
+      </Symbol>
+    </Access>
     <Access Scope="GlobalVariable" UId="26">
+      <Symbol>
+        <Component Name="InstEM00_00_Main" />
+        <Component Name="instCM02" />
+        <Component Name="instConveyor" />
+        <Component Name="by_NextAck" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="27">
       <Symbol>
         <Component Name="PackTags" />
         <Component Name="Status" />
         <Component Name="StateCurrent" />
       </Symbol>
     </Access>
-    <Access Scope="GlobalVariable" UId="27">
+    <Access Scope="GlobalVariable" UId="28">
       <Symbol>
         <Component Name="Tag_4" />
       </Symbol>
     </Access>
-    <Access Scope="GlobalVariable" UId="28">
+    <Access Scope="GlobalVariable" UId="29">
       <Symbol>
         <Component Name="Tag_5" />
       </Symbol>
     </Access>
-    <Access Scope="GlobalVariable" UId="29">
+    <Access Scope="GlobalVariable" UId="30">
       <Symbol>
         <Component Name="Tag_6" />
       </Symbol>
     </Access>
-    <Access Scope="GlobalVariable" UId="30">
-      <Symbol>
-        <Component Name="Tag_7" />
-      </Symbol>
-    </Access>
     <Access Scope="GlobalVariable" UId="31">
       <Symbol>
-        <Component Name="InstEM01_00_Main" />
-        <Component Name="instCM02" />
-        <Component Name="instPalletizer" />
-        <Component Name="bx_PalletReady" />
+        <Component Name="Tag_7" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="32">
@@ -238,10 +238,18 @@
         <Component Name="InstEM01_00_Main" />
         <Component Name="instCM02" />
         <Component Name="instPalletizer" />
-        <Component Name="bx_ReleasePalletAck" />
+        <Component Name="bx_PalletReady" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="33">
+      <Symbol>
+        <Component Name="InstEM01_00_Main" />
+        <Component Name="instCM02" />
+        <Component Name="instPalletizer" />
+        <Component Name="bx_ReleasePalletAck" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="34">
       <Symbol>
         <Component Name="InstEM00_00_Main" />
         <Component Name="instCM02" />
@@ -249,7 +257,7 @@
         <Component Name="bx_NextReq" />
       </Symbol>
     </Access>
-    <Access Scope="GlobalVariable" UId="34">
+    <Access Scope="GlobalVariable" UId="35">
       <Symbol>
         <Component Name="InstEM00_00_Main" />
         <Component Name="instCM04" />
@@ -257,38 +265,43 @@
         <Component Name="bx_PrevReq" />
       </Symbol>
     </Access>
-    <Access Scope="GlobalVariable" UId="35">
+    <Access Scope="GlobalVariable" UId="36">
       <Symbol>
         <Component Name="EM00" />
         <Component Name="PackML_Sts" />
         <Component Name="CM03" />
       </Symbol>
     </Access>
-    <Access Scope="LocalVariable" UId="36">
+    <Access Scope="LocalVariable" UId="37">
       <Symbol>
         <Component Name="instConveyorCrossing" />
         <Component Name="by_ChainFrd" />
       </Symbol>
     </Access>
-    <Access Scope="GlobalVariable" UId="37">
+    <Access Scope="GlobalVariable" UId="38">
       <Symbol>
         <Component Name="Tag_29" />
       </Symbol>
     </Access>
-    <Access Scope="LocalVariable" UId="38">
+    <Access Scope="LocalVariable" UId="39">
       <Symbol>
         <Component Name="instConveyorCrossing" />
         <Component Name="by_ChainRev" />
       </Symbol>
     </Access>
-    <Access Scope="GlobalVariable" UId="39">
+    <Access Scope="GlobalVariable" UId="40">
       <Symbol>
         <Component Name="Tag_30" />
       </Symbol>
     </Access>
-    <Call UId="40">
+    <Part Name="Contact" UId="41" />
+    <Part Name="Contact" UId="42" />
+    <Part Name="O" UId="43">
+      <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+    </Part>
+    <Call UId="44">
       <CallInfo Name="ConveyorCrossing" BlockType="FB">
-        <Instance Scope="LocalVariable" UId="41">
+        <Instance Scope="LocalVariable" UId="45">
           <Component Name="instConveyorCrossing" />
         </Instance>
         <Parameter Name="bx_PalletSensor" Section="Input" Type="Bool" />
@@ -309,105 +322,123 @@
         <Parameter Name="iy_SeqStep" Section="Output" Type="Int" />
       </CallInfo>
     </Call>
-    <Part Name="Contact" UId="42" />
-    <Part Name="Coil" UId="43" />
-    <Part Name="Contact" UId="44" />
-    <Part Name="Coil" UId="45" />
+    <Part Name="Contact" UId="46" />
+    <Part Name="Coil" UId="47" />
+    <Part Name="Contact" UId="48" />
+    <Part Name="Coil" UId="49" />
   </Parts>
   <Wires>
-    <Wire UId="47">
-      <Powerrail />
-      <NameCon UId="40" Name="en" />
-      <NameCon UId="42" Name="in" />
-      <NameCon UId="44" Name="in" />
-    </Wire>
-    <Wire UId="48">
-      <IdentCon UId="21" />
-      <NameCon UId="40" Name="bx_PalletSensor" />
-    </Wire>
-    <Wire UId="49">
-      <IdentCon UId="22" />
-      <NameCon UId="40" Name="bx_P1_EmptyPalletReq" />
-    </Wire>
-    <Wire UId="50">
-      <IdentCon UId="23" />
-      <NameCon UId="40" Name="bx_P1_ReleasePalletReq" />
-    </Wire>
     <Wire UId="51">
-      <IdentCon UId="24" />
-      <NameCon UId="40" Name="bx_PrevAck" />
+      <Powerrail />
+      <NameCon UId="44" Name="en" />
+      <NameCon UId="41" Name="in" />
+      <NameCon UId="42" Name="in" />
+      <NameCon UId="46" Name="in" />
+      <NameCon UId="48" Name="in" />
     </Wire>
     <Wire UId="52">
-      <IdentCon UId="25" />
-      <NameCon UId="40" Name="bx_NextAck" />
+      <IdentCon UId="21" />
+      <NameCon UId="41" Name="operand" />
     </Wire>
     <Wire UId="53">
-      <IdentCon UId="26" />
-      <NameCon UId="40" Name="ix_CurrentState" />
+      <NameCon UId="41" Name="out" />
+      <NameCon UId="43" Name="in1" />
     </Wire>
     <Wire UId="54">
-      <NameCon UId="40" Name="by_RollsFrd" />
-      <IdentCon UId="27" />
-    </Wire>
-    <Wire UId="55">
-      <NameCon UId="40" Name="by_RollsRev" />
-      <IdentCon UId="28" />
-    </Wire>
-    <Wire UId="56">
-      <NameCon UId="40" Name="by_ChainFrd" />
-      <IdentCon UId="29" />
-    </Wire>
-    <Wire UId="57">
-      <NameCon UId="40" Name="by_ChainRev" />
-      <IdentCon UId="30" />
-    </Wire>
-    <Wire UId="58">
-      <NameCon UId="40" Name="by_P1_EmptyPalletAck" />
-      <IdentCon UId="31" />
-    </Wire>
-    <Wire UId="59">
-      <NameCon UId="40" Name="by_P1_ReleasePalletAck" />
-      <IdentCon UId="32" />
-    </Wire>
-    <Wire UId="60">
-      <NameCon UId="40" Name="by_PrevReq" />
-      <IdentCon UId="33" />
-    </Wire>
-    <Wire UId="61">
-      <NameCon UId="40" Name="by_NextReq" />
-      <IdentCon UId="34" />
-    </Wire>
-    <Wire UId="62">
-      <NameCon UId="40" Name="ModuleSts" />
-      <IdentCon UId="35" />
-    </Wire>
-    <Wire UId="63">
-      <NameCon UId="40" Name="iy_SeqStep" />
-      <OpenCon UId="46" />
-    </Wire>
-    <Wire UId="64">
-      <IdentCon UId="36" />
+      <IdentCon UId="22" />
       <NameCon UId="42" Name="operand" />
     </Wire>
-    <Wire UId="65">
+    <Wire UId="55">
       <NameCon UId="42" Name="out" />
-      <NameCon UId="43" Name="in" />
+      <NameCon UId="43" Name="in2" />
+    </Wire>
+    <Wire UId="56">
+      <NameCon UId="43" Name="out" />
+      <NameCon UId="44" Name="bx_NextAck" />
+    </Wire>
+    <Wire UId="57">
+      <IdentCon UId="23" />
+      <NameCon UId="44" Name="bx_PalletSensor" />
+    </Wire>
+    <Wire UId="58">
+      <IdentCon UId="24" />
+      <NameCon UId="44" Name="bx_P1_EmptyPalletReq" />
+    </Wire>
+    <Wire UId="59">
+      <IdentCon UId="25" />
+      <NameCon UId="44" Name="bx_P1_ReleasePalletReq" />
+    </Wire>
+    <Wire UId="60">
+      <IdentCon UId="26" />
+      <NameCon UId="44" Name="bx_PrevAck" />
+    </Wire>
+    <Wire UId="61">
+      <IdentCon UId="27" />
+      <NameCon UId="44" Name="ix_CurrentState" />
+    </Wire>
+    <Wire UId="62">
+      <NameCon UId="44" Name="by_RollsFrd" />
+      <IdentCon UId="28" />
+    </Wire>
+    <Wire UId="63">
+      <NameCon UId="44" Name="by_RollsRev" />
+      <IdentCon UId="29" />
+    </Wire>
+    <Wire UId="64">
+      <NameCon UId="44" Name="by_ChainFrd" />
+      <IdentCon UId="30" />
+    </Wire>
+    <Wire UId="65">
+      <NameCon UId="44" Name="by_ChainRev" />
+      <IdentCon UId="31" />
     </Wire>
     <Wire UId="66">
-      <IdentCon UId="37" />
-      <NameCon UId="43" Name="operand" />
+      <NameCon UId="44" Name="by_P1_EmptyPalletAck" />
+      <IdentCon UId="32" />
     </Wire>
     <Wire UId="67">
-      <IdentCon UId="38" />
-      <NameCon UId="44" Name="operand" />
+      <NameCon UId="44" Name="by_P1_ReleasePalletAck" />
+      <IdentCon UId="33" />
     </Wire>
     <Wire UId="68">
-      <NameCon UId="44" Name="out" />
-      <NameCon UId="45" Name="in" />
+      <NameCon UId="44" Name="by_PrevReq" />
+      <IdentCon UId="34" />
     </Wire>
     <Wire UId="69">
+      <NameCon UId="44" Name="by_NextReq" />
+      <IdentCon UId="35" />
+    </Wire>
+    <Wire UId="70">
+      <NameCon UId="44" Name="ModuleSts" />
+      <IdentCon UId="36" />
+    </Wire>
+    <Wire UId="71">
+      <NameCon UId="44" Name="iy_SeqStep" />
+      <OpenCon UId="50" />
+    </Wire>
+    <Wire UId="72">
+      <IdentCon UId="37" />
+      <NameCon UId="46" Name="operand" />
+    </Wire>
+    <Wire UId="73">
+      <NameCon UId="46" Name="out" />
+      <NameCon UId="47" Name="in" />
+    </Wire>
+    <Wire UId="74">
+      <IdentCon UId="38" />
+      <NameCon UId="47" Name="operand" />
+    </Wire>
+    <Wire UId="75">
       <IdentCon UId="39" />
-      <NameCon UId="45" Name="operand" />
+      <NameCon UId="48" Name="operand" />
+    </Wire>
+    <Wire UId="76">
+      <NameCon UId="48" Name="out" />
+      <NameCon UId="49" Name="in" />
+    </Wire>
+    <Wire UId="77">
+      <IdentCon UId="40" />
+      <NameCon UId="49" Name="operand" />
     </Wire>
   </Wires>
 </FlgNet></NetworkSource>

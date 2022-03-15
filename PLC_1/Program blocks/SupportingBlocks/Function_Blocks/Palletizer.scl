@@ -27,6 +27,7 @@ VERSION : 0.1
       by_LiftDown : Bool;
       by_ChainFrd : Bool;
       by_ChainRev : Bool;
+      by_BoxCam : Bool;
       by_BoxReq : Bool;
       by_PalletReq : Bool;
       by_ReleasePalletReq : Bool;
@@ -40,11 +41,12 @@ VERSION : 0.1
       i_RowCounter : Int;
       i_ColumnsCounter : Int;
       i_LayersCounter : Int;
+      b_OddLayer : Bool;
       instBoxSensorFTrig {InstructionName := 'F_TRIG'; LibVersion := '1.0'} : F_TRIG;
       instFullRowOfBoxesTimeout {InstructionName := 'TON_TIME'; LibVersion := '1.0'} : TON_TIME;
-      instLiftUpTimeout {InstructionName := 'TON_TIME'; LibVersion := '1.0'} : TON_TIME;
+      instLiftTimeout {InstructionName := 'TON_TIME'; LibVersion := '1.0'} : TON_TIME;
       instPusherTimeout {InstructionName := 'TON_TIME'; LibVersion := '1.0'} : TON_TIME;
-      instOpenTrapdoorTimeout {InstructionName := 'TON_TIME'; LibVersion := '1.0'} : TON_TIME;
+      instTrapdoorTimeout {InstructionName := 'TON_TIME'; LibVersion := '1.0'} : TON_TIME;
       instLiftDownTimeout {InstructionName := 'TON_TIME'; LibVersion := '1.0'} : TON_TIME;
    END_VAR
 
@@ -54,7 +56,12 @@ BEGIN
 	// Change log table:
 	// Version       Date               Expert in charge    Changes applied
 	// 1.00          12.03.2022         SGorski             Initial instance of the module
-	// 1.01          14.03.2022         SGorski             
+	// 1.01          14.03.2022         SGorski             New timers added
+	// 1.02          15.03.2022         SGorski             Now there is a trapdoor reseting in idle step
+	//                                                      Odd/Even boxes configurations added
+	//                                                      New output added - by_BoxCam
+	//                                                      Timers renamed and updated.
+	//                                                      
 	//----------------------------------------------------------------------------------------
 	
 	//Falling trigger sensor detection 
@@ -62,22 +69,23 @@ BEGIN
 	
 	
 	//Full row of boxes detection timeout
-	#instFullRowOfBoxesTimeout(IN := #i_RowCounter >= 2,
-	                           PT := T#1000ms);
+	#instFullRowOfBoxesTimeout(IN := (NOT #b_OddLayer AND #i_RowCounter >= 2) OR (#b_OddLayer AND #i_RowCounter >= 3) ,
+	                           PT := T#1500ms);
 	
-	#instLiftUpTimeout(IN:=(#i_SeqStep = 4 AND #by_LiftUp)
+	#instLiftTimeout(IN:=(#i_SeqStep = 4 AND #by_LiftUp)
 	                   OR (#i_SeqStep = 14 AND #by_LiftDown),
-	                   PT:=T#3s);
+	                   PT:=T#500ms);
 	
-	#instPusherTimeout(IN := #i_SeqStep = 7 AND #by_Pusher,
-	                   PT := T#3s);
+	#instPusherTimeout(IN := (#i_SeqStep = 7 AND #by_Pusher)
+	                   OR (#i_SeqStep = 8 AND NOT #by_Pusher),
+	                   PT := T#1000ms);
 	
-	#instOpenTrapdoorTimeout(IN := (#i_SeqStep = 11 AND #by_Trapdoor)
+	#instTrapdoorTimeout(IN := (#i_SeqStep = 11 AND #by_Trapdoor)
 	                         OR (#i_SeqStep = 13 AND NOT #by_Trapdoor),
-	                         PT := T#3s);
+	                         PT := T#500ms);
 	
 	#instLiftDownTimeout(IN := #i_SeqStep = 12 AND #by_LiftDown,
-	                     PT := T#3s);
+	                     PT := T#1s);
 	
 	
 	
@@ -85,6 +93,8 @@ BEGIN
 	IF #instBoxSensorFTrig.Q OR #bx_BoxSensor THEN
 	    #i_RowCounter := #i_RowCounter + 1;
 	END_IF;
+	
+	
 	
 	CASE #ix_CurrentState OF
 	    1://Clearing
@@ -104,6 +114,7 @@ BEGIN
 	        #by_ChainRev := False;
 	        #by_LiftDown := False;
 	        #by_LiftUp := False;
+	        #by_Trapdoor := False;
 	        #by_MoveLiftToLimit := False;
 	        #by_Pusher := False;
 	        #by_Positioner := False;
@@ -113,7 +124,7 @@ BEGIN
 	        #i_RowCounter := 0;
 	        #i_ColumnsCounter := 0;
 	        #i_LayersCounter := 0;
-	        
+	        #b_OddLayer := False;
 	    5://Suspended
 	        ;
 	    6://Execute
@@ -153,7 +164,7 @@ BEGIN
 	                #by_MoveLiftToLimit := True;
 	                #by_LiftDown := False;
 	                #by_LiftUp := True;
-	                IF NOT #bx_LiftMoving AND NOT #by_LiftDown AND #by_LiftUp AND #instLiftUpTimeout.Q THEN
+	                IF NOT #bx_LiftMoving AND NOT #by_LiftDown AND #by_LiftUp AND #instLiftTimeout.Q THEN
 	                    #by_MoveLiftToLimit := False;
 	                    #by_LiftDown := False;
 	                    #by_LiftUp := False;
@@ -180,10 +191,10 @@ BEGIN
 	                END_IF;
 	            8://Rectact the pusher and reset the counter
 	                #by_Pusher := False;
-	                IF #bx_PusherInPos AND NOT #by_Pusher THEN
+	                IF #bx_PusherInPos AND NOT #by_Pusher AND #instPusherTimeout.Q THEN
 	                    #i_RowCounter := 0;
 	                    #i_ColumnsCounter := #i_ColumnsCounter + 1;
-	                    IF #i_ColumnsCounter >= 3 THEN
+	                    IF (NOT #b_OddLayer AND #i_ColumnsCounter >= 3) OR (#b_OddLayer AND #i_ColumnsCounter >= 2) THEN
 	                        #i_SeqStep := 9;
 	                    ELSE
 	                        #i_SeqStep := 5;
@@ -201,7 +212,7 @@ BEGIN
 	               // END_IF;
 	            11://Open the trapdoor
 	                #by_Trapdoor := True;
-	                IF #bx_TrapdoorInPos AND #by_Trapdoor AND #instOpenTrapdoorTimeout.Q THEN
+	                IF #bx_TrapdoorInPos AND #by_Trapdoor AND #instTrapdoorTimeout.Q THEN
 	                    #i_SeqStep := 12;
 	                END_IF;
 	            12://Move the lift down one layer
@@ -216,9 +227,14 @@ BEGIN
 	                #by_LiftDown := False;
 	                #by_LiftUp := False;
 	                #by_Trapdoor := False;
-	                IF #bx_TrapdoorInPos AND NOT #by_Trapdoor AND #instOpenTrapdoorTimeout.Q THEN
+	                IF #bx_TrapdoorInPos AND NOT #by_Trapdoor AND #instTrapdoorTimeout.Q THEN
 	                    #i_ColumnsCounter := 0;
 	                    #i_LayersCounter := #i_LayersCounter + 1;
+	                    IF NOT #b_OddLayer THEN
+	                        #b_OddLayer := True;
+	                    ELSE
+	                        #b_OddLayer := False;
+	                    END_IF;
 	                    IF #i_LayersCounter >= #NUMBER_OF_LAYERS THEN
 	                        #i_SeqStep := 14;
 	                    ELSE
@@ -229,7 +245,7 @@ BEGIN
 	                #by_MoveLiftToLimit := True;
 	                #by_LiftDown := True;
 	                #by_LiftUp := False;
-	                IF NOT #bx_LiftMoving AND #by_LiftDown AND NOT #by_LiftUp AND #instLiftUpTimeout.Q THEN
+	                IF NOT #bx_LiftMoving AND #by_LiftDown AND NOT #by_LiftUp AND #instLiftTimeout.Q THEN
 	                    #by_MoveLiftToLimit := False;
 	                    #by_LiftDown := False;
 	                    #by_LiftUp := False;
@@ -247,6 +263,7 @@ BEGIN
 	                    #by_ChainFrd := FALSE;
 	                    #by_ChainRev := False;
 	                    #by_ReleasePalletReq := False;
+	                    #i_LayersCounter := 0;
 	                    #i_SeqStep := 0;
 	                END_IF;
 	        END_CASE;
@@ -277,6 +294,7 @@ BEGIN
 	        #ModuleSts.sts_Completing_SC := False;
 	END_CASE;
 	#iy_SeqStep := #i_SeqStep;
-	#iy_RowCounter := #i_RowCounter; 
+	#iy_RowCounter := #i_RowCounter;
+	#by_BoxCam := #b_OddLayer;
 END_FUNCTION_BLOCK
 
