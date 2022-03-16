@@ -2,7 +2,7 @@
 <Document>
   <Engineering version="V17" />
   <DocumentInfo>
-    <Created>2022-03-14T21:17:28.2675969Z</Created>
+    <Created>2022-03-16T18:47:26.7868941Z</Created>
     <ExportSetting>WithDefaults</ExportSetting>
     <InstalledProducts>
       <Product>
@@ -163,7 +163,7 @@
   <Parts>
     <Access Scope="GlobalVariable" UId="21">
       <Symbol>
-        <Component Name="Tag_10" />
+        <Component Name="bx_EM01_CM01_BoxSensor" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="22">
@@ -183,7 +183,7 @@
     </Access>
     <Access Scope="GlobalVariable" UId="24">
       <Symbol>
-        <Component Name="Tag_11" />
+        <Component Name="by_EM01_CM01_BeltFrd" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="25">

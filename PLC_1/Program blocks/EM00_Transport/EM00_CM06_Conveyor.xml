@@ -2,7 +2,7 @@
 <Document>
   <Engineering version="V17" />
   <DocumentInfo>
-    <Created>2022-03-12T16:05:27.1596512Z</Created>
+    <Created>2022-03-16T18:47:26.5380485Z</Created>
     <ExportSetting>WithDefaults</ExportSetting>
     <InstalledProducts>
       <Product>
@@ -52,7 +52,7 @@
       <IsRetainMemResEnabled>false</IsRetainMemResEnabled>
       <MemoryLayout>Optimized</MemoryLayout>
       <MemoryReserve>100</MemoryReserve>
-      <Name>EM00_CM06_Conveyor</Name>
+      <Name>EM00_CM05_Conveyor</Name>
       <Number>2</Number>
       <ProgrammingLanguage>LAD</ProgrammingLanguage>
       <SetENOAutomatically>false</SetENOAutomatically>
@@ -264,7 +264,7 @@
       <Symbol>
         <Component Name="EM00" />
         <Component Name="PackML_Sts" />
-        <Component Name="CM04" />
+        <Component Name="CM05" />
       </Symbol>
     </Access>
     <Part Name="Contact" UId="25" />
@@ -447,7 +447,7 @@
           <MultilingualTextItem ID="37" CompositionName="Items">
             <AttributeList>
               <Culture>de-DE</Culture>
-              <Text>EM00_CM04</Text>
+              <Text>EM00_CM05</Text>
             </AttributeList>
           </MultilingualTextItem>
         </ObjectList>

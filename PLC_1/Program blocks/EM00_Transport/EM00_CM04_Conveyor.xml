@@ -2,7 +2,7 @@
 <Document>
   <Engineering version="V17" />
   <DocumentInfo>
-    <Created>2022-03-15T19:20:16.9148315Z</Created>
+    <Created>2022-03-16T18:47:25.8847949Z</Created>
     <ExportSetting>WithDefaults</ExportSetting>
     <InstalledProducts>
       <Product>
@@ -44,7 +44,7 @@
   <Section Name="InOut" />
   <Section Name="Static">
     <Member Name="statDummyBool" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">dummy bool - placeholder</MultiLanguageText><MultiLanguageText Lang="de-DE">dummy bool - placeholder</MultiLanguageText></Comment></Member>
-    <Member Name="instConveyor" Datatype="&quot;Conveyor&quot;" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute></AttributeList><Sections><Section Name="Input"><Member Name="bx_PalletSensor" Datatype="Bool" /><Member Name="bx_NextReq" Datatype="Bool" /><Member Name="bx_PrevReq" Datatype="Bool" /><Member Name="ix_CurrentState" Datatype="DInt" /></Section><Section Name="Output"><Member Name="by_ConvFrd" Datatype="Bool" /><Member Name="by_NextAck" Datatype="Bool" /><Member Name="by_PrevAck" Datatype="Bool" /><Member Name="ModuleSts" Datatype="&quot;CPG_typePackML_ModuleSts&quot;"><Sections><Section Name="None"><Member Name="cmd_Reset" Datatype="Bool" /><Member Name="sts_Resetting_SC" Datatype="Bool" /><Member Name="cmd_Start" Datatype="Bool" /><Member Name="sts_Starting_SC" Datatype="Bool" /><Member Name="cmd_Stop" Datatype="Bool" /><Member Name="sts_Stopping_SC" Datatype="Bool" /><Member Name="cmd_Hold" Datatype="Bool" /><Member Name="sts_Holding_SC" Datatype="Bool" /><Member Name="cmd_UnHold" Datatype="Bool" /><Member Name="sts_UnHolding_SC" Datatype="Bool" /><Member Name="cmd_Suspend" Datatype="Bool" /><Member Name="sts_Suspending_SC" Datatype="Bool" /><Member Name="cmd_UnSuspend" Datatype="Bool" /><Member Name="sts_UnSuspending_SC" Datatype="Bool" /><Member Name="cmd_Abort" Datatype="Bool" /><Member Name="sts_Aborting_SC" Datatype="Bool" /><Member Name="cmd_Clear" Datatype="Bool" /><Member Name="sts_Clearing_SC" Datatype="Bool" /><Member Name="sts_Execute_SC" Datatype="Bool" /><Member Name="sts_Completing_SC" Datatype="Bool" /><Member Name="moduleActive" Datatype="Bool" /><Member Name="ONS" Datatype="Bool" /></Section></Sections></Member><Member Name="iy_SeqStep" Datatype="Int" /></Section><Section Name="InOut" /><Section Name="Static"><Member Name="i_SeqStep" Datatype="Int" /></Section></Sections></Member>
+    <Member Name="instConveyorCrossing" Datatype="&quot;ConveyorCrossing&quot;" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute></AttributeList><Sections><Section Name="Input"><Member Name="bx_PalletSensor" Datatype="Bool" /><Member Name="bx_EmptyPalletReq" Datatype="Bool" /><Member Name="bx_ReleasePalletReq" Datatype="Bool" /><Member Name="bx_TransportPalletReq" Datatype="Bool" /><Member Name="bx_PrevAck" Datatype="Bool" /><Member Name="bx_NextAck" Datatype="Bool" /><Member Name="ix_CurrentState" Datatype="DInt" /></Section><Section Name="Output"><Member Name="by_RollsFrd" Datatype="Bool" /><Member Name="by_RollsRev" Datatype="Bool" /><Member Name="by_ChainFrd" Datatype="Bool" /><Member Name="by_ChainRev" Datatype="Bool" /><Member Name="by_EmptyPalletAck" Datatype="Bool" /><Member Name="by_ReleasePalletAck" Datatype="Bool" /><Member Name="by_TransportPalletAck" Datatype="Bool" /><Member Name="by_PrevReq" Datatype="Bool" /><Member Name="by_NextReq" Datatype="Bool" /><Member Name="ModuleSts" Datatype="&quot;CPG_typePackML_ModuleSts&quot;"><Sections><Section Name="None"><Member Name="cmd_Reset" Datatype="Bool" /><Member Name="sts_Resetting_SC" Datatype="Bool" /><Member Name="cmd_Start" Datatype="Bool" /><Member Name="sts_Starting_SC" Datatype="Bool" /><Member Name="cmd_Stop" Datatype="Bool" /><Member Name="sts_Stopping_SC" Datatype="Bool" /><Member Name="cmd_Hold" Datatype="Bool" /><Member Name="sts_Holding_SC" Datatype="Bool" /><Member Name="cmd_UnHold" Datatype="Bool" /><Member Name="sts_UnHolding_SC" Datatype="Bool" /><Member Name="cmd_Suspend" Datatype="Bool" /><Member Name="sts_Suspending_SC" Datatype="Bool" /><Member Name="cmd_UnSuspend" Datatype="Bool" /><Member Name="sts_UnSuspending_SC" Datatype="Bool" /><Member Name="cmd_Abort" Datatype="Bool" /><Member Name="sts_Aborting_SC" Datatype="Bool" /><Member Name="cmd_Clear" Datatype="Bool" /><Member Name="sts_Clearing_SC" Datatype="Bool" /><Member Name="sts_Execute_SC" Datatype="Bool" /><Member Name="sts_Completing_SC" Datatype="Bool" /><Member Name="moduleActive" Datatype="Bool" /><Member Name="ONS" Datatype="Bool" /></Section></Sections></Member><Member Name="iy_SeqStep" Datatype="Int" /></Section><Section Name="InOut" /><Section Name="Static"><Member Name="i_SeqStep" Datatype="Int" /></Section></Sections></Member>
   </Section>
   <Section Name="Temp" />
   <Section Name="Constant" />
@@ -53,7 +53,7 @@
       <IsRetainMemResEnabled>false</IsRetainMemResEnabled>
       <MemoryLayout>Optimized</MemoryLayout>
       <MemoryReserve>100</MemoryReserve>
-      <Name>EM00_CM04_Conveyor</Name>
+      <Name>EM00_CM04_ConveyorCrossing</Name>
       <Number>31654</Number>
       <ProgrammingLanguage>LAD</ProgrammingLanguage>
       <SetENOAutomatically>false</SetENOAutomatically>
@@ -163,133 +163,152 @@
   <Parts>
     <Access Scope="GlobalVariable" UId="21">
       <Symbol>
-        <Component Name="Tag_8" />
+        <Component Name="InstEM02_00_Main" />
+        <Component Name="instCM02" />
+        <Component Name="instPalletizer" />
+        <Component Name="by_PalletReq" />
       </Symbol>
     </Access>
-    <Access Scope="LocalVariable" UId="22">
+    <Access Scope="GlobalVariable" UId="22">
       <Symbol>
-        <Component Name="instConveyor" />
-        <Component Name="iy_SeqStep" />
+        <Component Name="InstEM02_00_Main" />
+        <Component Name="instCM02" />
+        <Component Name="instPalletizer" />
+        <Component Name="by_ReleasePalletReq" />
       </Symbol>
     </Access>
-    <Access Scope="LiteralConstant" UId="23">
-      <Constant>
-        <ConstantType>Int</ConstantType>
-        <ConstantValue>2</ConstantValue>
-      </Constant>
-    </Access>
-    <Access Scope="GlobalVariable" UId="24">
-      <Symbol>
-        <Component Name="InstEM00_00_Main" />
-        <Component Name="instCM03" />
-        <Component Name="instConveyorCrossing" />
-        <Component Name="by_NextReq" />
-      </Symbol>
-    </Access>
-    <Access Scope="GlobalVariable" UId="25">
+    <Access Scope="GlobalVariable" UId="23">
       <Symbol>
         <Component Name="PackTags" />
         <Component Name="Status" />
         <Component Name="StateCurrent" />
       </Symbol>
     </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="InstEM02_00_Main" />
+        <Component Name="instCM02" />
+        <Component Name="instPalletizer" />
+        <Component Name="bx_PalletReady" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="25">
+      <Symbol>
+        <Component Name="InstEM02_00_Main" />
+        <Component Name="instCM02" />
+        <Component Name="instPalletizer" />
+        <Component Name="bx_ReleasePalletAck" />
+      </Symbol>
+    </Access>
     <Access Scope="GlobalVariable" UId="26">
-      <Symbol>
-        <Component Name="Tag_9" />
-      </Symbol>
-    </Access>
-    <Access Scope="GlobalVariable" UId="27">
-      <Symbol>
-        <Component Name="InstEM00_00_Main" />
-        <Component Name="instCM03" />
-        <Component Name="instConveyorCrossing" />
-        <Component Name="bx_NextAck" />
-      </Symbol>
-    </Access>
-    <Access Scope="GlobalVariable" UId="28">
       <Symbol>
         <Component Name="EM00" />
         <Component Name="PackML_Sts" />
         <Component Name="CM04" />
       </Symbol>
     </Access>
-    <Part Name="Contact" UId="29">
-      <Negated Name="operand" />
-    </Part>
-    <Part Name="Eq" UId="30">
-      <TemplateValue Name="SrcType" Type="Type">Int</TemplateValue>
-    </Part>
-    <Call UId="31">
-      <CallInfo Name="Conveyor" BlockType="FB">
-        <Instance Scope="LocalVariable" UId="32">
-          <Component Name="instConveyor" />
+    <Call UId="27">
+      <CallInfo Name="ConveyorCrossing" BlockType="FB">
+        <Instance Scope="LocalVariable" UId="28">
+          <Component Name="instConveyorCrossing" />
         </Instance>
         <Parameter Name="bx_PalletSensor" Section="Input" Type="Bool" />
-        <Parameter Name="bx_NextReq" Section="Input" Type="Bool" />
-        <Parameter Name="bx_PrevReq" Section="Input" Type="Bool" />
+        <Parameter Name="bx_EmptyPalletReq" Section="Input" Type="Bool" />
+        <Parameter Name="bx_ReleasePalletReq" Section="Input" Type="Bool" />
+        <Parameter Name="bx_TransportPalletReq" Section="Input" Type="Bool" />
+        <Parameter Name="bx_PrevAck" Section="Input" Type="Bool" />
+        <Parameter Name="bx_NextAck" Section="Input" Type="Bool" />
         <Parameter Name="ix_CurrentState" Section="Input" Type="DInt" />
-        <Parameter Name="by_ConvFrd" Section="Output" Type="Bool" />
-        <Parameter Name="by_NextAck" Section="Output" Type="Bool" />
-        <Parameter Name="by_PrevAck" Section="Output" Type="Bool" />
+        <Parameter Name="by_RollsFrd" Section="Output" Type="Bool" />
+        <Parameter Name="by_RollsRev" Section="Output" Type="Bool" />
+        <Parameter Name="by_ChainFrd" Section="Output" Type="Bool" />
+        <Parameter Name="by_ChainRev" Section="Output" Type="Bool" />
+        <Parameter Name="by_EmptyPalletAck" Section="Output" Type="Bool" />
+        <Parameter Name="by_ReleasePalletAck" Section="Output" Type="Bool" />
+        <Parameter Name="by_TransportPalletAck" Section="Output" Type="Bool" />
+        <Parameter Name="by_PrevReq" Section="Output" Type="Bool" />
+        <Parameter Name="by_NextReq" Section="Output" Type="Bool" />
         <Parameter Name="ModuleSts" Section="Output" Type="&quot;CPG_typePackML_ModuleSts&quot;" />
         <Parameter Name="iy_SeqStep" Section="Output" Type="Int" />
       </CallInfo>
     </Call>
   </Parts>
   <Wires>
-    <Wire UId="35">
-      <Powerrail />
-      <NameCon UId="31" Name="en" />
-      <NameCon UId="29" Name="in" />
-      <NameCon UId="30" Name="pre" />
-    </Wire>
-    <Wire UId="36">
-      <IdentCon UId="21" />
-      <NameCon UId="29" Name="operand" />
-    </Wire>
-    <Wire UId="37">
-      <NameCon UId="29" Name="out" />
-      <NameCon UId="31" Name="bx_PalletSensor" />
-    </Wire>
-    <Wire UId="38">
-      <IdentCon UId="22" />
-      <NameCon UId="30" Name="in1" />
-    </Wire>
-    <Wire UId="39">
-      <IdentCon UId="23" />
-      <NameCon UId="30" Name="in2" />
-    </Wire>
-    <Wire UId="40">
-      <NameCon UId="30" Name="out" />
-      <NameCon UId="31" Name="bx_NextReq" />
-    </Wire>
     <Wire UId="41">
-      <IdentCon UId="24" />
-      <NameCon UId="31" Name="bx_PrevReq" />
+      <Powerrail />
+      <NameCon UId="27" Name="en" />
     </Wire>
     <Wire UId="42">
-      <IdentCon UId="25" />
-      <NameCon UId="31" Name="ix_CurrentState" />
+      <OpenCon UId="29" />
+      <NameCon UId="27" Name="bx_PalletSensor" />
     </Wire>
     <Wire UId="43">
-      <NameCon UId="31" Name="by_ConvFrd" />
-      <IdentCon UId="26" />
+      <IdentCon UId="21" />
+      <NameCon UId="27" Name="bx_EmptyPalletReq" />
     </Wire>
     <Wire UId="44">
-      <NameCon UId="31" Name="by_NextAck" />
-      <OpenCon UId="33" />
+      <IdentCon UId="22" />
+      <NameCon UId="27" Name="bx_ReleasePalletReq" />
     </Wire>
     <Wire UId="45">
-      <NameCon UId="31" Name="by_PrevAck" />
-      <IdentCon UId="27" />
+      <OpenCon UId="30" />
+      <NameCon UId="27" Name="bx_TransportPalletReq" />
     </Wire>
     <Wire UId="46">
-      <NameCon UId="31" Name="ModuleSts" />
-      <IdentCon UId="28" />
+      <OpenCon UId="31" />
+      <NameCon UId="27" Name="bx_PrevAck" />
     </Wire>
     <Wire UId="47">
-      <NameCon UId="31" Name="iy_SeqStep" />
+      <OpenCon UId="32" />
+      <NameCon UId="27" Name="bx_NextAck" />
+    </Wire>
+    <Wire UId="48">
+      <IdentCon UId="23" />
+      <NameCon UId="27" Name="ix_CurrentState" />
+    </Wire>
+    <Wire UId="49">
+      <NameCon UId="27" Name="by_RollsFrd" />
+      <OpenCon UId="33" />
+    </Wire>
+    <Wire UId="50">
+      <NameCon UId="27" Name="by_RollsRev" />
       <OpenCon UId="34" />
+    </Wire>
+    <Wire UId="51">
+      <NameCon UId="27" Name="by_ChainFrd" />
+      <OpenCon UId="35" />
+    </Wire>
+    <Wire UId="52">
+      <NameCon UId="27" Name="by_ChainRev" />
+      <OpenCon UId="36" />
+    </Wire>
+    <Wire UId="53">
+      <NameCon UId="27" Name="by_EmptyPalletAck" />
+      <IdentCon UId="24" />
+    </Wire>
+    <Wire UId="54">
+      <NameCon UId="27" Name="by_ReleasePalletAck" />
+      <IdentCon UId="25" />
+    </Wire>
+    <Wire UId="55">
+      <NameCon UId="27" Name="by_TransportPalletAck" />
+      <OpenCon UId="37" />
+    </Wire>
+    <Wire UId="56">
+      <NameCon UId="27" Name="by_PrevReq" />
+      <OpenCon UId="38" />
+    </Wire>
+    <Wire UId="57">
+      <NameCon UId="27" Name="by_NextReq" />
+      <OpenCon UId="39" />
+    </Wire>
+    <Wire UId="58">
+      <NameCon UId="27" Name="ModuleSts" />
+      <IdentCon UId="26" />
+    </Wire>
+    <Wire UId="59">
+      <NameCon UId="27" Name="iy_SeqStep" />
+      <OpenCon UId="40" />
     </Wire>
   </Wires>
 </FlgNet></NetworkSource>
@@ -323,7 +342,7 @@
               <MultilingualTextItem ID="18" CompositionName="Items">
                 <AttributeList>
                   <Culture>de-DE</Culture>
-                  <Text>Conveyor instance</Text>
+                  <Text>Conveyor crossing instance</Text>
                 </AttributeList>
               </MultilingualTextItem>
             </ObjectList>

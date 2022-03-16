@@ -2,7 +2,7 @@
 <Document>
   <Engineering version="V17" />
   <DocumentInfo>
-    <Created>2022-03-15T19:20:17.0638445Z</Created>
+    <Created>2022-03-16T18:47:27.0800011Z</Created>
     <ExportSetting>WithDefaults</ExportSetting>
     <InstalledProducts>
       <Product>
@@ -164,7 +164,7 @@
   <Parts>
     <Access Scope="GlobalVariable" UId="21">
       <Symbol>
-        <Component Name="Tag_12" />
+        <Component Name="bx_EM01_CM01_BoxSensor" />
       </Symbol>
     </Access>
     <Access Scope="LocalVariable" UId="22">
@@ -174,32 +174,32 @@
     </Access>
     <Access Scope="GlobalVariable" UId="23">
       <Symbol>
-        <Component Name="Tag_13" />
+        <Component Name="bx_EM01_CM02_PalletSensor1" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="24">
       <Symbol>
-        <Component Name="Tag_14" />
+        <Component Name="bx_EM01_CM02_PalletSensor2" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="25">
       <Symbol>
-        <Component Name="Tag_15" />
+        <Component Name="bx_EM01_CM02_PusherInPos" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="26">
       <Symbol>
-        <Component Name="Tag_16" />
+        <Component Name="bx_EM01_CM02_TrapdoorInPos" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="27">
       <Symbol>
-        <Component Name="Tag_17" />
+        <Component Name="bx_EM01_CM02_PositionerExtended" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="28">
       <Symbol>
-        <Component Name="Tag_18" />
+        <Component Name="bx_EM01_CM02_LiftMoving" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="29">
@@ -215,7 +215,7 @@
         <Component Name="InstEM00_00_Main" />
         <Component Name="instCM03" />
         <Component Name="instConveyorCrossing" />
-        <Component Name="by_P1_EmptyPalletAck" />
+        <Component Name="by_EmptyPalletAck" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="31">
@@ -223,7 +223,7 @@
         <Component Name="InstEM00_00_Main" />
         <Component Name="instCM03" />
         <Component Name="instConveyorCrossing" />
-        <Component Name="by_P1_ReleasePalletAck" />
+        <Component Name="by_ReleasePalletAck" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="32">
@@ -241,57 +241,57 @@
     </Access>
     <Access Scope="GlobalVariable" UId="34">
       <Symbol>
-        <Component Name="Tag_19" />
+        <Component Name="by_EM01_CM02_BeltFrd" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="35">
       <Symbol>
-        <Component Name="Tag_20" />
+        <Component Name="by_EM01_CM02_BeltRev" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="36">
       <Symbol>
-        <Component Name="Tag_21" />
+        <Component Name="by_EM01_CM02_Pusher" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="37">
       <Symbol>
-        <Component Name="Tag_22" />
+        <Component Name="by_EM01_CM02_Positioner" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="38">
       <Symbol>
-        <Component Name="Tag_23" />
+        <Component Name="by_EM01_CM02_Trapdoor" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="39">
       <Symbol>
-        <Component Name="Tag_24" />
+        <Component Name="by_EM01_CM02_MoveLiftToLimit" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="40">
       <Symbol>
-        <Component Name="Tag_25" />
+        <Component Name="by_EM01_CM02_LiftUp" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="41">
       <Symbol>
-        <Component Name="Tag_26" />
+        <Component Name="by_EM01_CM02_LiftDown" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="42">
       <Symbol>
-        <Component Name="Tag_27" />
+        <Component Name="by_EM01_CM02_ChainFrd" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="43">
       <Symbol>
-        <Component Name="Tag_28" />
+        <Component Name="by_EM01_CM02_ChainRev" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="44">
       <Symbol>
-        <Component Name="Tag_31" />
+        <Component Name="by_EM01_CM02_BoxCam" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="45">
@@ -307,7 +307,7 @@
         <Component Name="InstEM00_00_Main" />
         <Component Name="instCM03" />
         <Component Name="instConveyorCrossing" />
-        <Component Name="bx_P1_EmptyPalletReq" />
+        <Component Name="bx_EmptyPalletReq" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="47">
@@ -315,7 +315,7 @@
         <Component Name="InstEM00_00_Main" />
         <Component Name="instCM03" />
         <Component Name="instConveyorCrossing" />
-        <Component Name="bx_P1_ReleasePalletReq" />
+        <Component Name="bx_ReleasePalletReq" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="48">
