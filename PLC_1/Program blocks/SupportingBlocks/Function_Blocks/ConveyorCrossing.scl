@@ -46,6 +46,11 @@ BEGIN
 	        #by_ChainRev := False;
 	        #by_RollsFrd := FALSE;
 	        #by_RollsRev := False;
+	        #by_NextReq := False;
+	        #by_PrevReq := False;
+	        #by_EmptyPalletAck := False;
+	        #by_ReleasePalletAck := False;
+	        #by_TransportPalletAck := False;
 	        #i_SeqStep := 0;
 	    5://Suspended
 	        ;

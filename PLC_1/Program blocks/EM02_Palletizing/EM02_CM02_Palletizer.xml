@@ -2,7 +2,7 @@
 <Document>
   <Engineering version="V17" />
   <DocumentInfo>
-    <Created>2022-03-16T18:47:23.8042694Z</Created>
+    <Created>2022-03-29T18:52:11.2005248Z</Created>
     <ExportSetting>WithDefaults</ExportSetting>
     <InstalledProducts>
       <Product>
@@ -45,7 +45,7 @@
   <Section Name="Static">
     <Member Name="statDummyBool" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList><Comment><MultiLanguageText Lang="en-US">dummy bool - placeholder</MultiLanguageText><MultiLanguageText Lang="de-DE">dummy bool - placeholder</MultiLanguageText></Comment></Member>
     <Member Name="instPalletizer" Datatype="&quot;Palletizer&quot;" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute></AttributeList><Sections><Section Name="Input"><Member Name="bx_BoxSensor" Datatype="Bool" /><Member Name="bx_PalletSensor1" Datatype="Bool" /><Member Name="bx_PalletSensor2" Datatype="Bool" /><Member Name="bx_PusherInPos" Datatype="Bool" /><Member Name="bx_TrapdoorInPos" Datatype="Bool" /><Member Name="bx_PositionerExtended" Datatype="Bool" /><Member Name="bx_LiftMoving" Datatype="Bool" /><Member Name="bx_BoxReady" Datatype="Bool" /><Member Name="bx_PalletReady" Datatype="Bool" /><Member Name="bx_ReleasePalletAck" Datatype="Bool" /><Member Name="NUMBER_OF_LAYERS" Datatype="Int" /><Member Name="ix_CurrentState" Datatype="DInt" /></Section><Section Name="Output"><Member Name="by_BeltFrd" Datatype="Bool" /><Member Name="by_BeltRev" Datatype="Bool" /><Member Name="by_Pusher" Datatype="Bool" /><Member Name="by_Positioner" Datatype="Bool" /><Member Name="by_Trapdoor" Datatype="Bool" /><Member Name="by_MoveLiftToLimit" Datatype="Bool" /><Member Name="by_LiftUp" Datatype="Bool" /><Member Name="by_LiftDown" Datatype="Bool" /><Member Name="by_ChainFrd" Datatype="Bool" /><Member Name="by_ChainRev" Datatype="Bool" /><Member Name="by_BoxCam" Datatype="Bool" /><Member Name="by_BoxReq" Datatype="Bool" /><Member Name="by_PalletReq" Datatype="Bool" /><Member Name="by_ReleasePalletReq" Datatype="Bool" /><Member Name="ModuleSts" Datatype="&quot;CPG_typePackML_ModuleSts&quot;"><Sections><Section Name="None"><Member Name="cmd_Reset" Datatype="Bool" /><Member Name="sts_Resetting_SC" Datatype="Bool" /><Member Name="cmd_Start" Datatype="Bool" /><Member Name="sts_Starting_SC" Datatype="Bool" /><Member Name="cmd_Stop" Datatype="Bool" /><Member Name="sts_Stopping_SC" Datatype="Bool" /><Member Name="cmd_Hold" Datatype="Bool" /><Member Name="sts_Holding_SC" Datatype="Bool" /><Member Name="cmd_UnHold" Datatype="Bool" /><Member Name="sts_UnHolding_SC" Datatype="Bool" /><Member Name="cmd_Suspend" Datatype="Bool" /><Member Name="sts_Suspending_SC" Datatype="Bool" /><Member Name="cmd_UnSuspend" Datatype="Bool" /><Member Name="sts_UnSuspending_SC" Datatype="Bool" /><Member Name="cmd_Abort" Datatype="Bool" /><Member Name="sts_Aborting_SC" Datatype="Bool" /><Member Name="cmd_Clear" Datatype="Bool" /><Member Name="sts_Clearing_SC" Datatype="Bool" /><Member Name="sts_Execute_SC" Datatype="Bool" /><Member Name="sts_Completing_SC" Datatype="Bool" /><Member Name="moduleActive" Datatype="Bool" /><Member Name="ONS" Datatype="Bool" /></Section></Sections></Member><Member Name="iy_SeqStep" Datatype="Int" /><Member Name="iy_RowCounter" Datatype="Int" /></Section><Section Name="InOut" /><Section Name="Static"><Member Name="i_SeqStep" Datatype="Int" /><Member Name="i_RowCounter" Datatype="Int" /><Member Name="i_ColumnsCounter" Datatype="Int" /><Member Name="i_LayersCounter" Datatype="Int" /><Member Name="b_OddLayer" Datatype="Bool" /><Member Name="instBoxSensorFTrig" Datatype="F_TRIG" Version="1.0"><Sections><Section Name="Input"><Member Name="CLK" Datatype="Bool" /></Section><Section Name="Output"><Member Name="Q" Datatype="Bool" /></Section><Section Name="InOut" /><Section Name="Static"><Member Name="Stat_Bit" Datatype="Bool" /></Section></Sections></Member><Member Name="instFullRowOfBoxesTimeout" Datatype="TON_TIME" Version="1.0"><Sections><Section Name="None"><Member Name="PT" Datatype="Time" /><Member Name="ET" Datatype="Time" /><Member Name="IN" Datatype="Bool" /><Member Name="Q" Datatype="Bool" /></Section></Sections></Member><Member Name="instLiftTimeout" Datatype="TON_TIME" Version="1.0"><Sections><Section Name="None"><Member Name="PT" Datatype="Time" /><Member Name="ET" Datatype="Time" /><Member Name="IN" Datatype="Bool" /><Member Name="Q" Datatype="Bool" /></Section></Sections></Member><Member Name="instPusherTimeout" Datatype="TON_TIME" Version="1.0"><Sections><Section Name="None"><Member Name="PT" Datatype="Time" /><Member Name="ET" Datatype="Time" /><Member Name="IN" Datatype="Bool" /><Member Name="Q" Datatype="Bool" /></Section></Sections></Member><Member Name="instTrapdoorTimeout" Datatype="TON_TIME" Version="1.0"><Sections><Section Name="None"><Member Name="PT" Datatype="Time" /><Member Name="ET" Datatype="Time" /><Member Name="IN" Datatype="Bool" /><Member Name="Q" Datatype="Bool" /></Section></Sections></Member><Member Name="instLiftDownTimeout" Datatype="TON_TIME" Version="1.0"><Sections><Section Name="None"><Member Name="PT" Datatype="Time" /><Member Name="ET" Datatype="Time" /><Member Name="IN" Datatype="Bool" /><Member Name="Q" Datatype="Bool" /></Section></Sections></Member></Section></Sections></Member>
-    <Member Name="boxCounterNTrig" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
+    <Member Name="NTrig" Datatype="Bool" Remanence="NonRetain" Accessibility="Public"><AttributeList><BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute><BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute></AttributeList></Member>
   </Section>
   <Section Name="Temp" />
   <Section Name="Constant" />
@@ -164,26 +164,137 @@
   <Parts>
     <Access Scope="GlobalVariable" UId="21">
       <Symbol>
+        <Component Name="bx_EM02_CM01_BoxSensor" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="22">
+      <Symbol>
+        <Component Name="NTrig" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="23">
+      <Symbol>
+        <Component Name="bx_EM02_CM02_PalletSensor1" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="bx_EM02_CM02_PalletSensor2" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="25">
+      <Symbol>
+        <Component Name="bx_EM02_CM02_PusherInPos" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="26">
+      <Symbol>
+        <Component Name="bx_EM02_CM02_TrapdoorInPos" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="27">
+      <Symbol>
+        <Component Name="bx_EM02_CM02_PositionerExtended" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="28">
+      <Symbol>
+        <Component Name="bx_EM02_CM02_LiftMoving" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="29">
+      <Symbol>
         <Component Name="InstEM02_00_Main" />
         <Component Name="instCM01" />
         <Component Name="instBeltConveyor" />
         <Component Name="by_BoxReady" />
       </Symbol>
     </Access>
-    <Access Scope="GlobalVariable" UId="22">
+    <Access Scope="GlobalVariable" UId="30">
+      <Symbol>
+        <Component Name="InstEM00_00_Main" />
+        <Component Name="instCM04" />
+        <Component Name="instConveyorCrossing" />
+        <Component Name="by_EmptyPalletAck" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="31">
+      <Symbol>
+        <Component Name="InstEM00_00_Main" />
+        <Component Name="instCM04" />
+        <Component Name="instConveyorCrossing" />
+        <Component Name="by_ReleasePalletAck" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="32">
       <Symbol>
         <Component Name="Controls" />
         <Component Name="NO_OF_LAYERS" />
       </Symbol>
     </Access>
-    <Access Scope="GlobalVariable" UId="23">
+    <Access Scope="GlobalVariable" UId="33">
       <Symbol>
         <Component Name="PackTags" />
         <Component Name="Status" />
         <Component Name="StateCurrent" />
       </Symbol>
     </Access>
-    <Access Scope="GlobalVariable" UId="24">
+    <Access Scope="GlobalVariable" UId="34">
+      <Symbol>
+        <Component Name="by_EM02_CM02_BeltFrd" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="35">
+      <Symbol>
+        <Component Name="by_EM02_CM02_BeltRev" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="36">
+      <Symbol>
+        <Component Name="by_EM02_CM02_Pusher" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="37">
+      <Symbol>
+        <Component Name="by_EM02_CM02_Pusher" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="38">
+      <Symbol>
+        <Component Name="by_EM02_CM02_Trapdoor" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="39">
+      <Symbol>
+        <Component Name="by_EM02_CM02_MoveLiftToLimit" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="40">
+      <Symbol>
+        <Component Name="by_EM02_CM02_LiftUp" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="41">
+      <Symbol>
+        <Component Name="by_EM02_CM02_LiftDown" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="42">
+      <Symbol>
+        <Component Name="by_EM02_CM02_ChainFrd" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="43">
+      <Symbol>
+        <Component Name="by_EM02_CM02_ChainRev" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="44">
+      <Symbol>
+        <Component Name="by_EM02_CM02_BoxCam" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="45">
       <Symbol>
         <Component Name="InstEM02_00_Main" />
         <Component Name="instCM01" />
@@ -191,16 +302,36 @@
         <Component Name="bx_BoxReq" />
       </Symbol>
     </Access>
-    <Access Scope="GlobalVariable" UId="25">
+    <Access Scope="GlobalVariable" UId="46">
+      <Symbol>
+        <Component Name="InstEM00_00_Main" />
+        <Component Name="instCM04" />
+        <Component Name="instConveyorCrossing" />
+        <Component Name="bx_EmptyPalletReq" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="47">
+      <Symbol>
+        <Component Name="InstEM00_00_Main" />
+        <Component Name="instCM04" />
+        <Component Name="instConveyorCrossing" />
+        <Component Name="bx_ReleasePalletReq" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="48">
       <Symbol>
         <Component Name="EM02" />
         <Component Name="PackML_Sts" />
         <Component Name="CM02" />
       </Symbol>
     </Access>
-    <Call UId="26">
+    <Part Name="Contact" UId="49">
+      <Negated Name="operand" />
+    </Part>
+    <Part Name="NBox" UId="50" />
+    <Call UId="51">
       <CallInfo Name="Palletizer" BlockType="FB">
-        <Instance Scope="LocalVariable" UId="27">
+        <Instance Scope="LocalVariable" UId="52">
           <Component Name="instPalletizer" />
         </Instance>
         <Parameter Name="bx_BoxSensor" Section="Input" Type="Bool" />
@@ -236,125 +367,138 @@
     </Call>
   </Parts>
   <Wires>
-    <Wire UId="52">
-      <Powerrail />
-      <NameCon UId="26" Name="en" />
-    </Wire>
-    <Wire UId="53">
-      <OpenCon UId="28" />
-      <NameCon UId="26" Name="bx_BoxSensor" />
-    </Wire>
-    <Wire UId="54">
-      <OpenCon UId="29" />
-      <NameCon UId="26" Name="bx_PalletSensor1" />
-    </Wire>
     <Wire UId="55">
-      <OpenCon UId="30" />
-      <NameCon UId="26" Name="bx_PalletSensor2" />
+      <Powerrail />
+      <NameCon UId="51" Name="en" />
+      <NameCon UId="49" Name="in" />
     </Wire>
     <Wire UId="56">
-      <OpenCon UId="31" />
-      <NameCon UId="26" Name="bx_PusherInPos" />
+      <IdentCon UId="21" />
+      <NameCon UId="49" Name="operand" />
     </Wire>
     <Wire UId="57">
-      <OpenCon UId="32" />
-      <NameCon UId="26" Name="bx_TrapdoorInPos" />
+      <NameCon UId="49" Name="out" />
+      <NameCon UId="50" Name="in" />
     </Wire>
     <Wire UId="58">
-      <OpenCon UId="33" />
-      <NameCon UId="26" Name="bx_PositionerExtended" />
+      <IdentCon UId="22" />
+      <NameCon UId="50" Name="bit" />
     </Wire>
     <Wire UId="59">
-      <OpenCon UId="34" />
-      <NameCon UId="26" Name="bx_LiftMoving" />
+      <NameCon UId="50" Name="out" />
+      <NameCon UId="51" Name="bx_BoxSensor" />
     </Wire>
     <Wire UId="60">
-      <IdentCon UId="21" />
-      <NameCon UId="26" Name="bx_BoxReady" />
+      <IdentCon UId="23" />
+      <NameCon UId="51" Name="bx_PalletSensor1" />
     </Wire>
     <Wire UId="61">
-      <OpenCon UId="35" />
-      <NameCon UId="26" Name="bx_PalletReady" />
+      <IdentCon UId="24" />
+      <NameCon UId="51" Name="bx_PalletSensor2" />
     </Wire>
     <Wire UId="62">
-      <OpenCon UId="36" />
-      <NameCon UId="26" Name="bx_ReleasePalletAck" />
+      <IdentCon UId="25" />
+      <NameCon UId="51" Name="bx_PusherInPos" />
     </Wire>
     <Wire UId="63">
-      <IdentCon UId="22" />
-      <NameCon UId="26" Name="NUMBER_OF_LAYERS" />
+      <IdentCon UId="26" />
+      <NameCon UId="51" Name="bx_TrapdoorInPos" />
     </Wire>
     <Wire UId="64">
-      <IdentCon UId="23" />
-      <NameCon UId="26" Name="ix_CurrentState" />
+      <IdentCon UId="27" />
+      <NameCon UId="51" Name="bx_PositionerExtended" />
     </Wire>
     <Wire UId="65">
-      <NameCon UId="26" Name="by_BeltFrd" />
-      <OpenCon UId="37" />
+      <IdentCon UId="28" />
+      <NameCon UId="51" Name="bx_LiftMoving" />
     </Wire>
     <Wire UId="66">
-      <NameCon UId="26" Name="by_BeltRev" />
-      <OpenCon UId="38" />
+      <IdentCon UId="29" />
+      <NameCon UId="51" Name="bx_BoxReady" />
     </Wire>
     <Wire UId="67">
-      <NameCon UId="26" Name="by_Pusher" />
-      <OpenCon UId="39" />
+      <IdentCon UId="30" />
+      <NameCon UId="51" Name="bx_PalletReady" />
     </Wire>
     <Wire UId="68">
-      <NameCon UId="26" Name="by_Positioner" />
-      <OpenCon UId="40" />
+      <IdentCon UId="31" />
+      <NameCon UId="51" Name="bx_ReleasePalletAck" />
     </Wire>
     <Wire UId="69">
-      <NameCon UId="26" Name="by_Trapdoor" />
-      <OpenCon UId="41" />
+      <IdentCon UId="32" />
+      <NameCon UId="51" Name="NUMBER_OF_LAYERS" />
     </Wire>
     <Wire UId="70">
-      <NameCon UId="26" Name="by_MoveLiftToLimit" />
-      <OpenCon UId="42" />
+      <IdentCon UId="33" />
+      <NameCon UId="51" Name="ix_CurrentState" />
     </Wire>
     <Wire UId="71">
-      <NameCon UId="26" Name="by_LiftUp" />
-      <OpenCon UId="43" />
+      <NameCon UId="51" Name="by_BeltFrd" />
+      <IdentCon UId="34" />
     </Wire>
     <Wire UId="72">
-      <NameCon UId="26" Name="by_LiftDown" />
-      <OpenCon UId="44" />
+      <NameCon UId="51" Name="by_BeltRev" />
+      <IdentCon UId="35" />
     </Wire>
     <Wire UId="73">
-      <NameCon UId="26" Name="by_ChainFrd" />
-      <OpenCon UId="45" />
+      <NameCon UId="51" Name="by_Pusher" />
+      <IdentCon UId="36" />
     </Wire>
     <Wire UId="74">
-      <NameCon UId="26" Name="by_ChainRev" />
-      <OpenCon UId="46" />
+      <NameCon UId="51" Name="by_Positioner" />
+      <IdentCon UId="37" />
     </Wire>
     <Wire UId="75">
-      <NameCon UId="26" Name="by_BoxCam" />
-      <OpenCon UId="47" />
+      <NameCon UId="51" Name="by_Trapdoor" />
+      <IdentCon UId="38" />
     </Wire>
     <Wire UId="76">
-      <NameCon UId="26" Name="by_BoxReq" />
-      <IdentCon UId="24" />
+      <NameCon UId="51" Name="by_MoveLiftToLimit" />
+      <IdentCon UId="39" />
     </Wire>
     <Wire UId="77">
-      <NameCon UId="26" Name="by_PalletReq" />
-      <OpenCon UId="48" />
+      <NameCon UId="51" Name="by_LiftUp" />
+      <IdentCon UId="40" />
     </Wire>
     <Wire UId="78">
-      <NameCon UId="26" Name="by_ReleasePalletReq" />
-      <OpenCon UId="49" />
+      <NameCon UId="51" Name="by_LiftDown" />
+      <IdentCon UId="41" />
     </Wire>
     <Wire UId="79">
-      <NameCon UId="26" Name="ModuleSts" />
-      <IdentCon UId="25" />
+      <NameCon UId="51" Name="by_ChainFrd" />
+      <IdentCon UId="42" />
     </Wire>
     <Wire UId="80">
-      <NameCon UId="26" Name="iy_SeqStep" />
-      <OpenCon UId="50" />
+      <NameCon UId="51" Name="by_ChainRev" />
+      <IdentCon UId="43" />
     </Wire>
     <Wire UId="81">
-      <NameCon UId="26" Name="iy_RowCounter" />
-      <OpenCon UId="51" />
+      <NameCon UId="51" Name="by_BoxCam" />
+      <IdentCon UId="44" />
+    </Wire>
+    <Wire UId="82">
+      <NameCon UId="51" Name="by_BoxReq" />
+      <IdentCon UId="45" />
+    </Wire>
+    <Wire UId="83">
+      <NameCon UId="51" Name="by_PalletReq" />
+      <IdentCon UId="46" />
+    </Wire>
+    <Wire UId="84">
+      <NameCon UId="51" Name="by_ReleasePalletReq" />
+      <IdentCon UId="47" />
+    </Wire>
+    <Wire UId="85">
+      <NameCon UId="51" Name="ModuleSts" />
+      <IdentCon UId="48" />
+    </Wire>
+    <Wire UId="86">
+      <NameCon UId="51" Name="iy_SeqStep" />
+      <OpenCon UId="53" />
+    </Wire>
+    <Wire UId="87">
+      <NameCon UId="51" Name="iy_RowCounter" />
+      <OpenCon UId="54" />
     </Wire>
   </Wires>
 </FlgNet></NetworkSource>

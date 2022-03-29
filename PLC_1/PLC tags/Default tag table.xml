@@ -2,7 +2,7 @@
 <Document>
   <Engineering version="V17" />
   <DocumentInfo>
-    <Created>2022-03-16T18:47:27.5769015Z</Created>
+    <Created>2022-03-29T18:52:13.5957185Z</Created>
     <ExportSetting>WithDefaults</ExportSetting>
     <InstalledProducts>
       <Product>
@@ -630,8 +630,8 @@
           <ExternalAccessible>true</ExternalAccessible>
           <ExternalVisible>true</ExternalVisible>
           <ExternalWritable>true</ExternalWritable>
-          <LogicalAddress>%I0.2</LogicalAddress>
-          <Name>bx_EM00_CM04_PalletSensor</Name>
+          <LogicalAddress>%Q0.5</LogicalAddress>
+          <Name>by_EM00_CM04_ConvFrd</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="56" CompositionName="Comment">
@@ -658,8 +658,8 @@
           <ExternalAccessible>true</ExternalAccessible>
           <ExternalVisible>true</ExternalVisible>
           <ExternalWritable>true</ExternalWritable>
-          <LogicalAddress>%Q0.5</LogicalAddress>
-          <Name>by_EM00_CM04_ConvFrd</Name>
+          <LogicalAddress>%I0.3</LogicalAddress>
+          <Name>bx_EM01_CM01_BoxSensor</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="5A" CompositionName="Comment">
@@ -686,8 +686,8 @@
           <ExternalAccessible>true</ExternalAccessible>
           <ExternalVisible>true</ExternalVisible>
           <ExternalWritable>true</ExternalWritable>
-          <LogicalAddress>%I0.3</LogicalAddress>
-          <Name>bx_EM01_CM01_BoxSensor</Name>
+          <LogicalAddress>%Q0.6</LogicalAddress>
+          <Name>by_EM01_CM01_BeltFrd</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="5E" CompositionName="Comment">
@@ -714,8 +714,8 @@
           <ExternalAccessible>true</ExternalAccessible>
           <ExternalVisible>true</ExternalVisible>
           <ExternalWritable>true</ExternalWritable>
-          <LogicalAddress>%Q0.6</LogicalAddress>
-          <Name>by_EM01_CM01_BeltFrd</Name>
+          <LogicalAddress>%I0.4</LogicalAddress>
+          <Name>Tag_12</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="62" CompositionName="Comment">
@@ -742,8 +742,8 @@
           <ExternalAccessible>true</ExternalAccessible>
           <ExternalVisible>true</ExternalVisible>
           <ExternalWritable>true</ExternalWritable>
-          <LogicalAddress>%I0.4</LogicalAddress>
-          <Name>Tag_12</Name>
+          <LogicalAddress>%I0.5</LogicalAddress>
+          <Name>bx_EM01_CM02_PalletSensor1</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="66" CompositionName="Comment">
@@ -770,8 +770,8 @@
           <ExternalAccessible>true</ExternalAccessible>
           <ExternalVisible>true</ExternalVisible>
           <ExternalWritable>true</ExternalWritable>
-          <LogicalAddress>%I0.5</LogicalAddress>
-          <Name>bx_EM01_CM02_PalletSensor1</Name>
+          <LogicalAddress>%I0.6</LogicalAddress>
+          <Name>bx_EM01_CM02_PalletSensor2</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="6A" CompositionName="Comment">
@@ -798,8 +798,8 @@
           <ExternalAccessible>true</ExternalAccessible>
           <ExternalVisible>true</ExternalVisible>
           <ExternalWritable>true</ExternalWritable>
-          <LogicalAddress>%I0.6</LogicalAddress>
-          <Name>bx_EM01_CM02_PalletSensor2</Name>
+          <LogicalAddress>%I0.7</LogicalAddress>
+          <Name>bx_EM01_CM02_PusherInPos</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="6E" CompositionName="Comment">
@@ -826,8 +826,8 @@
           <ExternalAccessible>true</ExternalAccessible>
           <ExternalVisible>true</ExternalVisible>
           <ExternalWritable>true</ExternalWritable>
-          <LogicalAddress>%I0.7</LogicalAddress>
-          <Name>bx_EM01_CM02_PusherInPos</Name>
+          <LogicalAddress>%I1.0</LogicalAddress>
+          <Name>bx_EM01_CM02_TrapdoorInPos</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="72" CompositionName="Comment">
@@ -854,8 +854,8 @@
           <ExternalAccessible>true</ExternalAccessible>
           <ExternalVisible>true</ExternalVisible>
           <ExternalWritable>true</ExternalWritable>
-          <LogicalAddress>%I1.0</LogicalAddress>
-          <Name>bx_EM01_CM02_TrapdoorInPos</Name>
+          <LogicalAddress>%I1.1</LogicalAddress>
+          <Name>bx_EM01_CM02_PositionerExtended</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="76" CompositionName="Comment">
@@ -882,8 +882,8 @@
           <ExternalAccessible>true</ExternalAccessible>
           <ExternalVisible>true</ExternalVisible>
           <ExternalWritable>true</ExternalWritable>
-          <LogicalAddress>%I1.1</LogicalAddress>
-          <Name>bx_EM01_CM02_PositionerExtended</Name>
+          <LogicalAddress>%I1.2</LogicalAddress>
+          <Name>bx_EM01_CM02_LiftMoving</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="7A" CompositionName="Comment">
@@ -910,8 +910,8 @@
           <ExternalAccessible>true</ExternalAccessible>
           <ExternalVisible>true</ExternalVisible>
           <ExternalWritable>true</ExternalWritable>
-          <LogicalAddress>%I1.2</LogicalAddress>
-          <Name>bx_EM01_CM02_LiftMoving</Name>
+          <LogicalAddress>%Q0.7</LogicalAddress>
+          <Name>by_EM01_CM02_BeltFrd</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="7E" CompositionName="Comment">
@@ -938,8 +938,8 @@
           <ExternalAccessible>true</ExternalAccessible>
           <ExternalVisible>true</ExternalVisible>
           <ExternalWritable>true</ExternalWritable>
-          <LogicalAddress>%Q0.7</LogicalAddress>
-          <Name>by_EM01_CM02_BeltFrd</Name>
+          <LogicalAddress>%Q1.0</LogicalAddress>
+          <Name>by_EM01_CM02_BeltRev</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="82" CompositionName="Comment">
@@ -966,8 +966,8 @@
           <ExternalAccessible>true</ExternalAccessible>
           <ExternalVisible>true</ExternalVisible>
           <ExternalWritable>true</ExternalWritable>
-          <LogicalAddress>%Q1.0</LogicalAddress>
-          <Name>by_EM01_CM02_BeltRev</Name>
+          <LogicalAddress>%Q1.1</LogicalAddress>
+          <Name>by_EM01_CM02_Pusher</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="86" CompositionName="Comment">
@@ -994,8 +994,8 @@
           <ExternalAccessible>true</ExternalAccessible>
           <ExternalVisible>true</ExternalVisible>
           <ExternalWritable>true</ExternalWritable>
-          <LogicalAddress>%Q1.1</LogicalAddress>
-          <Name>by_EM01_CM02_Pusher</Name>
+          <LogicalAddress>%Q1.2</LogicalAddress>
+          <Name>by_EM01_CM02_Positioner</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="8A" CompositionName="Comment">
@@ -1022,8 +1022,8 @@
           <ExternalAccessible>true</ExternalAccessible>
           <ExternalVisible>true</ExternalVisible>
           <ExternalWritable>true</ExternalWritable>
-          <LogicalAddress>%Q1.2</LogicalAddress>
-          <Name>by_EM01_CM02_Positioner</Name>
+          <LogicalAddress>%Q1.3</LogicalAddress>
+          <Name>by_EM01_CM02_Trapdoor</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="8E" CompositionName="Comment">
@@ -1050,8 +1050,8 @@
           <ExternalAccessible>true</ExternalAccessible>
           <ExternalVisible>true</ExternalVisible>
           <ExternalWritable>true</ExternalWritable>
-          <LogicalAddress>%Q1.3</LogicalAddress>
-          <Name>by_EM01_CM02_Trapdoor</Name>
+          <LogicalAddress>%Q1.4</LogicalAddress>
+          <Name>by_EM01_CM02_MoveLiftToLimit</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="92" CompositionName="Comment">
@@ -1078,8 +1078,8 @@
           <ExternalAccessible>true</ExternalAccessible>
           <ExternalVisible>true</ExternalVisible>
           <ExternalWritable>true</ExternalWritable>
-          <LogicalAddress>%Q1.4</LogicalAddress>
-          <Name>by_EM01_CM02_MoveLiftToLimit</Name>
+          <LogicalAddress>%Q1.5</LogicalAddress>
+          <Name>by_EM01_CM02_LiftUp</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="96" CompositionName="Comment">
@@ -1106,8 +1106,8 @@
           <ExternalAccessible>true</ExternalAccessible>
           <ExternalVisible>true</ExternalVisible>
           <ExternalWritable>true</ExternalWritable>
-          <LogicalAddress>%Q1.5</LogicalAddress>
-          <Name>by_EM01_CM02_LiftUp</Name>
+          <LogicalAddress>%Q1.6</LogicalAddress>
+          <Name>by_EM01_CM02_LiftDown</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="9A" CompositionName="Comment">
@@ -1134,8 +1134,8 @@
           <ExternalAccessible>true</ExternalAccessible>
           <ExternalVisible>true</ExternalVisible>
           <ExternalWritable>true</ExternalWritable>
-          <LogicalAddress>%Q1.6</LogicalAddress>
-          <Name>by_EM01_CM02_LiftDown</Name>
+          <LogicalAddress>%Q1.7</LogicalAddress>
+          <Name>by_EM01_CM02_ChainFrd</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="9E" CompositionName="Comment">
@@ -1162,8 +1162,8 @@
           <ExternalAccessible>true</ExternalAccessible>
           <ExternalVisible>true</ExternalVisible>
           <ExternalWritable>true</ExternalWritable>
-          <LogicalAddress>%Q1.7</LogicalAddress>
-          <Name>by_EM01_CM02_ChainFrd</Name>
+          <LogicalAddress>%Q2.0</LogicalAddress>
+          <Name>by_EM01_CM02_ChainRev</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="A2" CompositionName="Comment">
@@ -1190,8 +1190,8 @@
           <ExternalAccessible>true</ExternalAccessible>
           <ExternalVisible>true</ExternalVisible>
           <ExternalWritable>true</ExternalWritable>
-          <LogicalAddress>%Q2.0</LogicalAddress>
-          <Name>by_EM01_CM02_ChainRev</Name>
+          <LogicalAddress>%Q2.1</LogicalAddress>
+          <Name>by_EM00_CM03_ChainRollsFrd</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="A6" CompositionName="Comment">
@@ -1218,8 +1218,8 @@
           <ExternalAccessible>true</ExternalAccessible>
           <ExternalVisible>true</ExternalVisible>
           <ExternalWritable>true</ExternalWritable>
-          <LogicalAddress>%Q2.1</LogicalAddress>
-          <Name>by_EM00_CM03_ChainRollsFrd</Name>
+          <LogicalAddress>%Q2.2</LogicalAddress>
+          <Name>by_EM00_CM03_ChainRollsRev</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="AA" CompositionName="Comment">
@@ -1246,8 +1246,8 @@
           <ExternalAccessible>true</ExternalAccessible>
           <ExternalVisible>true</ExternalVisible>
           <ExternalWritable>true</ExternalWritable>
-          <LogicalAddress>%Q2.2</LogicalAddress>
-          <Name>by_EM00_CM03_ChainRollsRev</Name>
+          <LogicalAddress>%Q2.3</LogicalAddress>
+          <Name>by_EM01_CM02_BoxCam</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="AE" CompositionName="Comment">
@@ -1274,8 +1274,8 @@
           <ExternalAccessible>true</ExternalAccessible>
           <ExternalVisible>true</ExternalVisible>
           <ExternalWritable>true</ExternalWritable>
-          <LogicalAddress>%Q2.3</LogicalAddress>
-          <Name>by_EM01_CM02_BoxCam</Name>
+          <LogicalAddress>%I2.2</LogicalAddress>
+          <Name>bx_EM00_CM04_PalletSensor</Name>
         </AttributeList>
         <ObjectList>
           <MultilingualText ID="B2" CompositionName="Comment">
@@ -1287,6 +1287,734 @@
                 </AttributeList>
               </MultilingualTextItem>
               <MultilingualTextItem ID="B4" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Tags.PlcTag>
+      <SW.Tags.PlcTag ID="B5" CompositionName="Tags">
+        <AttributeList>
+          <DataTypeName>Bool</DataTypeName>
+          <ExternalAccessible>true</ExternalAccessible>
+          <ExternalVisible>true</ExternalVisible>
+          <ExternalWritable>true</ExternalWritable>
+          <LogicalAddress>%Q4.6</LogicalAddress>
+          <Name>by_EM00_CM04_RollsRollsFrd</Name>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="B6" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="B7" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="B8" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Tags.PlcTag>
+      <SW.Tags.PlcTag ID="B9" CompositionName="Tags">
+        <AttributeList>
+          <DataTypeName>Bool</DataTypeName>
+          <ExternalAccessible>true</ExternalAccessible>
+          <ExternalVisible>true</ExternalVisible>
+          <ExternalWritable>true</ExternalWritable>
+          <LogicalAddress>%Q4.7</LogicalAddress>
+          <Name>by_EM00_CM04_RollsRev</Name>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="BA" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="BB" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="BC" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Tags.PlcTag>
+      <SW.Tags.PlcTag ID="BD" CompositionName="Tags">
+        <AttributeList>
+          <DataTypeName>Bool</DataTypeName>
+          <ExternalAccessible>true</ExternalAccessible>
+          <ExternalVisible>true</ExternalVisible>
+          <ExternalWritable>true</ExternalWritable>
+          <LogicalAddress>%Q5.0</LogicalAddress>
+          <Name>by_EM00_CM04_RollsFrd</Name>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="BE" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="BF" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="C0" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Tags.PlcTag>
+      <SW.Tags.PlcTag ID="C1" CompositionName="Tags">
+        <AttributeList>
+          <DataTypeName>Bool</DataTypeName>
+          <ExternalAccessible>true</ExternalAccessible>
+          <ExternalVisible>true</ExternalVisible>
+          <ExternalWritable>true</ExternalWritable>
+          <LogicalAddress>%Q5.1</LogicalAddress>
+          <Name>by_EM00_CM04_ChainFrd</Name>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="C2" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="C3" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="C4" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Tags.PlcTag>
+      <SW.Tags.PlcTag ID="C5" CompositionName="Tags">
+        <AttributeList>
+          <DataTypeName>Bool</DataTypeName>
+          <ExternalAccessible>true</ExternalAccessible>
+          <ExternalVisible>true</ExternalVisible>
+          <ExternalWritable>true</ExternalWritable>
+          <LogicalAddress>%Q5.2</LogicalAddress>
+          <Name>by_EM00_CM04_ChainRev</Name>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="C6" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="C7" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="C8" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Tags.PlcTag>
+      <SW.Tags.PlcTag ID="C9" CompositionName="Tags">
+        <AttributeList>
+          <DataTypeName>Bool</DataTypeName>
+          <ExternalAccessible>true</ExternalAccessible>
+          <ExternalVisible>true</ExternalVisible>
+          <ExternalWritable>true</ExternalWritable>
+          <LogicalAddress>%Q5.3</LogicalAddress>
+          <Name>by_EM00_CM04_ChainRollsFrd</Name>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="CA" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="CB" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="CC" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Tags.PlcTag>
+      <SW.Tags.PlcTag ID="CD" CompositionName="Tags">
+        <AttributeList>
+          <DataTypeName>Bool</DataTypeName>
+          <ExternalAccessible>true</ExternalAccessible>
+          <ExternalVisible>true</ExternalVisible>
+          <ExternalWritable>true</ExternalWritable>
+          <LogicalAddress>%Q5.4</LogicalAddress>
+          <Name>by_EM00_CM04_ChainRollsRev</Name>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="CE" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="CF" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="D0" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Tags.PlcTag>
+      <SW.Tags.PlcTag ID="D1" CompositionName="Tags">
+        <AttributeList>
+          <DataTypeName>Bool</DataTypeName>
+          <ExternalAccessible>true</ExternalAccessible>
+          <ExternalVisible>true</ExternalVisible>
+          <ExternalWritable>true</ExternalWritable>
+          <LogicalAddress>%Q5.5</LogicalAddress>
+          <Name>by_EM00_CM05_RollsFrd</Name>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="D2" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="D3" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="D4" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Tags.PlcTag>
+      <SW.Tags.PlcTag ID="D5" CompositionName="Tags">
+        <AttributeList>
+          <DataTypeName>Bool</DataTypeName>
+          <ExternalAccessible>true</ExternalAccessible>
+          <ExternalVisible>true</ExternalVisible>
+          <ExternalWritable>true</ExternalWritable>
+          <LogicalAddress>%I1.5</LogicalAddress>
+          <Name>bx_EM02_CM01_BoxSensor</Name>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="D6" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="D7" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="D8" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Tags.PlcTag>
+      <SW.Tags.PlcTag ID="D9" CompositionName="Tags">
+        <AttributeList>
+          <DataTypeName>Bool</DataTypeName>
+          <ExternalAccessible>true</ExternalAccessible>
+          <ExternalVisible>true</ExternalVisible>
+          <ExternalWritable>true</ExternalWritable>
+          <LogicalAddress>%Q3.3</LogicalAddress>
+          <Name>by_EM02_CM01_BeltFrd</Name>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="DA" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="DB" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="DC" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Tags.PlcTag>
+      <SW.Tags.PlcTag ID="DD" CompositionName="Tags">
+        <AttributeList>
+          <DataTypeName>Bool</DataTypeName>
+          <ExternalAccessible>true</ExternalAccessible>
+          <ExternalVisible>true</ExternalVisible>
+          <ExternalWritable>true</ExternalWritable>
+          <LogicalAddress>%I1.7</LogicalAddress>
+          <Name>bx_EM02_CM02_PalletSensor1</Name>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="DE" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="DF" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="E0" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Tags.PlcTag>
+      <SW.Tags.PlcTag ID="E1" CompositionName="Tags">
+        <AttributeList>
+          <DataTypeName>Bool</DataTypeName>
+          <ExternalAccessible>true</ExternalAccessible>
+          <ExternalVisible>true</ExternalVisible>
+          <ExternalWritable>true</ExternalWritable>
+          <LogicalAddress>%I1.6</LogicalAddress>
+          <Name>bx_EM02_CM02_PalletSensor2</Name>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="E2" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="E3" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="E4" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Tags.PlcTag>
+      <SW.Tags.PlcTag ID="E5" CompositionName="Tags">
+        <AttributeList>
+          <DataTypeName>Bool</DataTypeName>
+          <ExternalAccessible>true</ExternalAccessible>
+          <ExternalVisible>true</ExternalVisible>
+          <ExternalWritable>true</ExternalWritable>
+          <LogicalAddress>%I1.4</LogicalAddress>
+          <Name>bx_EM02_CM02_PusherInPos</Name>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="E6" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="E7" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="E8" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Tags.PlcTag>
+      <SW.Tags.PlcTag ID="E9" CompositionName="Tags">
+        <AttributeList>
+          <DataTypeName>Bool</DataTypeName>
+          <ExternalAccessible>true</ExternalAccessible>
+          <ExternalVisible>true</ExternalVisible>
+          <ExternalWritable>true</ExternalWritable>
+          <LogicalAddress>%I2.0</LogicalAddress>
+          <Name>bx_EM02_CM02_TrapdoorInPos</Name>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="EA" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="EB" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="EC" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Tags.PlcTag>
+      <SW.Tags.PlcTag ID="ED" CompositionName="Tags">
+        <AttributeList>
+          <DataTypeName>Bool</DataTypeName>
+          <ExternalAccessible>true</ExternalAccessible>
+          <ExternalVisible>true</ExternalVisible>
+          <ExternalWritable>true</ExternalWritable>
+          <LogicalAddress>%I2.1</LogicalAddress>
+          <Name>bx_EM02_CM02_PositionerExtended</Name>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="EE" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="EF" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="F0" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Tags.PlcTag>
+      <SW.Tags.PlcTag ID="F1" CompositionName="Tags">
+        <AttributeList>
+          <DataTypeName>Bool</DataTypeName>
+          <ExternalAccessible>true</ExternalAccessible>
+          <ExternalVisible>true</ExternalVisible>
+          <ExternalWritable>true</ExternalWritable>
+          <LogicalAddress>%I1.3</LogicalAddress>
+          <Name>bx_EM02_CM02_LiftMoving</Name>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="F2" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="F3" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="F4" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Tags.PlcTag>
+      <SW.Tags.PlcTag ID="F5" CompositionName="Tags">
+        <AttributeList>
+          <DataTypeName>Bool</DataTypeName>
+          <ExternalAccessible>true</ExternalAccessible>
+          <ExternalVisible>true</ExternalVisible>
+          <ExternalWritable>true</ExternalWritable>
+          <LogicalAddress>%Q3.4</LogicalAddress>
+          <Name>by_EM02_CM02_BeltFrd</Name>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="F6" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="F7" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="F8" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Tags.PlcTag>
+      <SW.Tags.PlcTag ID="F9" CompositionName="Tags">
+        <AttributeList>
+          <DataTypeName>Bool</DataTypeName>
+          <ExternalAccessible>true</ExternalAccessible>
+          <ExternalVisible>true</ExternalVisible>
+          <ExternalWritable>true</ExternalWritable>
+          <LogicalAddress>%Q99.0</LogicalAddress>
+          <Name>by_EM02_CM02_BeltRev</Name>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="FA" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="FB" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="FC" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Tags.PlcTag>
+      <SW.Tags.PlcTag ID="FD" CompositionName="Tags">
+        <AttributeList>
+          <DataTypeName>Bool</DataTypeName>
+          <ExternalAccessible>true</ExternalAccessible>
+          <ExternalVisible>true</ExternalVisible>
+          <ExternalWritable>true</ExternalWritable>
+          <LogicalAddress>%Q3.6</LogicalAddress>
+          <Name>by_EM02_CM02_Pusher</Name>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="FE" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="FF" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="100" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Tags.PlcTag>
+      <SW.Tags.PlcTag ID="101" CompositionName="Tags">
+        <AttributeList>
+          <DataTypeName>Bool</DataTypeName>
+          <ExternalAccessible>true</ExternalAccessible>
+          <ExternalVisible>true</ExternalVisible>
+          <ExternalWritable>true</ExternalWritable>
+          <LogicalAddress>%Q4.0</LogicalAddress>
+          <Name>by_EM02_CM02_Trapdoor</Name>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="102" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="103" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="104" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Tags.PlcTag>
+      <SW.Tags.PlcTag ID="105" CompositionName="Tags">
+        <AttributeList>
+          <DataTypeName>Bool</DataTypeName>
+          <ExternalAccessible>true</ExternalAccessible>
+          <ExternalVisible>true</ExternalVisible>
+          <ExternalWritable>true</ExternalWritable>
+          <LogicalAddress>%Q4.3</LogicalAddress>
+          <Name>by_EM02_CM02_MoveLiftToLimit</Name>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="106" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="107" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="108" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Tags.PlcTag>
+      <SW.Tags.PlcTag ID="109" CompositionName="Tags">
+        <AttributeList>
+          <DataTypeName>Bool</DataTypeName>
+          <ExternalAccessible>true</ExternalAccessible>
+          <ExternalVisible>true</ExternalVisible>
+          <ExternalWritable>true</ExternalWritable>
+          <LogicalAddress>%Q4.1</LogicalAddress>
+          <Name>by_EM02_CM02_LiftUp</Name>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="10A" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="10B" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="10C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Tags.PlcTag>
+      <SW.Tags.PlcTag ID="10D" CompositionName="Tags">
+        <AttributeList>
+          <DataTypeName>Bool</DataTypeName>
+          <ExternalAccessible>true</ExternalAccessible>
+          <ExternalVisible>true</ExternalVisible>
+          <ExternalWritable>true</ExternalWritable>
+          <LogicalAddress>%Q4.2</LogicalAddress>
+          <Name>by_EM02_CM02_LiftDown</Name>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="10E" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="10F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="110" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Tags.PlcTag>
+      <SW.Tags.PlcTag ID="111" CompositionName="Tags">
+        <AttributeList>
+          <DataTypeName>Bool</DataTypeName>
+          <ExternalAccessible>true</ExternalAccessible>
+          <ExternalVisible>true</ExternalVisible>
+          <ExternalWritable>true</ExternalWritable>
+          <LogicalAddress>%Q4.4</LogicalAddress>
+          <Name>by_EM02_CM02_ChainFrd</Name>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="112" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="113" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="114" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Tags.PlcTag>
+      <SW.Tags.PlcTag ID="115" CompositionName="Tags">
+        <AttributeList>
+          <DataTypeName>Bool</DataTypeName>
+          <ExternalAccessible>true</ExternalAccessible>
+          <ExternalVisible>true</ExternalVisible>
+          <ExternalWritable>true</ExternalWritable>
+          <LogicalAddress>%Q4.5</LogicalAddress>
+          <Name>by_EM02_CM02_ChainRev</Name>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="116" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="117" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="118" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Tags.PlcTag>
+      <SW.Tags.PlcTag ID="119" CompositionName="Tags">
+        <AttributeList>
+          <DataTypeName>Bool</DataTypeName>
+          <ExternalAccessible>true</ExternalAccessible>
+          <ExternalVisible>true</ExternalVisible>
+          <ExternalWritable>true</ExternalWritable>
+          <LogicalAddress>%Q3.5</LogicalAddress>
+          <Name>by_EM02_CM02_BoxCam</Name>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="11A" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="11B" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="11C" CompositionName="Items">
                 <AttributeList>
                   <Culture>de-DE</Culture>
                   <Text />
