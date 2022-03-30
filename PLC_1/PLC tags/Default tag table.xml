@@ -2,7 +2,7 @@
 <Document>
   <Engineering version="V17" />
   <DocumentInfo>
-    <Created>2022-03-29T18:52:13.5957185Z</Created>
+    <Created>2022-03-30T18:21:29.7902827Z</Created>
     <ExportSetting>WithDefaults</ExportSetting>
     <InstalledProducts>
       <Product>
@@ -2015,6 +2015,34 @@
                 </AttributeList>
               </MultilingualTextItem>
               <MultilingualTextItem ID="11C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Tags.PlcTag>
+      <SW.Tags.PlcTag ID="11D" CompositionName="Tags">
+        <AttributeList>
+          <DataTypeName>Bool</DataTypeName>
+          <ExternalAccessible>true</ExternalAccessible>
+          <ExternalVisible>true</ExternalVisible>
+          <ExternalWritable>true</ExternalWritable>
+          <LogicalAddress>%Q3.7</LogicalAddress>
+          <Name>by_EM02_CM02_Positioner</Name>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="11E" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="11F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="120" CompositionName="Items">
                 <AttributeList>
                   <Culture>de-DE</Culture>
                   <Text />

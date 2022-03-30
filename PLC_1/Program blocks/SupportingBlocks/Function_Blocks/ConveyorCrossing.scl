@@ -86,6 +86,7 @@ BEGIN
 	                IF NOT #bx_PalletSensor AND NOT #bx_EmptyPalletReq THEN
 	                    #by_ChainRev := False;
 	                    #by_ChainFrd := False;
+	                    #by_EmptyPalletAck := False;
 	                    #i_SeqStep := 0;
 	                END_IF;
 	            4://Send ack to the palletizer, wait pallet arrive at the crossing
@@ -106,9 +107,10 @@ BEGIN
 	            6://Start the rolls forward, wait the pallet leave
 	                #by_RollsFrd := True;
 	                #by_RollsRev := False;
-	                IF NOT #bx_PalletSensor THEN
+	                IF NOT #bx_PalletSensor AND NOT #bx_ReleasePalletReq THEN
 	                    #by_RollsFrd := False;
 	                    #by_RollsRev := False;
+	                    #by_ReleasePalletAck := False;
 	                    #i_SeqStep := 0;
 	                END_IF;
 	            7://Send ack and wait for the pallet 
@@ -119,7 +121,7 @@ BEGIN
 	                    #i_SeqStep := 8;
 	                END_IF;
 	            8://Wait the pallet leaves
-	                IF NOT #bx_PalletSensor THEN
+	                IF NOT #bx_PalletSensor AND NOT #bx_TransportPalletReq THEN
 	                    #by_RollsFrd := False;
 	                    #by_RollsRev := False;
 	                    #by_TransportPalletAck := False;

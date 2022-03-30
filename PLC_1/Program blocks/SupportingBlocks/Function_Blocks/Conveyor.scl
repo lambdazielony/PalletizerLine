@@ -40,40 +40,28 @@ BEGIN
 	    6://Execute
 	        #ModuleSts.sts_Starting_SC := False;
 	        CASE #i_SeqStep OF
-	            0://Check if pallet is present
-	                IF #bx_PalletSensor AND NOT #bx_PrevReq THEN
-	                    #i_SeqStep := 2;
-	                ELSIF NOT #bx_PalletSensor AND NOT #bx_PrevReq THEN
-	                    #i_SeqStep := 1;
-	                ELSIF #bx_PrevReq THEN
-	                    #i_SeqStep := 4;
-	                END_IF;
-	            1://Run the conveyor
-	                #by_ConvFrd := True;
-	                IF #bx_PalletSensor THEN
-	                    #by_ConvFrd := False;
-	                    #i_SeqStep := 2;
-	                END_IF;
-	            2://Wait req from next module
+	            0://Wait for request
+	                #by_ConvFrd := False;
 	                IF #bx_NextReq THEN
 	                    #by_NextAck := True;
-	                    #by_ConvFrd := True;
+	                    #i_SeqStep := 1;
+	                END_IF;
+	            1://Wait pallet arrive
+	                #by_ConvFrd := True;
+	                IF #bx_PalletSensor THEN
+	                    #i_SeqStep := 2;
+	                END_IF;
+	            2://Wait pallet leave
+	                IF NOT #bx_PalletSensor THEN
+	                    #by_ConvFrd := False;
+	                    #by_NextAck := False;
 	                    #i_SeqStep := 3;
 	                END_IF;
-	            3://Wait pallet leave
-	                IF NOT #bx_PalletSensor THEN
-	                    #by_NextAck := False;
-	                    #by_ConvFrd := False;
+	            3://Wait no request
+	                IF NOT #bx_NextReq THEN
 	                    #i_SeqStep := 0;
 	                END_IF;
-	            4://Send the ack to the prev module
-	                #by_ConvFrd := True;
-	                #by_PrevAck := True;
-	                IF #bx_PalletSensor THEN
-	                    #by_ConvFrd := False;
-	                    #by_PrevAck := False;
-	                    #i_SeqStep := 3;
-	                END_IF;
+	                
 	        END_CASE;
 	        //#ModuleSts.sts_Execute_SC := True;
 	    7://Stopping
